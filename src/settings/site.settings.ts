@@ -36,11 +36,11 @@ export const siteSettings = {
         label: 'sidebar-nav-item-dashboard',
         icon: 'DashboardIcon',
       },
-      // {
-      //   href: Routes.user.list,
-      //   label: 'create-token',
-      //   icon: 'UsersIcon',
-      // },
+      {
+        href: Routes.user.list,
+        label: 'create-token',
+        icon: 'UsersIcon',
+      },
       // {
       //   href: Routes.settings,
       //   label: 'sidebar-nav-item-settings',
