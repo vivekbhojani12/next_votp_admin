@@ -36,9 +36,10 @@ export const siteSettings = {
         label: 'sidebar-nav-item-dashboard',
         icon: 'DashboardIcon',
       },
+
       {
         href: Routes.user.list,
-        label: 'create-token',
+        label: 'Create New Token',
         icon: 'UsersIcon',
       },
       // {

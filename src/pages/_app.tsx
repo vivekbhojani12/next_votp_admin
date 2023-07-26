@@ -1,6 +1,8 @@
 import type { AppProps } from 'next/app';
 import 'react-toastify/dist/ReactToastify.css';
 import '@/assets/css/main.css';
+import '@/assets/css/bootstrap.min.css';
+import '@/assets/css/ready.css';
 import { UIProvider } from '@/contexts/ui.context';
 import { SettingsProvider } from '@/contexts/settings.context';
 import ErrorMessage from '@/components/ui/error-message';

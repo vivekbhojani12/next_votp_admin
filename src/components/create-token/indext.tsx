@@ -70,7 +70,7 @@ export default function createtoken() {
                             </a>
                             <div className="clearfix"></div>
 
-                            <div className="collapse in" id="collapseExample" aria-expanded="true" style="">
+                            <div className="collapse in" id="collapseExample" aria-expanded="true" >
                                 <ul className="nav">
                                     <li>
                                         <a href="#profile">
@@ -115,20 +115,20 @@ export default function createtoken() {
                             <div className="row p-3">
                                 <div className="col-md-3 col-12">
                                     <div className="form-group">
-                                        <label for="name">Name</label>
+                                        <label htmlFor="name">Name</label>
                                         <input type="name" className="form-control" id="name" placeholder="Enter Full Name" />
                                     </div>
                                 </div>
                                 <div className="col-md-3 col-12">
                                     <div className="form-group">
-                                        <label for="email">Email Address</label>
+                                        <label htmlFor="email">Email Address</label>
                                         <input type="email" className="form-control" id="email" placeholder="Enter Email" />
                                         <small id="emailHelp" className="form-text text-muted">This Email will be use for user search</small>
                                     </div>
                                 </div>
                                 <div className="col-md-1 col-12">
                                     <div className="form-group">
-                                        <label for="noids">No Id's</label>
+                                        <label htmlFor="noids">No Id's</label>
                                         <input type="name" className="form-control" id="noids" placeholder="ID's" />
                                     </div>
                                 </div>
@@ -185,7 +185,7 @@ export default function createtoken() {
             </div>
 
 
-            <div className="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
+            <div className="modal fade" id="modalUpdate" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header bg-primary">
