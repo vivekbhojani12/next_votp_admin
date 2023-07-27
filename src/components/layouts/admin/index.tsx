@@ -38,7 +38,7 @@ const AdminLayout: React.FC<{ children?: React.ReactNode }> = ({
           </div>
         </aside>
         <main className="ltr:xl:pl-76 rtl:xl:pr-76 w-full ltr:lg:pl-72 rtl:lg:pr-72 rtl:lg:pl-0">
-          <div className="h-full p-5 md:p-8">{children}</div>
+          <div className="h-full ">{children}</div>
         </main>
       </div>
     </div>

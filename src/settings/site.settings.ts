@@ -38,16 +38,10 @@ export const siteSettings = {
       },
 
       {
-        href: Routes.user.list,
-        label: 'Create New Token',
-        icon: 'UsersIcon',
+        href: Routes.settings,
+        label: 'sidebar-nav-item-settings',
+        icon: 'TaxesIcon',
       },
-      // {
-      //   href: Routes.settings,
-      //   label: 'sidebar-nav-item-settings',
-      //   icon: 'SettingsIcon',
-      // },
-
 
 
     ],

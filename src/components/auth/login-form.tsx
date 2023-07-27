@@ -44,16 +44,17 @@ const LoginForm = () => {
               Router.push(Routes.dashboard);
               // console.log(Routes.dashboard,'route to deshboard')
               // return;
-            }else
-            {console.log('encounterd with error ',setErrorMessage('form:error-enough-permission'))
-            // Router.push(Routes.dashboard);
-            setErrorMessage('form:error-enough-permission');}
+            } else {
+              console.log('encounterd with error ', setErrorMessage('form:error-enough-permission'))
+              // Router.push(Routes.dashboard);
+              setErrorMessage('form:error-enough-permission');
+            }
           } else {
             setErrorMessage('form:error-credential-wrong');
-            console.log('encounterd with error ',setErrorMessage('form:error-credential-wrong'))
+            console.log('encounterd with error ', setErrorMessage('form:error-credential-wrong'))
           }
         },
-        onError: () => {},
+        onError: () => { },
       }
     );
   }
@@ -95,9 +96,9 @@ const LoginForm = () => {
               {t('form:text-no-account')}{' '}
               <Link
                 href={Routes.register}
-                className="font-semibold text-accent underline transition-colors duration-200 ms-1 hover:text-accent-hover hover:no-underline focus:text-accent-700 focus:no-underline focus:outline-none"
+                className="font-semibold color-registar text-accent underline transition-colors duration-200 ms-1 hover:text-accent-hover hover:no-underline focus:text-accent-700 focus:no-underline focus:outline-none"
               >
-                {t('form:link-register-shop-owner')}
+                {t('form:register')}
               </Link>
             </div>
           </>

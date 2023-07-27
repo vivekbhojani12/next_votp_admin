@@ -4,7 +4,6 @@ import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import WithdrawList from '@/components/withdraw/withdraw-list';
 import { adminOnly } from '@/utils/auth-utils';
 import { useWithdrawsQuery } from '@/data/withdraw';
 import { useState } from 'react';
@@ -39,13 +38,7 @@ export default function WithdrawsPage() {
         </div>
       </Card>
 
-      <WithdrawList
-        withdraws={withdraws}
-        paginatorInfo={paginatorInfo}
-        onPagination={handlePagination}
-        onOrder={setOrder}
-        onSort={setColumn}
-      />
+
     </>
   );
 }

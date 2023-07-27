@@ -1,6 +1,5 @@
 export const Routes = {
   dashboard: '/',
-  // createtoken: '/',
   login: '/login',
   logout: '/logout',
   register: '/register',
@@ -72,9 +71,7 @@ export const Routes = {
   shipping: {
     ...routesFactory('/'),
   },
-  withdraw: {
-    ...routesFactory('/'),
-  },
+
   staff: {
     ...routesFactory('/'),
   },
@@ -86,75 +83,6 @@ export const Routes = {
   },
 };
 
-// user: {
-//   ...routesFactory('/users'),
-// },
-// type: {
-//   ...routesFactory('/groups'),
-// },
-// category: {
-//   ...routesFactory('/categories'),
-// },
-// attribute: {
-//   ...routesFactory('/attributes'),
-// },
-// attributeValue: {
-//   ...routesFactory('/attribute-values'),
-// },
-// tag: {
-//   ...routesFactory('/tags'),
-// },
-// reviews: {
-//   ...routesFactory('/reviews'),
-// },
-// abuseReviews: {
-//   ...routesFactory('/abusive_reports'),
-// },
-// abuseReviewsReport: {
-//   ...routesFactory('/abusive_reports/reject'),
-// },
-// author: {
-//   ...routesFactory('/authors'),
-// },
-// coupon: {
-//   ...routesFactory('/coupons'),
-// },
-// manufacturer: {
-//   ...routesFactory('/manufacturers'),
-// },
-// order: {
-//   ...routesFactory('/orders'),
-// },
-// orderStatus: {
-//   ...routesFactory('/order-status'),
-// },
-// orderCreate: {
-//   ...routesFactory('/orders/create'),
-// },
-// product: {
-//   ...routesFactory('/products'),
-// },
-// shop: {
-//   ...routesFactory('/shops'),
-// },
-// tax: {
-//   ...routesFactory('/taxes'),
-// },
-// shipping: {
-//   ...routesFactory('/shippings'),
-// },
-// withdraw: {
-//   ...routesFactory('/withdraws'),
-// },
-// staff: {
-//   ...routesFactory('/staffs'),
-// },
-// refund: {
-//   ...routesFactory('/refunds'),
-// },
-// question: {
-//   ...routesFactory('/questions'),
-// },
 
 function routesFactory(endpoint: string) {
   return {

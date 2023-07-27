@@ -7,16 +7,16 @@ import { NoShop } from '@/components/icons/no-shop';
 import { adminOnly, getAuthCredentials, hasAccess } from '@/utils/auth-utils';
 
 const ShopList = () => {
-  const { t } = useTranslation();
-  const { data, isLoading: loading, error } = useMeQuery();
-  const { permissions } = getAuthCredentials();
-  let permission = hasAccess(adminOnly, permissions);
+  // const { t } = useTranslation();
+  // const { data, isLoading: loading, error } = useMeQuery();
+  // const { permissions } = getAuthCredentials();
+  // let permission = hasAccess(adminOnly, permissions);
 
-  if (loading) return <Loader text={t('common:text-loading')} />;
-  if (error) return <ErrorMessage message={error.message} />;
+  // if (loading) return <Loader text={t('common:text-loading')} />;
+  // if (error) return <ErrorMessage message={error.message} />;
   return (
     <>
-      {permission ? (
+      {/* {permission ? (
         <div className="mb-5 border-b border-dashed border-border-base pb-8 sm:mb-8">
           <h1 className="text-lg font-semibold text-heading">
             {t('common:sidebar-nav-item-my-shops')}
@@ -44,7 +44,7 @@ const ShopList = () => {
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
           <ShopCard shop={data?.managed_shop} />
         </div>
-      ) : null}
+      ) : null} */}
     </>
   );
 };
