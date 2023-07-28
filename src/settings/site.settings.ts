@@ -36,6 +36,11 @@ export const siteSettings = {
         label: 'sidebar-nav-item-dashboard',
         icon: 'DashboardIcon',
       },
+       {
+        href: Routes.user.list,
+        label: 'sidebar-nav-item-users',
+        icon: 'UsersIcon',
+      },
 
       {
         href: Routes.settings,

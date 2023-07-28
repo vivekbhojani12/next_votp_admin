@@ -14,7 +14,7 @@ type FormValues = {
   name: string;
   email: string;
   password: string;
-  permission: Permission;
+  // permission: Permission;
 };
 
 const defaultValues = {
@@ -57,7 +57,6 @@ const CustomerCreateForm = () => {
       }
     );
   }
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="my-5 flex flex-wrap sm:my-8">
@@ -76,6 +75,7 @@ const CustomerCreateForm = () => {
             className="mb-4"
             error={t(errors.name?.message!)}
           />
+          
           <Input
             label={t('form:input-label-email')}
             {...register('email')}

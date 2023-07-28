@@ -10,21 +10,22 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 interface FormValues {
-  oldPassword: string;
-  newPassword: string;
+  _id:string
+  old_password: string;
+  password: string;
   passwordConfirmation: string;
 }
 
 const changePasswordSchema = yup.object().shape({
-  oldPassword: yup.string().required('form:error-old-password-required'),
-  newPassword: yup.string().required('form:error-password-required'),
+  old_password: yup.string().required('form:error-old-password-required'),
+  password: yup.string().required('form:error-password-required'),
   passwordConfirmation: yup
     .string()
-    .oneOf([yup.ref('newPassword')], 'form:error-match-passwords')
+    .oneOf([yup.ref('password')], 'form:error-match-passwords')
     .required('form:error-confirm-password'),
 });
 
-const ChangePasswordForm = () => {
+const ChangePasswordForm = ({me}:any) => {
   const { t } = useTranslation();
   const { mutate: changePassword, isLoading: loading } =
     useChangePasswordMutation();
@@ -41,9 +42,9 @@ const ChangePasswordForm = () => {
 
   async function onSubmit(values: FormValues) {
     changePassword(
-      {
-        oldPassword: values.oldPassword,
-        newPassword: values.newPassword,
+      {_id:me?.data?._id,
+        old_password: values.old_password,
+        password: values.password,
       },
       {
         onError: (error: any) => {
@@ -55,12 +56,12 @@ const ChangePasswordForm = () => {
           });
         },
         onSuccess: (data) => {
-          if (!data?.success) {
-            setError('oldPassword', {
+          if (!data?.flag===true) {
+            setError('old_password', {
               type: 'manual',
               message: data?.message ?? '',
             });
-          } else if (data?.success) {
+          } else if (data?.flag===true) {
             toast.success(t('common:password-changed-successfully'));
             reset();
           }
@@ -81,16 +82,16 @@ const ChangePasswordForm = () => {
         <Card className="mb-5 w-full sm:w-8/12 md:w-2/3">
           <PasswordInput
             label={t('form:input-label-old-password')}
-            {...register('oldPassword')}
+            {...register('old_password')}
             variant="outline"
-            error={t(errors.oldPassword?.message!)}
+            error={t(errors.old_password?.message!)}
             className="mb-5"
           />
           <PasswordInput
             label={t('form:input-label-new-password')}
-            {...register('newPassword')}
+            {...register('password')}
             variant="outline"
-            error={t(errors.newPassword?.message!)}
+            error={t(errors.password?.message!)}
             className="mb-5"
           />
           <PasswordInput

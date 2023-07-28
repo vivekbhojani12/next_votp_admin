@@ -11,77 +11,98 @@ import pick from 'lodash/pick';
 import SwitchInput from '@/components/ui/switch-input';
 import Label from '@/components/ui/label';
 import { adminOnly, getAuthCredentials, hasAccess } from '@/utils/auth-utils';
-
+import { useRouter } from 'next/router'; // Step 1: Import the useRouter hook
+import { useEffect } from 'react';
 type FormValues = {
-  name: string;
-  profile: {
-    id: string;
-    bio: string;
-    contact: string;
-    avatar: {
-      thumbnail: string;
-      original: string;
-      id: string;
-    };
-    notifications: {
-      email: string;
-      enable: boolean;
-    };
-  };
+  // name: string;
+  _id:string;
+  mobile:string,
+  first_name:string;
+  last_name:string;
+
+  // profile: {
+  //   id: string;
+  //   bio: string;
+  //   contact: string;
+  //   avatar: {
+  //     thumbnail: string;
+  //     original: string;
+  //     id: string;
+  //   };
+  //   notifications: {
+  //     email: string;
+  //     enable: boolean;
+  //   };
+  // };
 };
 
 export default function ProfileUpdate({ me }: any) {
+  console.log(me,'data<<<<<<>>>>>>>>>>>>>>>>>>')
   const { t } = useTranslation();
   const { mutate: updateUser, isLoading: loading } = useUpdateUserMutation();
   const { token } = getAuthCredentials();
   let permission = hasAccess(token);
+  const router = useRouter(); // Step 1: Use the useRouter hook
+
   const {
     register,
     handleSubmit,
+    reset,
     control,
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: {
       ...(me &&
-        pick(me, [
-          'name',
-          'profile.bio',
-          'profile.contact',
-          'profile.avatar',
-          'profile.notifications.email',
-          'profile.notifications.enable',
+        pick(me?.data, [
+          'first_name',
+          'last_name',
+          'mobile',
+          // 'profile.avatar',
+          // 'profile.notifications.email',
+          // 'profile.notifications.enable',
         ])),
     },
   });
-
+  const handleBackButtonClick = () => {
+    router.back();
+    reset() // Navigate back to the previous page
+  };
+  useEffect(() => {
+    reset(me?.data)
+    console.log('change in me prop<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>'); // Reset the form fields when 'me' prop changes
+  }, [me]);
   async function onSubmit(values: FormValues) {
-    const { name, profile } = values;
-    const { notifications } = profile;
+    const {mobile,first_name,last_name} = values;
+    // const { notifications } = profile;
     const input = {
-      id: me?.id,
-      input: {
-        name: name,
-        profile: {
-          id: me?.profile?.id,
-          bio: profile?.bio,
-          contact: profile?.contact,
-          avatar: {
-            thumbnail: profile?.avatar?.thumbnail,
-            original: profile?.avatar?.original,
-            id: profile?.avatar?.id,
-          },
-          notifications: {
-            ...notifications,
-          },
-        },
-      },
+      _id: me?.data?._id,
+      // name:name,
+      mobile:mobile,
+      first_name:first_name,
+      last_name:last_name,
+      // input: {
+      //   name: name,
+      //   profile: {
+      //     id: me?.profile?.id,
+      //     bio: profile?.bio,
+      //     contact: profile?.contact,
+      //     avatar: {
+      //       thumbnail: profile?.avatar?.thumbnail,
+      //       original: profile?.avatar?.original,
+      //       id: profile?.avatar?.id,
+      //     },
+      //     notifications: {
+      //       ...notifications,
+      //     },
+      //   },
+      // },
     };
-    updateUser({ ...input });
+    updateUser(input);
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
+    <form onSubmit={handleSubmit(onSubmit)} onReset={handleBackButtonClick}>
+      {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
         <Description
           title={t('form:input-label-avatar')}
           details={t('form:avatar-help-text')}
@@ -91,9 +112,9 @@ export default function ProfileUpdate({ me }: any) {
         <Card className="w-full sm:w-8/12 md:w-2/3">
           <FileInput name="profile.avatar" control={control} multiple={false} />
         </Card>
-      </div>
-      {permission ? (
-        <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
+      </div> */}
+      {/* {permission ? ( */}
+        {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
           <Description
             title={t('form:form-notification-title')}
             details={t('form:form-notification-description')}
@@ -122,7 +143,7 @@ export default function ProfileUpdate({ me }: any) {
         </div>
       ) : (
         ''
-      )}
+      )} */}
       <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
         <Description
           title={t('form:form-title-information')}
@@ -131,33 +152,59 @@ export default function ProfileUpdate({ me }: any) {
         />
 
         <Card className="mb-5 w-full sm:w-8/12 md:w-2/3">
+        <Input
+            label={t('form:input-label-first_name')}
+            {...register('first_name')}
+            error={t(errors.first_name?.message!)}
+            variant="outline"
+            className="mb-5"
+          />
           <Input
+            label={t('form:input-label-last_name')}
+            {...register('last_name')}
+            error={t(errors.last_name?.message!)}
+            variant="outline"
+            className="mb-5"
+          />
+          {/* <Input
             label={t('form:input-label-name')}
             {...register('name')}
             error={t(errors.name?.message!)}
             variant="outline"
             className="mb-5"
+          /> */}
+          <Input
+            label={t('form:input-label-mobile')}
+            {...register('mobile')}
+            error={t(errors.mobile?.message!)}
+            variant="outline"
+            className="mb-5"
           />
-          <TextArea
+          {/* <TextArea
             label={t('form:input-label-bio')}
             {...register('profile.bio')}
             error={t(errors.profile?.bio?.message!)}
             variant="outline"
             className="mb-6"
-          />
-          <Input
+          /> */}
+          {/* <Input
             label={t('form:input-label-contact')}
             {...register('profile.contact')}
             error={t(errors.profile?.contact?.message!)}
             variant="outline"
             className="mb-5"
-          />
+          /> */}
         </Card>
         <div className="w-full text-end">
           <Button loading={loading} disabled={loading}>
             {t('form:button-label-save')}
           </Button>
         </div>
+        <div className="w-full text-start mt-4">
+        <Button type="reset" variant="outline">
+          {t('form:button-label-back')}
+        </Button>
+      </div>
       </div>
     </form>
   );

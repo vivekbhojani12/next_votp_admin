@@ -47,7 +47,7 @@ const ActionButtons = ({
   const { openModal } = useModalAction();
 
   function handleDelete() {
-    openModal(deleteModalView, id);
+    openModal('DELETE_PRODUCT', deleteModalView);
   }
 
   function handleEditModal() {
@@ -177,9 +177,11 @@ const ActionButtons = ({
           )}
         </>
       )}
+      {/* "/profile-update/[id]" as={`/profile-update/${id} */}
       {editUrl && (
         <Link
-          href={editUrl}
+          href={`${editUrl}`}
+          as={`${editUrl}/${id}`}
           className="text-base transition duration-200 hover:text-heading"
           title={t('common:text-edit')}
         >
