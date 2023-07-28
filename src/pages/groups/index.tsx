@@ -1,81 +1,165 @@
+import React from 'react';
+import Button from '@/components/ui/button';
+import Input from '@/components/ui/input';
+import PasswordInput from '@/components/ui/password-input';
+import { useForm } from 'react-hook-form';
 import Card from '@/components/common/card';
-import Layout from '@/components/layouts/admin';
-import Search from '@/components/common/search';
-import TypeList from '@/components/group/group-list';
-import ErrorMessage from '@/components/ui/error-message';
-import LinkButton from '@/components/ui/link-button';
-import Loader from '@/components/ui/loader/loader';
-import { SortOrder } from '@/types';
-import { useState } from 'react';
+import Description from '@/components/ui/description';
+import { useCreateTokenMutation } from '@/data/token';
 import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { GetStaticProps } from 'next';
-import { useTypesQuery } from '@/data/type';
-import { Routes } from '@/config/routes';
-import { useRouter } from 'next/router';
-import { adminOnly } from '@/utils/auth-utils';
-import { Config } from '@/config';
+import { yupResolver } from '@hookform/resolvers/yup';
+// import { customerValidationSchema } from './user-validation-schema';
+import { Permission } from '@/types';
+type FormValues = {
+  name: string;
+  no_id: number;
+  email: string;
+  // password: string;
+  // permission: Permission;
+};
 
-export default function TypesPage() {
-  const { locale } = useRouter();
+const defaultValues = {
+  name: '',
+  email: '',
+  //   password: '',
+};
+export default function Createtoken() {
+  console.log("TOKEN<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>")
   const { t } = useTranslation();
-  const [orderBy, setOrder] = useState('created_at');
-  const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
-  const [searchTerm, setSearchTerm] = useState('');
-  const { types, loading, error } = useTypesQuery({
-    name: searchTerm,
-    language: locale,
-    orderBy,
-    sortedBy,
+  const { mutate: registerUser, isLoading: loading } = useCreateTokenMutation();
+
+  const {
+    register,
+    handleSubmit,
+    setError,
+
+    formState: { errors },
+  } = useForm<FormValues>({
+    defaultValues,
+    // resolver: yupResolver(customerValidationSchema),
   });
 
-  if (loading) return <Loader text={t('common:text-loading')} />;
-  if (error) return <ErrorMessage message={error.message} />;
-
-  function handleSearch({ searchText }: { searchText: string }) {
-    setSearchTerm(searchText);
+  async function onSubmit({ name, email, no_id }: FormValues) {
+    registerUser(
+      {
+        name,
+        email,
+        no_id,
+        // permission: Permission.StoreOwner,
+      },
+      {
+        onError: (error: any) => {
+          Object.keys(error?.response?.data).forEach((field: any) => {
+            setError(field, {
+              type: 'manual',
+              message: error?.response?.data[field][0],
+            });
+          });
+        },
+      }
+    );
   }
 
   return (
-    <>
-      <Card className="mb-8 flex flex-col items-center xl:flex-row">
-        <div className="mb-4 md:w-1/4 xl:mb-0">
-          <h1 className="text-xl font-semibold text-heading">
-            {t('common:sidebar-nav-item-groups')}
-          </h1>
-        </div>
+    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+    <div className="main-panel">
+      <div className="content">
+        <div className="container-fluid">
+          <h4 className="page-title">Create Token</h4>
+          <div className="card">
+            <div className="row p-3">
+              <div className="col-md-3 col-12">
+                <div className="form-group">
+                  <Input
+                    label={t('form:input-label-name')}
+                    {...register('name')}
+                    type="text"
+                    variant="outline"
+                    className="mb-4"
+                    error={t(errors.name?.message!)}
+                  />
+                </div>
+              </div>
+              <div className="col-md-3 col-12">
+                <div className="form-group">
+                  <Input
+                    label={t('form:input-label-email')}
+                    {...register('email')}
+                    type="email"
+                    variant="outline"
+                    className="mb-4"
+                    error={t(errors.email?.message!)}
+                  />
+                  <small id="emailHelp" className="form-text text-muted">
+                    This Email will be use for user search
+                  </small>
+                </div>
+              </div>
+              <div className="col-md-1 col-12">
+                <div className="form-group">
+                  <Input
+                    label={t('form:input-label-email')}
+                    {...register('no_id')}
+                    type="no_id"
+                    variant="outline"
+                    className="mb-4"
+                    error={t(errors.no_id?.message!)}
+                  />
+                </div>
+              </div>
+              <div className="col-md-3 col-12">
+                <Button loading={loading} disabled={loading}>
+                  {t('form:button-label-create-customer')}
+                </Button>
+              </div>
+            </div>
+          </div>
 
-        <div className="flex w-full flex-col items-center space-y-4 ms-auto md:flex-row md:space-y-0 xl:w-1/2">
-          <Search onSearch={handleSearch} />
-
-          {locale === Config.defaultLanguage && (
-            <LinkButton
-              href={Routes.type.create}
-              className="h-12 w-full md:w-auto md:ms-6"
-            >
-              <span className="block md:hidden xl:block">
-                + {t('form:button-label-add-group')}
-              </span>
-              <span className="hidden md:block xl:hidden">
-                + {t('form:button-label-add')}
-              </span>
-            </LinkButton>
-          )}
+          <div className="card token_gn_details">
+            <div className="row">
+              <div className="col-12">
+                <h4>Token Details:</h4>
+              </div>
+              <div className="col-12">
+                <table className="table-striped mt-3 table">
+                  <tbody>
+                    <tr>
+                      <td className="td1">Name</td>
+                      <td>User Name</td>
+                    </tr>
+                    <tr>
+                      <td className="td1">App Token</td>
+                      <td>D787D7</td>
+                    </tr>
+                    <tr>
+                      <td className="td1">Login Captcha Token</td>
+                      <td>57584FF8</td>
+                    </tr>
+                    <tr>
+                      <td className="td1">Email Address</td>
+                      <td>test@test.com</td>
+                    </tr>
+                    <tr>
+                      <td className="td1"> Account Expiry Date</td>
+                      <td>28-May-2023</td>
+                    </tr>
+                    <tr>
+                      <td className="td1">ID's</td>
+                      <td>10</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div className="text-right">
+                  <a href="index.html" className="btn btn-success">
+                    Back to Dashboard
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </Card>
-      <TypeList types={types} onOrder={setOrder} onSort={setColumn} />
-    </>
+      </div>
+    </div>
+    </form>
   );
 }
-
-TypesPage.authenticate = {
-  permissions: adminOnly,
-};
-
-TypesPage.Layout = Layout;
-
-export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale!, ['table', 'common', 'form'])),
-  },
-});
