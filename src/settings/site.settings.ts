@@ -44,7 +44,7 @@ export const siteSettings = {
 
       {
         href: Routes.type.list,
-        label: 'sidebar-nav-item-type',
+        label: 'sidebar-nav-item-groups',
         icon: 'UsersIcon',
       },
 

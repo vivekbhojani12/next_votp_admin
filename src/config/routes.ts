@@ -18,7 +18,7 @@ export const Routes = {
     ...routesFactory('/users'),
   },
   type: {
-    ...routesFactory('/'),
+    ...routesFactory('/groups'),
   },
   category: {
     ...routesFactory('/'),
