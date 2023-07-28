@@ -45,33 +45,38 @@ export default function Createtoken() {
                                     <tbody>
                                         <tr>
                                             <td className="td1">Name</td>
-                                            <td>User Name</td>
+                                            <input type="name" className="form-control1 colo-form" id="name" placeholder="User Name" />
                                         </tr>
                                         <tr>
                                             <td className="td1">App Token</td>
-                                            <td>D787D7</td>
+
+                                            <input type="numbar" className="form-control1" id="name" placeholder="D787D7" />
                                         </tr>
                                         <tr>
                                             <td className="td1">Login Captcha Token</td>
-                                            <td>57584FF8</td>
+
+                                            <input type="name" className="form-control1 colo-form" id="name" placeholder="57584FF8" />
                                         </tr>
                                         <tr>
                                             <td className="td1">Email Address</td>
-                                            <td>test@test.com</td>
+
+                                            <input type="name" className="form-control1" id="name" placeholder="test@test.com" />
                                         </tr>
                                         <tr>
                                             <td className="td1"> Account Expiry Date</td>
-                                            <td>28-May-2023</td>
+
+                                            <input type="name" className="form-control1 colo-form" id="name" placeholder="28-May-2023" />
                                         </tr>
                                         <tr>
                                             <td className="td1">ID's</td>
-                                            <td>10</td>
+
+                                            <input type="name" className="form-control1" id="name" placeholder="10" />
                                         </tr>
 
                                     </tbody>
                                 </table>
                                 <div className="text-right">
-                                    <a href="index.html" className="btn btn-success">Back to Dashboard</a>
+                                    <a href="/" className="btn btn-success">Back to Dashboard</a>
                                 </div>
                             </div>
                         </div>

@@ -42,8 +42,9 @@ export default function AuthorizedMenu() {
 							className="w-full flex flex-col space-y-1 bg-[#00b791]
              text-white text-sm rounded-t px-4 py-3"
 						>
-							<span className="font-semibold capitalize">{data?.name}</span>
-							<span className="text-xs">{data?.email}</span>
+							<span className="font-semibold capitalize">{data?.name}Vijay</span>
+							<span className="text-xs">{data?.email}hello@test.com</span>
+							{/* <a className='btn btn-rounded btn-danger btn-sm'>View Profile</a> */}
 						</li>
 					</Menu.Item>
 
