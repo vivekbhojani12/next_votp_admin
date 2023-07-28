@@ -60,7 +60,7 @@ export default function Createtoken() {
   }
 
   return (
-    
+    <form onSubmit={handleSubmit(onSubmit)} noValidate>
     <div className="main-panel">
       <div className="content">
         <div className="container-fluid">
@@ -159,5 +159,6 @@ export default function Createtoken() {
         </div>
       </div>
     </div>
+    </form>
   );
 }

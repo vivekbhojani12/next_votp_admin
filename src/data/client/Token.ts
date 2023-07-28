@@ -23,7 +23,8 @@ import {
   export const tokenClient = {
  
     createToken: (variables: createToken) => {
-      return HttpClient.post<AuthResponse>(API_ENDPOINTS.CREATE_TOKEN, variables);
+      console.log(variables,'Variables<<<<<<<<>>>>>>>>>>>>>>>>')
+      return HttpClient.post(API_ENDPOINTS.CREATE_TOKEN, variables);
     },
   };
   

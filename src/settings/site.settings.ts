@@ -43,6 +43,12 @@ export const siteSettings = {
       },
 
       {
+        href: Routes.type.list,
+        label: 'sidebar-nav-item-type',
+        icon: 'UsersIcon',
+      },
+
+      {
         href: Routes.settings,
         label: 'sidebar-nav-item-settings',
         icon: 'TaxesIcon',

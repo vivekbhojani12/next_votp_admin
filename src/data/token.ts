@@ -59,6 +59,7 @@ import { setEmailVerified } from "@/utils/auth-utils";
 // };
 
 export const useCreateTokenMutation = () => {
+  console.log('process of creating the token.........<<<<<<<<<>>>>>>>>>>>>>>>')
   const queryClient = useQueryClient();
   const { t } = useTranslation();
 
