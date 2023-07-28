@@ -110,7 +110,7 @@ const RegistrationForm = () => {
           variant="outline"
           className="mb-4"
         />
-        <Button className="w-full" loading={loading} disabled={loading}>
+        <Button className="w-full color-button1" loading={loading} disabled={loading}>
           {t('form:text-register')}
         </Button>
 
@@ -134,7 +134,7 @@ const RegistrationForm = () => {
         {t('form:text-already-account')}{' '}
         <Link
           href={Routes.login}
-          className="ms-1 font-semibold text-accent underline transition-colors duration-200 hover:text-accent-hover hover:no-underline focus:text-accent-700 focus:no-underline focus:outline-none"
+          className="ms-1 color-registar font-semibold text-accent underline transition-colors duration-200 hover:text-accent-hover hover:no-underline focus:text-accent-700 focus:no-underline focus:outline-none"
         >
           {t('form:button-label-login')}
         </Link>

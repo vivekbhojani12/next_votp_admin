@@ -8,7 +8,7 @@ import Description from '@/components/ui/description';
 import { useCreateTokenMutation } from '@/data/token';
 import { useTranslation } from 'next-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {typeValidationSchema} from '/home/strivedge/Documents/Farnaz/NextJs/VOTP/next_votp_admin/src/components/group/group-validation-schema'
+import { typeValidationSchema } from '@/components/group/group-validation-schema'
 // import { customerValidationSchema } from './user-validation-schema';
 import { Permission } from '@/types';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -51,26 +51,16 @@ export default function TypesPage() {
         name,
         email,
         no_id,
-        // permission: Permission.StoreOwner,
+
       }
-      // ,
-      // {
-      //   onError: (error: any) => {
-      //     console.log(error,'error')
-      //     Object.keys(error?.response?.data).forEach((field: any) => {
-      //       setError(field, {
-      //         type: 'manual',
-      //         message: error?.response?.data[field][0],
-      //       });
-      //     });
-      //   },
-      // },
+
+
     );
   }
 
   useEffect(() => {
     if (data) {
-      console.log(data,'the value of data')
+      console.log(data, 'the value of data')
       setResponse(data);
     }
   }, [data]);
@@ -106,15 +96,15 @@ export default function TypesPage() {
                       className="mb-4"
                       error={t(errors.email?.message!)}
                     />
-                    <small id="emailHelp" className="form-text text-muted">
+                    <small id="emailHelp" className="form-text text-muted email-text">
                       This Email will be use for user search
                     </small>
                   </div>
                 </div>
-                <div className="col-md-1 col-12">
+                <div className="col-md-2 col-12">
                   <div className="form-group">
                     <Input
-                      label={t('form:input-label-no_id')}
+                      label={t('No Id')}
                       {...register('no_id')}
                       type="no_id"
                       variant="outline"
@@ -124,14 +114,14 @@ export default function TypesPage() {
                   </div>
                 </div>
                 <div className="col-md-3 col-12">
-                  <Button loading={loading} disabled={loading}>
-                    {t('form:button-label-create-customer')}
+                  <Button className='token-button' loading={loading} disabled={loading}>
+                    {t('Generate Token')}
                   </Button>
                 </div>
               </div>
             </div>
 
-            {response?.email&&<div className="card token_gn_details">
+            {response?.email && <div className="card token_gn_details">
               <div className="row">
                 <div className="col-12">
                   <h4>Token Details:</h4>

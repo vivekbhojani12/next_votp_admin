@@ -18,7 +18,7 @@ const EnterNewPasswordView = dynamic(() => import('./enter-new-password-view'));
 const ForgotPassword = () => {
   const { t } = useTranslation();
   const { mutate: forgetPassword, isLoading } = useForgetPasswordMutation();
-  const { mutate: verifyOtp , isLoading: verifyingOtp } = useVerifyOtpMutation();
+  const { mutate: verifyOtp, isLoading: verifyingOtp } = useVerifyOtpMutation();
   const { mutate: verifyToken, isLoading: verifying } =
     useVerifyForgetPasswordTokenMutation();
   const { mutate: resetPassword, isLoading: resetting } =
@@ -48,7 +48,8 @@ const ForgotPassword = () => {
 
   function handleOtpSubmit({ otp }: { otp: string }) {
     verifyOtp(
-      {email: verifiedEmail,
+      {
+        email: verifiedEmail,
         otp,
       },
       {
@@ -72,7 +73,7 @@ const ForgotPassword = () => {
       },
       {
         onSuccess: (data) => {
-          if (data?.flag===true) {
+          if (data?.flag === true) {
             setVerifiedToken(token);
           } else {
             setErrorMsg(data?.message);
@@ -91,7 +92,7 @@ const ForgotPassword = () => {
       },
       {
         onSuccess: (data) => {
-          if (data?.flag===true) {
+          if (data?.flag === true) {
             Router.push('/');
           } else {
             setErrorMsg(data?.message);
@@ -115,10 +116,10 @@ const ForgotPassword = () => {
       {!verifiedEmail && (
         <EnterEmailView loading={isLoading} onSubmit={handleEmailSubmit} />
       )}
-       {verifiedEmail && !verifiedOtp && !verifiedToken&& (
+      {verifiedEmail && !verifiedOtp && !verifiedToken && (
         <EnterOtpView loading={verifyingOtp} onSubmit={handleOtpSubmit} />
       )}
-      {verifiedEmail && !verifiedToken &&verifiedOtp&&  (
+      {verifiedEmail && !verifiedToken && verifiedOtp && (
         <EnterTokenView loading={verifying} onSubmit={handleTokenSubmit} />
       )}
       {verifiedEmail && verifiedToken && (

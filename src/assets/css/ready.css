@@ -2631,7 +2631,6 @@ body {
 }
 
 .main-panel .content {
-  padding: 30px 15px;
   min-height: calc(100% - 123px);
   /* margin-top: 55px; */
 }
@@ -7461,6 +7460,26 @@ td.td1 {
 }
 
 .token-button {
+  background: #991e32 !important;
+}
+
+.token-button {
+  position: relative;
+  top: 35px;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.email-text {
+  font-size: 79%;
+}
+
+a:hover {
+  color: brown !important;
+  text-decoration: underline;
+}
+
+.color-user {
   background: #991e32 !important;
 }
 
