@@ -7447,4 +7447,17 @@ td.td1 {
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+.form-pb {
+  padding: 30px;
+}
+
+.rc-table th,
+.rc-table td {
+  border: 1px solid #eee !important;
+}
+
+.rc-table-content {
+  border: 1px solid #eee !important;
+}
+
 /*# sourceMappingURL=ready.css.map */

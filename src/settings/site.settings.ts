@@ -36,7 +36,7 @@ export const siteSettings = {
         label: 'sidebar-nav-item-dashboard',
         icon: 'DashboardIcon',
       },
-       {
+      {
         href: Routes.user.list,
         label: 'sidebar-nav-item-users',
         icon: 'UsersIcon',
@@ -44,14 +44,14 @@ export const siteSettings = {
 
       {
         href: Routes.type.list,
-        label: 'sidebar-nav-item-type',
-        icon: 'UsersIcon',
+        label: 'sidebar-nav-item-groups',
+        icon: 'TagIcon',
       },
 
       {
         href: Routes.settings,
         label: 'sidebar-nav-item-settings',
-        icon: 'TaxesIcon',
+        icon: 'SettingsIcon',
       },
 
 
