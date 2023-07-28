@@ -40,7 +40,7 @@ const CustomerList = ({
     sort: SortOrder.Desc,
     column: null,
   });
-
+  console.log(sortingObj, 'sorting object<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>')
   const onHeaderClick = (column: any | null) => ({
     onClick: () => {
       onSort((currentSortDirection: SortOrder) =>
@@ -58,22 +58,22 @@ const CustomerList = ({
   });
 
   const columns = [
-    {
-      title: t('table:table-item-avatar'),
-      dataIndex: 'profile',
-      key: 'profile',
-      align: 'center',
-      width: 74,
-      render: (profile: any, record: any) => (
-        <Image
-          src={profile?.avatar?.thumbnail ?? siteSettings.avatar.placeholder}
-          alt={record?.name}
-          width={42}
-          height={42}
-          className="overflow-hidden rounded"
-        />
-      ),
-    },
+    // {
+    //   title: t('table:table-item-avatar'),
+    //   dataIndex: 'profile',
+    //   key: 'profile',
+    //   align: 'center',
+    //   width: 74,
+    //   render: (profile: any, record: any) => (
+    //     <Image
+    //       src={profile?.avatar?.thumbnail ?? siteSettings.avatar.placeholder}
+    //       alt={record?.name}
+    //       width={42}
+    //       height={42}
+    //       className="overflow-hidden rounded"
+    //     />
+    //   ),
+    // },
     {
       title: t('table:table-item-title'),
       dataIndex: 'name',
@@ -85,44 +85,46 @@ const CustomerList = ({
       dataIndex: 'email',
       key: 'email',
       align: alignLeft,
-    },
-    {
-      title: t('table:table-item-permissions'),
-      dataIndex: 'permissions',
-      key: 'permissions',
-      align: 'center',
-      render: (permissions: any, record: any) => {
-        return (
-          <div>
-            {permissions?.map(({ name }: { name: string }) => name).join(', ')}
-          </div>
-        );
-      },
-    },
-    {
-      title: t('table:table-item-available_wallet_points'),
-      dataIndex: ['wallet', 'available_points'],
-      key: 'available_wallet_points',
-      align: 'center',
-    },
-    {
-      title: (
-        <TitleWithSort
-          title={t('table:table-item-status')}
-          ascending={
-            sortingObj.sort === SortOrder.Asc &&
-            sortingObj.column === 'is_active'
-          }
-          isActive={sortingObj.column === 'is_active'}
-        />
-      ),
-      className: 'cursor-pointer',
-      dataIndex: 'is_active',
-      key: 'is_active',
-      align: 'center',
-      onHeaderCell: () => onHeaderClick('is_active'),
-      render: (is_active: boolean) => (is_active ? 'Active' : 'Inactive'),
-    },
+    }
+    // ,
+    // {
+    //   title: t('table:table-item-permissions'),
+    //   dataIndex: 'permissions',
+    //   key: 'permissions',
+    //   align: 'center',
+    //   render: (permissions: any, record: any) => {
+    //     return (
+    //       <div>
+    //         {permissions?.map(({ name }: { name: string }) => name).join(', ')}
+    //       </div>
+    //     );
+    //   },
+    // },
+    // {
+    //   title: t('table:table-item-available_wallet_points'),
+    //   dataIndex: ['wallet', 'available_points'],
+    //   key: 'available_wallet_points',
+    //   align: 'center',
+    // },
+    ,
+    // {
+    //   title: (
+    //     <TitleWithSort
+    //       title={t('table:table-item-status')}
+    //       ascending={
+    //         sortingObj.sort === SortOrder.Asc &&
+    //         sortingObj.column === 1
+    //       }
+    //       isActive={sortingObj.column === 1}
+    //     />
+    //   ),
+    //   className: 'cursor-pointer',
+    //   dataIndex: 'status',
+    //   key: 'status',
+    //   align: 'center',
+    //   onHeaderCell: () => onHeaderClick('status'),
+    //   render: (status: boolean) => (status ? 'Active' : 'Inactive'),
+    // },
     {
       title: t('table:table-item-actions'),
       dataIndex: 'id',
@@ -130,15 +132,18 @@ const CustomerList = ({
       align: 'right',
       render: function Render(id: string, { is_active }: any) {
         const { data } = useMeQuery();
+        console.log(data, '<<<<<<<>>>>>>>>>>>>>>>>>>>>me queryyyyyyyyyyyyyyy')
         return (
           <>
-            {data?.id != id && (
+            {data && (
               <ActionButtons
                 id={id}
-                userStatus={true}
-                isUserActive={is_active}
-                showAddWalletPoints={true}
-                showMakeAdminButton={true}
+                deleteModalView={id}
+                editUrl={`/profile-update`}
+              // userStatus={true}
+              // isUserActive={is_active}
+              // showAddWalletPoints={true}
+              // showMakeAdminButton={true}
               />
             )}
           </>
@@ -159,13 +164,13 @@ const CustomerList = ({
           scroll={{ x: 800 }}
         />
       </div>
-
+      {console.log(paginatorInfo, 'Paginator,,,,,,,,,,,...........')}
       {!!paginatorInfo?.total && (
         <div className="flex items-center justify-end">
           <Pagination
             total={paginatorInfo.total}
-            current={paginatorInfo.currentPage}
-            pageSize={paginatorInfo.perPage}
+            current={paginatorInfo.pageIndex}
+            pageSize={10}
             onChange={onPagination}
           />
         </div>

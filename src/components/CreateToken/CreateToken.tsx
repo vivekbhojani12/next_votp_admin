@@ -1,9 +1,8 @@
 import React from 'react'
 
-export default function Createtoken() {
+export default function CreateToken() {
     return (
-
-        <div className="main-panel">
+        <div><div className="main-panel">
             <div className="content">
                 <div className="container-fluid">
                     <h4 className="page-title">Create Token</h4>
@@ -83,6 +82,7 @@ export default function Createtoken() {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

@@ -32,8 +32,8 @@ export const userClient = {
   register: (variables: RegisterInput) => {
     return HttpClient.post<AuthResponse>(API_ENDPOINTS.REGISTER, variables);
   },
-  update: ({ id, input }: { id: string; input: UpdateUser }) => {
-    return HttpClient.put<User>(`${API_ENDPOINTS.USERS}/${id}`, input);
+  update: (input: UpdateUser) => {
+    return HttpClient.put<User>(`${API_ENDPOINTS.USERS}`, input);
   },
   changePassword: (variables: ChangePasswordInput) => {
     return HttpClient.post<any>(API_ENDPOINTS.CHANGE_PASSWORD, variables);

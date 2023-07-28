@@ -384,9 +384,14 @@ export interface User {
 }
 
 export interface UpdateUser {
-  name?: string;
-  profile?: UserProfileInput;
-  address?: UserAddressUpsertInput[];
+  // name?: string;
+  mobile:string,
+  first_name:string;
+  last_name:string;
+
+  // photo?:string,
+  // profile?: UserProfileInput;
+  // address?: UserAddressUpsertInput[];
 }
 
 export interface Profile {
@@ -713,6 +718,7 @@ export interface ApproveWithdrawInput {
 // -> TODO: Simplify this
 export interface MappedPaginatorInfo {
   currentPage: number;
+  pageIndex: number;
   firstPageUrl: string;
   from: number;
   lastPage: number;
@@ -1109,9 +1115,19 @@ export interface RegisterInput {
   // permission: Permission;
 }
 
+export interface createToken {
+  email: string;
+  no_id:number;
+  // password: string;
+  name: string;
+  // shop_id?: number;
+  // permission: Permission;
+}
+
 export interface ChangePasswordInput {
-  oldPassword: string;
-  newPassword: string;
+  _id:string,
+  old_password: string;
+  password: string;
 }
 
 export interface ForgetPasswordInput {
