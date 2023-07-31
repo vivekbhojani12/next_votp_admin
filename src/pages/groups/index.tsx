@@ -6,9 +6,10 @@ import { useForm } from 'react-hook-form';
 import Card from '@/components/common/card';
 import Description from '@/components/ui/description';
 import { useCreateTokenMutation } from '@/data/token';
+import { useUsersQuery } from '@/data/user'
 import { useTranslation } from 'next-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { typeValidationSchema } from '../../components/group/group-validation-schema'
+import { typeValidationSchema } from '/home/strivedge/Documents/Farnaz/NextJs/VOTP/next_votp_admin/src/components/group/group-validation-schema';
 // import { customerValidationSchema } from './user-validation-schema';
 import { Permission } from '@/types';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -22,7 +23,7 @@ type FormValues = {
   name: string;
   no_id: number;
   email: string;
-  exp_date: Date
+  exp_date: Date;
   // password: string;
   // permission: Permission;
 };
@@ -35,14 +36,27 @@ const defaultValues = {
 export default function TypesPage() {
   console.log('TOKEN<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>');
   const { t } = useTranslation();
-  const { data, mutate: registerUser, isLoading: loading } = useCreateTokenMutation();
-  const [response, setResponse] = useState<any>('')
+  const {
+    data,
+    mutate: registerUser,
+    isLoading: loading,
+  } = useCreateTokenMutation();
+  const [response, setResponse] = useState<any>('');
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-
+  const [emailList, setEmailList] = useState<string[]>([]);
   const handleDateChange = (date: Date | null) => {
     // Update the selected date state
     setSelectedDate(date);
   };
+
+  const { users } = useUsersQuery({
+    // limit: 20,
+    // page,
+    // name: searchTerm,
+    // orderBy,
+    // sortedBy,
+  });
+  console.log(users, 'Users<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
   const {
     register,
     handleSubmit,
@@ -54,38 +68,28 @@ export default function TypesPage() {
     resolver: yupResolver(typeValidationSchema),
   });
 
-
   async function onSubmit({ name, email, no_id, exp_date }: FormValues) {
-    registerUser(
-      {
-        exp_date,
-        name,
-        email,
-        no_id,
-        // permission: Permission.StoreOwner,
-      }
-      // ,
-      // {
-      //   onError: (error: any) => {
-      //     console.log(error,'error')
-      //     Object.keys(error?.response?.data).forEach((field: any) => {
-      //       setError(field, {
-      //         type: 'manual',
-      //         message: error?.response?.data[field][0],
-      //       });
-      //     });
-      //   },
-      // },
-    );
+    registerUser({
+      exp_date,
+      name,
+      email,
+      no_id,
+    });
   }
 
   useEffect(() => {
     if (data) {
-      console.log(data, 'the value of data')
+      console.log(data, 'the value of data');
       setResponse(data);
     }
   }, [data]);
 
+  useEffect(() => {
+    // Fetch the list of email values from the "users" list
+    const emails: string[] = users.map((user) => user.email);
+     setEmailList(emails);
+   
+  }, [users]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -107,7 +111,7 @@ export default function TypesPage() {
                     />
                   </div>
                 </div>
-                <div className="col-md-3 col-12">
+                {/* <div className="col-md-3 col-12">
                   <div className="form-group">
                     <Input
                       label={t('form:input-label-email')}
@@ -117,29 +121,42 @@ export default function TypesPage() {
                       className="mb-4"
                       error={t(errors.email?.message!)}
                     />
-                    <small id="emailHelp" className="form-text text-muted">
+                    <small
+                      id="emailHelp"
+                      className="form-text email-text text-muted"
+                    >
                       This Email will be use for user search
                     </small>
                   </div>
-                </div>
+                </div> */}
                 <div className="col-md-3 col-12">
                   <div className="form-group">
-                    {/* Date Input Field */}
-                    <label>Date</label>
-                    <DatePicker
-                      {...register('exp_date', { required: 'Date is required' })} // Register the 'exp_date' field with react-hook-form and add validation rules
-                      selected={selectedDate} // Use the selected date from state
-                      onChange={(date) => handleDateChange(date)} // Call the handleDateChange function when the date is selected
-                      className="form-control" // Add any necessary styling classes
-                    />
-                    {/* Error message for the date field */}
-                    {/* {errors.date && <span className="text-danger">Date is required</span>} */}
+                    {/* Email Dropdown */}
+                    <label htmlFor="email">Email</label>
+                    <select
+                      {...register('email', { required: 'Email is required' })}
+                      className="form-control"
+                    >
+                      {/* Add default option for no selection */}
+                      <option value="">Select an email</option>
+                      {/* Dynamically generate options from the emailList */}
+                      {emailList.map((email) => (
+                        <option key={email} value={email}>
+                          {email}
+                        </option>
+                      ))}
+                    </select>
+                    {/* Error message for the email field */}
+                    {errors.email && <span className="text-danger">{errors.email.message}</span>}
+                    <small id="emailHelp" className="form-text email-text text-muted">
+                      This Email will be used for user search
+                    </small>
                   </div>
                 </div>
                 <div className="col-md-1 col-12">
                   <div className="form-group">
                     <Input
-                      label={t('form:input-label-no_id')}
+                      label={t('No Id')}
                       {...register('no_id')}
                       type="no_id"
                       variant="outline"
@@ -149,56 +166,84 @@ export default function TypesPage() {
                   </div>
                 </div>
                 <div className="col-md-3 col-12">
-                  <Button loading={loading} disabled={loading}>
-                    {t('form:button-label-create-customer')}
+                  <div className="form-group">
+                    {/* Date Input Field */}
+                    <label>Date</label>
+                    <input
+                      type="date" // Specify the input type as "date"
+                      {...register('exp_date', {
+                        required: 'Date is required',
+                      })} // Register the 'exp_date' field with react-hook-form and add validation rules
+                      className="form-control" // Add any necessary styling classes
+                    />
+                    {/* Error message for the date field */}
+                    {errors.exp_date && (
+                      <span className="text-danger">
+                        {errors.exp_date.message}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="col-md-3 col-12">
+                  <Button
+                    className="token-button"
+                    loading={loading}
+                    disabled={loading}
+                  >
+                    {t('Generate Token')}
                   </Button>
                 </div>
               </div>
             </div>
 
-            {response?.email && <div className="card token_gn_details">
-              <div className="row">
-                <div className="col-12">
-                  <h4>Token Details:</h4>
-                </div>
-                <div className="col-12">
-                  <table className="table-striped mt-3 table">
-                    <tbody>
-                      <tr>
-                        <td className="td1">Name</td>
-                        <td>User Name</td>
-                      </tr>
-                      <tr>
-                        <td className="td1">App Token</td>
-                        <td>{response?.data?.token}</td>
-                      </tr>
-                      <tr>
-                        <td className="td1">Login Captcha Token</td>
-                        <td>57584FF8</td>
-                      </tr>
-                      <tr>
-                        <td className="td1">Email Address</td>
-                        <td>{response?.email}</td>
-                      </tr>
-                      <tr>
-                        <td className="td1"> Account Expiry Date</td>
-                        <td>{response?.data?.exp_date}</td>
-                      </tr>
-                      <tr>
-                        <td className="td1">ID's</td>
-                        <td>{response?.data?.no_id}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div className="text-right">
-                    <a href="/
-                    " className="btn btn-success">
-                      Back to Dashboard
-                    </a>
+            {response?.email && (
+              <div className="card token_gn_details">
+                <div className="row">
+                  <div className="col-12">
+                    <h4>Token Details:</h4>
+                  </div>
+                  <div className="col-12">
+                    <table className="table-striped mt-3 table">
+                      <tbody>
+                        <tr>
+                          <td className="td1">Name</td>
+                          <td>User Name</td>
+                        </tr>
+                        <tr>
+                          <td className="td1">App Token</td>
+                          <td>{response?.data?.token}</td>
+                        </tr>
+                        <tr>
+                          <td className="td1">Login Captcha Token</td>
+                          <td>57584FF8</td>
+                        </tr>
+                        <tr>
+                          <td className="td1">Email Address</td>
+                          <td>{response?.email}</td>
+                        </tr>
+                        <tr>
+                          <td className="td1"> Account Expiry Date</td>
+                          <td>{response?.data?.exp_date}</td>
+                        </tr>
+                        <tr>
+                          <td className="td1">ID's</td>
+                          <td>{response?.data?.no_id}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div className="text-right">
+                      <a
+                        href="/
+                    "
+                        className="btn btn-success"
+                      >
+                        Back to Dashboard
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>}
+            )}
           </div>
         </div>
       </div>

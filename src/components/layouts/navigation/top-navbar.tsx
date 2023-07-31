@@ -39,7 +39,7 @@ const Navbar = () => {
         </div>
 
         <div className="space-s-8 flex items-center">
-          <form className="navbar-left navbar-form nav-search mr-md-3" action="">
+          <form className="navbar-left navbar-form nav-search mr-md-4" action="">
             <div className="input-group">
               <input type="text" placeholder="Search ..." className="form-control" />
               <div className="input-group-append">

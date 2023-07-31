@@ -39,7 +39,7 @@ export default function ProfilePage() {
           {t('form:form-title-profile-settings')}
         </h1>
       </div>
-      {/* <EmailUpdateForm me={data} /> */}
+
       {data && data1 && id && <div>
         <ProfileUpdateFrom me={data1} />
         <ChangePasswordForm me={data1} />

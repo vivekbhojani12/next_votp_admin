@@ -10,7 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 interface FormValues {
-  _id:string
+  _id: string
   old_password: string;
   password: string;
   passwordConfirmation: string;
@@ -25,7 +25,7 @@ const changePasswordSchema = yup.object().shape({
     .required('form:error-confirm-password'),
 });
 
-const ChangePasswordForm = ({me}:any) => {
+const ChangePasswordForm = ({ me }: any) => {
   const { t } = useTranslation();
   const { mutate: changePassword, isLoading: loading } =
     useChangePasswordMutation();
@@ -42,7 +42,8 @@ const ChangePasswordForm = ({me}:any) => {
 
   async function onSubmit(values: FormValues) {
     changePassword(
-      {_id:me?.data?._id,
+      {
+        _id: me?.data?._id,
         old_password: values.old_password,
         password: values.password,
       },
@@ -56,12 +57,12 @@ const ChangePasswordForm = ({me}:any) => {
           });
         },
         onSuccess: (data) => {
-          if (!data?.flag===true) {
+          if (!data?.flag === true) {
             setError('old_password', {
               type: 'manual',
               message: data?.message ?? '',
             });
-          } else if (data?.flag===true) {
+          } else if (data?.flag === true) {
             toast.success(t('common:password-changed-successfully'));
             reset();
           }
@@ -103,7 +104,7 @@ const ChangePasswordForm = ({me}:any) => {
         </Card>
 
         <div className="text-end w-full">
-          <Button loading={loading} disabled={loading}>
+          <Button className='color-button-profile' loading={loading} disabled={loading}>
             {t('form:button-label-change-password')}
           </Button>
         </div>

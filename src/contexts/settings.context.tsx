@@ -4,14 +4,14 @@ export interface State {
 }
 
 const initialState = {
-  siteTitle: 'Pixer',
-  siteSubtitle: '',
-  currency: 'USD',
-  logo: {
-    id: 1,
-    thumbnail: '/logo.svg',
-    original: '/logo.svg',
-  },
+	siteTitle: 'VOTP',
+	siteSubtitle: '',
+	currency: 'USD',
+	logo: {
+		id: 1,
+		thumbnail: '/logo.svg',
+		original: '/logo.svg',
+	},
 };
 
 export const SettingsContext = React.createContext<State | any>(initialState);

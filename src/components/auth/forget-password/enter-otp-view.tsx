@@ -25,14 +25,14 @@ const EnterOtpView = ({ onSubmit, loading }: Props) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <Input
-        label={t('form:otp-label')}
+        label={t('otp')}
         {...register('otp')}
         variant="outline"
         className="mb-5"
         error={t(errors.otp?.message!)}
       />
-      <Button className="h-11 w-full" loading={loading} disabled={loading}>
-        {t('form:text-submit-otp')}
+      <Button className="h-11 w-full color-button1" loading={loading} disabled={loading}>
+        {t('submit otp')}
       </Button>
     </form>
   );
