@@ -75,7 +75,7 @@ export const useDeleteProductMutation = () => {
     },
     // Always refetch after error or success:
     onSettled: () => {
-      queryClient.invalidateQueries(API_ENDPOINTS.PRODUCTS);
+      queryClient.invalidateQueries(API_ENDPOINTS.USERS);
     },
     onError: (error: any) => {
       toast.error(t(`common:${error?.response?.data.message}`));

@@ -14,6 +14,7 @@ type FormValues = {
   name: string;
   email: string;
   password: string;
+  // mobile: Number
   // permission: Permission;
 };
 
@@ -41,6 +42,7 @@ const CustomerCreateForm = () => {
     registerUser(
       {
         name,
+        // mobile,
         email,
         password,
         // permission: Permission.StoreOwner,
@@ -75,7 +77,7 @@ const CustomerCreateForm = () => {
             className="mb-4"
             error={t(errors.name?.message!)}
           />
-          
+
           <Input
             label={t('form:input-label-email')}
             {...register('email')}
@@ -84,6 +86,20 @@ const CustomerCreateForm = () => {
             className="mb-4"
             error={t(errors.email?.message!)}
           />
+          {/* <Input
+            label={t('form:input-label-mobile')}
+            {...register('mobile', {
+              required: 'Mobile number is required',
+              pattern: {
+                value: /^\d+$/, // Use the regex pattern for mobile number validation (only digits allowed)
+                message: 'Invalid mobile number',
+              },
+            })} 
+            type="tel" // Set the type to "tel" for mobile number input
+            variant="outline"
+            className="mb-4"
+            error={t(errors.mobile?.message!)}
+          /> */}
           <PasswordInput
             label={t('form:input-label-password')}
             {...register('password')}

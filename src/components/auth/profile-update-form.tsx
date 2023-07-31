@@ -16,9 +16,10 @@ import { useEffect } from 'react';
 type FormValues = {
   // name: string;
   _id:string;
-  mobile:string,
-  first_name:string;
-  last_name:string;
+  // mobile:string,
+  name:string;
+  // first_name:string;
+  // last_name:string;
 
   // profile: {
   //   id: string;
@@ -54,9 +55,9 @@ export default function ProfileUpdate({ me }: any) {
     defaultValues: {
       ...(me &&
         pick(me?.data, [
-          'first_name',
-          'last_name',
-          'mobile',
+          'name',
+          // 'email',
+          // 'mobile',
           // 'profile.avatar',
           // 'profile.notifications.email',
           // 'profile.notifications.enable',
@@ -69,17 +70,16 @@ export default function ProfileUpdate({ me }: any) {
   };
   useEffect(() => {
     reset(me?.data)
-    console.log('change in me prop<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>'); // Reset the form fields when 'me' prop changes
   }, [me]);
   async function onSubmit(values: FormValues) {
-    const {mobile,first_name,last_name} = values;
+    const {name} = values;
     // const { notifications } = profile;
     const input = {
       _id: me?.data?._id,
-      // name:name,
-      mobile:mobile,
-      first_name:first_name,
-      last_name:last_name,
+      name:name,
+      // mobile:mobile,
+      // first_name:first_name,
+      // last_name:last_name,
       // input: {
       //   name: name,
       //   profile: {
@@ -153,19 +153,19 @@ export default function ProfileUpdate({ me }: any) {
 
         <Card className="mb-5 w-full sm:w-8/12 md:w-2/3">
         <Input
-            label={t('form:input-label-first_name')}
-            {...register('first_name')}
-            error={t(errors.first_name?.message!)}
+            label={t('form:input-label-name')}
+            {...register('name')}
+            error={t(errors.name?.message!)}
             variant="outline"
             className="mb-5"
           />
-          <Input
+          {/* <Input
             label={t('form:input-label-last_name')}
             {...register('last_name')}
             error={t(errors.last_name?.message!)}
             variant="outline"
             className="mb-5"
-          />
+          /> */}
           {/* <Input
             label={t('form:input-label-name')}
             {...register('name')}
@@ -173,13 +173,13 @@ export default function ProfileUpdate({ me }: any) {
             variant="outline"
             className="mb-5"
           /> */}
-          <Input
-            label={t('form:input-label-mobile')}
+          {/* <Input
+            label={t('Mobile')}
             {...register('mobile')}
             error={t(errors.mobile?.message!)}
             variant="outline"
             className="mb-5"
-          />
+          /> */}
           {/* <TextArea
             label={t('form:input-label-bio')}
             {...register('profile.bio')}

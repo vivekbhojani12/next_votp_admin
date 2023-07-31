@@ -385,9 +385,10 @@ export interface User {
 
 export interface UpdateUser {
   // name?: string;
-  mobile:string,
-  first_name:string;
-  last_name:string;
+  // mobile:string,
+  name:string;
+  // first_name:string;
+  // last_name:string;
 
   // photo?:string,
   // profile?: UserProfileInput;
@@ -1111,6 +1112,7 @@ export interface RegisterInput {
   email: string;
   password: string;
   name: string;
+  // mobile:Number,
   // shop_id?: number;
   // permission: Permission;
 }
@@ -1118,6 +1120,7 @@ export interface RegisterInput {
 export interface createToken {
   email: string;
   no_id:number;
+  exp_date:Date;
   // password: string;
   name: string;
   // shop_id?: number;

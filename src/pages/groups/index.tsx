@@ -8,17 +8,21 @@ import Description from '@/components/ui/description';
 import { useCreateTokenMutation } from '@/data/token';
 import { useTranslation } from 'next-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {typeValidationSchema} from '/home/strivedge/Documents/Farnaz/NextJs/VOTP/next_votp_admin/src/components/group/group-validation-schema'
+import { typeValidationSchema } from '../../components/group/group-validation-schema'
 // import { customerValidationSchema } from './user-validation-schema';
 import { Permission } from '@/types';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { adminOnly } from '@/utils/auth-utils';
 import { GetStaticProps } from 'next';
 import Layout from '@/components/layouts/admin';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 type FormValues = {
   name: string;
   no_id: number;
   email: string;
+  exp_date: Date
   // password: string;
   // permission: Permission;
 };
@@ -33,6 +37,12 @@ export default function TypesPage() {
   const { t } = useTranslation();
   const { data, mutate: registerUser, isLoading: loading } = useCreateTokenMutation();
   const [response, setResponse] = useState<any>('')
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+  const handleDateChange = (date: Date | null) => {
+    // Update the selected date state
+    setSelectedDate(date);
+  };
   const {
     register,
     handleSubmit,
@@ -45,9 +55,10 @@ export default function TypesPage() {
   });
 
 
-  async function onSubmit({ name, email, no_id }: FormValues) {
+  async function onSubmit({ name, email, no_id, exp_date }: FormValues) {
     registerUser(
       {
+        exp_date,
         name,
         email,
         no_id,
@@ -70,7 +81,7 @@ export default function TypesPage() {
 
   useEffect(() => {
     if (data) {
-      console.log(data,'the value of data')
+      console.log(data, 'the value of data')
       setResponse(data);
     }
   }, [data]);
@@ -111,6 +122,20 @@ export default function TypesPage() {
                     </small>
                   </div>
                 </div>
+                <div className="col-md-3 col-12">
+                  <div className="form-group">
+                    {/* Date Input Field */}
+                    <label>Date</label>
+                    <DatePicker
+                      {...register('exp_date', { required: 'Date is required' })} // Register the 'exp_date' field with react-hook-form and add validation rules
+                      selected={selectedDate} // Use the selected date from state
+                      onChange={(date) => handleDateChange(date)} // Call the handleDateChange function when the date is selected
+                      className="form-control" // Add any necessary styling classes
+                    />
+                    {/* Error message for the date field */}
+                    {/* {errors.date && <span className="text-danger">Date is required</span>} */}
+                  </div>
+                </div>
                 <div className="col-md-1 col-12">
                   <div className="form-group">
                     <Input
@@ -131,7 +156,7 @@ export default function TypesPage() {
               </div>
             </div>
 
-            {response?.email&&<div className="card token_gn_details">
+            {response?.email && <div className="card token_gn_details">
               <div className="row">
                 <div className="col-12">
                   <h4>Token Details:</h4>

@@ -204,7 +204,7 @@ export const useAddWalletPointsMutation = () => {
 
 export const useUserQuery = ({ id }: { id: string }) => {
   return useQuery<User, Error>(
-    [API_ENDPOINTS.USERS, id],
+    [API_ENDPOINTS.PROFILE_UPDATE, id],
     () => userClient.fetchUser({ id }),
     {
       enabled: Boolean(id),

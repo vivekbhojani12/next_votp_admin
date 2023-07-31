@@ -68,6 +68,7 @@ export const useCreateTokenMutation = () => {
       toast.success(t('common:successfully-register'));
     },
     onSettled: () => {
+      // queryClient.invalidateQueries(API_ENDPOINTS.USERS);
       queryClient.invalidateQueries(API_ENDPOINTS.REGISTER);
     },
   });

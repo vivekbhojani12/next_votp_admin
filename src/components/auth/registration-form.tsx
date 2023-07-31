@@ -22,6 +22,7 @@ type FormValues = {
   name: string;
   email: string;
   password: string;
+  // mobile: Number;
   // permission: Permission;
 };
 const registrationFormSchema = yup.object().shape({
@@ -31,6 +32,10 @@ const registrationFormSchema = yup.object().shape({
     .email('form:error-email-format')
     .required('form:error-email-required'),
   password: yup.string().required('form:error-password-required'),
+  mobile: yup
+  .string()
+  .matches(/^[0-9]{10}$/, 'Mobile Number Is Not Valid')
+  .required('form:error-mobile-required'),
   // permission: yup.string().default('store_owner').oneOf(['store_owner']),
 });
 const RegistrationForm = () => {
@@ -57,6 +62,7 @@ const RegistrationForm = () => {
         name,
         email,
         password,
+        // mobile,
         // permission,
       },
 
@@ -95,6 +101,16 @@ const RegistrationForm = () => {
           className="mb-4"
           error={t(errors?.name?.message!)}
         />
+        {/* <Input
+          label={t('Mobile Number')}
+          {...register('mobile')
+
+          }
+        type="tel" // Set the type to "tel" for mobile number input
+        variant="outline"
+        className="mb-4"
+        error={t(errors.mobile?.message!)}
+          /> */}
         <Input
           label={t('form:input-label-email')}
           {...register('email')}

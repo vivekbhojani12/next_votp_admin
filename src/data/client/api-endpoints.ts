@@ -20,7 +20,7 @@ export const API_ENDPOINTS = {
   CATEGORIES: 'categories',
   TAGS: 'tags',
   TYPES: 'types',
-  PROFILE_UPDATE: 'profile-update',
+  PROFILE_UPDATE: 'system/get',
   LOGOUT: 'logout',
   ME: 'system/users/:id',
   TOKEN: 'system/users/login',

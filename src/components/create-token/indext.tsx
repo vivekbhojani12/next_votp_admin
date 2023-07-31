@@ -14,6 +14,7 @@ type FormValues = {
   name: string;
   no_id: number;
   email: string;
+  
   // password: string;
   // permission: Permission;
 };

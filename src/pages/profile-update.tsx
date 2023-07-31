@@ -22,10 +22,6 @@ export default function ProfilePage() {
     setCurrentUrl(window.location.href);
     const parts = currentUrl.split('/');
     setId(parts[4]);
-    // Optional: Clean up the useEffect to avoid memory leaks
-    return () => {
-      // Cleanup code (if needed)
-    };
   }, [currentUrl]);
   const {
     data: data1,
@@ -34,8 +30,8 @@ export default function ProfilePage() {
   } = useUserQuery({ id });
   if (loading1) return <Loader text={t('common:text-loading')} />;
   console.log(data1, 'value of data1');
+  
 
-  console.log(id);
   return (
     <>
       <div className="flex border-b border-dashed border-border-base py-5 sm:py-8">
