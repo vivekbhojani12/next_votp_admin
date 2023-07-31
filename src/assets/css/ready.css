@@ -7483,7 +7483,11 @@ a:hover {
   background: #991e32 !important;
 }
 
-.color-profile {
+.color-button-profile {
+  background-color: #991e32 !important;
+}
+
+.color-button-users {
   background-color: #991e32 !important;
 }
 

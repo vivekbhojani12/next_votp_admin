@@ -75,7 +75,7 @@ const CustomerCreateForm = () => {
             className="mb-4"
             error={t(errors.name?.message!)}
           />
-          
+
           <Input
             label={t('form:input-label-email')}
             {...register('email')}
@@ -95,7 +95,7 @@ const CustomerCreateForm = () => {
       </div>
 
       <div className="text-end mb-4">
-        <Button loading={loading} disabled={loading}>
+        <Button className='color-button-users' loading={loading} disabled={loading}>
           {t('form:button-label-create-customer')}
         </Button>
       </div>

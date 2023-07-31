@@ -42,7 +42,7 @@ export default function AuthorizedMenu() {
 					>
 						<Menu.Item key={data?.email}>
 							<li
-								className="w-full color-profile flex flex-col space-y-1 bg-[#00b791]
+								className="w-full color-button-profile flex flex-col space-y-1 bg-[#00b791]
              text-white text-sm rounded-t px-4 py-3"
 							>
 								<span className="font-semibold capitalize">{data?.name}Vijay</span>

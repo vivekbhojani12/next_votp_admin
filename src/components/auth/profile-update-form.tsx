@@ -15,10 +15,10 @@ import { useRouter } from 'next/router'; // Step 1: Import the useRouter hook
 import { useEffect } from 'react';
 type FormValues = {
   // name: string;
-  _id:string;
-  mobile:string,
-  first_name:string;
-  last_name:string;
+  _id: string;
+  mobile: string,
+  first_name: string;
+  last_name: string;
 
   // profile: {
   //   id: string;
@@ -37,7 +37,7 @@ type FormValues = {
 };
 
 export default function ProfileUpdate({ me }: any) {
-  console.log(me,'data<<<<<<>>>>>>>>>>>>>>>>>>')
+  console.log(me, 'data<<<<<<>>>>>>>>>>>>>>>>>>')
   const { t } = useTranslation();
   const { mutate: updateUser, isLoading: loading } = useUpdateUserMutation();
   const { token } = getAuthCredentials();
@@ -72,14 +72,14 @@ export default function ProfileUpdate({ me }: any) {
     console.log('change in me prop<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>'); // Reset the form fields when 'me' prop changes
   }, [me]);
   async function onSubmit(values: FormValues) {
-    const {mobile,first_name,last_name} = values;
+    const { mobile, first_name, last_name } = values;
     // const { notifications } = profile;
     const input = {
       _id: me?.data?._id,
       // name:name,
-      mobile:mobile,
-      first_name:first_name,
-      last_name:last_name,
+      mobile: mobile,
+      first_name: first_name,
+      last_name: last_name,
       // input: {
       //   name: name,
       //   profile: {
@@ -114,7 +114,7 @@ export default function ProfileUpdate({ me }: any) {
         </Card>
       </div> */}
       {/* {permission ? ( */}
-        {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
+      {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
           <Description
             title={t('form:form-notification-title')}
             details={t('form:form-notification-description')}
@@ -152,15 +152,15 @@ export default function ProfileUpdate({ me }: any) {
         />
 
         <Card className="mb-5 w-full sm:w-8/12 md:w-2/3">
-        <Input
-            label={t('form:input-label-first_name')}
+          <Input
+            label={t('first_name')}
             {...register('first_name')}
             error={t(errors.first_name?.message!)}
             variant="outline"
             className="mb-5"
           />
           <Input
-            label={t('form:input-label-last_name')}
+            label={t('last_name')}
             {...register('last_name')}
             error={t(errors.last_name?.message!)}
             variant="outline"
@@ -174,7 +174,7 @@ export default function ProfileUpdate({ me }: any) {
             className="mb-5"
           /> */}
           <Input
-            label={t('form:input-label-mobile')}
+            label={t('mobile')}
             {...register('mobile')}
             error={t(errors.mobile?.message!)}
             variant="outline"
@@ -196,15 +196,15 @@ export default function ProfileUpdate({ me }: any) {
           /> */}
         </Card>
         <div className="w-full text-end">
-          <Button loading={loading} disabled={loading}>
+          <Button className='color-button-profile' loading={loading} disabled={loading}>
             {t('form:button-label-save')}
           </Button>
         </div>
         <div className="w-full text-start mt-4">
-        <Button type="reset" variant="outline">
-          {t('form:button-label-back')}
-        </Button>
-      </div>
+          <Button type="reset" variant="outline">
+            {t('form:button-label-back')}
+          </Button>
+        </div>
       </div>
     </form>
   );
