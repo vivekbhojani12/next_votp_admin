@@ -19,15 +19,16 @@ import { AddressType } from '@/types';
 const ScheduleGrid = dynamic(
   () => import('@/components/checkout/schedule/schedule-grid')
 );
-const AddressGrid = dynamic(() => import('@/components/checkout/address-grid'));
-const ContactGrid = dynamic(
-  () => import('@/components/checkout/contact/contact-grid')
-);
-const RightSideView = dynamic(
-  () => import('@/components/checkout/right-side-view')
-);
+// const AddressGrid = dynamic(() => import('@/components/checkout/address-grid'));
+// const ContactGrid = dynamic(
+//   () => import('@/components/checkout/contact/contact-grid')
+// );
+// const RightSideView = dynamic(
+//   () => import('@/components/checkout/right-side-view')
+// );
 
 export default function CheckoutPage() {
+  console.log('this page<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
   const [customer] = useAtom(customerAtom);
   const { t } = useTranslation();
 
@@ -48,7 +49,7 @@ export default function CheckoutPage() {
     <div className="bg-gray-100">
       <div className="lg:space-s-8 m-auto flex w-full max-w-5xl flex-col items-center lg:flex-row lg:items-start">
         <div className="w-full space-y-6 lg:max-w-2xl">
-          <CustomerGrid
+          {/* <CustomerGrid
             className="shadow-700 bg-light p-5 md:p-8"
             //@ts-ignore
             // contact={user?.profile?.contact}
@@ -86,7 +87,7 @@ export default function CheckoutPage() {
             )}
             atom={shippingAddressAtom}
             type={AddressType.Shipping}
-          />
+          /> */}
           <ScheduleGrid
             className="shadow-700 bg-light p-5 md:p-8"
             label={t('text-delivery-schedule')}
@@ -94,7 +95,7 @@ export default function CheckoutPage() {
           />
         </div>
         <div className="mb-10 mt-10 w-full sm:mb-12 lg:mb-0 lg:w-96">
-          <RightSideView />
+          {/* <RightSideView /> */}
         </div>
       </div>
     </div>

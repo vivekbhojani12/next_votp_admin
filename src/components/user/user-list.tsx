@@ -132,7 +132,7 @@ const CustomerList = ({
       align: 'right',
       render: function Render(id: string, { is_active }: any) {
         const { data } = useMeQuery();
-        console.log(data, '<<<<<<<>>>>>>>>>>>>>>>>>>>>me queryyyyyyyyyyyyyyy')
+        console.log(data, '<<<<<<<>>>>>>>>>>>>>>>>>>>>')
         return (
           <>
             {data && (

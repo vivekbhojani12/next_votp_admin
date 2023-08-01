@@ -1,6 +1,7 @@
 import React from 'react'
 
 
+
 export default function Dashboard() {
 
   return (
@@ -128,79 +129,13 @@ export default function Dashboard() {
                         <tbody>
                           <tr>
                             <th scope="row">1</th>
-                            <td>Username</td>
+                            <td>Admin</td>
                             <td>test@test.com</td>
                             <td>G76D87</td>
                             <td>HGT768GD</td>
                             <td>10</td>
                             <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
-                            <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Username</td>
-                            <td>test@test.com</td>
-                            <td>G76D87</td>
-                            <td>HGT768GD</td>
-                            <td>10</td>
-                            <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
-                            <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Username</td>
-                            <td>test@test.com</td>
-                            <td>G76D87</td>
-                            <td>HGT768GD</td>
-                            <td>10</td>
-                            <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
-                            <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Username</td>
-                            <td>test@test.com</td>
-                            <td>G76D87</td>
-                            <td>HGT768GD</td>
-                            <td>10</td>
-                            <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
-                            <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Username</td>
-                            <td>test@test.com</td>
-                            <td>G76D87</td>
-                            <td>HGT768GD</td>
-                            <td>10</td>
-                            <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
-                            <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Username</td>
-                            <td>test@test.com</td>
-                            <td>G76D87</td>
-                            <td>HGT768GD</td>
-                            <td>10</td>
-                            <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
-                            <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Username</td>
-                            <td>test@test.com</td>
-                            <td>G76D87</td>
-                            <td>HGT768GD</td>
-                            <td>10</td>
-                            <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
+                            <td><a href="/dashboardfrom"><i className="la la-edit"></i></a></td>
                             <td><a href="#"><i className="la la-trash-o"></i></a></td>
                           </tr>
 

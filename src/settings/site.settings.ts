@@ -27,6 +27,7 @@ export const siteSettings = {
       href: Routes.logout,
       labelTransKey: 'authorized-nav-item-logout',
     },
+
   ],
   currencyCode: 'USD',
   sidebarLinks: {
