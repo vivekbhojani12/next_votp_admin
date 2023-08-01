@@ -9,7 +9,7 @@ import { useCreateTokenMutation } from '@/data/token';
 import { useUsersQuery } from '@/data/user'
 import { useTranslation } from 'next-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { typeValidationSchema } from '/home/strivedge/Documents/Farnaz/NextJs/VOTP/next_votp_admin/src/components/group/group-validation-schema';
+import { typeValidationSchema } from '@/components/group/group-validation-schema';
 // import { customerValidationSchema } from './user-validation-schema';
 import { Permission } from '@/types';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -87,8 +87,8 @@ export default function TypesPage() {
   useEffect(() => {
     // Fetch the list of email values from the "users" list
     const emails: string[] = users.map((user) => user.email);
-     setEmailList(emails);
-   
+    setEmailList(emails);
+
   }, [users]);
 
   return (
@@ -153,7 +153,7 @@ export default function TypesPage() {
                     </small>
                   </div>
                 </div>
-                <div className="col-md-1 col-12">
+                <div className="col-md-2 col-12">
                   <div className="form-group">
                     <Input
                       label={t('No Id')}
@@ -165,7 +165,7 @@ export default function TypesPage() {
                     />
                   </div>
                 </div>
-                <div className="col-md-3 col-12">
+                <div className="col-md-2 col-12">
                   <div className="form-group">
                     {/* Date Input Field */}
                     <label>Date</label>
@@ -184,7 +184,7 @@ export default function TypesPage() {
                     )}
                   </div>
                 </div>
-                <div className="col-md-3 col-12">
+                <div className="col-md-2 col-12">
                   <Button
                     className="token-button"
                     loading={loading}

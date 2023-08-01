@@ -1,4 +1,4 @@
-import Layout from '@/components/layouts/app';
+import Layout from '@/components/layouts/admin';
 import ProfileUpdateFrom from '@/components/auth/profile-update-form';
 import ChangePasswordForm from '@/components/auth/change-password-from';
 import ErrorMessage from '@/components/ui/error-message';
@@ -30,7 +30,7 @@ export default function ProfilePage() {
   } = useUserQuery({ id });
   if (loading1) return <Loader text={t('common:text-loading')} />;
   console.log(data1, 'value of data1');
-  
+
 
   return (
     <>
