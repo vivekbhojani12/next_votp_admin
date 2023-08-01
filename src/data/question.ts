@@ -9,7 +9,7 @@ import { questionClient } from '@/data/client/question';
 
 export const useQuestionsQuery = (options: Partial<QuestionQueryOptions>) => {
   const { data, error, isLoading } = useQuery<QuestionPaginator, Error>(
-    [API_ENDPOINTS.QUESTIONS, options],
+    [API_ENDPOINTS.FACTHED_TOKEN_USER, options],
     ({ queryKey, pageParam }) =>
       questionClient.paginated(Object.assign({}, queryKey[1], pageParam)),
     {

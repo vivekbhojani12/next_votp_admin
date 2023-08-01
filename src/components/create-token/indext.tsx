@@ -40,9 +40,9 @@ export default function Createtoken() {
     // resolver: yupResolver(customerValidationSchema),
   });
 
-  async function onSubmit({ name, email, no_id }: FormValues) {
+  async function onSubmit({ name, email, no_id,exp_date }: FormValues) {
     registerUser(
-      {
+      {exp_date,
         name,
         email,
         no_id,

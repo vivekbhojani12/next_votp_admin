@@ -18,6 +18,8 @@ type FormValues = {
   _id:string;
   // mobile:string,
   name:string;
+  email:string;
+
   // first_name:string;
   // last_name:string;
 
@@ -159,13 +161,14 @@ export default function ProfileUpdate({ me }: any) {
             variant="outline"
             className="mb-5"
           />
-          {/* <Input
-            label={t('form:input-label-last_name')}
-            {...register('last_name')}
-            error={t(errors.last_name?.message!)}
+          <Input
+            label={t('Email')}
+            {...register('email')}
+            value={me?.data?.email}
+            error={t(errors.email?.message!)}
             variant="outline"
             className="mb-5"
-          /> */}
+          />
           {/* <Input
             label={t('form:input-label-name')}
             {...register('name')}

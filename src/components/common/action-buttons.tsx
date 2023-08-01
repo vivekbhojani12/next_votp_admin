@@ -13,6 +13,7 @@ import { AdminIcon } from '@/components/icons/admin-icon';
 type Props = {
   id: string;
   editModalView?: string | any;
+  
   deleteModalView?: string | any;
   editUrl?: string;
   detailsUrl?: string;

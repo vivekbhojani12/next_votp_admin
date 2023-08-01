@@ -32,10 +32,11 @@ const registrationFormSchema = yup.object().shape({
     .email('form:error-email-format')
     .required('form:error-email-required'),
   password: yup.string().required('form:error-password-required'),
-  mobile: yup
-  .string()
-  .matches(/^[0-9]{10}$/, 'Mobile Number Is Not Valid')
-  .required('form:error-mobile-required'),
+  // mobile: yup
+  
+  // .string()
+  // .matches(/^[0-9]{10}$/, 'Mobile Number Is Not Valid')
+  // .required('form:error-mobile-required'),
   // permission: yup.string().default('store_owner').oneOf(['store_owner']),
 });
 const RegistrationForm = () => {
