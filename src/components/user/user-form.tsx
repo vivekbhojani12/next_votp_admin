@@ -63,13 +63,13 @@ const CustomerCreateForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="my-5 flex flex-wrap sm:my-8">
-        <Description
+        {/* <Description
           title={t('form:form-title-information')}
           details={t('form:customer-form-info-help-text')}
           className="sm:pe-4 md:pe-5 w-full px-0 pb-5 sm:w-4/12 sm:py-8 md:w-1/3"
-        />
+        /> */}
 
-        <Card className="w-full sm:w-8/12 md:w-2/3">
+        <Card className="w-full ">
           <Input
             label={t('form:input-label-name')}
             {...register('name')}

@@ -80,11 +80,10 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
           name={name}
           type={type}
           ref={ref}
-          className={`${rootClassName} ${
-            disabled
+          className={`${rootClassName} ${disabled
               ? `cursor-not-allowed border-[#D4D8DD] bg-[#EEF1F4] ${numberDisable} select-none`
               : ''
-          }`}
+            }`}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"

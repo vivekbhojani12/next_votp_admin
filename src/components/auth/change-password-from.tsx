@@ -81,13 +81,9 @@ const ChangePasswordForm = ({ me }: any) => {
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)}>
       <div className="my-5 flex flex-wrap sm:my-8">
-        <Description
-          title={t('form:input-label-password')}
-          details={t('form:password-help-text')}
-          className="sm:pe-4 md:pe-5 w-full px-0 pb-5 sm:w-4/12 sm:py-8 md:w-1/3"
-        />
 
-        <Card className="mb-5 w-full sm:w-8/12 md:w-2/3">
+
+        <Card className="mb-5 w-full ">
           <PasswordInput
             label={t('form:input-label-old-password')}
             {...register('old_password')}
@@ -108,13 +104,14 @@ const ChangePasswordForm = ({ me }: any) => {
             variant="outline"
             error={t(errors.passwordConfirmation?.message!)}
           />
+          <div className="text-end w-full">
+            <Button className='color-button-profile' loading={loading} disabled={loading}>
+              {t('form:button-label-change-password')}
+            </Button>
+          </div>
         </Card>
 
-        <div className="text-end w-full">
-          <Button className='color-button-profile' loading={loading} disabled={loading}>
-            {t('form:button-label-change-password')}
-          </Button>
-        </div>
+
       </div>
     </form>
   );
