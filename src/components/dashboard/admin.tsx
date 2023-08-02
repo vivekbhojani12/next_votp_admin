@@ -1,4 +1,7 @@
 import React from 'react';
+import Pagination from '@/components/ui/pagination';
+import Search from '@/components/common/search';
+
 import { useUsersTokenQuery, deleteQuery } from '@/data/user';
 import { useState } from 'react';
 import ActionButtons from '../common/action-buttons';
@@ -7,10 +10,17 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { useMutation, useQueryClient } from 'react-query';
 import { API_ENDPOINTS } from '@/data/client/api-endpoints';
-export default function Dashboard() {
+import { MappedPaginatorInfo } from '@/types';
+
+type IProps = {
+  paginatorInfoo: MappedPaginatorInfo | null;
+  onPagination: (current: number) => void;
+};
+
+export default function Dashboard({ paginatorInfoo, onPagination }: IProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(1);
-  const [paramId, setParamId] = useState('')
+  const [paramId, setParamId] = useState('');
   // const { t } = useTranslation();
 
   const [orderBy, setOrder] = useState('created_at');
@@ -19,14 +29,13 @@ export default function Dashboard() {
   // const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
   // const deleteProductMutation = useDeleteProductMutation();
   const { users, paginatorInfo, loading, error } = useUsersTokenQuery({
-    limit: 20,
+    limit: 10,
     page,
     name: searchTerm,
     orderBy,
     // sortedBy,
   });
   // /users/:id
-  console.log(users, '<><<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
   // const handleDelete = (id: any) => {
   //   console.log(id, 'Id value')
   //   const response =  deleteQuery({ id });
@@ -46,14 +55,18 @@ export default function Dashboard() {
     },
   });
 
-  const handleDelete = (id:any) => {
+  function handlePagination(current: any) {
+    console.log(current, 'value of current page');
+    setPage(current);
+  }
+  const handleDelete = (id: any) => {
     console.log(id, 'Id value');
 
     // Call the deleteMutation function with the ID
     deleteMutation.mutate({ id });
   };
 
-  const showDeleteConfirmation = (id:any) => {
+  const showDeleteConfirmation = (id: any) => {
     confirmAlert({
       title: 'Confirm Delete',
       message: 'Are you sure you want to delete this user?',
@@ -64,7 +77,7 @@ export default function Dashboard() {
         },
         {
           label: 'Delete',
-          onClick: ()=>handleDelete(id),
+          onClick: () => handleDelete(id),
         },
       ],
     });
@@ -162,7 +175,7 @@ export default function Dashboard() {
               </div>
               <div className="col-12">
                 <div className="card">
-                  <div className="col-md-3 ml-auto pt-4">
+                  {/* <div className="col-md-3 ml-auto pt-4">
                     <form
                       className="navbar-left navbar-form nav-search mr-md-3"
                       action=""
@@ -180,7 +193,8 @@ export default function Dashboard() {
                         </div>
                       </div>
                     </form>
-                  </div>
+                    
+                  </div> */}
                   <div className="card-body">
                     <div className="table-responsive">
                       <table className="table-bordered table">
@@ -221,8 +235,15 @@ export default function Dashboard() {
                                 </a>
                               </td>
                               <td>
-                                <a href="#" >
-                                  <i className="la la-trash-o" onClick={() => showDeleteConfirmation(user ? user?._id : '')}></i>
+                                <a href="#">
+                                  <i
+                                    className="la la-trash-o"
+                                    onClick={() =>
+                                      showDeleteConfirmation(
+                                        user ? user?._id : ''
+                                      )
+                                    }
+                                  ></i>
                                 </a>
                               </td>
                             </tr>
@@ -295,6 +316,16 @@ export default function Dashboard() {
                           </tr> */}
                         </tbody>
                       </table>
+                      {!!paginatorInfo?.total && (
+                        <div className="flex items-center justify-end">
+                          <Pagination
+                            total={paginatorInfo.total}
+                            current={paginatorInfo.startIndex}
+                            pageSize={10}
+                            onChange={handlePagination}
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -306,4 +337,3 @@ export default function Dashboard() {
     </>
   );
 }
-
