@@ -10,45 +10,42 @@ import { GetStaticProps } from 'next';
 import Layout from '@/components/layouts/admin';
 import { adminOnly } from '@/utils/auth-utils';
 import CustomerGrid from '@/components/checkout/customer/customer-grid';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import { useAtom } from 'jotai';
 import Loader from '@/components/ui/loader/loader';
-import { useUserQuery } from '@/data/user';
+// import { useUserQuery } from '@/data/user';
 import { AddressType } from '@/types';
 
 const ScheduleGrid = dynamic(
   () => import('@/components/checkout/schedule/schedule-grid')
 );
-const AddressGrid = dynamic(() => import('@/components/checkout/address-grid'));
-const ContactGrid = dynamic(
-  () => import('@/components/checkout/contact/contact-grid')
-);
-const RightSideView = dynamic(
-  () => import('@/components/checkout/right-side-view')
-);
+// const AddressGrid = dynamic(() => import('@/components/checkout/address-grid'));
+// const ContactGrid = dynamic(
+//   () => import('@/components/checkout/contact/contact-grid')
+// );
+// const RightSideView = dynamic(
+//   () => import('@/components/checkout/right-side-view')
+// );
 
 export default function CheckoutPage() {
-  const [customer] = useAtom(customerAtom);
   const { t } = useTranslation();
 
-  const {
-    data: user,
-    isLoading: loading,
-    refetch,
-  } = useUserQuery({ id: customer?.value });
+  const [currentUrl, setCurrentUrl] = useState('');
+  const [id, setId] = useState('');
+  // const data1 =  useUserQuery({id})
   useEffect(() => {
-    if (customer?.value) {
-      refetch(customer?.value);
-    }
-  }, [customer?.value]);
-
-  if (loading) return <Loader text={t('common:text-loading')} />;
+    // Get the current URL once the component mounts
+    setCurrentUrl(window.location.href);
+    const parts = currentUrl.split('/');
+    setId(parts[4]);
+  }, [currentUrl]);
+console.log(id,'Id value in usertoken update form<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
 
   return (
     <div className="bg-gray-100">
       <div className="lg:space-s-8 m-auto flex w-full max-w-5xl flex-col items-center lg:flex-row lg:items-start">
         <div className="w-full space-y-6 lg:max-w-2xl">
-          <CustomerGrid
+          {/* <CustomerGrid
             className="shadow-700 bg-light p-5 md:p-8"
             //@ts-ignore
             // contact={user?.profile?.contact}
@@ -86,23 +83,23 @@ export default function CheckoutPage() {
             )}
             atom={shippingAddressAtom}
             type={AddressType.Shipping}
-          />
+          /> */}
           <ScheduleGrid
-            className="shadow-700 bg-light p-5 md:p-8"
-            label={t('text-delivery-schedule')}
-            count={4}
+            // className="shadow-700 bg-light p-5 md:p-8"
+            // label={t('text-delivery-schedule')}
+            // count={4}
           />
         </div>
-        <div className="mb-10 mt-10 w-full sm:mb-12 lg:mb-0 lg:w-96">
+        {/* <div className="mb-10 mt-10 w-full sm:mb-12 lg:mb-0 lg:w-96">
           <RightSideView />
-        </div>
+        </div> */}
       </div>
     </div>
   );
 }
-CheckoutPage.authenticate = {
-  permissions: adminOnly,
-};
+// CheckoutPage.authenticate = {
+//   permissions: adminOnly,
+// };
 CheckoutPage.Layout = Layout;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({

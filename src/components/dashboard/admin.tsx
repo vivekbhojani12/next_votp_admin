@@ -1,6 +1,7 @@
 import React from 'react';
 import Pagination from '@/components/ui/pagination';
 import Search from '@/components/common/search';
+import Link from '@/components/ui/link';
 
 import { useUsersTokenQuery, deleteQuery } from '@/data/user';
 import { useState } from 'react';
@@ -230,9 +231,16 @@ export default function Dashboard({ paginatorInfoo, onPagination }: IProps) {
                               <td>{user.data3}</td>
                               <td>{`${user.date} (${user.daysLeft} days left)`}</td> */}
                               <td>
-                                <a href="#">
+                                {/* <a href="#">
+                                  
+                                </a> */}
+                                <Link
+                                  href={`orders/checkout`}
+                                  as={`orders/checkout/${user?._id}`}
+                                  className="text-base transition duration-200 hover:text-heading"
+                                >
                                   <i className="la la-edit"></i>
-                                </a>
+                                </Link>
                               </td>
                               <td>
                                 <a href="#">
