@@ -18,7 +18,14 @@ interface FormValues {
 
 const changePasswordSchema = yup.object().shape({
   old_password: yup.string().required('form:error-old-password-required'),
-  password: yup.string().required('form:error-password-required'),
+  password: yup
+  .string()
+  .required('form:error-password-required')
+  .min(8, 'Password length should be 8 character long length') // At least 8 characters long
+  .matches(
+    /^(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+    'Invalid Password'
+  ), // Contains at least one uppercase letter and one special character
   passwordConfirmation: yup
     .string()
     .oneOf([yup.ref('password')], 'form:error-match-passwords')

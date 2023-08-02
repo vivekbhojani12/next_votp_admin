@@ -31,6 +31,7 @@ const CustomerCreateForm = () => {
     register,
     handleSubmit,
     setError,
+    getFieldState,
 
     formState: { errors },
   } = useForm<FormValues>({
@@ -46,17 +47,17 @@ const CustomerCreateForm = () => {
         email,
         password,
         // permission: Permission.StoreOwner,
-      },
-      {
-        onError: (error: any) => {
-          Object.keys(error?.response?.data).forEach((field: any) => {
-            setError(field, {
-              type: 'manual',
-              message: error?.response?.data[field][0],
-            });
-          });
-        },
-      }
+      },  
+      // {
+      //   onError: (error: any) => {
+      //     Object.keys(error?.response?.data).forEach((field: any) => {
+      //       setError(field, {
+      //         type: 'manual',
+      //         message: error?.response?.data[field][0],
+      //       });
+      //     });
+      //   },
+      // }
     );
   }
   return (

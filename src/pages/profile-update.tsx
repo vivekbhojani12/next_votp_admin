@@ -1,14 +1,15 @@
-import Layout from '@/components/layouts/admin';
+import Layout from '@/components/layouts/app';
 import ProfileUpdateFrom from '@/components/auth/profile-update-form';
 import ChangePasswordForm from '@/components/auth/change-password-from';
 import ErrorMessage from '@/components/ui/error-message';
 import Loader from '@/components/ui/loader/loader';
-import { useMeQuery, useUserQuery } from '@/data/user';
+import { useMeQuery, useUserUpdateQuery } from '@/data/user';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Button from '@/components/ui/button';
 import EmailUpdateForm from '@/components/auth/email-update-form';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-scroll';
 
 export default function ProfilePage() {
   const { t } = useTranslation();
@@ -28,10 +29,11 @@ export default function ProfilePage() {
     data: data1,
     isLoading: loading1,
     error: error1,
-  } = useUserQuery({ id });
+  } = useUserUpdateQuery({ id });
   if (loading1) return <Loader text={t('common:text-loading')} />;
   console.log(data1, 'value of data1');
-
+  console.log(data, 'value of data');
+  
 
   return (
     <>

@@ -7,11 +7,11 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 import { API_ENDPOINTS } from './client/api-endpoints';
 import { userClient } from './client/user';
-import { User, QueryOptionsType, UserPaginator } from '@/types';
+import { User, QueryOptionsType, UserPaginator, BlockUserInput } from '@/types';
 import { mapPaginatorData } from '@/utils/data-mappers';
-import axios from "axios";
-import { setEmailVerified } from "@/utils/auth-utils";
-
+import axios from 'axios';
+import { setEmailVerified } from '@/utils/auth-utils';
+import { HttpClient } from './client/http-client';
 
 export const useMeQuery = () => {
   const queryClient = useQueryClient();
@@ -60,11 +60,17 @@ export const useLogoutMutation = () => {
 
 export const useRegisterMutation = () => {
   const queryClient = useQueryClient();
+  const router = useRouter();
   const { t } = useTranslation();
 
   return useMutation(userClient.register, {
-    onSuccess: () => {
-      toast.success(t('common:successfully-register'));
+    onSuccess: (data) => {
+      if (data?.flag === false) {
+        toast.error(t(`${data?.message}`));
+      } else {
+        toast.success(t('common:successfully-register'));
+        router.replace(Routes.user.list);
+      }
     },
     // Always refetch after error or success:
     onSettled: () => {
@@ -75,10 +81,12 @@ export const useRegisterMutation = () => {
 
 export const useUpdateUserMutation = () => {
   const { t } = useTranslation();
+  const router = useRouter();
   const queryClient = useQueryClient();
   return useMutation(userClient.update, {
     onSuccess: () => {
       toast.success(t('common:successfully-updated'));
+      router.replace(Routes.dashboard);
     },
     // Always refetch after error or success:
     onSettled: () => {
@@ -107,7 +115,7 @@ export const useUpdateUserEmailMutation = () => {
       queryClient.invalidateQueries(API_ENDPOINTS.USERS);
     },
   });
-}
+};
 
 export const useChangePasswordMutation = () => {
   return useMutation(userClient.changePassword);
@@ -128,14 +136,13 @@ export const useResendVerificationEmail = () => {
     },
     onError: () => {
       toast(t('common:PICKBAZAR_MESSAGE.EMAIL_SENT_FAILED'));
-    }
+    },
   });
-}
+};
 
 export const useVerifyForgetPasswordTokenMutation = () => {
   return useMutation(userClient.verifyForgetPasswordToken);
 };
-
 
 export const useResetPasswordMutation = () => {
   return useMutation(userClient.resetPassword);
@@ -202,9 +209,9 @@ export const useAddWalletPointsMutation = () => {
   });
 };
 
-export const useUserQuery = ({ id }: { id: string }) => {
+export const useUserUpdateQuery = ({ id }: { id: string }) => {
   return useQuery<User, Error>(
-    [API_ENDPOINTS.PROFILE_UPDATE, id],
+    [`${API_ENDPOINTS.PROFILE_UPDATE}?_id=${id}`, id],
     () => userClient.fetchUser({ id }),
     {
       enabled: Boolean(id),
@@ -212,10 +219,57 @@ export const useUserQuery = ({ id }: { id: string }) => {
   );
 };
 
+// export const deleteQuery = async ({ id }: { id: string }) => {
+//   try {
+//     const response = await HttpClient.delete<boolean>(
+//       `${API_ENDPOINTS.DELETE_TOKEN}?_id=${id}`
+//     );
+    
+    
+//     return response;
+//   } catch (error) {
+//     console.error('Error while deleting user:', error);
+//     throw error;
+//   }
+// };
+
+
+export const deleteQuery = async ({ id }: { id: string }) => {
+
+  try {
+    const response = await HttpClient.delete<boolean>(
+      `${API_ENDPOINTS.DELETE_TOKEN}?_id=${id}`
+    );
+    return response;
+  } catch (error) {
+    console.error('Error while deleting user:', error);
+    throw error;
+  }
+};
+
 export const useUsersQuery = (params: Partial<QueryOptionsType>) => {
+  console.log(params, 'all params while pagination');
   const { data, isLoading, error } = useQuery<UserPaginator, Error>(
     [API_ENDPOINTS.USERS, params],
     () => userClient.fetchUsers(params),
+    {
+      keepPreviousData: true,
+    }
+  );
+
+  return {
+    users: data?.data ?? [],
+    paginatorInfo: mapPaginatorData(data as any),
+    loading: isLoading,
+    error,
+  };
+};
+
+// export const useUsersTokenQuery = (params: Partial<QueryOptionsType>) => {
+export const useUsersTokenQuery = (params: Partial<QueryOptionsType>) => {
+  const { data, isLoading, error } = useQuery<UserPaginator, Error>(
+    [API_ENDPOINTS.FACTHED_TOKEN_USER, params],
+    () => userClient.fetchUsersPurchasedToken(params),
     {
       keepPreviousData: true,
     }

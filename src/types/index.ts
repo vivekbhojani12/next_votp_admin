@@ -150,6 +150,8 @@ export interface LoginInput {
 
 export interface AuthResponse {
   token: string;
+  flag:boolean;
+  message:string;
   // permissions: string[];
 }
 
@@ -370,7 +372,12 @@ export interface MakeAdminInput {
 
 export interface User {
   id: string;
+  _id?:string;
   name: string;
+  userId?: { name: string; email: string; };
+  exp_date?:string;
+  no_id?:number;
+  token:string
   shops: Shop[];
   managed_shop: Shop;
   is_active: boolean;
@@ -719,6 +726,7 @@ export interface ApproveWithdrawInput {
 // -> TODO: Simplify this
 export interface MappedPaginatorInfo {
   currentPage: number;
+  startIndex:number;
   pageIndex: number;
   firstPageUrl: string;
   from: number;
@@ -1118,6 +1126,7 @@ export interface RegisterInput {
 }
 
 export interface createToken {
+  id?: string;
   email: string;
   no_id:number;
   exp_date:Date;
@@ -1126,6 +1135,18 @@ export interface createToken {
   // shop_id?: number;
   // permission: Permission;
 }
+
+export interface GetTokenHistory {
+ userId?:object;
+  // email: string;
+  no_id:number;
+  exp_date:Date;
+  // password: string;
+  // name: string;
+  // shop_id?: number;
+  // permission: Permission;
+}
+
 
 export interface ChangePasswordInput {
   _id:string,
@@ -1161,7 +1182,7 @@ export declare interface MakeAdminInput {
 }
 
 export interface BlockUserInput {
-  id: number;
+  id: string;
 }
 
 export interface WalletPointsInput {
@@ -1426,6 +1447,8 @@ export interface ShopPaginator extends PaginatorInfo<Shop> {}
 export interface WithdrawPaginator extends PaginatorInfo<Withdraw> {}
 
 export interface UserPaginator extends PaginatorInfo<User> {}
+
+export interface UserTokenPaginator extends PaginatorInfo <GetTokenHistory>{}
 
 export interface QuestionPaginator extends PaginatorInfo<Question> {}
 

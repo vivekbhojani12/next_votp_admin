@@ -164,12 +164,12 @@ const CustomerList = ({
           scroll={{ x: 800 }}
         />
       </div>
-      {console.log(paginatorInfo, 'Paginator,,,,,,,,,,,...........')}
+      {console.log(paginatorInfo?.pageIndex, 'Paginator,,,,,,,,,,,...........')}
       {!!paginatorInfo?.total && (
         <div className="flex items-center justify-end">
           <Pagination
             total={paginatorInfo.total}
-            current={paginatorInfo.pageIndex}
+            current={paginatorInfo.startIndex}
             pageSize={10}
             onChange={onPagination}
           />
@@ -180,3 +180,7 @@ const CustomerList = ({
 };
 
 export default CustomerList;
+// total={paginatorInfo.total}
+// current={paginatorInfo.currentPage}
+// pageSize={paginatorInfo.perPage}
+// onChange={onPagination}

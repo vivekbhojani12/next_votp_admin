@@ -13,7 +13,7 @@ import CustomerGrid from '@/components/checkout/customer/customer-grid';
 import { useEffect } from 'react';
 import { useAtom } from 'jotai';
 import Loader from '@/components/ui/loader/loader';
-import { useUserQuery } from '@/data/user';
+// import { useUserQuery } from '@/data/user';
 import { AddressType } from '@/types';
 
 const ScheduleGrid = dynamic(
@@ -28,22 +28,22 @@ const ScheduleGrid = dynamic(
 // );
 
 export default function CheckoutPage() {
-  console.log('this page<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+  console.log('this <<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
   const [customer] = useAtom(customerAtom);
   const { t } = useTranslation();
 
-  const {
-    data: user,
-    isLoading: loading,
-    refetch,
-  } = useUserQuery({ id: customer?.value });
-  useEffect(() => {
-    if (customer?.value) {
-      refetch(customer?.value);
-    }
-  }, [customer?.value]);
+  // const {
+  //   data: user,
+  //   isLoading: loading,
+  //   refetch,
+  // } = useUserQuery({ id: customer?.value });
+  // useEffect(() => {
+  //   if (customer?.value) {
+  //     refetch(customer?.value);
+  //   }
+  // }, [customer?.value]);
 
-  if (loading) return <Loader text={t('common:text-loading')} />;
+  // if (loading) return <Loader text={t('common:text-loading')} />;
 
   return (
     <div className="bg-gray-100">
@@ -88,11 +88,12 @@ export default function CheckoutPage() {
             atom={shippingAddressAtom}
             type={AddressType.Shipping}
           /> */}
-          <ScheduleGrid
+          {/* <ScheduleGrid
             className="shadow-700 bg-light p-5 md:p-8"
             label={t('text-delivery-schedule')}
             count={4}
-          />
+          /> */}
+          <ScheduleGrid />
         </div>
         <div className="mb-10 mt-10 w-full sm:mb-12 lg:mb-0 lg:w-96">
           {/* <RightSideView /> */}

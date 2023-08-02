@@ -1,6 +1,7 @@
 export const API_ENDPOINTS = {
   ROLES: 'system/roles',
   CREATE_TOKEN:'user/createtoken',
+  DELETE_TOKEN:'users/:id',
   // ATTACHMENTS: 'system/users',
   ANALYTICS: 'analytics',
   ATTRIBUTES: 'attributes',
@@ -8,6 +9,7 @@ export const API_ENDPOINTS = {
   ORDER_STATUS: 'order-status',
   ORDERS: 'orders',
   USERS: 'system/users',
+  FACTHED_TOKEN_USER:'user/getuserstoken',
   REGISTER: 'users/register',
   PRODUCTS: 'products',
   POPULAR_PRODUCTS: 'popular-products',

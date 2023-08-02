@@ -15,9 +15,11 @@ import { useRouter } from 'next/router'; // Step 1: Import the useRouter hook
 import { useEffect } from 'react';
 type FormValues = {
   // name: string;
-  _id: string;
+  _id:string;
   // mobile:string,
-  name: string;
+  name:string;
+  email:string;
+
   // first_name:string;
   // last_name:string;
 
@@ -38,7 +40,7 @@ type FormValues = {
 };
 
 export default function ProfileUpdate({ me }: any) {
-  console.log(me, 'data<<<<<<>>>>>>>>>>>>>>>>>>')
+  console.log(me,'data<<<<<<>>>>>>>>>>>>>>>>>>')
   const { t } = useTranslation();
   const { mutate: updateUser, isLoading: loading } = useUpdateUserMutation();
   const { token } = getAuthCredentials();
@@ -72,11 +74,11 @@ export default function ProfileUpdate({ me }: any) {
     reset(me?.data)
   }, [me]);
   async function onSubmit(values: FormValues) {
-    const { name } = values;
+    const {name} = values;
     // const { notifications } = profile;
     const input = {
       _id: me?.data?._id,
-      name: name,
+      name:name,
       // mobile:mobile,
       // first_name:first_name,
       // last_name:last_name,
@@ -114,7 +116,7 @@ export default function ProfileUpdate({ me }: any) {
         </Card>
       </div> */}
       {/* {permission ? ( */}
-      {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
+        {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
           <Description
             title={t('form:form-notification-title')}
             details={t('form:form-notification-description')}
@@ -145,28 +147,67 @@ export default function ProfileUpdate({ me }: any) {
         ''
       )} */}
       <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
+        <Description
+          title={t('form:form-title-information')}
+          details={t('form:profile-info-help-text')}
+          className="w-full px-0 pb-5 sm:w-4/12 sm:py-8 sm:pe-4 md:w-1/3 md:pe-5"
+        />
 
-
-        <Card className="mb-5 w-full ">
-          <Input
+        <Card className="mb-5 w-full sm:w-8/12 md:w-2/3">
+        <Input
             label={t('form:input-label-name')}
             {...register('name')}
             error={t(errors.name?.message!)}
             variant="outline"
             className="mb-5"
           />
-          <div className="w-full text-end">
-            <Button className='save-button-profile' loading={loading} disabled={loading}>
-              {t('form:button-label-save')}
-            </Button>
-          </div>
+          <Input
+            label={t('Email')}
+            {...register('email')}
+            value={me?.data?.email}
+            error={t(errors.email?.message!)}
+            variant="outline"
+            className="mb-5"
+          />
+          {/* <Input
+            label={t('form:input-label-name')}
+            {...register('name')}
+            error={t(errors.name?.message!)}
+            variant="outline"
+            className="mb-5"
+          /> */}
+          {/* <Input
+            label={t('Mobile')}
+            {...register('mobile')}
+            error={t(errors.mobile?.message!)}
+            variant="outline"
+            className="mb-5"
+          /> */}
+          {/* <TextArea
+            label={t('form:input-label-bio')}
+            {...register('profile.bio')}
+            error={t(errors.profile?.bio?.message!)}
+            variant="outline"
+            className="mb-6"
+          /> */}
+          {/* <Input
+            label={t('form:input-label-contact')}
+            {...register('profile.contact')}
+            error={t(errors.profile?.contact?.message!)}
+            variant="outline"
+            className="mb-5"
+          /> */}
         </Card>
-
-        <div className="w-full text-start mt-4">
-          <Button type="reset" variant="outline">
-            {t('form:button-label-back')}
+        <div className="w-full text-end">
+          <Button loading={loading} disabled={loading}>
+            {t('form:button-label-save')}
           </Button>
         </div>
+        <div className="w-full text-start mt-4">
+        <Button type="reset" variant="outline">
+          {t('form:button-label-back')}
+        </Button>
+      </div>
       </div>
     </form>
   );

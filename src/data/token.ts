@@ -61,11 +61,14 @@ import { setEmailVerified } from "@/utils/auth-utils";
 export const useCreateTokenMutation = () => {
   console.log('process of creating the token.........<<<<<<<<<>>>>>>>>>>>>>>>')
   const queryClient = useQueryClient();
+  const router=useRouter()
   const { t } = useTranslation();
 
   return useMutation(tokenClient.createToken, {
     onSuccess: () => {
       toast.success(t('common:successfully-register'));
+      router.replace(Routes.dashboard)
+
     },
     onSettled: () => {
       // queryClient.invalidateQueries(API_ENDPOINTS.USERS);

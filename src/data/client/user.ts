@@ -1,5 +1,6 @@
 import {
   AuthResponse,
+  
   LoginInput,
   RegisterInput,
   User,
@@ -33,6 +34,7 @@ export const userClient = {
     return HttpClient.post<AuthResponse>(API_ENDPOINTS.REGISTER, variables);
   },
   update: (input: UpdateUser) => {
+    console.log(input,'At time of update')
     return HttpClient.put<User>(`${API_ENDPOINTS.USERS}`, input);
   },
   changePassword: (variables: ChangePasswordInput) => {
@@ -77,6 +79,22 @@ export const userClient = {
       search: HttpClient.formatSearchParams({ name }),
     });
   },
+  fetchUsersPurchasedToken: ({ name, ...params }: Partial<UserQueryOptions>) => {
+    return HttpClient.get<UserPaginator>(API_ENDPOINTS.FACTHED_TOKEN_USER, {
+      searchJoin: 'and',
+      with: 'wallet',
+      ...params,
+      search: HttpClient.formatSearchParams({ name }),
+    });
+  },
+  
+  delete({ id }: { id: string }) {
+    console.log(id,'the value of _id<<<<<<<<<>>>>>>>>>>>>in delete')
+    return HttpClient.delete(`/users/:id?_id=${id}`);
+  },
+
+
+  // UserTokenPaginator
   fetchAdmins: ({ ...params }: Partial<UserQueryOptions>) => {
     return HttpClient.get<UserPaginator>(API_ENDPOINTS.ADMIN_LIST, {
       searchJoin: 'and',

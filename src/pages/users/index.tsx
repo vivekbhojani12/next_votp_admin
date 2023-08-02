@@ -22,12 +22,13 @@ export default function Customers() {
   const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
 
   const { users, paginatorInfo, loading, error } = useUsersQuery({
-    limit: 20,
+    limit: 10,
     page,
     name: searchTerm,
     orderBy,
     sortedBy,
   });
+  console.log(paginatorInfo,'paginatr info<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>')
 
   if (loading) return <Loader text={t('common:text-loading')} />;
   if (error) return <ErrorMessage message={error.message} />;
@@ -38,6 +39,7 @@ export default function Customers() {
   }
 
   function handlePagination(current: any) {
+    console.log(current,'value of current page')
     setPage(current);
   }
 
