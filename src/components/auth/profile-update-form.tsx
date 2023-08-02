@@ -87,32 +87,62 @@ export default function ProfileUpdate({ me }: any) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} onReset={handleBackButtonClick}>
       <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
-        <Card className="mb-5 w-full ">
-          <div className="row">
-            <Input
-              label={t('form:input-label-name')}
-              {...register('name')}
-              error={t(errors.name?.message!)}
-              variant="outline"
-              className="mb-5 col-md-6"
-            />
-            <Input
-              label={t('Email')}
-              {...register('email')}
-              value={me?.data?.email}
-              error={t(errors.email?.message!)}
-              variant="outline"
-              className="mb-5 col-md-6"
-            />
-          </div>
+        <Description
+          title={t('form:form-title-information')}
+          details={t('form:profile-info-help-text')}
+          className="w-full px-0 pb-5 sm:w-4/12 sm:py-8 sm:pe-4 md:w-1/3 md:pe-5"
+        />
 
-          <div className="w-full text-end">
-            <Button className='save-button-profile' loading={loading} disabled={loading}>
-              {t('form:button-label-save')}
-            </Button>
-          </div>
+        <Card className="mb-5 w-full sm:w-8/12 md:w-2/3">
+          <Input
+            label={t('form:input-label-name')}
+            {...register('name')}
+            error={t(errors.name?.message!)}
+            variant="outline"
+            className="mb-5"
+          />
+          <Input
+            label={t('Email')}
+            {...register('email')}
+            value={me?.data?.email}
+            error={t(errors.email?.message!)}
+            variant="outline"
+            className="mb-5"
+          />
+          {/* <Input
+            label={t('form:input-label-name')}
+            {...register('name')}
+            error={t(errors.name?.message!)}
+            variant="outline"
+            className="mb-5"
+          /> */}
+          {/* <Input
+            label={t('Mobile')}
+            {...register('mobile')}
+            error={t(errors.mobile?.message!)}
+            variant="outline"
+            className="mb-5"
+          /> */}
+          {/* <TextArea
+            label={t('form:input-label-bio')}
+            {...register('profile.bio')}
+            error={t(errors.profile?.bio?.message!)}
+            variant="outline"
+            className="mb-6"
+          /> */}
+          {/* <Input
+            label={t('form:input-label-contact')}
+            {...register('profile.contact')}
+            error={t(errors.profile?.contact?.message!)}
+            variant="outline"
+            className="mb-5"
+          /> */}
         </Card>
-
+        <div className="w-full text-end">
+          <Button loading={loading} disabled={loading}>
+            {t('form:button-label-save')}
+          </Button>
+        </div>
         <div className="w-full text-start mt-4">
           <Button className='back-button-profile' type="reset" variant="outline">
             {t('form:button-label-back')}

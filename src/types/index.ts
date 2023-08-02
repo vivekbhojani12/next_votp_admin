@@ -371,12 +371,13 @@ export interface MakeAdminInput {
 }
 
 export interface User {
+  // 
   id: string;
   _id?:string;
   name: string;
   data?: { name: string; email: string; };
   userId?: { name: string; email: string; };
-  exp_date?:string;
+  exp_date?:Date;
   no_id?:number;
   token:string
   shops: Shop[];
@@ -395,6 +396,24 @@ export interface UpdateUser {
   // name?: string;
   // mobile:string,
   name:string;
+  // first_name:string;
+  // last_name:string;
+
+  // photo?:string,
+  // profile?: UserProfileInput;
+  // address?: UserAddressUpsertInput[];
+}
+
+export interface UpdateToken {
+  // name?: string;
+  // mobile:string,
+  // name:string;
+  _id:string,
+  userId:string;
+  token:string;
+  exp_date:Date;
+  no_id:Number;
+
   // first_name:string;
   // last_name:string;
 

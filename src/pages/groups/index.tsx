@@ -167,16 +167,14 @@ export default function TypesPage() {
                 </div>
                 <div className="col-md-2 col-12">
                   <div className="form-group">
-                    {/* Date Input Field */}
                     <label>Date</label>
                     <input
-                      type="date" // Specify the input type as "date"
+                      type="date"
                       {...register('exp_date', {
                         required: 'Date is required',
-                      })} // Register the 'exp_date' field with react-hook-form and add validation rules
-                      className="form-control" // Add any necessary styling classes
+                      })} 
+                      className="form-control"
                     />
-                    {/* Error message for the date field */}
                     {errors.exp_date && (
                       <span className="text-danger">
                         {errors.exp_date.message}
