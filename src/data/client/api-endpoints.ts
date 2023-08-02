@@ -2,6 +2,8 @@ export const API_ENDPOINTS = {
   ROLES: 'system/roles',
   CREATE_TOKEN:'user/createtoken',
   DELETE_TOKEN:'users/:id',
+  UPDATE_TOKEN:'user/update/token',
+  GET_TOKEN:'user/getusertoken/:id',
   // ATTACHMENTS: 'system/users',
   ANALYTICS: 'analytics',
   ATTRIBUTES: 'attributes',

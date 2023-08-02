@@ -147,13 +147,7 @@ export default function ProfileUpdate({ me }: any) {
         ''
       )} */}
       <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
-        <Description
-          title={t('form:form-title-information')}
-          details={t('form:profile-info-help-text')}
-          className="w-full px-0 pb-5 sm:w-4/12 sm:py-8 sm:pe-4 md:w-1/3 md:pe-5"
-        />
-
-        <Card className="mb-5 w-full sm:w-8/12 md:w-2/3">
+        <Card className="mb-5 w-full">
         <Input
             label={t('form:input-label-name')}
             {...register('name')}
@@ -197,12 +191,13 @@ export default function ProfileUpdate({ me }: any) {
             variant="outline"
             className="mb-5"
           /> */}
-        </Card>
-        <div className="w-full text-end">
-          <Button loading={loading} disabled={loading}>
+           <div className="w-full text-end">
+          <Button className='settings-colo-profile' loading={loading} disabled={loading}>
             {t('form:button-label-save')}
           </Button>
         </div>
+        </Card>
+       
         <div className="w-full text-start mt-4">
         <Button type="reset" variant="outline">
           {t('form:button-label-back')}

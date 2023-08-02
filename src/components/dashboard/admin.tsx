@@ -4,7 +4,7 @@ import Search from '@/components/common/search';
 import Link from '@/components/ui/link';
 
 import { useUsersTokenQuery, deleteQuery } from '@/data/user';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ActionButtons from '../common/action-buttons';
 import { HttpClient } from '@/data/client/http-client';
 import { confirmAlert } from 'react-confirm-alert';
@@ -26,7 +26,6 @@ export default function Dashboard({ paginatorInfoo, onPagination }: IProps) {
 
   const [orderBy, setOrder] = useState('created_at');
   const [userId, setUserId] = useState('');
-
   // const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
   // const deleteProductMutation = useDeleteProductMutation();
   const { users, paginatorInfo, loading, error } = useUsersTokenQuery({
@@ -36,23 +35,13 @@ export default function Dashboard({ paginatorInfoo, onPagination }: IProps) {
     orderBy,
     // sortedBy,
   });
-  // /users/:id
-  // const handleDelete = (id: any) => {
-  //   console.log(id, 'Id value')
-  //   const response =  deleteQuery({ id });
 
-  // }
   const queryClient = useQueryClient();
-
+  
   const deleteMutation = useMutation(deleteQuery, {
     onSuccess: () => {
       // Invalidate the "allToken" query and any other queries you want to update
       queryClient.invalidateQueries(API_ENDPOINTS.FACTHED_TOKEN_USER);
-      // queryClient.invalidateQueries(API_ENDPOINTS.USERS);
-      // queryClient.invalidateQueries(API_ENDPOINTS.STAFFS);
-
-      // Reload the page after successful deletion
-      // window.location.reload();
     },
   });
 
@@ -78,7 +67,8 @@ export default function Dashboard({ paginatorInfoo, onPagination }: IProps) {
         },
         {
           label: 'Delete',
-          onClick: () => handleDelete(id),
+          onClick: () => handleDelete(id)
+          ,
         },
       ],
     });
@@ -176,26 +166,6 @@ export default function Dashboard({ paginatorInfoo, onPagination }: IProps) {
               </div>
               <div className="col-12">
                 <div className="card">
-                  {/* <div className="col-md-3 ml-auto pt-4">
-                    <form
-                      className="navbar-left navbar-form nav-search mr-md-3"
-                      action=""
-                    >
-                      <div className="input-group">
-                        <input
-                          type="text"
-                          placeholder="Search ..."
-                          className="form-control"
-                        />
-                        <div className="input-group-append">
-                          <span className="input-group-text">
-                            <i className="la la-search search-icon"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </form>
-                    
-                  </div> */}
                   <div className="card-body">
                     <div className="table-responsive">
                       <table className="table-bordered table">
@@ -256,72 +226,6 @@ export default function Dashboard({ paginatorInfoo, onPagination }: IProps) {
                               </td>
                             </tr>
                           ))}
-                          {/* <tr>
-                            <th scope="row">1</th>
-                            <td>Username</td>
-                            <td>test@test.com</td>
-                            <td>G76D87</td>
-                            <td>HGT768GD</td>
-                            <td>10</td>
-                            <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
-                            <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Username</td>
-                            <td>test@test.com</td>
-                            <td>G76D87</td>
-                            <td>HGT768GD</td>
-                            <td>10</td>
-                            <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
-                            <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Username</td>
-                            <td>test@test.com</td>
-                            <td>G76D87</td>
-                            <td>HGT768GD</td>
-                            <td>10</td>
-                            <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
-                            <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Username</td>
-                            <td>test@test.com</td>
-                            <td>G76D87</td>
-                            <td>HGT768GD</td>
-                            <td>10</td>
-                            <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
-                            <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Username</td>
-                            <td>test@test.com</td>
-                            <td>G76D87</td>
-                            <td>HGT768GD</td>
-                            <td>10</td>
-                            <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
-                            <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Username</td>
-                            <td>test@test.com</td>
-                            <td>G76D87</td>
-                            <td>HGT768GD</td>
-                            <td>10</td>
-                            <td>28-May-2023 (20 days left)</td>
-                            <td><a href="#"><i className="la la-edit"></i></a></td>
-                            <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                          </tr> */}
                         </tbody>
                       </table>
                       {!!paginatorInfo?.total && (

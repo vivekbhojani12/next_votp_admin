@@ -1,6 +1,6 @@
 import {
   AuthResponse,
-  
+  UpdateToken,
   LoginInput,
   RegisterInput,
   User,
@@ -36,6 +36,10 @@ export const userClient = {
   update: (input: UpdateUser) => {
     console.log(input,'At time of update')
     return HttpClient.put<User>(`${API_ENDPOINTS.USERS}`, input);
+  },
+  updateToken: (input: UpdateToken) => {
+    console.log(input,'At time of update<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+    return HttpClient.put<User>(`${API_ENDPOINTS.UPDATE_TOKEN}`, input);
   },
   changePassword: (variables: ChangePasswordInput) => {
     return HttpClient.post<any>(API_ENDPOINTS.CHANGE_PASSWORD, variables);
@@ -101,6 +105,11 @@ export const userClient = {
       ...params,
     });
   },
+  fetchToken: ({ id }: { id: string }) => {
+    return HttpClient.get<User>(`${API_ENDPOINTS.GET_TOKEN}?_id=${id}`);
+  },
+
+
   fetchUser: ({ id }: { id: string }) => {
     return HttpClient.get<User>(`${API_ENDPOINTS.PROFILE_UPDATE}?_id=${id}`);
   },

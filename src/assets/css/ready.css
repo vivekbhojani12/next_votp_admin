@@ -7447,7 +7447,7 @@ td.td1 {
 }
 
 .form-pb {
-  padding: 30px 30px 30px 0px;
+  padding: 50px;
 }
 
 .rc-table th,
@@ -7487,6 +7487,9 @@ a:hover {
 .save-button-profile {
   background-color: #991e32 !important;
 }
+.settings-colo-profile{
+  background-color: #991e32 !important;
+}
 
 .color-button-profile {
   background-color: #991e32 !important;
@@ -7498,7 +7501,7 @@ a:hover {
 }
 
 .sidebar-with {
-  width: 16%;
+  width: 19%;
 }
 
 /*# sourceMappingURL=ready.css.map */

@@ -12,6 +12,7 @@ export const Routes = {
   storeSettings: '/vendor/settings',
   storeKeepers: '/vendor/store_keepers',
   profileUpdate: '/profile-update',
+  // editdeshboard: '/deshboardform',
   checkout: '/orders/checkout',
   verifyEmail: '/verify-email',
   user: {

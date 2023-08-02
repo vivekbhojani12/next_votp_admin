@@ -1,4 +1,4 @@
-import Layout from '@/components/layouts/app';
+import Layout from '@/components/layouts/admin';
 import ProfileUpdateFrom from '@/components/auth/profile-update-form';
 import ChangePasswordForm from '@/components/auth/change-password-from';
 import ErrorMessage from '@/components/ui/error-message';
@@ -6,6 +6,7 @@ import Loader from '@/components/ui/loader/loader';
 import { useMeQuery, useUserUpdateQuery } from '@/data/user';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Button from '@/components/ui/button';
 import EmailUpdateForm from '@/components/auth/email-update-form';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-scroll';
@@ -36,10 +37,13 @@ export default function ProfilePage() {
 
   return (
     <>
-      <div className="flex border-b border-dashed border-border-base py-5 sm:py-8">
-        <h1 className="text-lg font-semibold text-heading">
+      <div className="row flex border-b border-dashed border-border-base py-5 sm:py-8">
+        <h1 className="col-md-3 text-lg font-semibold text-heading">
           {t('form:form-title-profile-settings')}
+
         </h1>
+
+
       </div>
 
       {data && data1 && id && <div>

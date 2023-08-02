@@ -96,6 +96,23 @@ export const useUpdateUserMutation = () => {
   });
 };
 
+export const useUpdateTOkenMutation = () => {
+  const { t } = useTranslation();
+  const router = useRouter();
+  const queryClient = useQueryClient();
+  return useMutation(userClient.updateToken, {
+    onSuccess: () => {
+      toast.success(t('common:successfully-updated'));
+      router.replace(Routes.dashboard);
+    },
+    // Always refetch after error or success:
+    onSettled: () => {
+      queryClient.invalidateQueries(API_ENDPOINTS.ME);
+      queryClient.invalidateQueries(API_ENDPOINTS.USERS);
+    },
+  });
+};
+
 
 
 export const useUpdateUserEmailMutation = () => {
@@ -216,6 +233,17 @@ export const useUserUpdateQuery = ({ id }: { id: string }) => {
   return useQuery<User, Error>(
     [`${API_ENDPOINTS.PROFILE_UPDATE}?_id=${id}`, id],
     () => userClient.fetchUser({ id }),
+    {
+      enabled: Boolean(id),
+    }
+  );
+};
+
+
+export const useTokenUpdateQuery = ({ id }: { id: string }) => {
+  return useQuery<User, Error>(
+    [`${API_ENDPOINTS.GET_TOKEN}?_id=${id}`, id],
+    () => userClient.fetchToken({ id }),
     {
       enabled: Boolean(id),
     }
