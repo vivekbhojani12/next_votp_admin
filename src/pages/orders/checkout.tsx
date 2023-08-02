@@ -47,7 +47,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="bg-gray-100">
-      <div className="lg:space-s-8 m-auto  w-full max-w-5xl flex-col items-center lg:flex-row lg:items-start">
+      <div className="lg:space-s-8 m-auto     w-full max-w-5xl flex-col items-center lg:flex-row lg:items-start">
         <div className="w-full">
           <ScheduleGrid />
         </div>

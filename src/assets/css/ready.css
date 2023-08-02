@@ -7490,10 +7490,25 @@ a:hover {
 
 .color-button-profile {
   background-color: #991e32 !important;
-  margin-top: 33px;
+
 }
 
+.back-button-profile {
+  border: 1px solid #991e32 !important;
+  color: #991e32;
+}
+
+.back-button-profile:hover {
+  color: #eb0a2f;
+  border: 1px solid #eb0a2f !important;
+}
+
+
 .color-button-users {
+  background-color: #991e32 !important;
+}
+
+.setting-colo-button {
   background-color: #991e32 !important;
 }
 

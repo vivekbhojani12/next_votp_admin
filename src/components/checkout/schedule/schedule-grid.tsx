@@ -62,58 +62,58 @@ const dashboardfrom = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="my-5 flex flex-wrap sm:my-8">
-
-
         <Card className="w-full ">
-          <Input
-            label={t('form:input-label-name')}
-            {...register('name')}
-            type="text"
-            variant="outline"
-            className="mb-4"
-            error={t(errors.name?.message!)}
-          />
+          <div className='row'>
+            <Input
+              label={t('form:input-label-name')}
+              {...register('name')}
+              type="text"
+              variant="outline"
+              className="col-md-6 mb-4"
+              error={t(errors.name?.message!)}
+            />
 
-          <Input
-            label={t('form:input-label-email')}
-            {...register('email')}
-            type="email"
-            variant="outline"
-            className="mb-4"
-            error={t(errors.email?.message!)}
-          />
-          <Input
-            label={t('App Tken')}
-            {...register('email')}
-            type="apptoken"
-            variant="outline"
-            className="mb-4"
-            error={t(errors.email?.message!)}
-          />
-          <Input
-            label={t('Captcha Token')}
-            {...register('email')}
-            type="captchatoken"
-            variant="outline"
-            className="mb-4"
-            error={t(errors.email?.message!)}
-          />
-          <Input
-            label={t('ID')}
-            {...register('email')}
-            type="id"
-            variant="outline"
-            className="mb-4"
-            error={t(errors.email?.message!)}
-          />
-          <Input
-            label={t('Expiry Date')}
-            {...register('email')}
-            type="expirydate"
-            variant="outline"
-            className="mb-4"
-            error={t(errors.email?.message!)}
-          />
+            <Input
+              label={t('form:input-label-email')}
+              {...register('email')}
+              type="email"
+              variant="outline"
+              className="col-md-6 mb-4"
+              error={t(errors.email?.message!)}
+            />
+            <Input
+              label={t('App Tken')}
+              {...register('email')}
+              type="apptoken"
+              variant="outline"
+              className="col-md-6 mb-4"
+              error={t(errors.email?.message!)}
+            />
+            <Input
+              label={t('Captcha Token')}
+              {...register('email')}
+              type="captchatoken"
+              variant="outline"
+              className="col-md-6 mb-4"
+              error={t(errors.email?.message!)}
+            />
+            <Input
+              label={t('ID')}
+              {...register('email')}
+              type="id"
+              variant="outline"
+              className="col-md-6 mb-4"
+              error={t(errors.email?.message!)}
+            />
+            <Input
+              label={t('Expiry Date')}
+              {...register('email')}
+              type="expirydate"
+              variant="outline"
+              className="col-md-6 mb-4"
+              error={t(errors.email?.message!)}
+            />
+          </div>
           <div className="text-end">
             <Button className='color-button-users' loading={loading} disabled={loading}>
               {t('form:button-label-create-customer')}

@@ -1,4 +1,4 @@
-import Layout from '@/components/layouts/app';
+import Layout from '@/components/layouts/admin';
 import ProfileUpdateFrom from '@/components/auth/profile-update-form';
 import ChangePasswordForm from '@/components/auth/change-password-from';
 import ErrorMessage from '@/components/ui/error-message';
@@ -33,17 +33,14 @@ export default function ProfilePage() {
   if (loading1) return <Loader text={t('common:text-loading')} />;
   console.log(data1, 'value of data1');
   console.log(data, 'value of data');
-  
+
 
   return (
     <>
       <div className="row flex border-b border-dashed border-border-base py-5 sm:py-8">
         <h1 className="col-md-3 text-lg font-semibold text-heading">
           {t('form:form-title-profile-settings')}
-
         </h1>
-
-
       </div>
 
       {data && data1 && id && <div>

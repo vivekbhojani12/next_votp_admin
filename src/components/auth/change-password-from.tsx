@@ -19,13 +19,13 @@ interface FormValues {
 const changePasswordSchema = yup.object().shape({
   old_password: yup.string().required('form:error-old-password-required'),
   password: yup
-  .string()
-  .required('form:error-password-required')
-  .min(8, 'Password length should be 8 character long length') // At least 8 characters long
-  .matches(
-    /^(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-    'Invalid Password'
-  ), // Contains at least one uppercase letter and one special character
+    .string()
+    .required('form:error-password-required')
+    .min(8, 'Password length should be 8 character long length') // At least 8 characters long
+    .matches(
+      /^(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
+      'Invalid Password'
+    ), // Contains at least one uppercase letter and one special character
   passwordConfirmation: yup
     .string()
     .oneOf([yup.ref('password')], 'form:error-match-passwords')
@@ -84,26 +84,29 @@ const ChangePasswordForm = ({ me }: any) => {
 
 
         <Card className="mb-5 w-full ">
-          <PasswordInput
-            label={t('form:input-label-old-password')}
-            {...register('old_password')}
-            variant="outline"
-            error={t(errors.old_password?.message!)}
-            className="mb-5"
-          />
-          <PasswordInput
-            label={t('form:input-label-new-password')}
-            {...register('password')}
-            variant="outline"
-            error={t(errors.password?.message!)}
-            className="mb-5"
-          />
-          <PasswordInput
-            label={t('form:input-label-confirm-password')}
-            {...register('passwordConfirmation')}
-            variant="outline"
-            error={t(errors.passwordConfirmation?.message!)}
-          />
+          <div className="row">
+            <PasswordInput
+              label={t('form:input-label-old-password')}
+              {...register('old_password')}
+              variant="outline"
+              error={t(errors.old_password?.message!)}
+              className="mb-5 col-md-4"
+            />
+            <PasswordInput
+              label={t('form:input-label-new-password')}
+              {...register('password')}
+              variant="outline"
+              error={t(errors.password?.message!)}
+              className="mb-5 col-md-4"
+            />
+            <PasswordInput
+              label={t('form:input-label-confirm-password')}
+              {...register('passwordConfirmation')}
+              variant="outline"
+              error={t(errors.passwordConfirmation?.message!)}
+              className="mb-5 col-md-4"
+            />
+          </div>
           <div className="text-end w-full">
             <Button className='color-button-profile' loading={loading} disabled={loading}>
               {t('form:button-label-change-password')}

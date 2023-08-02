@@ -519,7 +519,7 @@ export default function SettingsForm({ settings, taxClasses }: IProps) {
           <Button
             type="button"
             onClick={() => append({ title: '', description: '' })}
-            className="w-full sm:w-auto"
+            className="w-full sm:w-auto setting-colo-button"
           >
             {t('form:button-label-add-delivery-time')}
           </Button>
@@ -644,7 +644,7 @@ export default function SettingsForm({ settings, taxClasses }: IProps) {
             <Button
               type="button"
               onClick={() => socialAppend({ icon: '', url: '' })}
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto setting-colo-button"
               disabled={isNotDefaultSettingsPage}
             >
               {t('form:button-label-add-social')}
@@ -654,7 +654,7 @@ export default function SettingsForm({ settings, taxClasses }: IProps) {
       </div>
 
       <div className="mb-4 text-end">
-        <Button loading={loading} disabled={loading}>
+        <Button className='setting-colo-button' loading={loading} disabled={loading}>
           {t('form:button-label-save-settings')}
         </Button>
       </div>
