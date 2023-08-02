@@ -10,7 +10,7 @@ import { useMeQuery } from '@/data/user';
 export default function AuthorizedMenu() {
 	const { data } = useMeQuery();
 	const { t } = useTranslation("common");
-
+	console.log(data, 'Me query<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>')
 	// Again, we're using framer-motion for the transition effect
 	return (
 		<>
@@ -23,7 +23,7 @@ export default function AuthorizedMenu() {
 						}
 						alt="avatar"
 					/>
-					<span className="dropdown-toggle profile-pic" aria-expanded="false"><span >{data?.name}Vijay</span></span>
+					<span className="dropdown-toggle profile-pic" aria-expanded="false"><span >{data?.data?.name}</span></span>
 
 				</Menu.Button>
 
@@ -40,13 +40,13 @@ export default function AuthorizedMenu() {
 						as="ul"
 						className="end-0 origin-top-end absolute mt-1 w-48 rounded bg-white shadow-md focus:outline-none"
 					>
-						<Menu.Item key={data?.email}>
+						<Menu.Item key={data?.data?.email}>
 							<li
 								className="w-full color-button-profile flex flex-col space-y-1 bg-[#00b791]
              text-white text-sm rounded-t px-4 py-3"
 							>
-								<span className="font-semibold capitalize">{data?.name}Vijay</span>
-								<span className="text-xs">{data?.email}hello@test.com</span>
+								<span className="font-semibold capitalize">{data?.data?.name}</span>
+								<span className="text-xs">{data?.data?.email}</span>
 								{/* <a className='btn btn-rounded btn-danger btn-sm'>View Profile</a> */}
 							</li>
 						</Menu.Item>

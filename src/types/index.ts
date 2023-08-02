@@ -374,6 +374,7 @@ export interface User {
   id: string;
   _id?:string;
   name: string;
+  data?: { name: string; email: string; };
   userId?: { name: string; email: string; };
   exp_date?:string;
   no_id?:number;
