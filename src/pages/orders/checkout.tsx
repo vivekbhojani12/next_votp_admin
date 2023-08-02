@@ -97,10 +97,12 @@ export default function CheckoutPage() {
             atom={shippingAddressAtom}
             type={AddressType.Shipping}
           /> */}
-          {data1 && <ScheduleGrid
-            data={data1}
-            users={users}
-          />}
+          {/* <ScheduleGrid
+            className="shadow-700 bg-light p-5 md:p-8"
+            label={t('text-delivery-schedule')}
+            count={4}
+          /> */}
+          <ScheduleGrid />
         </div>
         {/* <div className="mb-10 mt-10 w-full sm:mb-12 lg:mb-0 lg:w-96">
           <RightSideView />
