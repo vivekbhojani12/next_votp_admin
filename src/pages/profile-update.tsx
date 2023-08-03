@@ -37,6 +37,7 @@ export default function ProfilePage() {
 
   return (
     <>
+    <div className='profile-main'>
       <div className="row flex border-b border-dashed border-border-base py-5 sm:py-8">
         <h1 className="col-md-3 text-lg font-semibold text-heading">
           {t('form:form-title-profile-settings')}
@@ -51,6 +52,7 @@ export default function ProfilePage() {
         <ProfileUpdateFrom me={data} />
         <ChangePasswordForm me={data} />
       </div>}
+      </div>
     </>
   );
 }

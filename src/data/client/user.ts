@@ -94,7 +94,7 @@ export const userClient = {
   
   delete({ id }: { id: string }) {
     console.log(id,'the value of _id<<<<<<<<<>>>>>>>>>>>>in delete')
-    return HttpClient.delete(`/users/:id?_id=${id}`);
+    return HttpClient.delete(`v1/users/:id?_id=${id}`);
   },
 
 
