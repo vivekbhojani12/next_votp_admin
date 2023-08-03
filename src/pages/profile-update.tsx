@@ -37,6 +37,7 @@ export default function ProfilePage() {
 
   return (
     <>
+<<<<<<< HEAD
       <div className='profile-main'>
         <div className="row flex border-b border-dashed border-border-base py-5 sm:py-8">
           <h1 className="col-md-3 text-lg font-semibold text-heading">
@@ -46,6 +47,14 @@ export default function ProfilePage() {
 
 
         </div>
+=======
+    <div className='profile-main'>
+      <div className="row flex border-b border-dashed border-border-base py-5 sm:py-8">
+        <h1 className="col-md-3 text-lg font-semibold text-heading">
+          {t('form:form-title-profile-settings')}
+        </h1>
+      </div>
+>>>>>>> a6b5f6a1b592767583358004f446b7794a5c93c6
 
         {data && data1 && id && <div>
           <ProfileUpdateFrom me={data1} />

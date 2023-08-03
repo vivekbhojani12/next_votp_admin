@@ -142,12 +142,12 @@ export default function Dashboard({ paginatorInfoo, onPagination }: IProps) {
                 <div className="card card-stats card-primary">
                   <div className="card-body ">
                     <div className="row">
-                      <div className="col-5">
+                      <div className="col-4">
                         <div className="icon-big text-center">
                           <i className="la la la-user-plus"></i>
                         </div>
                       </div>
-                      <div className="col-7 d-flex align-items-center">
+                      <div className="col-8 d-flex align-items-center">
                         <div className="numbers">
                           <p className="card-category">Upcoming Renews</p>
                           <h4 className="card-title">576</h4>

@@ -42,6 +42,7 @@ type FormValues = {
 };
 
 export default function ProfileUpdate({ me }: any) {
+
   console.log(me, 'data<<<<<<>>>>>>>>>>>>>>>>>>');
   const { t } = useTranslation();
   const { mutate: updateUser, isLoading: loading } = useUpdateUserMutation();
@@ -107,17 +108,13 @@ export default function ProfileUpdate({ me }: any) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} onReset={handleBackButtonClick}>
-      {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
-        <Description
-          title={t('form:input-label-avatar')}
-          details={t('form:avatar-help-text')}
-          className="w-full px-0 pb-5 sm:w-4/12 sm:py-8 sm:pe-4 md:w-1/3 md:pe-5"
-        />
+      <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
+
 
         <Card className="w-full sm:w-8/12 md:w-2/3">
           <FileInput name="profile.avatar" control={control} multiple={false} />
         </Card>
-      </div> */}
+      </div>
       {/* {permission ? ( */}
       {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
           <Description
@@ -126,15 +123,17 @@ export default function ProfileUpdate({ me }: any) {
             className="w-full px-0 pb-5 sm:w-4/12 sm:py-8 sm:pe-4 md:w-1/3 md:pe-5"
           />
 
-          <Card className="mb-5 w-full sm:w-8/12 md:w-2/3">
-            <Input
-              label={t('form:input-notification-email')}
-              {...register('profile.notifications.email')}
-              error={t(errors?.profile?.notifications?.email?.message!)}
-              variant="outline"
-              className="mb-5"
-              type="email"
-            />
+
+  <Card className="mb-5 w-full">
+    <div className='row'>
+      <Input
+        label={t('form:input-label-name')}
+        {...register('name')}
+        error={t(errors.name?.message!)}
+        variant="outline"
+        className="mb-5 col-md-6"
+      />
+
             <div className="flex items-center gap-x-4">
               <SwitchInput
                 name="profile.notifications.enable"
@@ -194,6 +193,7 @@ export default function ProfileUpdate({ me }: any) {
             variant="outline"
             className="mb-5"
           /> */}
+
           <div className="w-full text-end">
             <Button
               className="settings-colo-profile"
@@ -204,13 +204,12 @@ export default function ProfileUpdate({ me }: any) {
             </Button>
           </div>
         </Card>
-
         <div className="mt-4 w-full text-start">
           <Button type="reset" variant="outline">
             {t('form:button-label-back')}
           </Button>
         </div>
       </div>
-    </form>
+    </form >
   );
 }
