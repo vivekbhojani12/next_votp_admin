@@ -33,28 +33,28 @@ export default function ProfilePage() {
   if (loading1) return <Loader text={t('common:text-loading')} />;
   console.log(data1, 'value of data1');
   console.log(data, 'value of data');
-  
+
 
   return (
     <>
-    <div className='profile-main'>
-      <div className="row flex border-b border-dashed border-border-base py-5 sm:py-8">
-        <h1 className="col-md-3 text-lg font-semibold text-heading">
-          {t('form:form-title-profile-settings')}
+      <div className='profile-main'>
+        <div className="row flex border-b border-dashed border-border-base py-5 sm:py-8">
+          <h1 className="col-md-3 text-lg font-semibold text-heading">
+            {t('form:form-title-profile-settings')}
 
-        </h1>
+          </h1>
 
 
-      </div>
+        </div>
 
-      {data && data1 && id && <div>
-        <ProfileUpdateFrom me={data1} />
-        <ChangePasswordForm me={data1} />
-      </div>}
-      {data && id === undefined && <div>
-        <ProfileUpdateFrom me={data} />
-        <ChangePasswordForm me={data} />
-      </div>}
+        {data && data1 && id && <div>
+          <ProfileUpdateFrom me={data1} />
+          <ChangePasswordForm me={data1} />
+        </div>}
+        {data && id === undefined && <div>
+          <ProfileUpdateFrom me={data} />
+          <ChangePasswordForm me={data} />
+        </div>}
       </div>
     </>
   );

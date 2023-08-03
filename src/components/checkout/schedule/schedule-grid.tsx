@@ -173,92 +173,71 @@ const ScheduleGrid = ({ data, users }: any) => {
 
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} onReset={handleBackButtonClick}>
-      <div className="my-5 flex flex-wrap sm:my-8">
-        {/* <Button type="reset" variant="outline">
-          {t('form:button-label-back')}
-        </Button> */}
-        <Card className="w-full ">
-          {/* <Input
-            label={t('form:input-label-name')}
-            {...register('name')}
-            type="text"
-            variant="outline"
-            className="mb-4"
-            error={t(errors.name?.message!)}
-          /> */}
-
-          {/* <Input
-            label={t('form:input-label-email')}
-            {...register('email')}
-            type="email"
-            variant="outline"
-            className="mb-4"
-            error={t(errors.email?.message!)}
-          /> */}
-          <div>
-            <div><label><b>Select Email</b> </label></div>
+    <>
+      <form onSubmit={handleSubmit(onSubmit)} onReset={handleBackButtonClick}>
+        <div className="my-5 flex flex-wrap sm:my-8">
+          <Card className="w-full ">
             <div>
-              <select
-                {...register('userId', { required: 'Please select a Email.' })}
-                // variant="outline"
-                className="mb-4 w-full"
-                defaultValue={''}
-              >
-                <option value="" disabled>
-                  Select an email
-                </option>
-                {/* Assuming you have an array of user objects with email and user_id */}
-                {users.map((user: any, index: any) => (
-                  <option key={index} value={user._id}>
-                    {user.email}
+              <div><label><b>Select Email</b> </label></div>
+              <div>
+                <select
+                  {...register('userId', { required: 'Please select a Email.' })}
+                  className="mb-4 w-full"
+                  defaultValue={''}
+                >
+                  <option value="" disabled>
+                    Select an email
                   </option>
-                ))}
-              </select>
+                  {/* Assuming you have an array of user objects with email and user_id */}
+                  {users.map((user: any, index: any) => (
+                    <option key={index} value={user._id}>
+                      {user.email}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
-          </div>
-          <Input
-            label={t('App Token')}
-            {...register('token')}
-            type="apptoken"
-            variant="outline"
-            className="mb-4"
-            error={t(errors.token?.message!)}
-          />
-          <Input
-            label={t('No Id')}
-            {...register('no_id')}
-            type="no id"
-            variant="outline"
-            className="mb-4"
-            error={t(errors.no_id?.message!)}
-          />
-          {data && startDate !== null && data?.data?.exp_date !== null && <div >
-            <div><label><b>Expiry Date</b> </label></div>
-            <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)} // Use the correct way to update the startDate state
-              // dateFormat="yyyy-MM-dd" // Set the desired date format for the DatePicker
-              className="form-control" />
-          </div>}
-          <div className="row button-pt ">
-            <Button className=" color-button-back col-md-4" type="reset" variant="outline">
-              {t('form:button-label-back')}
-            </Button>
-            <div className='col-md-4'></div>
-            <Button
-              className="color-button-users col-md-4"
-              loading={loading}
-              disabled={loading}
-            >
-              {t('Update Token')}
-            </Button>
-
-
-          </div>
-        </Card>
-      </div>
-    </form>
+            <Input
+              label={t('App Token')}
+              {...register('token')}
+              type="apptoken"
+              variant="outline"
+              className="mb-4"
+              error={t(errors.token?.message!)}
+            />
+            <Input
+              label={t('No Id')}
+              {...register('no_id')}
+              type="no id"
+              variant="outline"
+              className="mb-4"
+              error={t(errors.no_id?.message!)}
+            />
+            {data && startDate !== null && data?.data?.exp_date !== null && <div >
+              <div><label><b>Expiry Date</b> </label></div>
+              <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)} // Use the correct way to update the startDate state
+                // dateFormat="yyyy-MM-dd" // Set the desired date format for the DatePicker
+                className="form-control" />
+            </div>}
+            <div className="row button-pt ">
+              <Button className=" color-button-back col-md-4" type="reset" variant="outline">
+                {t('form:button-label-back')}
+              </Button>
+              <div className='col-md-4'></div>
+              <Button
+                className="color-button-users col-md-4"
+                loading={loading}
+                disabled={loading}
+              >
+                {t('Update Token')}
+              </Button>
+            </div>
+          </Card>
+        </div>
+      </form>
+    </>
   );
 };
 
