@@ -5,7 +5,7 @@ import {
   shippingAddressAtom,
 } from '@/contexts/checkout';
 import dynamic from 'next/dynamic';
-import { useMeQuery, useTokenUpdateQuery, useUsersTokenQuery } from '@/data/user';
+import { useMeQuery, useTokenUpdateQuery, useUsersTokenQuery, useUsersQuery } from '@/data/user';
 import ErrorMessage from '@/components/ui/error-message';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticProps } from 'next';
@@ -39,7 +39,7 @@ export default function CheckoutPage() {
   const [currentUrl, setCurrentUrl] = useState('');
   const [id, setId] = useState('');
 
-  const { users, paginatorInfo, loading, error } = useUsersTokenQuery({});
+  const { users, paginatorInfo, loading, error } = useUsersQuery({});
   console.log(users, 'Users<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>')
   // const data1 =  useUserQuery({id})
   useEffect(() => {
@@ -97,12 +97,10 @@ export default function CheckoutPage() {
             atom={shippingAddressAtom}
             type={AddressType.Shipping}
           /> */}
-          {/* <ScheduleGrid
-            className="shadow-700 bg-light p-5 md:p-8"
-            label={t('text-delivery-schedule')}
-            count={4}
-          /> */}
-          <ScheduleGrid />
+          {data1 && <ScheduleGrid
+            data={data1}
+            users={users}
+          />}
         </div>
         {/* <div className="mb-10 mt-10 w-full sm:mb-12 lg:mb-0 lg:w-96">
           <RightSideView />

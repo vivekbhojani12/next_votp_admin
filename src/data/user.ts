@@ -108,7 +108,7 @@ export const useUpdateTOkenMutation = () => {
     // Always refetch after error or success:
     onSettled: () => {
       queryClient.invalidateQueries(API_ENDPOINTS.ME);
-      queryClient.invalidateQueries(API_ENDPOINTS.USERS);
+      queryClient.invalidateQueries(API_ENDPOINTS.FACTHED_TOKEN_USER);
     },
   });
 };

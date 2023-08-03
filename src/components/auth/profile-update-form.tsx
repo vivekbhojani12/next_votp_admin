@@ -10,15 +10,17 @@ import FileInput from '@/components/ui/file-input';
 import pick from 'lodash/pick';
 import SwitchInput from '@/components/ui/switch-input';
 import Label from '@/components/ui/label';
+import { profileValidationSchema } from '../user/profile-edit.schema';
 import { adminOnly, getAuthCredentials, hasAccess } from '@/utils/auth-utils';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router'; // Step 1: Import the useRouter hook
 import { useEffect } from 'react';
 type FormValues = {
   // name: string;
-  _id:string;
+  _id: string;
   // mobile:string,
-  name:string;
-  email:string;
+  name: string;
+  email: string;
 
   // first_name:string;
   // last_name:string;
@@ -40,7 +42,7 @@ type FormValues = {
 };
 
 export default function ProfileUpdate({ me }: any) {
-  console.log(me,'data<<<<<<>>>>>>>>>>>>>>>>>>')
+  console.log(me, 'data<<<<<<>>>>>>>>>>>>>>>>>>');
   const { t } = useTranslation();
   const { mutate: updateUser, isLoading: loading } = useUpdateUserMutation();
   const { token } = getAuthCredentials();
@@ -65,20 +67,21 @@ export default function ProfileUpdate({ me }: any) {
           // 'profile.notifications.enable',
         ])),
     },
+    resolver: yupResolver(profileValidationSchema),
   });
   const handleBackButtonClick = () => {
     router.back();
-    reset() // Navigate back to the previous page
+    reset(); // Navigate back to the previous page
   };
   useEffect(() => {
-    reset(me?.data)
+    reset(me?.data);
   }, [me]);
   async function onSubmit(values: FormValues) {
-    const {name} = values;
+    const { name } = values;
     // const { notifications } = profile;
     const input = {
       _id: me?.data?._id,
-      name:name,
+      name: name,
       // mobile:mobile,
       // first_name:first_name,
       // last_name:last_name,
@@ -116,7 +119,7 @@ export default function ProfileUpdate({ me }: any) {
         </Card>
       </div> */}
       {/* {permission ? ( */}
-        {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
+      {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
           <Description
             title={t('form:form-notification-title')}
             details={t('form:form-notification-description')}
@@ -148,7 +151,7 @@ export default function ProfileUpdate({ me }: any) {
       )} */}
       <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
         <Card className="mb-5 w-full">
-        <Input
+          <Input
             label={t('form:input-label-name')}
             {...register('name')}
             error={t(errors.name?.message!)}
@@ -191,18 +194,22 @@ export default function ProfileUpdate({ me }: any) {
             variant="outline"
             className="mb-5"
           /> */}
-           <div className="w-full text-end">
-          <Button className='settings-colo-profile' loading={loading} disabled={loading}>
-            {t('form:button-label-save')}
+          <div className="w-full text-end">
+            <Button
+              className="settings-colo-profile"
+              loading={loading}
+              disabled={loading}
+            >
+              {t('form:button-label-save')}
+            </Button>
+          </div>
+        </Card>
+
+        <div className="mt-4 w-full text-start">
+          <Button type="reset" variant="outline">
+            {t('form:button-label-back')}
           </Button>
         </div>
-        </Card>
-       
-        <div className="w-full text-start mt-4">
-        <Button type="reset" variant="outline">
-          {t('form:button-label-back')}
-        </Button>
-      </div>
       </div>
     </form>
   );
