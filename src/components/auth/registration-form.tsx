@@ -33,7 +33,7 @@ const registrationFormSchema = yup.object().shape({
     .required('form:error-email-required'),
   password: yup.string().required('form:error-password-required'),
   // mobile: yup
-  
+
   // .string()
   // .matches(/^[0-9]{10}$/, 'Mobile Number Is Not Valid')
   // .required('form:error-mobile-required'),

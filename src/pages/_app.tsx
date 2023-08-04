@@ -51,30 +51,30 @@ const CustomApp = ({ Component, pageProps }: AppPropsWithLayout) => {
     <div dir={dir}>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps?.dehydratedState}>
-          {/* <AppSettings> */}
-          <UIProvider>
-            <ModalProvider>
-              <>
-                <CartProvider>
-                  <DefaultSeo />
-                  {authProps ? (
-                    <PrivateRoute authProps={authProps}>
+          <AppSettings>
+            <UIProvider>
+              <ModalProvider>
+                <>
+                  <CartProvider>
+                    <DefaultSeo />
+                    {authProps ? (
+                      <PrivateRoute authProps={authProps}>
+                        <Layout {...pageProps}>
+                          <Component {...pageProps} />
+                        </Layout>
+                      </PrivateRoute>
+                    ) : (
                       <Layout {...pageProps}>
                         <Component {...pageProps} />
                       </Layout>
-                    </PrivateRoute>
-                  ) : (
-                    <Layout {...pageProps}>
-                      <Component {...pageProps} />
-                    </Layout>
-                  )}
-                  <ToastContainer autoClose={2000} theme="colored" />
-                  <ManagedModal />
-                </CartProvider>
-              </>
-            </ModalProvider>
-          </UIProvider>
-          {/* </AppSettings> */}
+                    )}
+                    <ToastContainer autoClose={2000} theme="colored" />
+                    <ManagedModal />
+                  </CartProvider>
+                </>
+              </ModalProvider>
+            </UIProvider>
+          </AppSettings>
           <ReactQueryDevtools />
         </Hydrate>
       </QueryClientProvider>
