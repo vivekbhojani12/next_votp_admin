@@ -51,30 +51,30 @@ const CustomApp = ({ Component, pageProps }: AppPropsWithLayout) => {
     <div dir={dir}>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps?.dehydratedState}>
-          <AppSettings>
-            <UIProvider>
-              <ModalProvider>
-                <>
-                  <CartProvider>
-                    <DefaultSeo />
-                    {authProps ? (
-                      <PrivateRoute authProps={authProps}>
-                        <Layout {...pageProps}>
-                          <Component {...pageProps} />
-                        </Layout>
-                      </PrivateRoute>
-                    ) : (
+          {/* <AppSettings> */}
+          <UIProvider>
+            <ModalProvider>
+              <>
+                <CartProvider>
+                  <DefaultSeo />
+                  {authProps ? (
+                    <PrivateRoute authProps={authProps}>
                       <Layout {...pageProps}>
                         <Component {...pageProps} />
                       </Layout>
-                    )}
-                    <ToastContainer autoClose={2000} theme="colored" />
-                    <ManagedModal />
-                  </CartProvider>
-                </>
-              </ModalProvider>
-            </UIProvider>
-          </AppSettings>
+                    </PrivateRoute>
+                  ) : (
+                    <Layout {...pageProps}>
+                      <Component {...pageProps} />
+                    </Layout>
+                  )}
+                  <ToastContainer autoClose={2000} theme="colored" />
+                  <ManagedModal />
+                </CartProvider>
+              </>
+            </ModalProvider>
+          </UIProvider>
+          {/* </AppSettings> */}
           <ReactQueryDevtools />
         </Hydrate>
       </QueryClientProvider>
@@ -83,3 +83,5 @@ const CustomApp = ({ Component, pageProps }: AppPropsWithLayout) => {
 };
 
 export default appWithTranslation(CustomApp);
+
+
