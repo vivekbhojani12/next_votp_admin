@@ -22,11 +22,11 @@ Axios.interceptors.request.use((config) => {
   let token = '';
   if (cookies) {
     token = JSON.parse(cookies)['token'];
-  // config.headers = {
-  //   ...config.headers,
-  //   'x-access-token': token,
-  // }
-  config.headers['x-access-token']=token
+  config.headers = {
+    ...config.headers,
+    'x-access-token': token,
+  }
+  // config.headers['x-access-token']=token
  }
   return config;
 });
