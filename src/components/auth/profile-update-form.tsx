@@ -108,13 +108,11 @@ export default function ProfileUpdate({ me }: any) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} onReset={handleBackButtonClick}>
-      <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
-
-
+      {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
         <Card className="w-full sm:w-8/12 md:w-2/3">
           <FileInput name="profile.avatar" control={control} multiple={false} />
         </Card>
-      </div>
+      </div> */}
       {/* {permission ? ( */}
       {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
           <Description
