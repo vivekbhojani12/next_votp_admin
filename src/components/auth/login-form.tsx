@@ -12,10 +12,15 @@ import { useState } from 'react';
 import Alert from '@/components/ui/alert';
 import Router from 'next/router';
 import {
+  allowedRolestoAdmin,
+  ownerAndStaffOnly,
   allowedRoles,
   hasAccess,
+  // setCustomerCredentials,
   setAuthCredentials,
+  setAuthRole,
 } from '@/utils/auth-utils';
+import { string } from 'yup/lib/locale';
 
 const loginFormSchema = yup.object().shape({
   email: yup
@@ -40,10 +45,14 @@ const LoginForm = () => {
         onSuccess: (data) => {
           if (data?.token) {
             if (hasAccess(data?.token)) {
-              setAuthCredentials(data?.token);
-              Router.push(Routes.dashboard);
-              // console.log(Routes.dashboard,'route to deshboard')
-              // return;
+              if (data?.data?.role_id === '645a429366dbda4c6eba064f') {
+                setAuthCredentials(data?.token, allowedRoles);
+                Router.push(Routes.dashboard);
+              }
+              else {
+                setAuthCredentials(data?.token, allowedRolestoAdmin);
+                Router.push(Routes.dashboard);
+              }
             } else {
               console.log('encounterd with error ', setErrorMessage('form:error-enough-permission'))
               // Router.push(Routes.dashboard);

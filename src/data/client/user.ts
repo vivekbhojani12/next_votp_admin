@@ -91,6 +91,15 @@ export const userClient = {
       search: HttpClient.formatSearchParams({ name }),
     });
   },
+
+  fetchClientPurchasedToken: ({ name, ...params }: Partial<UserQueryOptions>) => {
+    return HttpClient.get<UserPaginator>(API_ENDPOINTS.FACTHED_TOKEN_CLIENT, {
+      searchJoin: 'and',
+      with: 'wallet',
+      ...params,
+      search: HttpClient.formatSearchParams({ name }),
+    });
+  },
   
   delete({ id }: { id: string }) {
     console.log(id,'the value of _id<<<<<<<<<>>>>>>>>>>>>in delete')

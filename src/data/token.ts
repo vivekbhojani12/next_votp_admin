@@ -67,12 +67,12 @@ export const useCreateTokenMutation = () => {
   return useMutation(tokenClient.createToken, {
     onSuccess: () => {
       toast.success(t('common:successfully-register'));
-      router.replace(Routes.dashboard)
+      // router.replace(Routes.dashboard)
 
     },
     onSettled: () => {
       // queryClient.invalidateQueries(API_ENDPOINTS.USERS);
-      queryClient.invalidateQueries(API_ENDPOINTS.REGISTER);
+      queryClient.invalidateQueries(API_ENDPOINTS.FACTHED_TOKEN_USER);
     },
   });
 };

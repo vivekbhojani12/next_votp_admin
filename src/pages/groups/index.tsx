@@ -79,7 +79,6 @@ export default function TypesPage() {
 
   useEffect(() => {
     if (data) {
-      console.log(data, 'the value of data');
       setResponse(data);
     }
   }, [data]);
@@ -172,7 +171,7 @@ export default function TypesPage() {
                       type="date"
                       {...register('exp_date', {
                         required: 'Date is required',
-                      })} 
+                      })}
                       className="form-control"
                     />
                     {errors.exp_date && (
@@ -205,7 +204,7 @@ export default function TypesPage() {
                       <tbody>
                         <tr>
                           <td className="td1">Name</td>
-                          <td>User Name</td>
+                          <td>{response?.name}</td>
                         </tr>
                         <tr>
                           <td className="td1">App Token</td>
