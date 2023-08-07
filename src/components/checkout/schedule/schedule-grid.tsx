@@ -174,6 +174,11 @@ const ScheduleGrid = ({ data, users }: any) => {
 
   return (
     <>
+      <div className="flex border-b border-dashed border-border-base py-5 sm:py-8">
+        <h1 className="text-lg font-semibold text-heading">
+          {t('form:form-title-users-edit')}
+        </h1>
+      </div>
       <form onSubmit={handleSubmit(onSubmit)} onReset={handleBackButtonClick}>
         <div className="my-5 flex flex-wrap sm:my-8">
           <Card className="w-full ">
@@ -221,20 +226,24 @@ const ScheduleGrid = ({ data, users }: any) => {
                 // dateFormat="yyyy-MM-dd" // Set the desired date format for the DatePicker
                 className="form-control" />
             </div>}
-            <div className="row button-pt ">
-              <Button className=" color-button-back col-md-4" type="reset" variant="outline">
-                {t('form:button-label-back')}
-              </Button>
-              <div className='col-md-4'></div>
-              <Button
-                className="color-button-users col-md-4"
-                loading={loading}
-                disabled={loading}
-              >
-                {t('Update Token')}
-              </Button>
-            </div>
+
           </Card>
+        </div>
+        <div className="row  ">
+          <div className='col-md-6'>
+            <Button className=" color-button-back" type="reset" variant="outline">
+              {t('form:button-label-back')}
+            </Button>
+          </div>
+          <div className='text-end  col-md-6'>
+            <Button
+              className="color-button-users "
+              loading={loading}
+              disabled={loading}
+            >
+              {t('Update Token')}
+            </Button>
+          </div>
         </div>
       </form>
     </>

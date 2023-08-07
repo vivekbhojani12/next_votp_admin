@@ -106,7 +106,11 @@ export default function ProfileUpdate({ me }: any) {
     updateUser(input);
   }
 
-  return (
+  return (<><div className="flex border-b border-dashed border-border-base py-5 sm:py-8">
+    <h1 className="text-lg font-semibold text-heading">
+      {t('form:form-title-profile-settings')}
+    </h1>
+  </div>
     <form onSubmit={handleSubmit(onSubmit)} onReset={handleBackButtonClick}>
       {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
         <Card className="w-full sm:w-8/12 md:w-2/3">
@@ -148,21 +152,23 @@ export default function ProfileUpdate({ me }: any) {
       )} */}
       <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
         <Card className="mb-5 w-full">
-          <Input
-            label={t('form:input-label-name')}
-            {...register('name')}
-            error={t(errors.name?.message!)}
-            variant="outline"
-            className="mb-5"
-          />
-          <Input
-            label={t('Email')}
-            {...register('email')}
-            value={me?.data?.email}
-            error={t(errors.email?.message!)}
-            variant="outline"
-            className="mb-5"
-          />
+          <div className='row'>
+            <Input
+              label={t('form:input-label-name')}
+              {...register('name')}
+              error={t(errors.name?.message!)}
+              variant="outline"
+              className="mb-5 col-md-6"
+            />
+            <Input
+              label={t('Email')}
+              {...register('email')}
+              value={me?.data?.email}
+              error={t(errors.email?.message!)}
+              variant="outline"
+              className="mb-5 col-md-6"
+            />
+          </div>
           {/* <Input
             label={t('form:input-label-name')}
             {...register('name')}
@@ -209,5 +215,6 @@ export default function ProfileUpdate({ me }: any) {
         </div>
       </div>
     </form >
+  </>
   );
 }
