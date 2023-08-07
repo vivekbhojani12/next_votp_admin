@@ -2632,8 +2632,7 @@ body {
 
 .main-panel .content {
   min-height: calc(100% - 123px);
-  margin-left: 35px;
-  /* margin-top: 55px; */
+
 }
 
 .footer {
@@ -7520,25 +7519,30 @@ a:hover {
 .sidebar-with {
   width: 19%;
 }
-.email-colo{
+
+.email-colo {
   color: red;
-  
+
 }
-.button-pt{
+
+.button-pt {
   padding-top: 30px;
 }
-.users-main{
+
+
+
+.profile-main {
   margin-left: 40px;
 }
-.profile-main{
-  margin-left: 40px;
-}
+
 .color-button-back {
-  border: 1px solid #991e32!important;
+  border: 1px solid #991e32 !important;
   color: #991e32;
 }
-.color-button-back:hover{
-  border: 1px solid #991e32!important;
+
+.color-button-back:hover {
+  border: 1px solid #991e32 !important;
   color: #991e32;
 }
+
 /*# sourceMappingURL=ready.css.map */

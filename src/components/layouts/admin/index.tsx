@@ -37,7 +37,7 @@ const AdminLayout: React.FC<{ children?: React.ReactNode }> = ({
             <SidebarItemMap />
           </div>
         </aside>
-        <main className="ltr:xl:pl-76 rtl:xl:pr-76 w-full ltr:lg:pl-72 rtl:lg:pr-72 rtl:lg:pl-0">
+        <main className="ltr:xl:pl-76 rtl:xl:pr-76 w-full ltr:lg:pl-64 rtl:lg:pr-72 rtl:lg:pl-0">
           <div className="h-full form-pb">{children}</div>
         </main>
       </div>
