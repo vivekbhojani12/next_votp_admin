@@ -69,7 +69,7 @@ const CustomerCreateForm = () => {
           className="sm:pe-4 md:pe-5 w-full px-0 pb-5 sm:w-4/12 sm:py-8 md:w-1/3"
         /> */}
 
-        <Card className="w-full ">
+        <Card className="w-full users-from-bg">
           <Input
             label={t('form:input-label-name')}
             {...register('name')}
