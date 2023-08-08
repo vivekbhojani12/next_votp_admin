@@ -81,7 +81,6 @@ export default function Dashboard({ paginatorInfoo, onPagination }: IProps) {
     <>
       <div className="main-panel">
         <div className="content">
-
           <h4 className="page-title">Dashboard</h4>
           <div className="row">
             <div className="col-md-3">
