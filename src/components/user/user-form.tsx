@@ -47,7 +47,7 @@ const CustomerCreateForm = () => {
         email,
         password,
         // permission: Permission.StoreOwner,
-      },  
+      },
       // {
       //   onError: (error: any) => {
       //     Object.keys(error?.response?.data).forEach((field: any) => {
@@ -62,7 +62,7 @@ const CustomerCreateForm = () => {
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
-      <div className="my-5 flex flex-wrap sm:my-8">
+      <div className=" flex flex-wrap createusers-from">
         {/* <Description
           title={t('form:form-title-information')}
           details={t('form:customer-form-info-help-text')}
