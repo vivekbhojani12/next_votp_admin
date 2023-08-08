@@ -174,14 +174,14 @@ const ScheduleGrid = ({ data, users }: any) => {
 
   return (
     <>
-      <div className="flex border-b border-dashed border-border-base py-5 sm:py-8">
+      <div className="flex  border-border-base ">
         <h1 className="text-lg font-semibold text-heading">
           {t('form:form-title-users-edit')}
         </h1>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} onReset={handleBackButtonClick}>
-        <div className="my-5 flex flex-wrap sm:my-8">
-          <Card className="w-full ">
+        <div className="UsersDetails-from flex flex-wrap">
+          <Card className="w-full users-from-bg ">
             <div>
               <div><label><b>Select Email</b> </label></div>
               <div>

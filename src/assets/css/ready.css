@@ -7545,4 +7545,66 @@ a:hover {
   color: #991e32;
 }
 
+.createtoken-email {
+  height: 48px !important;
+}
+
+.createtoken-date {
+  height: 48px !important;
+}
+
+.tokan-label-email {
+  line-height: 0.5;
+}
+
+.tokan-label-date {
+  line-height: 0.5;
+}
+
+.users-card-color {
+  background-color: #fff !important;
+  box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
+}
+
+.users-label {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333333;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+.UsersDetails-from {
+  margin-bottom: 25px;
+}
+
+.users-Details {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.users-table {
+  padding: 15px;
+  background-color: #fff;
+}
+
+th.rc-table-cell {
+  background-color: #d1d1d1 !important;
+  color: #554;
+  font-size: 14px;
+}
+
+
+.rc-table-cell.rc-table-cell-row-hover {
+  background-color: transparent !important;
+}
+
+.profile-from-bg {
+  background-color: #fff !important;
+}
+
+.users-from-bg {
+  background-color: #fff !important;
+}
+
 /*# sourceMappingURL=ready.css.map */

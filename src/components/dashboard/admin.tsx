@@ -37,7 +37,7 @@ export default function Dashboard({ paginatorInfoo, onPagination }: IProps) {
   });
 
   const queryClient = useQueryClient();
-  
+
   const deleteMutation = useMutation(deleteQuery, {
     onSuccess: () => {
       // Invalidate the "allToken" query and any other queries you want to update
@@ -78,80 +78,79 @@ export default function Dashboard({ paginatorInfoo, onPagination }: IProps) {
     <>
       <div className="main-panel">
         <div className="content">
-          <div className="container-fluid">
-            <h4 className="page-title">Dashboard</h4>
-            <div className="row">
-              <div className="col-md-3">
-                <div className="card card-stats card-warning">
-                  <div className="card-body ">
-                    <div className="row">
-                      <div className="col-5">
-                        <div className="icon-big text-center">
-                          <i className="la la-users"></i>
-                        </div>
+
+          <h4 className="page-title">Dashboard</h4>
+          <div className="row">
+            <div className="col-md-3">
+              <div className="card card-stats card-warning">
+                <div className="card-body ">
+                  <div className="row">
+                    <div className="col-5">
+                      <div className="icon-big text-center">
+                        <i className="la la-users"></i>
                       </div>
-                      <div className="col-7 d-flex align-items-center">
-                        <div className="numbers">
-                          <p className="card-category">Total Users</p>
-                          <h4 className="card-title">2,294</h4>
-                        </div>
+                    </div>
+                    <div className="col-7 d-flex align-items-center">
+                      <div className="numbers">
+                        <p className="card-category">Total Users</p>
+                        <h4 className="card-title">2,294</h4>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
-                <div className="card card-stats card-success">
-                  <div className="card-body ">
-                    <div className="row">
-                      <div className="col-5">
-                        <div className="icon-big text-center">
-                          <i className="la la-user"></i>
-                        </div>
+            </div>
+            <div className="col-md-3">
+              <div className="card card-stats card-success">
+                <div className="card-body ">
+                  <div className="row">
+                    <div className="col-5">
+                      <div className="icon-big text-center">
+                        <i className="la la-user"></i>
                       </div>
-                      <div className="col-7 d-flex align-items-center">
-                        <div className="numbers">
-                          <p className="card-category">Active Users</p>
-                          <h4 className="card-title">1,345</h4>
-                        </div>
+                    </div>
+                    <div className="col-7 d-flex align-items-center">
+                      <div className="numbers">
+                        <p className="card-category">Active Users</p>
+                        <h4 className="card-title">1,345</h4>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
-                <div className="card card-stats card-danger">
-                  <div className="card-body">
-                    <div className="row">
-                      <div className="col-5">
-                        <div className="icon-big text-center">
-                          <i className="la la-user-times"></i>
-                        </div>
+            </div>
+            <div className="col-md-3">
+              <div className="card card-stats card-danger">
+                <div className="card-body">
+                  <div className="row">
+                    <div className="col-5">
+                      <div className="icon-big text-center">
+                        <i className="la la-user-times"></i>
                       </div>
-                      <div className="col-7 d-flex align-items-center">
-                        <div className="numbers">
-                          <p className="card-category">Inactive Users</p>
-                          <h4 className="card-title">1303</h4>
-                        </div>
+                    </div>
+                    <div className="col-7 d-flex align-items-center">
+                      <div className="numbers">
+                        <p className="card-category">Inactive Users</p>
+                        <h4 className="card-title">1303</h4>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-md-3">
-                <div className="card card-stats card-primary">
-                  <div className="card-body ">
-                    <div className="row">
-                      <div className="col-4">
-                        <div className="icon-big text-center">
-                          <i className="la la la-user-plus"></i>
-                        </div>
+            </div>
+            <div className="col-md-3">
+              <div className="card card-stats card-primary">
+                <div className="card-body ">
+                  <div className="row">
+                    <div className="col-4">
+                      <div className="icon-big text-center">
+                        <i className="la la la-user-plus"></i>
                       </div>
-                      <div className="col-8 d-flex align-items-center">
-                        <div className="numbers">
-                          <p className="card-category">Upcoming Renews</p>
-                          <h4 className="card-title">576</h4>
-                        </div>
+                    </div>
+                    <div className="col-8 d-flex align-items-center">
+                      <div className="numbers">
+                        <p className="card-category">Upcoming Renews</p>
+                        <h4 className="card-title">576</h4>
                       </div>
                     </div>
                   </div>
@@ -159,86 +158,86 @@ export default function Dashboard({ paginatorInfoo, onPagination }: IProps) {
               </div>
             </div>
           </div>
-          <div className="container-fluid user_details">
-            <div className="row">
-              <div className="col-12">
-                <h5>Users Details</h5>
-              </div>
-              <div className="col-12">
-                <div className="card">
-                  <div className="card-body">
-                    <div className="table-responsive">
-                      <table className="table-bordered table">
-                        <thead>
-                          <tr>
-                            <th>S.No</th>
-                            <th>Name</th>
-                            <th>Email ID</th>
-                            <th>App Token</th>
-                            <th>Captcha Token</th>
-                            <th>ID's</th>
-                            <th>Expiry Date</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {users.map((user, index) => (
-                            <tr key={user.id}>
-                              <th scope="row">{index + 1}</th>
-                              <td>{user?.userId?.name}</td>
-                              <td>{user?.userId?.email}</td>
-                              <td>{user?.token}</td>
-                              <td>Captcha Token</td>
-                              <td>{user?.no_id}</td>
-                              <td>
-                                {user?.exp_date
-                                  ? new Date(user.exp_date).toLocaleDateString()
-                                  : ''}
-                              </td>
-                              {/* <td>{user.data1}</td>
+        </div>
+        <div className="container-fluid user_details">
+          <div className="row">
+            <div className="col-12 users-Details">
+              <h5>Users Details</h5>
+            </div>
+            <div className="col-12 users-Details">
+              <div className="card">
+                <div className="card-body">
+                  <div className="table-responsive">
+                    <table className="table-bordered table">
+                      <thead>
+                        <tr>
+                          <th>S.No</th>
+                          <th>Name</th>
+                          <th>Email ID</th>
+                          <th>App Token</th>
+                          <th>Captcha Token</th>
+                          <th>ID's</th>
+                          <th>Expiry Date</th>
+                          <th>Edit</th>
+                          <th>Delete</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {users.map((user, index) => (
+                          <tr key={user.id}>
+                            <th scope="row">{index + 1}</th>
+                            <td>{user?.userId?.name}</td>
+                            <td>{user?.userId?.email}</td>
+                            <td>{user?.token}</td>
+                            <td>Captcha Token</td>
+                            <td>{user?.no_id}</td>
+                            <td>
+                              {user?.exp_date
+                                ? new Date(user.exp_date).toLocaleDateString()
+                                : ''}
+                            </td>
+                            {/* <td>{user.data1}</td>
                               <td>{user.data2}</td>
                               <td>{user.data3}</td>
                               <td>{`${user.date} (${user.daysLeft} days left)`}</td> */}
-                              <td>
-                                {/* <a href="#">
+                            <td>
+                              {/* <a href="#">
                                   
                                 </a> */}
-                                <Link
-                                  href={`orders/checkout`}
-                                  as={`orders/checkout/${user?._id}`}
-                                  className="text-base transition duration-200 hover:text-heading"
-                                >
-                                  <i className="la la-edit"></i>
-                                </Link>
-                              </td>
-                              <td>
-                                <a href="#">
-                                  <i
-                                    className="la la-trash-o"
-                                    onClick={() =>
-                                      showDeleteConfirmation(
-                                        user ? user?._id : ''
-                                      )
-                                    }
-                                  ></i>
-                                </a>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                      {!!paginatorInfo?.total && (
-                        <div className="flex items-center justify-end">
-                          <Pagination
-                            total={paginatorInfo.total}
-                            current={paginatorInfo.startIndex}
-                            pageSize={10}
-                            onChange={handlePagination}
-                          />
-                        </div>
-                      )}
-                    </div>
+                              <Link
+                                href={`orders/checkout`}
+                                as={`orders/checkout/${user?._id}`}
+                                className="text-base transition duration-200 hover:text-heading"
+                              >
+                                <i className="la la-edit"></i>
+                              </Link>
+                            </td>
+                            <td>
+                              <a href="#">
+                                <i
+                                  className="la la-trash-o"
+                                  onClick={() =>
+                                    showDeleteConfirmation(
+                                      user ? user?._id : ''
+                                    )
+                                  }
+                                ></i>
+                              </a>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    {!!paginatorInfo?.total && (
+                      <div className="flex items-center justify-end">
+                        <Pagination
+                          total={paginatorInfo.total}
+                          current={paginatorInfo.startIndex}
+                          pageSize={10}
+                          onChange={handlePagination}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

@@ -28,7 +28,7 @@ export default function Customers() {
     orderBy,
     sortedBy,
   });
-  console.log(paginatorInfo,'paginatr info<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>')
+  console.log(paginatorInfo, 'paginatr info<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>')
 
   if (loading) return <Loader text={t('common:text-loading')} />;
   if (error) return <ErrorMessage message={error.message} />;
@@ -39,40 +39,39 @@ export default function Customers() {
   }
 
   function handlePagination(current: any) {
-    console.log(current,'value of current page')
+    console.log(current, 'value of current page')
     setPage(current);
   }
 
   return (
     <>
-    <div className='users-main'>
-      <Card className="mb-8 flex flex-col items-center md:flex-row">
-        <div className="mb-4 md:mb-0 md:w-1/4">
-          <h1 className="text-lg font-semibold text-heading">
-            {t('form:input-label-customers')}
-          </h1>
-        </div>
+      <div className="mb-4 md:mb-0 md:w-1/4">
+        <h1 className="text-lg users-label font-semibold text-heading">
+          {t('form:input-label-customers')}
+        </h1>
+      </div>
+      <div className='users-main'>
+        <Card className="mb-8 users-card-color flex flex-col items-center md:flex-row">
+          <div className=" flex w-full items-center md:w-3/4">
+            <Search onSearch={handleSearch} />
+            <LinkButton
+              href={`${Routes.user.create}`}
+              className="ms-4 md:ms-6 h-12 color-user"
+            >
+              <span>+ {t('form:button-label-add-customer')}</span>
+            </LinkButton>
+          </div>
+        </Card>
 
-        <div className="ms-auto flex w-full items-center md:w-3/4">
-          <Search onSearch={handleSearch} />
-          <LinkButton
-            href={`${Routes.user.create}`}
-            className="ms-4 md:ms-6 h-12 color-user"
-          >
-            <span>+ {t('form:button-label-add-customer')}</span>
-          </LinkButton>
-        </div>
-      </Card>
-
-      {loading ? null : (
-        <CustomerList
-          customers={users}
-          paginatorInfo={paginatorInfo}
-          onPagination={handlePagination}
-          onOrder={setOrder}
-          onSort={setColumn}
-        />
-      )}
+        {loading ? null : (
+          <CustomerList
+            customers={users}
+            paginatorInfo={paginatorInfo}
+            onPagination={handlePagination}
+            onOrder={setOrder}
+            onSort={setColumn}
+          />
+        )}
       </div>
     </>
   );

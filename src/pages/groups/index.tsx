@@ -106,7 +106,7 @@ export default function TypesPage() {
                       {...register('name')}
                       type="text"
                       variant="outline"
-                      className="mb-4"
+                      className="mb-4 "
                       error={t(errors.name?.message!)}
                     />
                   </div>
@@ -132,10 +132,10 @@ export default function TypesPage() {
                 <div className="col-md-3 col-12">
                   <div className="form-group">
                     {/* Email Dropdown */}
-                    <label htmlFor="email">Email</label>
+                    <label className='tokan-label-email' htmlFor="email">Email</label>
                     <select
                       {...register('email', { required: 'Email is required' })}
-                      className="form-control"
+                      className="form-control createtoken-email"
                     >
                       {/* Add default option for no selection */}
                       <option value="">Select an email</option>
@@ -167,13 +167,13 @@ export default function TypesPage() {
                 </div>
                 <div className="col-md-2 col-12">
                   <div className="form-group">
-                    <label>Date</label>
+                    <label className='tokan-label-date' >Date</label>
                     <input
                       type="date"
                       {...register('exp_date', {
                         required: 'Date is required',
-                      })} 
-                      className="form-control"
+                      })}
+                      className="form-control createtoken-date"
                     />
                     {errors.exp_date && (
                       <span className="text-danger">
