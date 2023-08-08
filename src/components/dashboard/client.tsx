@@ -23,13 +23,12 @@ type IProps = {
 
 
 export default function Client(data: any) {
-    console.log('it go to the client page<><<<>>>>>>>>>>>>>>')
     const [searchTerm, setSearchTerm] = useState('');
     const [page, setPage] = useState(1);
     const [paramId, setParamId] = useState('');
     // const { t } = useTranslation();
-
-    const [orderBy, setOrder] = useState('created_at');
+    console.log(data?.data?.data?.data?.id, 'Id<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>')
+    const [orderBy, setOrder] = useState('createdAt');
     // const [userId, setUserId] = useState('');
     // const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
     // const deleteProductMutation = useDeleteProductMutation();
@@ -38,7 +37,7 @@ export default function Client(data: any) {
         page,
         name: searchTerm,
         orderBy,
-        userId: data?.data?.data?._id
+        userId: data?.data?.data?.data?.id
         // sortedBy,
     });
     console.log(users, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<USERS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')

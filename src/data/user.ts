@@ -316,6 +316,7 @@ export const useUsersTokenQuery = (params: Partial<QueryOptionsType>) => {
 
 
 export const useClientTokenQuery = (params: Partial<QueryOptionsType>) => {
+  console.log(params,'Params<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>')
   const { data, isLoading, error } = useQuery<UserPaginator, Error>(
     [API_ENDPOINTS.FACTHED_TOKEN_USER, params],
     () => userClient.fetchClientPurchasedToken(params),
