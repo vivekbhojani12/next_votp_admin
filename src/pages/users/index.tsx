@@ -55,8 +55,8 @@ export default function Customers() {
       </div>
       <div className='users-main'>
         <Card className="mb-8 users-card-color flex flex-col items-center md:flex-row">
-          <div className=" flex w-full items-center md:w-3/4">
-            <Search onSearch={handleSearch} />
+          <div className=" flex w-full justify-between items-center ">
+            <Search onSearch={handleSearch} className='w-3/5' />
             <LinkButton
               href={`${Routes.user.create}`}
               className="ms-4 md:ms-6 h-12 color-user"
