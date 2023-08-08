@@ -24,7 +24,7 @@ type SearchProps = {
 };
 
 type SearchValue = {
-	searchText: string;
+  searchText: string;
 };
 
 const Search: React.FC<SearchProps> = ({
@@ -35,11 +35,11 @@ const Search: React.FC<SearchProps> = ({
   inputClassName,
   ...rest
 }) => {
-	const {
-		register,
-		handleSubmit,
-		watch,
-		reset,
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
 
     formState: { errors },
   } = useForm<SearchValue>({
@@ -77,7 +77,7 @@ const Search: React.FC<SearchProps> = ({
     <form
       noValidate
       role="search"
-      className={cn('relative flex w-full items-center', className)}
+      className={cn('relative flex  items-center', className)}
       onSubmit={handleSubmit(onSearch)}
     >
       <label htmlFor="search" className="sr-only">
