@@ -96,7 +96,7 @@ export default function DashboardAdmin() {
                                         <div className="col-7 d-flex align-items-center">
                                             <div className="numbers">
                                                 <p className="card-category">Total Users</p>
-                                                <h4 className="card-title">2,294</h4>
+                                                <h4 className="card-title">{paginatorInfo?.totalUsers}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +115,7 @@ export default function DashboardAdmin() {
                                         <div className="col-7 d-flex align-items-center">
                                             <div className="numbers">
                                                 <p className="card-category">Active Users</p>
-                                                <h4 className="card-title">1,345</h4>
+                                                <h4 className="card-title">{users.length}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -134,7 +134,7 @@ export default function DashboardAdmin() {
                                         <div className="col-7 d-flex align-items-center">
                                             <div className="numbers">
                                                 <p className="card-category">Inactive Users</p>
-                                                <h4 className="card-title">1303</h4>
+                                                <h4 className="card-title">{paginatorInfo?.totalInactive}</h4>
                                             </div>
                                         </div>
                                     </div>

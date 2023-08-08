@@ -748,6 +748,8 @@ export interface ApproveWithdrawInput {
 
 // -> TODO: Simplify this
 export interface MappedPaginatorInfo {
+  totalUsers?:number;
+  totalInactive?:number;
   currentPage: number;
   startIndex:number;
   pageIndex: number;
