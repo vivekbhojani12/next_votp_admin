@@ -7607,4 +7607,9 @@ th.rc-table-cell {
   background-color: #fff !important;
 }
 
+.user_details {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
 /*# sourceMappingURL=ready.css.map */
