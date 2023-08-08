@@ -27,7 +27,7 @@ export default function DashboardAdmin() {
     const [paramId, setParamId] = useState('');
     // const { t } = useTranslation();
 
-    const [orderBy, setOrder] = useState('created_at');
+    const [orderBy, setOrder] = useState('createdAt');
     const [userId, setUserId] = useState('');
     // const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
     // const deleteProductMutation = useDeleteProductMutation();
