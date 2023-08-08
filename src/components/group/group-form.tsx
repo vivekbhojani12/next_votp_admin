@@ -86,13 +86,11 @@ export default function CreateOrUpdateTypeForm({ initialValues }: IProps) {
       !initialValues ||
       !initialValues.translated_languages?.includes(router.locale!)
     ) {
-      console.log("create");
       createType({
         ...input,
         ...(initialValues?.slug && { slug: initialValues.slug }),
       });
     } else {
-      console.log("update");
       updateType({
         ...input,
         id: initialValues.id!,

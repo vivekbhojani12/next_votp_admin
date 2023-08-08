@@ -5,20 +5,33 @@ import { siteSettings } from '@/settings/site.settings';
 import { useTranslation } from 'next-i18next';
 import SidebarItem from '@/components/layouts/navigation/sidebar-item';
 import { useRouter } from 'next/router';
-
+import { useMeQuery } from '@/data/user';
 const AdminLayout: React.FC<{ children?: React.ReactNode }> = ({
   children,
 }) => {
   const { t } = useTranslation();
   const { locale } = useRouter();
   const dir = locale === 'ar' || locale === 'he' ? 'rtl' : 'ltr';
-
+  const data = useMeQuery()
+  console.log(data?.data?.data?.role_id, 'Data for me query<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+  console.log(siteSettings, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<siteSettings')
   const SidebarItemMap = () => (
     <Fragment>
-      {siteSettings.sidebarLinks.admin.map(({ href, label, icon }) => (
-        <SidebarItem href={href} label={t(label)} icon={icon} key={href} />
-      ))}
-    </Fragment>
+      {data?.data?.data?.role_id === '645a429366dbda4c6eba064e' &&
+        siteSettings.sidebarLinks.admin.map(({ href, label, icon }) => (
+          <SidebarItem href={href} label={t(label)} icon={icon} key={href} />
+        ))
+      }
+      {
+        data?.data?.data?.role_id === '645a429366dbda4c6eba064f' &&
+        // Create a new array with just the first element
+        siteSettings.sidebarLinks.admin.slice(0, 1).map(({ href, label, icon }) => (
+          <SidebarItem href={href} label={t(label)} icon={icon} key={href} />
+        ))
+
+      }
+    </Fragment >
+
   );
 
   return (

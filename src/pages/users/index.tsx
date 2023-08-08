@@ -11,7 +11,10 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Routes } from '@/config/routes';
 import { SortOrder } from '@/types';
-import { adminOnly } from '@/utils/auth-utils';
+import { adminOnly, ownerOnly } from '@/utils/auth-utils';
+import { canAccess } from '@/utils/auth-utils';
+import Cookies from 'js-cookie';
+import { AUTH_CRED } from '@/utils/constants';
 
 export default function Customers() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -45,14 +48,15 @@ export default function Customers() {
 
   return (
     <>
-      <div className="mb-4 md:mb-0 md:w-1/4">
-        <h1 className="text-lg users-label font-semibold text-heading">
-          {t('form:input-label-customers')}
-        </h1>
-      </div>
       <div className='users-main'>
-        <Card className="mb-8 users-card-color flex flex-col items-center md:flex-row">
-          <div className=" flex w-full items-center md:w-3/4">
+        <Card className="mb-8 flex flex-col items-center md:flex-row">
+          <div className="mb-4 md:mb-0 md:w-1/4">
+            <h1 className="text-lg font-semibold text-heading">
+              {t('form:input-label-customers')}
+            </h1>
+          </div>
+
+          <div className="ms-auto flex w-full items-center md:w-3/4">
             <Search onSearch={handleSearch} />
             <LinkButton
               href={`${Routes.user.create}`}
@@ -80,6 +84,7 @@ export default function Customers() {
 Customers.authenticate = {
   permissions: adminOnly,
 };
+
 Customers.Layout = Layout;
 
 export const getStaticProps = async ({ locale }: any) => ({

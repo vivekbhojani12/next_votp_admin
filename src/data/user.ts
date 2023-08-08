@@ -314,6 +314,24 @@ export const useUsersTokenQuery = (params: Partial<QueryOptionsType>) => {
   };
 };
 
+
+export const useClientTokenQuery = (params: Partial<QueryOptionsType>) => {
+  const { data, isLoading, error } = useQuery<UserPaginator, Error>(
+    [API_ENDPOINTS.FACTHED_TOKEN_USER, params],
+    () => userClient.fetchClientPurchasedToken(params),
+    {
+      keepPreviousData: true,
+    }
+  );
+
+  return {
+    users: data?.data ?? [],
+    paginatorInfo: mapPaginatorData(data as any),
+    loading: isLoading,
+    error,
+  };
+};
+
 export const useAdminsQuery = (params: Partial<QueryOptionsType>) => {
   const { data, isLoading, error } = useQuery<UserPaginator, Error>(
     [API_ENDPOINTS.ADMIN_LIST, params],

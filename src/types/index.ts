@@ -152,6 +152,7 @@ export interface AuthResponse {
   token: string;
   flag:boolean;
   message:string;
+  data:{role_id:string}
   // permissions: string[];
 }
 
@@ -372,10 +373,11 @@ export interface MakeAdminInput {
 
 export interface User {
   // 
+  role_id?:string;
   id: string;
   _id?:string;
   name: string;
-  data?: { name: string; email: string; };
+  data?: { name: string; email: string; role_id:string; };
   userId?: { name: string; email: string; };
   exp_date?:Date;
   no_id?:number;

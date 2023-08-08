@@ -12,6 +12,7 @@ export const API_ENDPOINTS = {
   ORDERS: 'orders',
   USERS: 'v1/system/users',
   FACTHED_TOKEN_USER:'v1/user/getuserstoken',
+  FACTHED_TOKEN_CLIENT:'v1/user/usertokens',
   REGISTER: 'v1/users/register',
   PRODUCTS: 'products',
   POPULAR_PRODUCTS: 'popular-products',

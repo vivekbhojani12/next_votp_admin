@@ -5,8 +5,8 @@ const Message = () => {
   return <MessagePageIndex />;
 };
 
-Message.authenticate = {
-  permissions: ownerAndStaffOnly,
-};
+// Message.authenticate = {
+//   permissions: ownerAndStaffOnly,
+// };
 
 export default Message;
