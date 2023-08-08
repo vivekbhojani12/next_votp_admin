@@ -72,6 +72,7 @@ export enum AddressType {
 export type QueryOptionsType = {
   page?: number;
   name?: string;
+  userId?:string;
   shop_id?: number;
   limit?: number;
   orderBy?: string;

@@ -22,7 +22,7 @@ type IProps = {
 };
 
 
-export default function Client() {
+export default function Client(data: any) {
     console.log('it go to the client page<><<<>>>>>>>>>>>>>>')
     const [searchTerm, setSearchTerm] = useState('');
     const [page, setPage] = useState(1);
@@ -30,7 +30,7 @@ export default function Client() {
     // const { t } = useTranslation();
 
     const [orderBy, setOrder] = useState('created_at');
-    const [userId, setUserId] = useState('');
+    // const [userId, setUserId] = useState('');
     // const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
     // const deleteProductMutation = useDeleteProductMutation();
     const { users, paginatorInfo, loading, error } = useClientTokenQuery({
@@ -38,6 +38,7 @@ export default function Client() {
         page,
         name: searchTerm,
         orderBy,
+        userId: data?.data?.data?._id
         // sortedBy,
     });
     console.log(users, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<USERS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')

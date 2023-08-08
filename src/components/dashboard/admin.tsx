@@ -280,7 +280,7 @@ export default function Dashboard() {
   return (
     <div>
       <div>
-        {data?.data?.data?.role_id === '645a429366dbda4c6eba064f' && <Client />}
+        {data && data?.data?.data?.role_id === '645a429366dbda4c6eba064f' && <Client data={data} />}
       </div>
       <div>
         {data?.data?.data?.role_id === '645a429366dbda4c6eba064e' && <DashboardAdmin />}
