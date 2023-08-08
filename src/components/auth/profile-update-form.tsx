@@ -106,7 +106,7 @@ export default function ProfileUpdate({ me }: any) {
     updateUser(input);
   }
 
-  return (<><div className="flex border-b border-dashed border-border-base py-5 sm:py-8">
+  return (<><div className="flex border-border-base ">
     <h1 className="text-lg font-semibold text-heading">
       {t('form:form-title-profile-settings')}
     </h1>
@@ -150,8 +150,8 @@ export default function ProfileUpdate({ me }: any) {
       ) : (
         ''
       )} */}
-      <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
-        <Card className="mb-5 w-full">
+      <div className=" flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
+        <Card className="mb-5 profile-from-bg w-full">
           <div className='row'>
             <Input
               label={t('form:input-label-name')}

@@ -83,7 +83,7 @@ const ChangePasswordForm = ({ me }: any) => {
       <div className="my-5 flex flex-wrap sm:my-8">
 
 
-        <Card className="mb-5 w-full ">
+        <Card className="mb-5 w-full profile-from-bg">
           <div className="row">
             <PasswordInput
               label={t('form:input-label-old-password')}

@@ -150,19 +150,22 @@ const CustomerList = ({
         );
       },
     },
+
   ];
 
   return (
     <>
       <div className="mb-6 overflow-hidden rounded shadow">
-        <Table
-          // @ts-ignore
-          columns={columns}
-          emptyText={t('table:empty-table-data')}
-          data={customers}
-          rowKey="id"
-          scroll={{ x: 800 }}
-        />
+        <div className='users-table'>
+          <Table
+            // @ts-ignore
+            columns={columns}
+            emptyText={t('table:empty-table-data')}
+            data={customers}
+            rowKey="id"
+            scroll={{ x: 800 }}
+          />
+        </div>
       </div>
       {console.log(paginatorInfo?.pageIndex, 'Paginator,,,,,,,,,,,...........')}
       {!!paginatorInfo?.total && (
