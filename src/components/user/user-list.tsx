@@ -1,5 +1,6 @@
 import Pagination from '@/components/ui/pagination';
 import Image from 'next/image';
+import Link from '@/components/ui/link';
 import { Table } from '@/components/ui/table';
 import ActionButtons from '@/components/common/action-buttons';
 import { siteSettings } from '@/settings/site.settings';
@@ -15,6 +16,8 @@ import { useTranslation } from 'next-i18next';
 import { useIsRTL } from '@/utils/locals';
 import { useState } from 'react';
 import TitleWithSort from '@/components/ui/title-with-sort';
+import { useUsersTokenQuery, deleteQuery } from '@/data/user';
+
 
 type IProps = {
   customers: User[] | undefined;
@@ -75,10 +78,18 @@ const CustomerList = ({
     //   ),
     // },
     {
+      title: t('S.No'),
+      dataIndex: 'No',
+      key: 'No',
+      align: alignLeft,
+      width: 74,
+    },
+    {
       title: t('table:table-item-title'),
       dataIndex: 'name',
       key: 'name',
       align: alignLeft,
+
     },
     {
       title: t('table:table-item-email'),
@@ -125,11 +136,13 @@ const CustomerList = ({
     //   onHeaderCell: () => onHeaderClick('status'),
     //   render: (status: boolean) => (status ? 'Active' : 'Inactive'),
     // },
+
     {
-      title: t('table:table-item-actions'),
+      title: t('table:table-item-edit'),
       dataIndex: 'id',
       key: 'actions',
-      align: 'right',
+      align: alignLeft,
+      width: 74,
       render: function Render(id: string, { is_active }: any) {
         const { data } = useMeQuery();
         console.log(data, '<<<<<<<>>>>>>>>>>>>>>>>>>>>')
@@ -138,20 +151,47 @@ const CustomerList = ({
             {data && (
               <ActionButtons
                 id={id}
-                deleteModalView={id}
                 editUrl={`/profile-update`}
-              // userStatus={true}
-              // isUserActive={is_active}
-              // showAddWalletPoints={true}
-              // showMakeAdminButton={true}
               />
             )}
           </>
         );
       },
     },
+    {
+
+      title: t('Delete'),
+      dataIndex: 'id',
+      key: 'delete',
+      align: alignLeft,
+      width: 85,
+      render: function Render(id: string, { is_active }: any) {
+        const { data } = useMeQuery();
+        console.log(data, '<<<<<<<>>>>>>>>>>>>>>>>>>>>')
+        return (
+          <>
+
+            {data && (
+              <ActionButtons
+                id={id}
+                deleteModalView={id}
+
+              />
+
+            )}
+
+          </>
+        );
+      },
+    },
 
   ];
+
+  const [page, setPage] = useState(1);
+
+  function handlePagination(current: any) {
+    setPage(current);
+  }
 
   return (
     <>
@@ -161,6 +201,7 @@ const CustomerList = ({
         </div>
         <div className="col-12 mb-6 ">
           <div className='users-table'>
+
             <Table
               // @ts-ignore
               columns={columns}
@@ -168,6 +209,7 @@ const CustomerList = ({
               data={customers}
               rowKey="id"
               scroll={{ x: 800 }}
+
             />
             {!!paginatorInfo?.total && (
               <div className="flex pt-4 items-center justify-end">
@@ -183,6 +225,7 @@ const CustomerList = ({
         </div>
       </div>
       {console.log(paginatorInfo?.pageIndex, 'Paginator,,,,,,,,,,,...........')}
+
 
     </>
   );

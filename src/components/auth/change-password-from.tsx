@@ -79,44 +79,52 @@ const ChangePasswordForm = ({ me }: any) => {
   }
 
   return (
-    <form noValidate onSubmit={handleSubmit(onSubmit)}>
-      <div className="my-5 flex flex-wrap sm:my-8">
-
-
-        <Card className="mb-5 w-full profile-from-bg">
-          <div className="row">
-            <PasswordInput
-              label={t('form:input-label-old-password')}
-              {...register('old_password')}
-              variant="outline"
-              error={t(errors.old_password?.message!)}
-              className="mb-5 col-md-4"
-            />
-            <PasswordInput
-              label={t('form:input-label-new-password')}
-              {...register('password')}
-              variant="outline"
-              error={t(errors.password?.message!)}
-              className="mb-5 col-md-4"
-            />
-            <PasswordInput
-              label={t('form:input-label-confirm-password')}
-              {...register('passwordConfirmation')}
-              variant="outline"
-              error={t(errors.passwordConfirmation?.message!)}
-              className="mb-5 col-md-4"
-            />
-          </div>
-          <div className="text-end w-full">
-            <Button className='color-button-profile' loading={loading} disabled={loading}>
-              {t('form:button-label-change-password')}
-            </Button>
-          </div>
-        </Card>
-
-
+    <>
+      {/* <div >
+        <h5>Password Update</h5>
+      </div> */}
+      <div className="col-12 user_details ">
+        <h1 className="text-lg pb-2 font-semibold text-heading">
+          {t('Password Update')}
+        </h1>
       </div>
-    </form>
+      <form noValidate onSubmit={handleSubmit(onSubmit)}>
+        <div className=" flex flex-wrap ">
+          <Card className="mb-5 w-full profile-from-bg">
+            <div className="row">
+              <PasswordInput
+                label={t('form:input-label-old-password')}
+                {...register('old_password')}
+                variant="outline"
+                error={t(errors.old_password?.message!)}
+                className="mb-5 col-md-4"
+              />
+              <PasswordInput
+                label={t('form:input-label-new-password')}
+                {...register('password')}
+                variant="outline"
+                error={t(errors.password?.message!)}
+                className="mb-5 col-md-4"
+              />
+              <PasswordInput
+                label={t('form:input-label-confirm-password')}
+                {...register('passwordConfirmation')}
+                variant="outline"
+                error={t(errors.passwordConfirmation?.message!)}
+                className="mb-5 col-md-4"
+              />
+            </div>
+            <div className="text-end w-full">
+              <Button className='color-button-profile' loading={loading} disabled={loading}>
+                {t('form:button-label-change-password')}
+              </Button>
+            </div>
+          </Card>
+
+
+        </div>
+      </form>
+    </>
   );
 };
 export default ChangePasswordForm;
