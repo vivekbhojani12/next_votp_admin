@@ -7617,4 +7617,103 @@ th.rc-table-cell {
   padding-bottom: 30px !important;
 }
 
+@media only screen and (max-width: 1250px) and (min-width: 1200px) {
+  .sidebar-with {
+    width: 21%;
+  }
+}
+
+
+@media only screen and (max-width: 1100px) and (min-width: 1024px) {
+  .sidebar-with {
+    width: 24%;
+  }
+}
+
+@media only screen and (max-width: 1150px) and (min-width: 1101px) {
+  .sidebar-with {
+    width: 23%;
+  }
+}
+
+@media only screen and (max-width: 1300px) and (min-width: 1251px) {
+  .sidebar-with {
+    width: 20%;
+  }
+}
+
+@media only screen and (max-width: 1199px) and (min-width: 1150px) {
+  .sidebar-with {
+    width: 22%;
+  }
+}
+
+@media only screen and (max-width: 1400px) and (min-width: 1300px) {
+  .sidebar-with {
+    width: 19%;
+  }
+}
+
+@media only screen and (max-width: 1500px) and (min-width: 1401px) {
+  .sidebar-with {
+    width: 18%;
+  }
+}
+
+@media only screen and (max-width: 1600px) and (min-width: 1501px) {
+  .sidebar-with {
+    width: 17%;
+  }
+}
+
+@media only screen and (max-width: 1700px) and (min-width: 1601px) {
+  .sidebar-with {
+    width: 16%;
+  }
+}
+
+@media only screen and (max-width: 1800px) and (min-width: 1701px) {
+  .sidebar-with {
+    width: 15%;
+  }
+}
+
+@media only screen and (max-width: 1900px) and (min-width: 1801px) {
+  .sidebar-with {
+    width: 14%;
+  }
+}
+
+@media only screen and (max-width: 2000px) and (min-width: 1901px) {
+  .sidebar-with {
+    width: 13%;
+  }
+}
+
+@media only screen and (max-width: 2100px) and (min-width: 2001px) {
+  .sidebar-with {
+    width: 12%;
+  }
+}
+
+@media only screen and (max-width: 2200px) and (min-width: 2101px) {
+  .sidebar-with {
+    width: 11%;
+  }
+}
+
+@media only screen and (max-width: 2400px) and (min-width: 2201px) {
+  .sidebar-with {
+    width: 10%;
+  }
+}
+
+
+
+
+
+
+
+
+
 /*# sourceMappingURL=ready.css.map */
