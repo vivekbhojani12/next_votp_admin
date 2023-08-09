@@ -47,7 +47,6 @@ export default function DashboardAdmin() {
             queryClient.invalidateQueries(API_ENDPOINTS.FACTHED_TOKEN_USER);
         },
     });
-
     function handlePagination(current: any) {
         console.log(current, 'value of current page');
         setPage(current);
@@ -66,7 +65,7 @@ export default function DashboardAdmin() {
             buttons: [
                 {
                     label: 'Cancel',
-                    onClick: () => console.log('User canceled delete'), // Optional callback
+                    onClick: () => console.log('User canceled delete'), 
                 },
                 {
                     label: 'Delete',
@@ -153,7 +152,7 @@ export default function DashboardAdmin() {
                                         <div className="col-8 d-flex align-items-center">
                                             <div className="numbers">
                                                 <p className="card-category">Upcoming Renews</p>
-                                                <h4 className="card-title">576</h4>
+                                                <h4 className="card-title">{paginatorInfo?.upcomingInactive}</h4>
                                             </div>
                                         </div>
                                     </div>
