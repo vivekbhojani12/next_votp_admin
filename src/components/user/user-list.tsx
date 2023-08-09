@@ -155,29 +155,35 @@ const CustomerList = ({
 
   return (
     <>
-      <div className="mb-6 overflow-hidden rounded shadow">
-        <div className='users-table'>
-          <Table
-            // @ts-ignore
-            columns={columns}
-            emptyText={t('table:empty-table-data')}
-            data={customers}
-            rowKey="id"
-            scroll={{ x: 800 }}
-          />
+      <div className='row'>
+        <div className="col-12">
+          <h5>Users Details</h5>
+        </div>
+        <div className="col-12 mb-6 ">
+          <div className='users-table'>
+            <Table
+              // @ts-ignore
+              columns={columns}
+              emptyText={t('table:empty-table-data')}
+              data={customers}
+              rowKey="id"
+              scroll={{ x: 800 }}
+            />
+            {!!paginatorInfo?.total && (
+              <div className="flex pt-4 items-center justify-end">
+                <Pagination
+                  total={paginatorInfo.total}
+                  current={paginatorInfo.startIndex}
+                  pageSize={10}
+                  onChange={onPagination}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
       {console.log(paginatorInfo?.pageIndex, 'Paginator,,,,,,,,,,,...........')}
-      {!!paginatorInfo?.total && (
-        <div className="flex items-center justify-end">
-          <Pagination
-            total={paginatorInfo.total}
-            current={paginatorInfo.startIndex}
-            pageSize={10}
-            onChange={onPagination}
-          />
-        </div>
-      )}
+
     </>
   );
 };

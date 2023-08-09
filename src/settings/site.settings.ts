@@ -52,7 +52,7 @@ export const siteSettings = {
       {
         href: Routes.settings,
         label: 'sidebar-nav-item-settings',
-        icon: 'SettingsIcon',
+        icon: 'QuestionIcon',
       },
 
 

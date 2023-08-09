@@ -48,6 +48,7 @@ export default function Customers() {
 
   return (
     <>
+
       <div className="mb-4 md:mb-0 md:w-1/4">
         <h1 className="text-lg users-label font-semibold text-heading">
           {t('form:input-label-customers')}
