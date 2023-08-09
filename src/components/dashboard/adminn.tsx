@@ -65,7 +65,7 @@ export default function DashboardAdmin() {
             buttons: [
                 {
                     label: 'Cancel',
-                    onClick: () => console.log('User canceled delete'), 
+                    onClick: () => console.log('User canceled delete'),
                 },
                 {
                     label: 'Delete',
