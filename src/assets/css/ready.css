@@ -7708,6 +7708,10 @@ th.rc-table-cell {
   }
 }
 
+.pagination-pt {
+  padding-top: 16px;
+}
+
 
 
 
