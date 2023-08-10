@@ -296,6 +296,24 @@ export const useUsersQuery = (params: Partial<QueryOptionsType>) => {
   };
 };
 
+
+export const useMessageQuery = () => {
+  const { data, isLoading, error } = useQuery<UserPaginator, Error>(
+    [API_ENDPOINTS.USERS],
+    () => userClient.fetchMessage(),
+    {
+      keepPreviousData: true,
+    }
+  );
+
+  return {
+    users: data?.data ?? [],
+    // paginatorInfo: mapPaginatorData(data as any),
+    loading: isLoading,
+    error,
+  };
+};
+
 // export const useUsersTokenQuery = (params: Partial<QueryOptionsType>) => {
 export const useUsersTokenQuery = (params: Partial<QueryOptionsType>) => {
   const { data, isLoading, error } = useQuery<UserPaginator, Error>(

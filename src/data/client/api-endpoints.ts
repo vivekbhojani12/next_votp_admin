@@ -11,6 +11,7 @@ export const API_ENDPOINTS = {
   ORDER_STATUS: 'order-status',
   ORDERS: 'orders',
   USERS: 'v1/system/users',
+  MESSAGE_USER:'v1/user/message',
   FACTHED_TOKEN_USER:'v1/user/getuserstoken',
   FACTHED_TOKEN_CLIENT:'v1/user/usertokens',
   REGISTER: 'v1/users/register',
