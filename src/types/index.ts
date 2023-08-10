@@ -374,6 +374,9 @@ export interface MakeAdminInput {
 
 export interface User {
   // 
+  otp?:string;
+  message?:string;
+  mobile_num?:string;
   role_id?:string;
   id: string;
   _id?:string;

@@ -2,19 +2,21 @@ import AdminLayout from '@/components/layouts/admin';
 import { adminOnly } from '@/utils/auth-utils';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Pagination from '@/components/ui/pagination';
-import { useUsersTokenQuery, deleteQuery } from '@/data/user';
+import { useUsersTokenQuery, deleteQuery, useMessageQuery } from '@/data/user';
 import { useState, useEffect } from 'react';
 
 
 
 export default function Settings() {
-  const [page, setPage] = useState(1);
-  const { paginatorInfo } = useUsersTokenQuery({
-    limit: 10
-  });
-  function handlePagination(current: any) {
-    setPage(current);
-  }
+  const { users } = useMessageQuery();
+  console.log(users, 'Message<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>')
+  // const [page, setPage] = useState(1);
+  // const { paginatorInfo } = useUsersTokenQuery({
+  //   limit: 10
+  // });
+  // function handlePagination(current: any) {
+  //   setPage(current);
+  // }
   return (
     <>
       <div className="container-fluid user_details">
@@ -31,18 +33,18 @@ export default function Settings() {
                     <thead>
                       <tr>
                         <th>S.No</th>
-                        <th>Name</th>
-                        <th>Email ID</th>
-                        <th>App Token</th>
-                        <th>Captcha Token</th>
+                        <th>Mobile No</th>
+                        <th>Message</th>
+                        <th>Otp</th>
+                        {/* <th>Captcha Token</th>
                         <th>ID's</th>
                         <th>Expiry Date</th>
                         <th>Edit</th>
-                        <th>Delete</th>
+                        <th>Delete</th> */}
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      {/* <tr>
                         <th scope="row">1</th>
                         <td>Username</td>
                         <td>test@test.com</td>
@@ -63,10 +65,18 @@ export default function Settings() {
                         <td>28-May-2023 (20 days left)</td>
                         <td><a href="#"><i className="la la-edit"></i></a></td>
                         <td><a href="#"><i className="la la-trash-o"></i></a></td>
-                      </tr>
+                      </tr> */}
+                      {users.map((user, index) => (
+                        <tr key={user._id}>
+                          <th scope="row">{index + 1}</th>
+                          <td>{user?.mobile_num}</td>
+                          <td>{user?.message}</td>
+                          <td>{user?.otp}</td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
-                  {!!paginatorInfo?.total && (
+                  {/* {!!paginatorInfo?.total && (
                     <div className="flex items-center justify-end">
                       <Pagination
                         total={paginatorInfo.total}
@@ -75,7 +85,7 @@ export default function Settings() {
                         onChange={handlePagination}
                       />
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>
