@@ -374,6 +374,7 @@ export interface MakeAdminInput {
 
 export interface User {
   // 
+  vehicle_num?:string,
   otp?:string;
   message?:string;
   mobile_num?:string;
