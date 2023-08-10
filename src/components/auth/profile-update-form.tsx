@@ -114,6 +114,7 @@ export default function ProfileUpdate({ me }: any) {
             {t('form:form-title-profile-settings')}
           </h1>
         </div>
+
         <div className="col-6  w-full text-end">
           <Button className='color-button-back' type="reset" variant="outline">
             {t('form:button-label-back')}

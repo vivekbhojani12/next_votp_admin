@@ -94,23 +94,22 @@ export default function TypesPage() {
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="main-panel">
         <div className="content">
-          <div className="container-fluid">
-            <h4 className="page-title">Create Token</h4>
-            <div className="card">
-              <div className="row p-3">
-                <div className="col-md-3 col-12">
-                  <div className="form-group">
-                    <Input
-                      label={t('Name')}
-                      {...register('name')}
-                      type="text"
-                      variant="outline"
-                      className="mb-4 "
-                      error={t(errors.name?.message!)}
-                    />
-                  </div>
+          <h4 className="page-title">Create Token</h4>
+          <div className="card">
+            <div className="row p-3">
+              <div className="col-md-3 ">
+                <div className="form-group">
+                  <Input
+                    label={t('Name')}
+                    {...register('name')}
+                    type="text"
+                    variant="outline"
+                    className="mb-4 "
+                    error={t(errors.name?.message!)}
+                  />
                 </div>
-                {/* <div className="col-md-3 col-12">
+              </div>
+              {/* <div className="col-md-3 col-12">
                   <div className="form-group">
                     <Input
                       label={t('form:input-label-email')}
@@ -128,120 +127,119 @@ export default function TypesPage() {
                     </small>
                   </div>
                 </div> */}
-                <div className="col-md-3 col-12">
-                  <div className="form-group">
-                    {/* Email Dropdown */}
-                    <label className='tokan-label-email' htmlFor="email">Email</label>
-                    <select
-                      {...register('email', { required: 'Email is required' })}
-                      className="form-control createtoken-email"
-                    >
-                      {/* Add default option for no selection */}
-                      <option value="">Select an email</option>
-                      {/* Dynamically generate options from the emailList */}
-                      {emailList.map((email) => (
-                        <option key={email} value={email}>
-                          {email}
-                        </option>
-                      ))}
-                    </select>
-                    {/* Error message for the email field */}
-                    {errors.email && <span className="text-danger">{errors.email.message}</span>}
-                    <small id="emailHelp" className="form-text email-text text-muted">
-                      This Email will be used for user search
-                    </small>
-                  </div>
-                </div>
-                <div className="col-md-2 col-12">
-                  <div className="form-group">
-                    <Input
-                      label={t('No Id')}
-                      {...register('no_id')}
-                      type="no_id"
-                      variant="outline"
-                      className="mb-4"
-                      error={t(errors.no_id?.message!)}
-                    />
-                  </div>
-                </div>
-                <div className="col-md-2 col-12">
-                  <div className="form-group">
-                    <label className='tokan-label-date' >Date</label>
-                    <input
-                      type="date"
-                      {...register('exp_date', {
-                        required: 'Date is required',
-                      })}
-                      className="form-control createtoken-date"
-                    />
-                    {errors.exp_date && (
-                      <span className="text-danger">
-                        {errors.exp_date.message}
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <div className="col-md-2 col-12">
-                  <Button
-                    className="token-button"
-                    loading={loading}
-                    disabled={loading}
+              <div className="col-md-3 ">
+                <div className="form-group">
+                  {/* Email Dropdown */}
+                  <label className='tokan-label-email' htmlFor="email">Email</label>
+                  <select
+                    {...register('email', { required: 'Email is required' })}
+                    className="form-control createtoken-email"
                   >
-                    {t('Generate Token')}
-                  </Button>
+                    {/* Add default option for no selection */}
+                    <option value="">Select an email</option>
+                    {/* Dynamically generate options from the emailList */}
+                    {emailList.map((email) => (
+                      <option key={email} value={email}>
+                        {email}
+                      </option>
+                    ))}
+                  </select>
+                  {/* Error message for the email field */}
+                  {errors.email && <span className="text-danger">{errors.email.message}</span>}
+                  <small id="emailHelp" className="form-text email-text text-muted">
+                    This Email will be used for user search
+                  </small>
+                </div>
+              </div>
+              <div className="col-md-2">
+                <div className="form-group">
+                  <Input
+                    label={t('No Id')}
+                    {...register('no_id')}
+                    type="no_id"
+                    variant="outline"
+                    className="mb-4"
+                    error={t(errors.no_id?.message!)}
+                  />
+                </div>
+              </div>
+              <div className="col-md-2 ">
+                <div className="form-group">
+                  <label className='tokan-label-date' >Date</label>
+                  <input
+                    type="date"
+                    {...register('exp_date', {
+                      required: 'Date is required',
+                    })}
+                    className="form-control createtoken-date"
+                  />
+                  {errors.exp_date && (
+                    <span className="text-danger">
+                      {errors.exp_date.message}
+                    </span>
+                  )}
+                </div>
+              </div>
+              <div className="col-md-2 ">
+                <Button
+                  className="token-button"
+                  loading={loading}
+                  disabled={loading}
+                >
+                  {t('Generate Token')}
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {response?.email && (
+            <div className="card token_gn_details">
+              <div className="row">
+                <div className="col-12">
+                  <h4>Token Details:</h4>
+                </div>
+                <div className="col-12">
+                  <table className="table-striped mt-3 table">
+                    <tbody>
+                      <tr>
+                        <td className="td1">Name</td>
+                        <td>{response?.name}</td>
+                      </tr>
+                      <tr>
+                        <td className="td1">App Token</td>
+                        <td>{response?.data?.token}</td>
+                      </tr>
+                      <tr>
+                        <td className="td1">Login Captcha Token</td>
+                        <td>57584FF8</td>
+                      </tr>
+                      <tr>
+                        <td className="td1">Email Address</td>
+                        <td>{response?.email}</td>
+                      </tr>
+                      <tr>
+                        <td className="td1"> Account Expiry Date</td>
+                        <td>{response?.data?.exp_date}</td>
+                      </tr>
+                      <tr>
+                        <td className="td1">ID's</td>
+                        <td>{response?.data?.no_id}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="text-right">
+                    <a
+                      href="/
+                    "
+                      className="btn btn-success"
+                    >
+                      Back to Dashboard
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-
-            {response?.email && (
-              <div className="card token_gn_details">
-                <div className="row">
-                  <div className="col-12">
-                    <h4>Token Details:</h4>
-                  </div>
-                  <div className="col-12">
-                    <table className="table-striped mt-3 table">
-                      <tbody>
-                        <tr>
-                          <td className="td1">Name</td>
-                          <td>{response?.name}</td>
-                        </tr>
-                        <tr>
-                          <td className="td1">App Token</td>
-                          <td>{response?.data?.token}</td>
-                        </tr>
-                        <tr>
-                          <td className="td1">Login Captcha Token</td>
-                          <td>57584FF8</td>
-                        </tr>
-                        <tr>
-                          <td className="td1">Email Address</td>
-                          <td>{response?.email}</td>
-                        </tr>
-                        <tr>
-                          <td className="td1"> Account Expiry Date</td>
-                          <td>{response?.data?.exp_date}</td>
-                        </tr>
-                        <tr>
-                          <td className="td1">ID's</td>
-                          <td>{response?.data?.no_id}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <div className="text-right">
-                      <a
-                        href="/
-                    "
-                        className="btn btn-success"
-                      >
-                        Back to Dashboard
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+          )}
         </div>
       </div>
     </form>
