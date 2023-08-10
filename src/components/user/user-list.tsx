@@ -83,6 +83,7 @@ const CustomerList = ({
       key: 'No',
       align: alignLeft,
       width: 74,
+
     },
     {
       title: t('table:table-item-title'),
@@ -142,7 +143,7 @@ const CustomerList = ({
       dataIndex: 'id',
       key: 'actions',
       align: alignLeft,
-      width: 74,
+      width: 67,
       render: function Render(id: string, { is_active }: any) {
         const { data } = useMeQuery();
         console.log(data, '<<<<<<<>>>>>>>>>>>>>>>>>>>>')
@@ -212,7 +213,7 @@ const CustomerList = ({
 
             />
             {!!paginatorInfo?.total && (
-              <div className="flex pt-4 items-center justify-end">
+              <div className="flex pagination-pt  items-center justify-end">
                 <Pagination
                   total={paginatorInfo.total}
                   current={paginatorInfo.startIndex}

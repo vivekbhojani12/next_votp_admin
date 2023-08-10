@@ -7586,6 +7586,8 @@ a:hover {
 .users-table {
   padding: 15px;
   background-color: #fff;
+  box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
+  border: 1px solid #eee;
 }
 
 th.rc-table-cell {
@@ -7712,24 +7714,44 @@ th.rc-table-cell {
   padding-top: 16px;
 }
 
-.users-sno {
-  width: 8%;
+.rc-table th {
+  padding: 12px !important;
 }
 
-.users-name {
-  width: 35%;
+.rc-table td {
+  padding: 12px !important;
+  font-size: 14px;
 }
 
-.users-email {
-  width: 40%;
+.rc-table-measure-row {
+  display: none;
 }
 
-.users-edit {
-  width: 8%;
+.edit-button {
+  font-size: 20px;
+  color: #000;
 }
 
-.users-delete {
-  width: 9%;
+.delete-button {
+  font-size: 20px;
+  color: #000;
+}
+
+.delete-button:hover {
+  text-decoration: underline;
+}
+
+.rc-table-content {
+  border-radius: inherit !important;
+}
+
+.react-confirm-alert-body>h1 {
+  font-size: 24px !important;
+}
+
+.react-confirm-alert-overlay {
+  --tw-bg-opacity: 0.5 !important;
+  background-color: rgba(var(--color-gray-900), var(--tw-bg-opacity)) !important;
 }
 
 

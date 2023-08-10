@@ -60,12 +60,14 @@ export default function DashboardAdmin() {
 
     const showDeleteConfirmation = (id: any) => {
         confirmAlert({
-            title: 'Confirm Delete',
-            message: 'Are you sure you want to delete this user?',
+
+            title: 'Delete',
+            message: 'Are you sure, you want to delete?',
             buttons: [
                 {
                     label: 'Cancel',
                     onClick: () => console.log('User canceled delete'),
+
                 },
                 {
                     label: 'Delete',

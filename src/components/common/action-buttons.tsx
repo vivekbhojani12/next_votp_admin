@@ -128,7 +128,9 @@ const ActionButtons = ({
             className="text-red-500 transition duration-200 hover:text-red-600 focus:outline-none"
             title={t('common:text-delete')}
           >
-            <TrashIcon width={16} />
+            {/* <TrashIcon width={16} /> */}
+
+            <i className="delete-button la la-trash-o"></i>
           </button>
         )}
         {editModalView && (
@@ -187,13 +189,14 @@ const ActionButtons = ({
             className="text-base transition duration-200 hover:text-heading"
             title={t('common:text-edit')}
           >
-            <EditIcon width={16} />
+            {/* <EditIcon width={16} /> */}
+            <i className="edit-button la la-edit" ></i>
           </Link>
         )}
         {detailsUrl && (
           <Link
             href={detailsUrl}
-            className="ml-2 text-base transition duration-200 hover:text-heading"
+            className=" text-base transition duration-200 hover:text-heading"
             title={t('common:text-view')}
             locale={customLocale}
           >
