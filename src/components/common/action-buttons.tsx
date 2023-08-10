@@ -13,7 +13,7 @@ import { AdminIcon } from '@/components/icons/admin-icon';
 type Props = {
   id: string;
   editModalView?: string | any;
-  
+
   deleteModalView?: string | any;
   editUrl?: string;
   detailsUrl?: string;
@@ -84,122 +84,124 @@ const ActionButtons = ({
   }
 
   return (
-    <div className="gap-8 inline-flex w-auto items-center">
-      {showReplyQuestion && (
-        <button
-          onClick={handleReplyQuestion}
-          className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
-        >
-          {t('form:button-text-reply')}
-        </button>
-      )}
-      {showMakeAdminButton && (
-        <button
-          onClick={handleMakeAdmin}
-          className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
-          title={t('common:text-make-admin')}
-        >
-          <AdminIcon width={18} />
-        </button>
-      )}
-      {showAddWalletPoints && (
-        <button
-          onClick={handleAddWalletPoints}
-          className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
-          title={t('common:text-add-wallet-points')}
-        >
-          <WalletPointsIcon width={22} />
-        </button>
-      )}
-
-      {changeRefundStatus && (
-        <button
-          onClick={handleUpdateRefundStatus}
-          className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
-          title={t('common:text-change-refund-status')}
-        >
-          <CheckMarkCircle width={20} />
-        </button>
-      )}
-      {deleteModalView && (
-        <button
-          onClick={handleDelete}
-          className="text-red-500 transition duration-200 hover:text-red-600 focus:outline-none"
-          title={t('common:text-delete')}
-        >
-          <TrashIcon width={16} />
-        </button>
-      )}
-      {editModalView && (
-        <button
-          onClick={handleEditModal}
-          className="text-body transition duration-200 hover:text-heading focus:outline-none"
-          title={t('common:text-edit')}
-        >
-          <EditIcon width={16} />
-        </button>
-      )}
-      {approveButton &&
-        (!isShopActive ? (
+    <>
+      <div className="gap-8 inline-flex w-auto items-center">
+        {showReplyQuestion && (
           <button
-            onClick={() => handleShopStatus(true)}
+            onClick={handleReplyQuestion}
             className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
-            title={t('common:text-approve-shop')}
+          >
+            {t('form:button-text-reply')}
+          </button>
+        )}
+        {showMakeAdminButton && (
+          <button
+            onClick={handleMakeAdmin}
+            className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
+            title={t('common:text-make-admin')}
+          >
+            <AdminIcon width={18} />
+          </button>
+        )}
+        {showAddWalletPoints && (
+          <button
+            onClick={handleAddWalletPoints}
+            className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
+            title={t('common:text-add-wallet-points')}
+          >
+            <WalletPointsIcon width={22} />
+          </button>
+        )}
+
+        {changeRefundStatus && (
+          <button
+            onClick={handleUpdateRefundStatus}
+            className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
+            title={t('common:text-change-refund-status')}
           >
             <CheckMarkCircle width={20} />
           </button>
-        ) : (
+        )}
+        {deleteModalView && (
           <button
-            onClick={() => handleShopStatus(false)}
+            onClick={handleDelete}
             className="text-red-500 transition duration-200 hover:text-red-600 focus:outline-none"
-            title={t('common:text-disapprove-shop')}
+            title={t('common:text-delete')}
           >
-            <CloseFillIcon width={20} />
+            <TrashIcon width={16} />
           </button>
-        ))}
-      {userStatus && (
-        <>
-          {isUserActive ? (
+        )}
+        {editModalView && (
+          <button
+            onClick={handleEditModal}
+            className="text-body transition duration-200 hover:text-heading focus:outline-none"
+            title={t('common:text-edit')}
+          >
+            <EditIcon width={16} />
+          </button>
+        )}
+        {approveButton &&
+          (!isShopActive ? (
             <button
-              onClick={() => handleUserStatus('ban')}
-              className="text-red-500 transition duration-200 hover:text-red-600 focus:outline-none"
-              title={t('common:text-ban-user')}
-            >
-              <BanUser width={20} />
-            </button>
-          ) : (
-            <button
-              onClick={() => handleUserStatus('active')}
-              className="text-accent transition duration-200 hover:text-accent focus:outline-none"
-              title={t('common:text-activate-user')}
+              onClick={() => handleShopStatus(true)}
+              className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
+              title={t('common:text-approve-shop')}
             >
               <CheckMarkCircle width={20} />
             </button>
-          )}
-        </>
-      )}
-      {/* "/profile-update/[id]" as={`/profile-update/${id} */}
-      {editUrl && (
-        <Link
-          href={`${editUrl}`}
-          as={`${editUrl}/${id}`}
-          className="text-base transition duration-200 hover:text-heading"
-          title={t('common:text-edit')}
-        >
-          <EditIcon width={16} />
-        </Link>
-      )}
-      {detailsUrl && (
-        <Link
-          href={detailsUrl}
-          className="ml-2 text-base transition duration-200 hover:text-heading"
-          title={t('common:text-view')}
-          locale={customLocale}
-        >
-          <Eye width={24} />
-        </Link>
-      )}
-    </div>
+          ) : (
+            <button
+              onClick={() => handleShopStatus(false)}
+              className="text-red-500 transition duration-200 hover:text-red-600 focus:outline-none"
+              title={t('common:text-disapprove-shop')}
+            >
+              <CloseFillIcon width={20} />
+            </button>
+          ))}
+        {userStatus && (
+          <>
+            {isUserActive ? (
+              <button
+                onClick={() => handleUserStatus('ban')}
+                className="text-red-500 transition duration-200 hover:text-red-600 focus:outline-none"
+                title={t('common:text-ban-user')}
+              >
+                <BanUser width={20} />
+              </button>
+            ) : (
+              <button
+                onClick={() => handleUserStatus('active')}
+                className="text-accent transition duration-200 hover:text-accent focus:outline-none"
+                title={t('common:text-activate-user')}
+              >
+                <CheckMarkCircle width={20} />
+              </button>
+            )}
+          </>
+        )}
+        {/* "/profile-update/[id]" as={`/profile-update/${id} */}
+        {editUrl && (
+          <Link
+            href={`${editUrl}`}
+            as={`${editUrl}/${id}`}
+            className="text-base transition duration-200 hover:text-heading"
+            title={t('common:text-edit')}
+          >
+            <EditIcon width={16} />
+          </Link>
+        )}
+        {detailsUrl && (
+          <Link
+            href={detailsUrl}
+            className="ml-2 text-base transition duration-200 hover:text-heading"
+            title={t('common:text-view')}
+            locale={customLocale}
+          >
+            <Eye width={24} />
+          </Link>
+        )}
+      </div>
+    </>
   );
 };
 

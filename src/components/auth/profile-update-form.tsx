@@ -106,19 +106,28 @@ export default function ProfileUpdate({ me }: any) {
     updateUser(input);
   }
 
-  return (<><div className="flex border-border-base ">
-    <h1 className="text-lg font-semibold text-heading">
-      {t('form:form-title-profile-settings')}
-    </h1>
-  </div>
-    <form onSubmit={handleSubmit(onSubmit)} onReset={handleBackButtonClick}>
-      {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
+  return (
+    <>
+      <div className='row pb-6'>
+        <div className="col-6 ">
+          <h1 className="text-lg font-semibold text-heading">
+            {t('form:form-title-profile-settings')}
+          </h1>
+        </div>
+        <div className="col-6  w-full text-end">
+          <Button className='color-button-back' type="reset" variant="outline">
+            {t('form:button-label-back')}
+          </Button>
+        </div>
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)} onReset={handleBackButtonClick}>
+        {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
         <Card className="w-full sm:w-8/12 md:w-2/3">
           <FileInput name="profile.avatar" control={control} multiple={false} />
         </Card>
       </div> */}
-      {/* {permission ? ( */}
-      {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
+        {/* {permission ? ( */}
+        {/* <div className="my-5 flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
           <Description
             title={t('form:form-notification-title')}
             details={t('form:form-notification-description')}
@@ -150,47 +159,47 @@ export default function ProfileUpdate({ me }: any) {
       ) : (
         ''
       )} */}
-      <div className=" flex flex-wrap border-b border-dashed border-border-base pb-8 sm:my-8">
-        <Card className="mb-5 profile-from-bg w-full">
-          <div className='row'>
-            <Input
-              label={t('form:input-label-name')}
-              {...register('name')}
-              error={t(errors.name?.message!)}
-              variant="outline"
-              className="mb-5 col-md-6"
-            />
-            <Input
-              label={t('Email')}
-              {...register('email')}
-              value={me?.data?.email}
-              error={t(errors.email?.message!)}
-              variant="outline"
-              className="mb-5 col-md-6"
-            />
-          </div>
-          {/* <Input
+        <div className=" flex flex-wrap ">
+          <Card className="mb-5 profile-from-bg w-full">
+            <div className='row'>
+              <Input
+                label={t('form:input-label-name')}
+                {...register('name')}
+                error={t(errors.name?.message!)}
+                variant="outline"
+                className="mb-5 col-md-6"
+              />
+              <Input
+                label={t('Email')}
+                {...register('email')}
+                value={me?.data?.email}
+                error={t(errors.email?.message!)}
+                variant="outline"
+                className="mb-5 col-md-6"
+              />
+            </div>
+            {/* <Input
             label={t('form:input-label-name')}
             {...register('name')}
             error={t(errors.name?.message!)}
             variant="outline"
             className="mb-5"
           /> */}
-          {/* <Input
+            {/* <Input
             label={t('Mobile')}
             {...register('mobile')}
             error={t(errors.mobile?.message!)}
             variant="outline"
             className="mb-5"
           /> */}
-          {/* <TextArea
+            {/* <TextArea
             label={t('form:input-label-bio')}
             {...register('profile.bio')}
             error={t(errors.profile?.bio?.message!)}
             variant="outline"
             className="mb-6"
           /> */}
-          {/* <Input
+            {/* <Input
             label={t('form:input-label-contact')}
             {...register('profile.contact')}
             error={t(errors.profile?.contact?.message!)}
@@ -198,23 +207,19 @@ export default function ProfileUpdate({ me }: any) {
             className="mb-5"
           /> */}
 
-          <div className="w-full text-end">
-            <Button
-              className="settings-colo-profile"
-              loading={loading}
-              disabled={loading}
-            >
-              {t('form:button-label-save')}
-            </Button>
-          </div>
-        </Card>
-        <div className="mt-4 w-full text-start">
-          <Button type="reset" variant="outline">
-            {t('form:button-label-back')}
-          </Button>
+            <div className="w-full text-end">
+              <Button
+                className="settings-colo-profile"
+                loading={loading}
+                disabled={loading}
+              >
+                {t('form:button-label-save')}
+              </Button>
+            </div>
+          </Card>
+
         </div>
-      </div>
-    </form >
-  </>
+      </form >
+    </>
   );
 }

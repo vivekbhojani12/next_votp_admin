@@ -26,8 +26,7 @@ export default function Settings() {
           </div>
           <div className="col-12">
             <div className="card">
-              <div className="col-md-3 pt-4 ml-auto">
-              </div>
+
               <div className="card-body">
                 <div className="table-responsive">
                   <table className="table table-bordered">
