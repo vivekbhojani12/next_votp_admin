@@ -116,7 +116,7 @@ export default function ProfileUpdate({ me }: any) {
         </div>
 
         <div className="col-6  w-full text-end">
-          <Button className='color-button-back' type="reset" variant="outline">
+          <Button className='color-button-back' onClick={handleBackButtonClick} variant="outline">
             {t('form:button-label-back')}
           </Button>
         </div>

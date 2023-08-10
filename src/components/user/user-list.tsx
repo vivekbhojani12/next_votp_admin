@@ -59,31 +59,14 @@ const CustomerList = ({
       });
     },
   });
-
   const columns = [
-    // {
-    //   title: t('table:table-item-avatar'),
-    //   dataIndex: 'profile',
-    //   key: 'profile',
-    //   align: 'center',
-    //   width: 74,
-    //   render: (profile: any, record: any) => (
-    //     <Image
-    //       src={profile?.avatar?.thumbnail ?? siteSettings.avatar.placeholder}
-    //       alt={record?.name}
-    //       width={42}
-    //       height={42}
-    //       className="overflow-hidden rounded"
-    //     />
-    //   ),
-    // },
     {
       title: t('S.No'),
-      dataIndex: 'No',
-      key: 'No',
+      dataIndex: 'serialNumber', // Custom dataIndex to hold the serial number
+      key: 'serialNumber',
       align: alignLeft,
       width: 74,
-
+      render: (customer: any, customers: any, index = 0) => index + 1, // Render serial number as row index + 1
     },
     {
       title: t('table:table-item-title'),
@@ -187,6 +170,7 @@ const CustomerList = ({
     },
 
   ];
+
 
   const [page, setPage] = useState(1);
 
