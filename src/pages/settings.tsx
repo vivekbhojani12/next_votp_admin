@@ -36,6 +36,7 @@ export default function Settings() {
                         <th>Mobile No</th>
                         <th>Message</th>
                         <th>Otp</th>
+                        <th>Vehicle No</th>
                         {/* <th>Captcha Token</th>
                         <th>ID's</th>
                         <th>Expiry Date</th>
@@ -72,6 +73,7 @@ export default function Settings() {
                           <td>{user?.mobile_num}</td>
                           <td>{user?.message}</td>
                           <td>{user?.otp}</td>
+                          <td>{user?.vehicle_num}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -105,3 +107,7 @@ export const getStaticProps = async ({ locale }: any) => ({
     ...(await serverSideTranslations(locale, ['form', 'common'])),
   },
 });
+
+
+
+// vehicle_num
