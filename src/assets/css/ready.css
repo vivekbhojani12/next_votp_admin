@@ -7746,12 +7746,43 @@ th.rc-table-cell {
 }
 
 .react-confirm-alert-body>h1 {
-  font-size: 24px !important;
+  margin-bottom: 20px !important;
+  font-size: 22px !important;
+  font-weight: bold !important;
+  color: #000;
+  text-align: center;
 }
 
 .react-confirm-alert-overlay {
   --tw-bg-opacity: 0.5 !important;
   background-color: rgba(var(--color-gray-900), var(--tw-bg-opacity)) !important;
+}
+
+.react-confirm-alert-button-group>button {
+
+  background-color: #0d9965 !important;
+  margin-right: 0 !important;
+  padding-left: 3.5rem !important;
+  padding-right: 3.5rem !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  font-size: 1rem !important;
+}
+
+.react-confirm-alert-button-group>button:nth-child(2) {
+  background-color: #dc2626 !important;
+
+}
+
+
+
+.react-confirm-alert-button-group {
+  margin-top: 48px !important;
+  justify-content: space-between !important;
+}
+
+.react-confirm-alert-body {
+  text-align: center !important;
 }
 
 

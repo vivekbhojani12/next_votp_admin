@@ -15,6 +15,8 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import { useMutation, useQueryClient } from 'react-query';
 import { API_ENDPOINTS } from '@/data/client/api-endpoints';
 import { MappedPaginatorInfo } from '@/types';
+import { TrashIcon } from '@/components/icons/trash';
+
 
 type IProps = {
     paginatorInfoo: MappedPaginatorInfo | null;
@@ -61,8 +63,13 @@ export default function DashboardAdmin() {
     const showDeleteConfirmation = (id: any) => {
         confirmAlert({
 
+
+
+
             title: 'Delete',
             message: 'Are you sure, you want to delete?',
+
+
             buttons: [
                 {
                     label: 'Cancel',
@@ -166,10 +173,22 @@ export default function DashboardAdmin() {
                 <div className="container-fluid user_details">
                     <div className="row">
                         <div className="col-12">
-                            <h5>Users Details</h5>
+                            <h5>Token Details</h5>
                         </div>
                         <div className="col-12">
                             <div className="card">
+                                <div className="col-md-3 pt-4 ml-auto">
+                                    <form className="navbar-left navbar-form nav-search mr-md-3" action="">
+                                        <div className="input-group">
+                                            <input type="text" placeholder="Search ..." className="form-control" />
+                                            <div className="input-group-append">
+                                                <span className="input-group-text">
+                                                    <i className="la la-search search-icon"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                                 <div className="card-body">
                                     <div className="table-responsive">
                                         <table className="table-bordered table">

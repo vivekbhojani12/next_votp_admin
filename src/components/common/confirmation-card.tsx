@@ -35,12 +35,12 @@ const ConfirmationCard: React.FC<ConfirmationCardProps> = ({
     <div className="m-auto w-full max-w-sm rounded-md bg-light p-4 pb-6 sm:w-[24rem] md:rounded-xl">
       <div className="h-full w-full text-center">
         <div className="flex h-full flex-col justify-between">
-          {icon ? (
+          {/* {icon ? (
             icon
           ) : (
             <TrashIcon className="m-auto mt-4 h-12 w-12 text-accent" />
-          )}
-          <p className="mt-4 text-xl font-bold text-heading">{t(title)}</p>
+          )} */}
+          <p className=" text-xl font-bold text-heading">{t(title)}</p>
           <p className="py-2 px-6 leading-relaxed text-body-dark dark:text-muted">
             {t(description)}
           </p>
