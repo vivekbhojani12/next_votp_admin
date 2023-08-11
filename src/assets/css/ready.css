@@ -7814,4 +7814,21 @@ th.rc-table-cell {
 
 
 
+.search-token-main {
+  max-width: 25% !important;
+}
+
+.Token-main-p {
+  padding: 11px;
+}
+
+.search-token-main input {
+  border: 1px solid #eee !important;
+  background: #eee !important;
+  border-radius: 50px !important;
+
+
+}
+
+
 /*# sourceMappingURL=ready.css.map */

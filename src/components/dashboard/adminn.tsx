@@ -180,7 +180,9 @@ export default function DashboardAdmin() {
                         </div>
                         <div className="col-12">
                             <div className="card">
-                                <Search onSearch={handleSearch} className='w-3/5' />
+                                <div className='search-token-main col-md-3 pt-3.5 ml-auto'>
+                                    <Search onSearch={handleSearch} />
+                                </div>
                                 {/* <div className="col-md-3 pt-4 ml-auto">
                                     <form className="navbar-left navbar-form nav-search mr-md-3" action="">
                                         <div className="input-group">

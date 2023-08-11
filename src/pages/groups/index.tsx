@@ -95,7 +95,7 @@ export default function TypesPage() {
       <div className="main-panel">
         <div className="content">
           <h4 className="page-title">Create Token</h4>
-          <div className="card">
+          <div className="card Token-main-p">
             <div className="row pt-3 pr-3 pl-3 ">
               <div className="col-md-4 ">
                 <div className="form-group">

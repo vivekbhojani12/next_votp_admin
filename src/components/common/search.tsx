@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
 
 const classes = {
-  root: 'ps-10 pe-4 h-12 flex items-center w-full rounded appearance-none transition duration-300 ease-in-out text-heading text-sm focus:outline-none focus:ring-0',
+  root: '  ps-10 pe-4 h-12 flex items-center w-full rounded appearance-none transition duration-300 ease-in-out text-heading text-sm focus:outline-none focus:ring-0',
   normal:
     'bg-gray-100 border border-border-base focus:shadow focus:bg-light focus:border-accent',
   solid:
@@ -77,11 +77,11 @@ const Search: React.FC<SearchProps> = ({
     <form
       noValidate
       role="search"
-      className={cn('relative flex  items-center', className)}
+      className={cn('token-search-button relative flex  items-center', className)}
       onSubmit={handleSubmit(onSearch)}
     >
       <label htmlFor="search" className="sr-only">
-        {t('form:input-label-search')}
+        {t('search')}
       </label>
       <button className="start-1 absolute p-2 text-body outline-none focus:outline-none active:outline-none">
         <SearchIcon className="h-5 w-5" />
