@@ -62,9 +62,9 @@ export default function Client(data: any) {
                             </div>
                             <div className="col-12">
                                 <div className="card">
-                                    <div className='search-token-main col-md-3 pt-3.5 ml-auto'>
+                                    {/* <div className='search-token-main col-md-3 pt-3.5 ml-auto'>
                                         <Search onSearch={handleSearch} />
-                                    </div>
+                                    </div> */}
                                     <div className="card-body">
                                         <div className="table-responsive">
                                             <table className="table-bordered table">
