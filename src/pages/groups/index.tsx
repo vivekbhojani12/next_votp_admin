@@ -89,15 +89,15 @@ export default function TypesPage() {
     setEmailList(emails);
 
   }, [users]);
-  const today = new Date().toISOString().split('T')[0];
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="main-panel">
         <div className="content">
           <h4 className="page-title">Create Token</h4>
-          <div className="card Token-main-p">
-            <div className="row pt-3 pr-3 pl-3 ">
-              <div className="col-md-4 ">
+          <div className="card pl-2">
+            <div className="row p-3">
+              <div className="col-md-3 ">
                 <div className="form-group">
                   <Input
                     label={t('Name')}
@@ -127,7 +127,7 @@ export default function TypesPage() {
                     </small>
                   </div>
                 </div> */}
-              <div className="col-md-4 ">
+              <div className="col-md-3 ">
                 <div className="form-group">
                   {/* Email Dropdown */}
                   <label className='tokan-label-email' htmlFor="email">Email</label>
@@ -151,19 +151,19 @@ export default function TypesPage() {
                   </small>
                 </div>
               </div>
-              <div className="col-md-2">
+              <div className="col-md-1">
                 <div className="form-group">
                   <Input
                     label={t('No Id')}
                     {...register('no_id')}
                     type="no_id"
                     variant="outline"
-
+                    className=""
                     error={t(errors.no_id?.message!)}
                   />
                 </div>
               </div>
-              <div className="col-md-2 ">
+              <div className="col-md-3 ">
                 <div className="form-group">
                   <label className='tokan-label-date' >Date</label>
                   <input
@@ -171,7 +171,6 @@ export default function TypesPage() {
                     {...register('exp_date', {
                       required: 'Date is required',
                     })}
-                    min={today}
                     className="form-control createtoken-date"
                   />
                   {errors.exp_date && (
@@ -181,19 +180,18 @@ export default function TypesPage() {
                   )}
                 </div>
               </div>
-
-            </div>
-            <div className="token-from-button pr-3 text-right">
-              <Button
-                className="token-button"
-                loading={loading}
-                disabled={loading}
-              >
-                {t('Generate Token')}
-              </Button>
+              <div className="col-md-2 col-xl-2  col-lj-2 col-sm-2 col-sm-2 text-center ">
+                <Button
+                  className="token-button"
+                  loading={loading}
+                  disabled={loading}
+                >
+                  {t('Generate Token')}
+                </Button>
+              </div>
             </div>
           </div>
-          {console.log(response, '<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>')}
+
           {response?.email && (
             <div className="card token_gn_details">
               <div className="row">

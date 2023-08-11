@@ -104,7 +104,7 @@ export default function DashboardAdmin() {
                                                 <i className="la la-users"></i>
                                             </div>
                                         </div>
-                                        <div className="col-8 d-flex align-items-center">
+                                        <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
                                                 <p className="card-category">Total Users</p>
                                                 <h4 className="card-title">{paginatorInfo?.totalUsers}</h4>
@@ -123,7 +123,7 @@ export default function DashboardAdmin() {
                                                 <i className="la la-user"></i>
                                             </div>
                                         </div>
-                                        <div className="col-8 d-flex align-items-center">
+                                        <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
                                                 <p className="card-category">Active Users</p>
                                                 <h4 className="card-title">{users.length}</h4>
@@ -142,7 +142,7 @@ export default function DashboardAdmin() {
                                                 <i className="la la-user-times"></i>
                                             </div>
                                         </div>
-                                        <div className="col-8 d-flex align-items-center">
+                                        <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
                                                 <p className="card-category">Inactive Users</p>
                                                 <h4 className="card-title">{paginatorInfo?.totalInactive}</h4>
@@ -161,7 +161,7 @@ export default function DashboardAdmin() {
                                                 <i className="la la la-user-plus"></i>
                                             </div>
                                         </div>
-                                        <div className="col-8 d-flex align-items-center">
+                                        <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
                                                 <p className="card-category">Upcoming Renews</p>
                                                 <h4 className="card-title">{paginatorInfo?.upcomingInactive}</h4>

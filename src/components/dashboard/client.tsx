@@ -46,92 +46,15 @@ export default function Client(data: any) {
         console.log(current, 'value of current page');
         setPage(current);
     }
+    function handleSearch({ searchText }: { searchText: string }) {
+        setSearchTerm(searchText);
+        setPage(1);
+    }
 
     return (
         <>
             <div className="main-panel">
                 <div className="content">
-                    <div className="container-fluid">
-                        <h4 className="page-title">Dashboard</h4>
-                        <div className="row">
-                            <div className="col-md-3">
-                                <div className="card card-stats card-warning">
-                                    <div className="card-body ">
-                                        <div className="row">
-                                            <div className="col-5">
-                                                <div className="icon-big text-center">
-                                                    <i className="la la-users"></i>
-                                                </div>
-                                            </div>
-                                            <div className="col-7 d-flex align-items-center">
-                                                <div className="numbers">
-                                                    <p className="card-category">Total Users</p>
-                                                    <h4 className="card-title">2,294</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="card card-stats card-success">
-                                    <div className="card-body ">
-                                        <div className="row">
-                                            <div className="col-5">
-                                                <div className="icon-big text-center">
-                                                    <i className="la la-user"></i>
-                                                </div>
-                                            </div>
-                                            <div className="col-7 d-flex align-items-center">
-                                                <div className="numbers">
-                                                    <p className="card-category">Active Users</p>
-                                                    <h4 className="card-title">1,345</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="card card-stats card-danger">
-                                    <div className="card-body">
-                                        <div className="row">
-                                            <div className="col-5">
-                                                <div className="icon-big text-center">
-                                                    <i className="la la-user-times"></i>
-                                                </div>
-                                            </div>
-                                            <div className="col-7 d-flex align-items-center">
-                                                <div className="numbers">
-                                                    <p className="card-category">Inactive Users</p>
-                                                    <h4 className="card-title">1303</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-md-3">
-                                <div className="card card-stats card-primary">
-                                    <div className="card-body ">
-                                        <div className="row">
-                                            <div className="col-4">
-                                                <div className="icon-big text-center">
-                                                    <i className="la la la-user-plus"></i>
-                                                </div>
-                                            </div>
-                                            <div className="col-8 d-flex align-items-center">
-                                                <div className="numbers">
-                                                    <p className="card-category">Upcoming Renews</p>
-                                                    <h4 className="card-title">576</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div className="container-fluid user_details">
                         <div className="row">
                             <div className="col-12">
@@ -139,6 +62,9 @@ export default function Client(data: any) {
                             </div>
                             <div className="col-12">
                                 <div className="card">
+                                    <div className='search-token-main col-md-3 pt-3.5 ml-auto'>
+                                        <Search onSearch={handleSearch} />
+                                    </div>
                                     <div className="card-body">
                                         <div className="table-responsive">
                                             <table className="table-bordered table">
