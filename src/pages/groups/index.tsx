@@ -96,15 +96,15 @@ export default function TypesPage() {
         <div className="content">
           <h4 className="page-title">Create Token</h4>
           <div className="card">
-            <div className="row p-3">
-              <div className="col-md-3 ">
+            <div className="row pt-3 pr-3 pl-3 ">
+              <div className="col-md-4 ">
                 <div className="form-group">
                   <Input
                     label={t('Name')}
                     {...register('name')}
                     type="text"
                     variant="outline"
-                    className="mb-4 "
+                    className=" name-ct"
                     error={t(errors.name?.message!)}
                   />
                 </div>
@@ -127,7 +127,7 @@ export default function TypesPage() {
                     </small>
                   </div>
                 </div> */}
-              <div className="col-md-3 ">
+              <div className="col-md-4 ">
                 <div className="form-group">
                   {/* Email Dropdown */}
                   <label className='tokan-label-email' htmlFor="email">Email</label>
@@ -158,7 +158,7 @@ export default function TypesPage() {
                     {...register('no_id')}
                     type="no_id"
                     variant="outline"
-                    className="mb-4"
+
                     error={t(errors.no_id?.message!)}
                   />
                 </div>
@@ -180,15 +180,16 @@ export default function TypesPage() {
                   )}
                 </div>
               </div>
-              <div className="col-md-2 ">
-                <Button
-                  className="token-button"
-                  loading={loading}
-                  disabled={loading}
-                >
-                  {t('Generate Token')}
-                </Button>
-              </div>
+
+            </div>
+            <div className="token-from-button pr-3 text-right">
+              <Button
+                className="token-button"
+                loading={loading}
+                disabled={loading}
+              >
+                {t('Generate Token')}
+              </Button>
             </div>
           </div>
 

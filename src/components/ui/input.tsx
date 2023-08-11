@@ -16,7 +16,7 @@ export interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const classes = {
-  root: 'px-4 h-12 flex items-center w-full rounded appearance-none transition duration-300 ease-in-out text-heading text-sm focus:outline-none focus:ring-0',
+  root: 'px-3.5 h-12 flex items-center w-full rounded appearance-none transition duration-300 ease-in-out text-heading text-sm focus:outline-none focus:ring-0',
   normal:
     'bg-gray-100 border border-border-base focus:shadow focus:bg-light focus:border-accent',
   solid:

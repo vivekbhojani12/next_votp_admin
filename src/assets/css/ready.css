@@ -5948,7 +5948,7 @@ body {
 .form-group,
 .form-check {
   margin-bottom: 0;
-  padding: 15px 10px;
+  padding: 15px 0px;
 }
 
 .form-group label,
@@ -7465,7 +7465,7 @@ td.td1 {
 
 .token-button {
   position: relative;
-  top: 35px;
+
   padding-left: 1rem !important;
   padding-right: 1rem !important;
   font-size: 12px;
@@ -7488,8 +7488,12 @@ a:hover {
   background-color: #991e32 !important;
 }
 
-.settings-colo-profile {
+.settings-color-profile {
   background-color: #991e32 !important;
+}
+
+.profile-button-color {
+  border: 1px solid #991e32 !important;
 }
 
 .color-button-profile {
@@ -7538,6 +7542,8 @@ a:hover {
 .color-button-back {
   border: 1px solid #991e32 !important;
   color: #991e32;
+  padding: 0px 48px 0px 48px !important;
+  height: 46px !important;
 }
 
 .color-button-back:hover {
@@ -7710,6 +7716,17 @@ th.rc-table-cell {
   }
 }
 
+@media only screen and (max-width: 767px) and (min-width: 250px) {
+  .token-button {
+    position: relative;
+    top: 0px;
+  }
+}
+
+.token-from-button {
+  padding-bottom: 16px;
+}
+
 .pagination-pt {
   padding-top: 16px;
 }
@@ -7783,10 +7800,17 @@ th.rc-table-cell {
 
 .react-confirm-alert-body {
   text-align: center !important;
+
 }
 
+.button-pu {
+  padding-top: 15px;
+  margin-bottom: 0px;
+}
 
-
+.name-ct {
+  padding: 0 !important;
+}
 
 
 

@@ -108,9 +108,9 @@ export default function ProfileUpdate({ me }: any) {
 
   return (
     <>
-      <div className='row pb-6'>
+      <div className='row pb-4'>
         <div className="col-6 ">
-          <h1 className="text-lg font-semibold text-heading">
+          <h1 className="text-lg button-pu font-semibold text-heading">
             {t('form:form-title-profile-settings')}
           </h1>
         </div>
@@ -210,7 +210,7 @@ export default function ProfileUpdate({ me }: any) {
 
             <div className="w-full text-end">
               <Button
-                className="settings-colo-profile"
+                className="profile-button-color settings-color-profile"
                 loading={loading}
                 disabled={loading}
               >
