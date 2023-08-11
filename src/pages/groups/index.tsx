@@ -89,7 +89,7 @@ export default function TypesPage() {
     setEmailList(emails);
 
   }, [users]);
-
+  const today = new Date().toISOString().split('T')[0];
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="main-panel">
@@ -171,6 +171,7 @@ export default function TypesPage() {
                     {...register('exp_date', {
                       required: 'Date is required',
                     })}
+                    min={today}
                     className="form-control createtoken-date"
                   />
                   {errors.exp_date && (
