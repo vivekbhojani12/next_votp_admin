@@ -50,7 +50,6 @@ export default function DashboardAdmin() {
         },
     });
     function handlePagination(current: any) {
-        console.log(current, 'value of current page');
         setPage(current);
     }
     const handleDelete = (id: any) => {
@@ -59,6 +58,10 @@ export default function DashboardAdmin() {
         // Call the deleteMutation function with the ID
         deleteMutation.mutate({ id });
     };
+    function handleSearch({ searchText }: { searchText: string }) {
+        setSearchTerm(searchText);
+        setPage(1);
+    }
 
     const showDeleteConfirmation = (id: any) => {
         confirmAlert({
@@ -177,7 +180,8 @@ export default function DashboardAdmin() {
                         </div>
                         <div className="col-12">
                             <div className="card">
-                                <div className="col-md-3 pt-4 ml-auto">
+                                <Search onSearch={handleSearch} className='w-3/5' />
+                                {/* <div className="col-md-3 pt-4 ml-auto">
                                     <form className="navbar-left navbar-form nav-search mr-md-3" action="">
                                         <div className="input-group">
                                             <input type="text" placeholder="Search ..." className="form-control" />
@@ -188,7 +192,7 @@ export default function DashboardAdmin() {
                                             </div>
                                         </div>
                                     </form>
-                                </div>
+                                </div> */}
                                 <div className="card-body">
                                     <div className="table-responsive">
                                         <table className="table-bordered table">

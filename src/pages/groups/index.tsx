@@ -192,7 +192,7 @@ export default function TypesPage() {
               </Button>
             </div>
           </div>
-
+          {console.log(response, '<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>')}
           {response?.email && (
             <div className="card token_gn_details">
               <div className="row">
