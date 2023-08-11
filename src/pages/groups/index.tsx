@@ -89,7 +89,7 @@ export default function TypesPage() {
     setEmailList(emails);
 
   }, [users]);
-
+  const today = new Date().toISOString().split('T')[0];
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="main-panel">
@@ -168,6 +168,7 @@ export default function TypesPage() {
                   <label className='tokan-label-date' >Date</label>
                   <input
                     type="date"
+                    min={today}
                     {...register('exp_date', {
                       required: 'Date is required',
                     })}
