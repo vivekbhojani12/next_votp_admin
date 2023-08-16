@@ -95,9 +95,9 @@ export default function TypesPage() {
       <div className="main-panel">
         <div className="content">
           <h4 className="page-title">Create Token</h4>
-          <div className="card pl-2">
+          <div className="card pl-2 pr-2">
             <div className="row p-3">
-              <div className="col-md-3 ">
+              <div className="col-md-3 col-lg-3">
                 <div className="form-group">
                   <Input
                     label={t('Name')}
@@ -127,7 +127,7 @@ export default function TypesPage() {
                     </small>
                   </div>
                 </div> */}
-              <div className="col-md-3 ">
+              <div className="col-md-3 col-lg-3 ">
                 <div className="form-group">
                   {/* Email Dropdown */}
                   <label className='tokan-label-email' htmlFor="email">Email</label>
@@ -151,8 +151,8 @@ export default function TypesPage() {
                   </small>
                 </div>
               </div>
-              <div className="col-md-1">
-                <div className="form-group">
+              <div className="col-md-1 col-lg-1">
+                <div className="form-group token-id-no">
                   <Input
                     label={t('No Id')}
                     {...register('no_id')}
@@ -163,7 +163,7 @@ export default function TypesPage() {
                   />
                 </div>
               </div>
-              <div className="col-md-3 ">
+              <div className="col-md-3 col-lg-3 ">
                 <div className="form-group">
                   <label className='tokan-label-date' >Date</label>
                   <input
@@ -181,7 +181,7 @@ export default function TypesPage() {
                   )}
                 </div>
               </div>
-              <div className="col-md-2 col-xl-2  col-lj-2 col-sm-2 col-sm-2 text-center ">
+              <div className="col-md-2 col-lg-2   ">
                 <Button
                   className="token-button"
                   loading={loading}
