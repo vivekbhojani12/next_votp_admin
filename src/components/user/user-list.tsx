@@ -4,6 +4,8 @@ import Link from '@/components/ui/link';
 import { Table } from '@/components/ui/table';
 import ActionButtons from '@/components/common/action-buttons';
 import { siteSettings } from '@/settings/site.settings';
+import Search from '@/components/common/search';
+
 import {
   Category,
   MappedPaginatorInfo,
@@ -173,10 +175,17 @@ const CustomerList = ({
 
 
   const [page, setPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
+
 
   function handlePagination(current: any) {
     setPage(current);
   }
+  function handleSearch({ searchText }: { searchText: string }) {
+    setSearchTerm(searchText);
+    setPage(1);
+  }
+
 
   return (
     <>
@@ -186,7 +195,9 @@ const CustomerList = ({
         </div>
         <div className="col-12 mb-6 ">
           <div className='users-table'>
-
+            <div className='search-token-main col-md-3 pb-3 pr-0  ml-auto'>
+              <Search onSearch={handleSearch} />
+            </div>
             <Table
               // @ts-ignore
               columns={columns}

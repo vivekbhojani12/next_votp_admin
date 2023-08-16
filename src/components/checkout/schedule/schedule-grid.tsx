@@ -189,7 +189,7 @@ const ScheduleGrid = ({ data, users }: any) => {
               <div>
                 <select
                   {...register('userId', { required: 'Please select a Email.' })}
-                  className="mb-4 w-full"
+                  className="mb-4 users-edit-from w-full"
                   defaultValue={''}
                 >
                   <option value="" disabled>
@@ -227,7 +227,7 @@ const ScheduleGrid = ({ data, users }: any) => {
                 minDate={currentDate}
                 onChange={(date) => setStartDate(date)} // Use the correct way to update the startDate state
                 // dateFormat="yyyy-MM-dd" // Set the desired date format for the DatePicker
-                className="form-control" />
+                className="form-control users-date-from" />
             </div>}
 
           </Card>

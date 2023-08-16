@@ -95,7 +95,7 @@ export default function DashboardAdmin() {
 
                     <h4 className="page-title">Dashboard</h4>
                     <div className="row">
-                        <div className="col-md-3">
+                        <div className="col-md-3 col-sm-6 col-lg-3">
                             <div className="card card-stats card-warning">
                                 <div className="card-body ">
                                     <div className="row">
@@ -106,7 +106,7 @@ export default function DashboardAdmin() {
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
-                                                <p className="card-category">Total Users</p>
+                                                <p className="card-category">Total Token</p>
                                                 <h4 className="card-title">{paginatorInfo?.totalUsers}</h4>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@ export default function DashboardAdmin() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-3 col-sm-6 col-lg-3">
                             <div className="card card-stats card-success">
                                 <div className="card-body ">
                                     <div className="row">
@@ -125,7 +125,7 @@ export default function DashboardAdmin() {
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
-                                                <p className="card-category">Active Users</p>
+                                                <p className="card-category">Active Token</p>
                                                 <h4 className="card-title">{users.length}</h4>
                                             </div>
                                         </div>
@@ -133,7 +133,7 @@ export default function DashboardAdmin() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-3 col-sm-6 col-lg-3">
                             <div className="card card-stats card-danger">
                                 <div className="card-body">
                                     <div className="row">
@@ -144,7 +144,7 @@ export default function DashboardAdmin() {
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
-                                                <p className="card-category">Inactive Users</p>
+                                                <p className="card-category">Inactive Token</p>
                                                 <h4 className="card-title">{paginatorInfo?.totalInactive}</h4>
                                             </div>
                                         </div>
@@ -152,7 +152,7 @@ export default function DashboardAdmin() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-3 col-sm-6 col-lg-3">
                             <div className="card card-stats card-primary">
                                 <div className="card-body ">
                                     <div className="row">
