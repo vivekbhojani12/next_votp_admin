@@ -40,8 +40,6 @@ export default function Client(data: any) {
         userId: data?.data?.data?.data?.id
         // sortedBy,
     });
-    console.log(users, '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<USERS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-
     function handlePagination(current: any) {
         console.log(current, 'value of current page');
         setPage(current);
