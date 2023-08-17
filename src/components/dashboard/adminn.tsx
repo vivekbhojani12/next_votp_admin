@@ -72,7 +72,7 @@ export default function DashboardAdmin() {
             title: 'Delete',
             message: 'Are you sure, you want to delete?',
 
-            
+
             buttons: [
                 {
                     label: 'Cancel',
@@ -106,7 +106,7 @@ export default function DashboardAdmin() {
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
-                                                <p className="card-category">Total Users</p>
+                                                <p className="card-category">Total Token</p>
                                                 <h4 className="card-title">{paginatorInfo?.totalUsers}</h4>
                                             </div>
                                         </div>
@@ -125,7 +125,7 @@ export default function DashboardAdmin() {
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
-                                                <p className="card-category">Active Users</p>
+                                                <p className="card-category">Active Token</p>
                                                 <h4 className="card-title">{users.length}</h4>
                                             </div>
                                         </div>
@@ -144,7 +144,7 @@ export default function DashboardAdmin() {
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
-                                                <p className="card-category">Inactive Users</p>
+                                                <p className="card-category">Inactive Token</p>
                                                 <h4 className="card-title">{paginatorInfo?.totalInactive}</h4>
                                             </div>
                                         </div>
