@@ -53,7 +53,7 @@ export default function DashboardAdmin() {
         setPage(current);
     }
     const handleDelete = (id: any) => {
-        console.log(id, 'Id value');
+
 
         // Call the deleteMutation function with the ID
         deleteMutation.mutate({ id });
@@ -72,7 +72,7 @@ export default function DashboardAdmin() {
             title: 'Delete',
             message: 'Are you sure, you want to delete?',
 
-
+            
             buttons: [
                 {
                     label: 'Cancel',
