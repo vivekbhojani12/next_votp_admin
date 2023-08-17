@@ -7588,6 +7588,9 @@ a:hover {
   .users-search-btn {}
 }
 
+.back-dashboaed-btn:hover {
+  color: #ffff !important;
+}
 
 .users-label {
   font-size: 22px;

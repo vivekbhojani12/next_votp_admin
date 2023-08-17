@@ -232,7 +232,7 @@ export default function TypesPage() {
                     <a
                       href="/
                     "
-                      className="btn btn-success"
+                      className="back-dashboaed-btn btn btn-success"
                     >
                       Back to Dashboard
                     </a>
