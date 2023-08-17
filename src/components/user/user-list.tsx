@@ -208,7 +208,7 @@ const CustomerList = ({
               <div className="flex pagination-pt  items-center justify-end">
                 <Pagination
                   total={paginatorInfo.total}
-                  current={paginatorInfo.startIndex}
+                  current={paginatorInfo.pageIndex + 1}
                   pageSize={10}
                   onChange={onPagination}
                 />
