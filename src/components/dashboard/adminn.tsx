@@ -261,7 +261,7 @@ export default function DashboardAdmin() {
                                             <div className="flex items-center justify-end">
                                                 <Pagination
                                                     total={paginatorInfo.total}
-                                                    current={paginatorInfo.startIndex}
+                                                    current={paginatorInfo.pageIndex}
                                                     pageSize={10}
                                                     onChange={handlePagination}
                                                 />
