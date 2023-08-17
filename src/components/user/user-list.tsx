@@ -195,9 +195,6 @@ const CustomerList = ({
         </div>
         <div className="col-12 mb-6 ">
           <div className='users-table'>
-            <div className='search-token-main col-md-3 pb-3 pr-0  ml-auto'>
-              <Search onSearch={handleSearch} />
-            </div>
             <Table
               // @ts-ignore
               columns={columns}
