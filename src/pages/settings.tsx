@@ -5,6 +5,7 @@ import Pagination from '@/components/ui/pagination';
 import { useUsersTokenQuery, deleteQuery, useMessageQuery } from '@/data/user';
 import { useState, useEffect } from 'react';
 import { MappedPaginatorInfo } from '@/types';
+import Search from '@/components/common/search';
 
 
 type IProps = {
@@ -31,6 +32,11 @@ export default function Settings() {
   function handlePagination(current: any) {
     setPage(current);
   }
+  function handleSearch({ searchText }: { searchText: string }) {
+    setSearchTerm(searchText);
+    setPage(1);
+  }
+
   console.log(paginatorInfo, 'the value of paginatorInfo in message')
   return (
     <>
@@ -41,7 +47,9 @@ export default function Settings() {
           </div>
           <div className="col-12">
             <div className="card">
-
+              <div className='search-token-main col-md-3 pt-3.5 ml-auto'>
+                <Search onSearch={handleSearch} />
+              </div>
               <div className="card-body">
                 <div className="table-responsive">
                   <table className="table table-bordered">
