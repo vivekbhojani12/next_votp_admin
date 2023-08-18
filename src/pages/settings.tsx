@@ -1,11 +1,11 @@
 import AdminLayout from '@/components/layouts/admin';
+import Search from '@/components/common/search';
 import { adminOnly } from '@/utils/auth-utils';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Pagination from '@/components/ui/pagination';
 import { useUsersTokenQuery, deleteQuery, useMessageQuery } from '@/data/user';
 import { useState, useEffect } from 'react';
 import { MappedPaginatorInfo } from '@/types';
-import Search from '@/components/common/search';
 
 
 type IProps = {
@@ -16,19 +16,19 @@ type IProps = {
 
 export default function Settings() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [page, setPage] = useState(1);
-  const [paramId, setParamId] = useState('');
-  // const { t } = useTranslation();
-
   const [orderBy, setOrder] = useState('createdAt');
-  const [userId, setUserId] = useState('');
-  const { users, paginatorInfo, loading, error } = useMessageQuery({
+
+  const [page, setPage] = useState(1);
+
+  const { users, paginatorInfo } = useMessageQuery({
     limit: 10,
     page,
     name: searchTerm,
     orderBy,
     // sortedBy,
   });
+
+
   function handlePagination(current: any) {
     setPage(current);
   }

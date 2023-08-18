@@ -6,7 +6,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticProps } from 'next';
 import Layout from '@/components/layouts/admin';
 import { adminOnly } from '@/utils/auth-utils';
-import { useUsersTokenQuery, deleteQuery, useUsersTokenCount } from '@/data/user';
+import { useUsersTokenQuery, deleteQuery } from '@/data/user';
 import { useState, useEffect } from 'react';
 import ActionButtons from '../common/action-buttons';
 import { HttpClient } from '@/data/client/http-client';
@@ -33,10 +33,6 @@ export default function DashboardAdmin() {
     const [userId, setUserId] = useState('');
     // const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
     // const deleteProductMutation = useDeleteProductMutation();
-    const { user } = useUsersTokenCount();
-
-    console.log(user, 'the value of user')
-
     const { users, paginatorInfo, loading, error } = useUsersTokenQuery({
         limit: 10,
         page,
@@ -51,7 +47,6 @@ export default function DashboardAdmin() {
         onSuccess: () => {
             // Invalidate the "allToken" query and any other queries you want to update
             queryClient.invalidateQueries(API_ENDPOINTS.FACTHED_TOKEN_USER);
-            queryClient.invalidateQueries(API_ENDPOINTS.TOKEN_DETAILS_COUNT)
         },
     });
     function handlePagination(current: any) {
@@ -60,6 +55,7 @@ export default function DashboardAdmin() {
     const handleDelete = (id: any) => {
 
 
+        // Call the deleteMutation function with the ID
         deleteMutation.mutate({ id });
     };
     function handleSearch({ searchText }: { searchText: string }) {
@@ -104,14 +100,14 @@ export default function DashboardAdmin() {
                                 <div className="card-body ">
                                     <div className="row">
                                         <div className="col-4">
-                                            <div className="icon-big text-center">
-                                                <i className="la la-users"></i>
+                                            <div className="icon-big icon-users text-center">
+                                                <i className="icon-font la la-users"></i>
                                             </div>
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
-                                            <div className="numbers">
+                                            <div className="numbers text-all">
                                                 <p className="card-category">Total Token</p>
-                                                <h4 className="card-title">{user?.total_users}</h4>
+                                                <h4 className="card-title">{paginatorInfo?.totalUsers}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -123,14 +119,14 @@ export default function DashboardAdmin() {
                                 <div className="card-body ">
                                     <div className="row">
                                         <div className="col-4">
-                                            <div className="icon-big text-center">
-                                                <i className="la la-user"></i>
+                                            <div className="icon-big icon-users text-center">
+                                                <i className="icon-font la la-user"></i>
                                             </div>
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
-                                            <div className="numbers">
+                                            <div className="numbers text-all">
                                                 <p className="card-category">Active Token</p>
-                                                <h4 className="card-title">{user?.filteredactiveUsers}</h4>
+                                                <h4 className="card-title">{users.length}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -142,14 +138,14 @@ export default function DashboardAdmin() {
                                 <div className="card-body">
                                     <div className="row">
                                         <div className="col-4">
-                                            <div className="icon-big text-center">
-                                                <i className="la la-user-times"></i>
+                                            <div className="icon-big icon-users text-center">
+                                                <i className="icon-font la la-user-times"></i>
                                             </div>
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
-                                            <div className="numbers">
+                                            <div className="numbers text-all">
                                                 <p className="card-category">Inactive Token</p>
-                                                <h4 className="card-title">{user?.filteredInactiveUsers}</h4>
+                                                <h4 className="card-title">{paginatorInfo?.totalInactive}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -159,16 +155,16 @@ export default function DashboardAdmin() {
                         <div className="col-md-3 col-sm-6 col-lg-3">
                             <div className="card card-stats card-primary">
                                 <div className="card-body ">
-                                    <div className="row">
+                                    <div className="row align-items-center">
                                         <div className="col-4">
-                                            <div className="icon-big text-center">
-                                                <i className="la la la-user-plus"></i>
+                                            <div className="icon-big icon-users text-center">
+                                                <i className="icon-font la la la-user-plus"></i>
                                             </div>
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
-                                            <div className="numbers">
+                                            <div className="numbers text-all">
                                                 <p className="card-category">Upcoming Renews</p>
-                                                <h4 className="card-title">{user?.filterUpcomingInactiveUsers}</h4>
+                                                <h4 className="card-title">{paginatorInfo?.upcomingInactive}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -187,6 +183,18 @@ export default function DashboardAdmin() {
                                 <div className='search-token-main col-md-3 pt-3.5 ml-auto'>
                                     <Search onSearch={handleSearch} />
                                 </div>
+                                {/* <div className="col-md-3 pt-4 ml-auto">
+                                    <form className="navbar-left navbar-form nav-search mr-md-3" action="">
+                                        <div className="input-group">
+                                            <input type="text" placeholder="Search ..." className="form-control" />
+                                            <div className="input-group-append">
+                                                <span className="input-group-text">
+                                                    <i className="la la-search search-icon"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div> */}
                                 <div className="card-body">
                                     <div className="table-responsive">
                                         <table className="table-bordered table">
@@ -196,7 +204,7 @@ export default function DashboardAdmin() {
                                                     <th>Name</th>
                                                     <th>Email ID</th>
                                                     <th>App Token</th>
-                                                    {/* <th>Captcha Token</th> */}
+                                                    <th>Captcha Token</th>
                                                     <th>ID's</th>
                                                     <th>Expiry Date</th>
                                                     <th>Edit</th>
@@ -207,18 +215,24 @@ export default function DashboardAdmin() {
                                                 {users.map((user, index) => (
                                                     <tr key={user.id}>
                                                         <th scope="row">{index + 1}</th>
-                                                        <td>{user?.userId?.name || user?.userDetails && user?.userDetails[0].name}</td>
-                                                        <td>{user?.userId?.email || user?.userDetails && user?.userDetails[0].email}</td>
+                                                        <td>{user?.userId?.name}</td>
+                                                        <td>{user?.userId?.email}</td>
                                                         <td>{user?.token}</td>
-                                                        {/* <td>Captcha Token</td> */}
+                                                        <td>Captcha Token</td>
                                                         <td>{user?.no_id}</td>
                                                         <td>
                                                             {user?.exp_date
                                                                 ? new Date(user.exp_date).toLocaleDateString()
                                                                 : ''}
                                                         </td>
+                                                        {/* <td>{user.data1}</td>
+                              <td>{user.data2}</td>
+                              <td>{user.data3}</td>
+                              <td>{`${user.date} (${user.daysLeft} days left)`}</td> */}
                                                         <td>
-
+                                                            {/* <a href="#">
+                                  
+                                </a> */}
                                                             <Link
                                                                 href={`orders/checkout`}
                                                                 as={`orders/checkout/${user?._id}`}

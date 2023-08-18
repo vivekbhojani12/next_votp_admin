@@ -97,7 +97,7 @@ export default function TypesPage() {
           <h4 className="page-title">Create Token</h4>
           <div className="card pl-2 pr-2">
             <div className="row p-3">
-              <div className="col-md-3 col-lg-3">
+              <div className="col-md-2 Create-token-p  col-lg-2">
                 <div className="form-group">
                   <Input
                     label={t('Name')}
@@ -127,7 +127,7 @@ export default function TypesPage() {
                     </small>
                   </div>
                 </div> */}
-              <div className="col-md-3 col-lg-3 ">
+              <div className="col-md-4 Create-token-p  col-lg-4 ">
                 <div className="form-group">
                   {/* Email Dropdown */}
                   <label className='tokan-label-email' htmlFor="email">Email</label>
@@ -151,7 +151,7 @@ export default function TypesPage() {
                   </small>
                 </div>
               </div>
-              <div className="col-md-1 col-lg-1">
+              <div className="col-md-1 Create-token-p  col-lg-1">
                 <div className="form-group token-id-no">
                   <Input
                     label={t('No Id')}
@@ -163,7 +163,7 @@ export default function TypesPage() {
                   />
                 </div>
               </div>
-              <div className="col-md-3 col-lg-3 ">
+              <div className="col-md-3 Create-token-p  col-lg-3 ">
                 <div className="form-group">
                   <label className='tokan-label-date' >Date</label>
                   <input
@@ -181,7 +181,7 @@ export default function TypesPage() {
                   )}
                 </div>
               </div>
-              <div className="col-md-2 col-lg-2   ">
+              <div className="col-md-2 Generate-Token-button text-center pl-0 pr-0 col-lg-2   ">
                 <Button
                   className="token-button"
                   loading={loading}
