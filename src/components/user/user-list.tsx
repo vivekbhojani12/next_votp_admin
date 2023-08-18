@@ -67,7 +67,7 @@ const CustomerList = ({
       dataIndex: 'serialNumber', // Custom dataIndex to hold the serial number
       key: 'serialNumber',
       align: alignLeft,
-      width: 74,
+      width: 79,
       render: (customer: any, customers: any, index = 0) => index + 1, // Render serial number as row index + 1
     },
     {
@@ -128,7 +128,7 @@ const CustomerList = ({
       dataIndex: 'id',
       key: 'actions',
       align: alignLeft,
-      width: 67,
+      width: 74,
       render: function Render(id: string, { is_active }: any) {
         const { data } = useMeQuery();
         console.log(data, '<<<<<<<>>>>>>>>>>>>>>>>>>>>')
@@ -150,7 +150,7 @@ const CustomerList = ({
       dataIndex: 'id',
       key: 'delete',
       align: alignLeft,
-      width: 85,
+      width: 95,
       render: function Render(id: string, { is_active }: any) {
         const { data } = useMeQuery();
         console.log(data, '<<<<<<<>>>>>>>>>>>>>>>>>>>>')

@@ -1,4 +1,5 @@
 import AdminLayout from '@/components/layouts/admin';
+import Search from '@/components/common/search';
 import { adminOnly } from '@/utils/auth-utils';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Pagination from '@/components/ui/pagination';
@@ -9,6 +10,8 @@ import { useState, useEffect } from 'react';
 
 export default function Settings() {
   const { users } = useMessageQuery();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [page, setPage] = useState(1);
   console.log(users, 'Message<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>')
   // const [page, setPage] = useState(1);
   // const { paginatorInfo } = useUsersTokenQuery({
@@ -17,6 +20,10 @@ export default function Settings() {
   // function handlePagination(current: any) {
   //   setPage(current);
   // }
+  function handleSearch({ searchText }: { searchText: string }) {
+    setSearchTerm(searchText);
+    setPage(1);
+  }
   return (
     <>
       <div className="container-fluid user_details">
@@ -26,7 +33,9 @@ export default function Settings() {
           </div>
           <div className="col-12">
             <div className="card">
-
+              <div className='search-token-main col-md-3 pt-3.5 ml-auto'>
+                <Search onSearch={handleSearch} />
+              </div>
               <div className="card-body">
                 <div className="table-responsive">
                   <table className="table table-bordered">

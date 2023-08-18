@@ -100,12 +100,12 @@ export default function DashboardAdmin() {
                                 <div className="card-body ">
                                     <div className="row">
                                         <div className="col-4">
-                                            <div className="icon-big text-center">
-                                                <i className="la la-users"></i>
+                                            <div className="icon-big icon-users text-center">
+                                                <i className="icon-font la la-users"></i>
                                             </div>
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
-                                            <div className="numbers">
+                                            <div className="numbers text-all">
                                                 <p className="card-category">Total Token</p>
                                                 <h4 className="card-title">{paginatorInfo?.totalUsers}</h4>
                                             </div>
@@ -119,12 +119,12 @@ export default function DashboardAdmin() {
                                 <div className="card-body ">
                                     <div className="row">
                                         <div className="col-4">
-                                            <div className="icon-big text-center">
-                                                <i className="la la-user"></i>
+                                            <div className="icon-big icon-users text-center">
+                                                <i className="icon-font la la-user"></i>
                                             </div>
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
-                                            <div className="numbers">
+                                            <div className="numbers text-all">
                                                 <p className="card-category">Active Token</p>
                                                 <h4 className="card-title">{users.length}</h4>
                                             </div>
@@ -138,12 +138,12 @@ export default function DashboardAdmin() {
                                 <div className="card-body">
                                     <div className="row">
                                         <div className="col-4">
-                                            <div className="icon-big text-center">
-                                                <i className="la la-user-times"></i>
+                                            <div className="icon-big icon-users text-center">
+                                                <i className="icon-font la la-user-times"></i>
                                             </div>
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
-                                            <div className="numbers">
+                                            <div className="numbers text-all">
                                                 <p className="card-category">Inactive Token</p>
                                                 <h4 className="card-title">{paginatorInfo?.totalInactive}</h4>
                                             </div>
@@ -155,14 +155,14 @@ export default function DashboardAdmin() {
                         <div className="col-md-3 col-sm-6 col-lg-3">
                             <div className="card card-stats card-primary">
                                 <div className="card-body ">
-                                    <div className="row">
+                                    <div className="row align-items-center">
                                         <div className="col-4">
-                                            <div className="icon-big text-center">
-                                                <i className="la la la-user-plus"></i>
+                                            <div className="icon-big icon-users text-center">
+                                                <i className="icon-font la la la-user-plus"></i>
                                             </div>
                                         </div>
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
-                                            <div className="numbers">
+                                            <div className="numbers text-all">
                                                 <p className="card-category">Upcoming Renews</p>
                                                 <h4 className="card-title">{paginatorInfo?.upcomingInactive}</h4>
                                             </div>
