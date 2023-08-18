@@ -156,14 +156,11 @@ const CustomerList = ({
         console.log(data, '<<<<<<<>>>>>>>>>>>>>>>>>>>>')
         return (
           <>
-
             {data && (
               <ActionButtons
                 id={id}
                 deleteModalView={id}
-
               />
-
             )}
 
           </>
@@ -195,6 +192,7 @@ const CustomerList = ({
         </div>
         <div className="col-12 mb-6 ">
           <div className='users-table'>
+
             <Table
               // @ts-ignore
               columns={columns}

@@ -197,7 +197,7 @@ export default function TypesPage() {
             <div className="card token_gn_details">
               <div className="row">
                 <div className="col-12">
-                  <h4>Token Details:</h4>
+                  <h4>Token </h4>
                 </div>
                 <div className="col-12">
                   <table className="table-striped mt-3 table">
@@ -230,9 +230,8 @@ export default function TypesPage() {
                   </table>
                   <div className="text-right">
                     <a
-                      href="/
-                    "
-                      className="back-dashboaed-btn btn btn-success"
+                      href="/"
+                      className="back-dashboaed-btn btn btn-success  "
                     >
                       Back to Dashboard
                     </a>
