@@ -83,8 +83,13 @@ export const userClient = {
       search: HttpClient.formatSearchParams({ name }),
     });
   },
-  fetchMessage: () => {
-    return HttpClient.get<UserPaginator>(API_ENDPOINTS.MESSAGE_USER);
+  fetchMessage: ({ name, ...params }: Partial<UserQueryOptions>) => {
+    return HttpClient.get<UserPaginator>(API_ENDPOINTS.MESSAGE_USER, {
+      searchJoin: 'and',
+      with: 'wallet',
+      ...params,
+      search: HttpClient.formatSearchParams({ name }),
+    });
   },
   fetchUsersPurchasedToken: ({ name, ...params }: Partial<UserQueryOptions>) => {
     return HttpClient.get<UserPaginator>(API_ENDPOINTS.FACTHED_TOKEN_USER, {

@@ -60,7 +60,6 @@ export default function DashboardAdmin() {
     const handleDelete = (id: any) => {
 
 
-        // Call the deleteMutation function with the ID
         deleteMutation.mutate({ id });
     };
     function handleSearch({ searchText }: { searchText: string }) {
@@ -188,18 +187,6 @@ export default function DashboardAdmin() {
                                 <div className='search-token-main col-md-3 pt-3.5 ml-auto'>
                                     <Search onSearch={handleSearch} />
                                 </div>
-                                {/* <div className="col-md-3 pt-4 ml-auto">
-                                    <form className="navbar-left navbar-form nav-search mr-md-3" action="">
-                                        <div className="input-group">
-                                            <input type="text" placeholder="Search ..." className="form-control" />
-                                            <div className="input-group-append">
-                                                <span className="input-group-text">
-                                                    <i className="la la-search search-icon"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div> */}
                                 <div className="card-body">
                                     <div className="table-responsive">
                                         <table className="table-bordered table">
@@ -209,7 +196,7 @@ export default function DashboardAdmin() {
                                                     <th>Name</th>
                                                     <th>Email ID</th>
                                                     <th>App Token</th>
-                                                    <th>Captcha Token</th>
+                                                    {/* <th>Captcha Token</th> */}
                                                     <th>ID's</th>
                                                     <th>Expiry Date</th>
                                                     <th>Edit</th>
@@ -223,21 +210,15 @@ export default function DashboardAdmin() {
                                                         <td>{user?.userId?.name || user?.userDetails && user?.userDetails[0].name}</td>
                                                         <td>{user?.userId?.email || user?.userDetails && user?.userDetails[0].email}</td>
                                                         <td>{user?.token}</td>
-                                                        <td>Captcha Token</td>
+                                                        {/* <td>Captcha Token</td> */}
                                                         <td>{user?.no_id}</td>
                                                         <td>
                                                             {user?.exp_date
                                                                 ? new Date(user.exp_date).toLocaleDateString()
                                                                 : ''}
                                                         </td>
-                                                        {/* <td>{user.data1}</td>
-                              <td>{user.data2}</td>
-                              <td>{user.data3}</td>
-                              <td>{`${user.date} (${user.daysLeft} days left)`}</td> */}
                                                         <td>
-                                                            {/* <a href="#">
-                                  
-                                </a> */}
+
                                                             <Link
                                                                 href={`orders/checkout`}
                                                                 as={`orders/checkout/${user?._id}`}

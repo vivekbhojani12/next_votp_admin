@@ -315,10 +315,10 @@ export const useUsersTokenCount = () => {
 
 // fetchTokenCounting
 
-export const useMessageQuery = () => {
+export const useMessageQuery = (params: Partial<QueryOptionsType>) => {
   const { data, isLoading, error } = useQuery<UserPaginator, Error>(
-    [API_ENDPOINTS.USERS],
-    () => userClient.fetchMessage(),
+    [API_ENDPOINTS.MESSAGE_USER,params],
+    () => userClient.fetchMessage(params),
     {
       keepPreviousData: true,
     }
@@ -326,7 +326,7 @@ export const useMessageQuery = () => {
 
   return {
     users: data?.data ?? [],
-    // paginatorInfo: mapPaginatorData(data as any),
+    paginatorInfo: mapPaginatorData(data as any),
     loading: isLoading,
     error,
   };
