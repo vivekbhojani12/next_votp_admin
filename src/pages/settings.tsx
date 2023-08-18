@@ -1,35 +1,22 @@
 import AdminLayout from '@/components/layouts/admin';
-import Search from '@/components/common/search';
 import { adminOnly } from '@/utils/auth-utils';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Pagination from '@/components/ui/pagination';
 import { useUsersTokenQuery, deleteQuery, useMessageQuery } from '@/data/user';
 import { useState, useEffect } from 'react';
-import { MappedPaginatorInfo } from '@/types';
 
-
-type IProps = {
-  paginatorInfoo: MappedPaginatorInfo | null;
-  onPagination: (current: number) => void;
-};
 
 
 export default function Settings() {
   const { users } = useMessageQuery();
-
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const [page, setPage] = useState(1);
-  const { paginatorInfo } = useUsersTokenQuery({
-    limit: 10
-  });
-  function handlePagination(current: any) {
-    setPage(current);
-  }
-  function handleSearch({ searchText }: { searchText: string }) {
-    setSearchTerm(searchText);
-    setPage(1);
-  }
+  console.log(users, 'Message<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>')
+  // const [page, setPage] = useState(1);
+  // const { paginatorInfo } = useUsersTokenQuery({
+  //   limit: 10
+  // });
+  // function handlePagination(current: any) {
+  //   setPage(current);
+  // }
   return (
     <>
       <div className="container-fluid user_details">
@@ -39,9 +26,6 @@ export default function Settings() {
           </div>
           <div className="col-12">
             <div className="card">
-              <div className='search-token-main col-md-3 pt-3.5 ml-auto'>
-                <Search onSearch={handleSearch} />
-              </div>
               <div className="card-body">
                 <div className="table-responsive">
                   <table className="table table-bordered">
@@ -52,9 +36,36 @@ export default function Settings() {
                         <th>Message</th>
                         <th>Otp</th>
                         <th>Vehicle No</th>
+                        {/* <th>Captcha Token</th>
+                        <th>ID's</th>
+                        <th>Expiry Date</th>
+                        <th>Edit</th>
+                        <th>Delete</th> */}
                       </tr>
                     </thead>
                     <tbody>
+                      {/* <tr>
+                        <th scope="row">1</th>
+                        <td>Username</td>
+                        <td>test@test.com</td>
+                        <td>G76D87</td>
+                        <td>HGT768GD</td>
+                        <td>10</td>
+                        <td>28-May-2023 (20 days left)</td>
+                        <td><a href="#"><i className="la la-edit"></i></a></td>
+                        <td><a href="#"><i className="la la-trash-o"></i></a></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Username</td>
+                        <td>test@test.com</td>
+                        <td>G76D87</td>
+                        <td>HGT768GD</td>
+                        <td>10</td>
+                        <td>28-May-2023 (20 days left)</td>
+                        <td><a href="#"><i className="la la-edit"></i></a></td>
+                        <td><a href="#"><i className="la la-trash-o"></i></a></td>
+                      </tr> */}
                       {users.map((user, index) => (
                         <tr key={user._id}>
                           <th scope="row">{index + 1}</th>
@@ -66,16 +77,16 @@ export default function Settings() {
                       ))}
                     </tbody>
                   </table>
-                  {!!paginatorInfo?.total && (
+                  {/* {!!paginatorInfo?.total && (
                     <div className="flex items-center justify-end">
                       <Pagination
                         total={paginatorInfo.total}
-                        current={paginatorInfo.pageIndex}
+                        current={paginatorInfo.startIndex}
                         pageSize={10}
                         onChange={handlePagination}
                       />
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>
