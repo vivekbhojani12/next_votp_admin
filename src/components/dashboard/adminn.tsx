@@ -72,7 +72,7 @@ export default function DashboardAdmin() {
             title: 'Delete',
             message: 'Are you sure, you want to delete?',
 
-            
+
             buttons: [
                 {
                     label: 'Cancel',
@@ -95,7 +95,7 @@ export default function DashboardAdmin() {
 
                     <h4 className="page-title">Dashboard</h4>
                     <div className="row">
-                        <div className="col-md-3 col-sm-6 col-lg-3">
+                        <div className="col-md-3">
                             <div className="card card-stats card-warning">
                                 <div className="card-body ">
                                     <div className="row">
@@ -114,7 +114,7 @@ export default function DashboardAdmin() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3 col-sm-6 col-lg-3">
+                        <div className="col-md-3">
                             <div className="card card-stats card-success">
                                 <div className="card-body ">
                                     <div className="row">
@@ -133,7 +133,7 @@ export default function DashboardAdmin() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3 col-sm-6 col-lg-3">
+                        <div className="col-md-3">
                             <div className="card card-stats card-danger">
                                 <div className="card-body">
                                     <div className="row">
@@ -152,7 +152,7 @@ export default function DashboardAdmin() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-3 col-sm-6 col-lg-3">
+                        <div className="col-md-3">
                             <div className="card card-stats card-primary">
                                 <div className="card-body ">
                                     <div className="row">
@@ -261,7 +261,7 @@ export default function DashboardAdmin() {
                                             <div className="flex items-center justify-end">
                                                 <Pagination
                                                     total={paginatorInfo.total}
-                                                    current={paginatorInfo.startIndex}
+                                                    current={paginatorInfo.pageIndex}
                                                     pageSize={10}
                                                     onChange={handlePagination}
                                                 />
