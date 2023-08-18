@@ -103,7 +103,3 @@ export const getStaticProps = async ({ locale }: any) => ({
     ...(await serverSideTranslations(locale, ['form', 'common'])),
   },
 });
-
-
-
-// vehicle_num
