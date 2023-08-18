@@ -66,7 +66,7 @@ export const useCreateTokenMutation = () => {
 
   return useMutation(tokenClient.createToken, {
     onSuccess: () => {
-      toast.success(t('common:successfully-register'));
+      toast.success(t('common:successfully-created'));
       // router.replace(Routes.dashboard)
 
     },

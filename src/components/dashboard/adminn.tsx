@@ -16,6 +16,8 @@ import { useMutation, useQueryClient } from 'react-query';
 import { API_ENDPOINTS } from '@/data/client/api-endpoints';
 import { MappedPaginatorInfo } from '@/types';
 import { TrashIcon } from '@/components/icons/trash';
+import { toast } from 'react-toastify';
+import { useTranslation } from 'next-i18next';
 
 
 type IProps = {
@@ -27,7 +29,7 @@ export default function DashboardAdmin() {
     const [searchTerm, setSearchTerm] = useState('');
     const [page, setPage] = useState(1);
     const [paramId, setParamId] = useState('');
-    // const { t } = useTranslation();
+    const { t } = useTranslation();
 
     const [orderBy, setOrder] = useState('createdAt');
     const [userId, setUserId] = useState('');
@@ -45,9 +47,13 @@ export default function DashboardAdmin() {
 
     const deleteMutation = useMutation(deleteQuery, {
         onSuccess: () => {
-            // Invalidate the "allToken" query and any other queries you want to update
-            queryClient.invalidateQueries(API_ENDPOINTS.FACTHED_TOKEN_USER);
+            toast.success(t('common:successfully-deleted'));
+
         },
+        onSettled: () => {
+            queryClient.invalidateQueries(API_ENDPOINTS.FACTHED_TOKEN_USER);
+
+        }
     });
     function handlePagination(current: any) {
         setPage(current);
