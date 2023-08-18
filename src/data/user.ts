@@ -296,6 +296,24 @@ export const useUsersQuery = (params: Partial<QueryOptionsType>) => {
   };
 };
 
+export const useUsersTokenCount = () => {
+ 
+  const { data, isLoading, error } = useQuery(
+    [API_ENDPOINTS.TOKEN_DETAILS_COUNT],
+    () => userClient.fetchTokenCounting(),
+    {
+      keepPreviousData: true,
+    }
+  );
+
+  return {
+    user: data,
+    loading: isLoading,
+    error,
+  };
+};
+
+// fetchTokenCounting
 
 export const useMessageQuery = () => {
   const { data, isLoading, error } = useQuery<UserPaginator, Error>(

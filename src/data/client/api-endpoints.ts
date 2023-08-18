@@ -13,6 +13,7 @@ export const API_ENDPOINTS = {
   USERS: 'v1/system/users',
   MESSAGE_USER:'v1/user/message',
   FACTHED_TOKEN_USER:'v1/user/getuserstoken',
+  TOKEN_DETAILS_COUNT:'v1/user/counting',
   FACTHED_TOKEN_CLIENT:'v1/user/usertokens',
   REGISTER: 'v1/users/register',
   PRODUCTS: 'products',

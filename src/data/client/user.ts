@@ -95,6 +95,10 @@ export const userClient = {
     });
   },
 
+  fetchTokenCounting: () => {
+    return HttpClient.get<User>(API_ENDPOINTS. TOKEN_DETAILS_COUNT)
+  },
+
   fetchClientPurchasedToken: ({ name, ...params }: Partial<UserQueryOptions>) => {
     return HttpClient.get<UserPaginator>(API_ENDPOINTS.FACTHED_TOKEN_CLIENT, {
       searchJoin: 'and',
@@ -109,8 +113,6 @@ export const userClient = {
     return HttpClient.delete(`v1/users/:id?_id=${id}`);
   },
 
-
-  // UserTokenPaginator
   fetchAdmins: ({ ...params }: Partial<UserQueryOptions>) => {
     return HttpClient.get<UserPaginator>(API_ENDPOINTS.ADMIN_LIST, {
       searchJoin: 'and',

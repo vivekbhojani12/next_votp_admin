@@ -6,7 +6,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticProps } from 'next';
 import Layout from '@/components/layouts/admin';
 import { adminOnly } from '@/utils/auth-utils';
-import { useUsersTokenQuery, deleteQuery } from '@/data/user';
+import { useUsersTokenQuery, deleteQuery, useUsersTokenCount } from '@/data/user';
 import { useState, useEffect } from 'react';
 import ActionButtons from '../common/action-buttons';
 import { HttpClient } from '@/data/client/http-client';
@@ -33,6 +33,10 @@ export default function DashboardAdmin() {
     const [userId, setUserId] = useState('');
     // const [sortedBy, setColumn] = useState<SortOrder>(SortOrder.Desc);
     // const deleteProductMutation = useDeleteProductMutation();
+    const { user } = useUsersTokenCount();
+
+    console.log(user, 'the value of user')
+
     const { users, paginatorInfo, loading, error } = useUsersTokenQuery({
         limit: 10,
         page,
@@ -47,6 +51,7 @@ export default function DashboardAdmin() {
         onSuccess: () => {
             // Invalidate the "allToken" query and any other queries you want to update
             queryClient.invalidateQueries(API_ENDPOINTS.FACTHED_TOKEN_USER);
+            queryClient.invalidateQueries(API_ENDPOINTS.TOKEN_DETAILS_COUNT)
         },
     });
     function handlePagination(current: any) {
@@ -107,7 +112,7 @@ export default function DashboardAdmin() {
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
                                                 <p className="card-category">Total Token</p>
-                                                <h4 className="card-title">{paginatorInfo?.totalUsers}</h4>
+                                                <h4 className="card-title">{user?.total_users}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -126,7 +131,7 @@ export default function DashboardAdmin() {
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
                                                 <p className="card-category">Active Token</p>
-                                                <h4 className="card-title">{users.length}</h4>
+                                                <h4 className="card-title">{user?.filteredactiveUsers}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -145,7 +150,7 @@ export default function DashboardAdmin() {
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
                                                 <p className="card-category">Inactive Token</p>
-                                                <h4 className="card-title">{paginatorInfo?.totalInactive}</h4>
+                                                <h4 className="card-title">{user?.filteredInactiveUsers}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -164,7 +169,7 @@ export default function DashboardAdmin() {
                                         <div className="col-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers">
                                                 <p className="card-category">Upcoming Renews</p>
-                                                <h4 className="card-title">{paginatorInfo?.upcomingInactive}</h4>
+                                                <h4 className="card-title">{user?.filterUpcomingInactiveUsers}</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -215,8 +220,8 @@ export default function DashboardAdmin() {
                                                 {users.map((user, index) => (
                                                     <tr key={user.id}>
                                                         <th scope="row">{index + 1}</th>
-                                                        <td>{user?.userId?.name}</td>
-                                                        <td>{user?.userId?.email}</td>
+                                                        <td>{user?.userId?.name || user?.userDetails && user?.userDetails[0].name}</td>
+                                                        <td>{user?.userId?.email || user?.userDetails && user?.userDetails[0].email}</td>
                                                         <td>{user?.token}</td>
                                                         <td>Captcha Token</td>
                                                         <td>{user?.no_id}</td>
