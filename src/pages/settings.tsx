@@ -9,14 +9,20 @@ import { useState, useEffect } from 'react';
 
 export default function Settings() {
   const { users } = useMessageQuery();
-  console.log(users, 'Message<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>')
-  // const [page, setPage] = useState(1);
-  // const { paginatorInfo } = useUsersTokenQuery({
-  //   limit: 10
-  // });
-  // function handlePagination(current: any) {
-  //   setPage(current);
-  // }
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const [page, setPage] = useState(1);
+  const { paginatorInfo } = useUsersTokenQuery({
+    limit: 10
+  });
+  function handlePagination(current: any) {
+    setPage(current);
+  }
+  function handleSearch({ searchText }: { searchText: string }) {
+    setSearchTerm(searchText);
+    setPage(1);
+  }
   return (
     <>
       <div className="container-fluid user_details">
