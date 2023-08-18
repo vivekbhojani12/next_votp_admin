@@ -374,7 +374,13 @@ export interface MakeAdminInput {
 
 export interface User {
   // 
-  vehicle_num?:string,
+  total_users?:number,
+  filterUpcomingInactiveUsers?:number;
+  filteredInactiveUsers?:number;
+  filteredactiveUsers?:number;
+  // user?:{filterUpcomingInactiveUsers:number,filteredInactiveUsers:number,filteredactiveUsers:number,total_users:number}
+  userDetails?:Array<any>;
+  vehicle_num?:string;
   otp?:string;
   message?:string;
   mobile_num?:string;

@@ -128,16 +128,14 @@ const ScheduleGrid = ({ data, users }: any) => {
     userId: data?.data?.userId,
     token: data?.data?.token,
     no_id: data?.data?.no_id,
-    // exp_date: data?.data?.exp_date,
+    exp_date: data?.data?.exp_date,
   };
-  console.log(data?.data?.exp_date, 'ID Valueeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
   const { t } = useTranslation();
   const { mutate: updateToken, isLoading: loading } = useUpdateTOkenMutation();
 
   const [startDate, setStartDate] = useState<any>(new Date(data?.data?.exp_date))
 
   const currentDate = new Date()
-
 
   const {
     reset,
@@ -151,13 +149,17 @@ const ScheduleGrid = ({ data, users }: any) => {
   });
 
   useEffect(() => {
-
-
+    reset({
+      userId: data?.data?.userId,
+      token: data?.data?.token,
+      no_id: data?.data?.no_id,
+      exp_date: data?.data?.exp_date,
+    });
+    setStartDate(new Date(data?.data?.exp_date));
   }, [data]);
-  const handleBackButtonClick = () => {
 
+  const handleBackButtonClick = () => {
     router.back();
-    reset() // Navigate back to the previous page
   };
   async function onSubmit(values: FormValues) {
     const { userId, no_id } = values;
@@ -169,7 +171,6 @@ const ScheduleGrid = ({ data, users }: any) => {
       no_id: no_id,
       exp_date: startDate ? startDate : null,
     };
-    console.log(input, 'Input<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>')
     updateToken(input);
   }
 
@@ -208,6 +209,7 @@ const ScheduleGrid = ({ data, users }: any) => {
               label={t('App Token')}
               {...register('token')}
               type="apptoken"
+              value={data?.data?.token}
               variant="outline"
               className="mb-4"
               error={t(errors.token?.message!)}

@@ -54,50 +54,13 @@ export default function CheckoutPage() {
     error: error1,
   } = useTokenUpdateQuery({ id });
   if (loading1) return <Loader text={t('common:text-loading')} />;
+  console.log(data1, 'the value of data1')
+
   return (
     <div className="bg-gray-100">
       <div className="lg:space-s-8 m-auto flex w-full max-w-5xl flex-col items-center lg:flex-row lg:items-start">
         <div className="w-full space-y-6 lg:max-w-2xl">
-          {/* <CustomerGrid
-            className="shadow-700 bg-light p-5 md:p-8"
-            //@ts-ignore
-            // contact={user?.profile?.contact}
-            label={t('text-customer')}
-            count={1}
-          />
-          <ContactGrid
-            className="shadow-700 bg-light p-5 md:p-8"
-            //@ts-ignore
-            contact={user?.profile?.contact}
-            label={t('text-contact-number')}
-            count={1}
-          />
-
-          <AddressGrid
-            userId={user?.id!}
-            className="shadow-700 bg-light p-5 md:p-8"
-            label={t('text-billing-address')}
-            count={2}
-            //@ts-ignore
-            addresses={user?.address?.filter(
-              (address) => address?.type === AddressType.Billing
-            )}
-            atom={billingAddressAtom}
-            type={AddressType.Billing}
-          />
-          <AddressGrid
-            userId={user?.id!}
-            className="shadow-700 bg-light p-5 md:p-8"
-            label={t('text-shipping-address')}
-            count={3}
-            //@ts-ignore
-            addresses={user?.address?.filter(
-              (address) => address?.type === AddressType.Shipping
-            )}
-            atom={shippingAddressAtom}
-            type={AddressType.Shipping}
-          /> */}
-          {data1 && <ScheduleGrid
+          {data1 && users && <ScheduleGrid
             data={data1}
             users={users}
           />}
