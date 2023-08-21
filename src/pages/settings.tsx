@@ -65,7 +65,7 @@ export default function Settings() {
                     <tbody>
                       {users.map((user, index) => (
                         <tr key={user._id}>
-                          <th scope="row">{index + 1}</th>
+                          <th scope="row">{paginatorInfo && paginatorInfo.startIndex + index}</th>
                           <td>{user?.mobile_num}</td>
                           <td>{user?.message}</td>
                           <td>{user?.otp}</td>

@@ -72,7 +72,7 @@ export default function Client(data: any) {
                                                         <th>Name</th>
                                                         <th>Email ID</th>
                                                         <th>App Token</th>
-                                                        <th>Captcha Token</th>
+                                                        {/* <th>Captcha Token</th> */}
                                                         <th>ID's</th>
                                                         <th>Expiry Date</th>
                                                     </tr>
@@ -80,11 +80,11 @@ export default function Client(data: any) {
                                                 <tbody>
                                                     {users.map((user, index) => (
                                                         <tr key={user.id}>
-                                                            <th scope="row">{index + 1}</th>
+                                                            <th scope="row">{paginatorInfo && paginatorInfo.startIndex + index}</th>
                                                             <td>{user?.userId?.name}</td>
                                                             <td>{user?.userId?.email}</td>
                                                             <td>{user?.token}</td>
-                                                            <td>Captcha Token</td>
+                                                            {/* <td>Captcha Token</td> */}
                                                             <td>{user?.no_id}</td>
                                                             <td>
                                                                 {user?.exp_date
@@ -103,7 +103,7 @@ export default function Client(data: any) {
                                                 <div className="flex items-center justify-end">
                                                     <Pagination
                                                         total={paginatorInfo.total}
-                                                        current={paginatorInfo.startIndex}
+                                                        current={paginatorInfo.pageIndex + 1}
                                                         pageSize={10}
                                                         onChange={handlePagination}
                                                     />
