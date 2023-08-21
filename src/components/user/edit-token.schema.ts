@@ -5,4 +5,7 @@ export const TokenValidationSchema = yup.object().shape({
   no_id: yup
     .number()
     .required('form:error-email-required'),
+  name: yup
+    .string()
+    .required('form:error-name-required'),
 });

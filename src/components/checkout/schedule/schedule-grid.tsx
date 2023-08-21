@@ -113,7 +113,7 @@ import { useRouter } from 'next/router';
 import { TokenValidationSchema } from '@/components/user/edit-token.schema';
 
 type FormValues = {
-  // name: string;
+  name: string;
   _id: string;
   userId: string;
   token: string;
@@ -128,6 +128,7 @@ const ScheduleGrid = ({ data, users }: any) => {
     userId: data?.data?.userId,
     token: data?.data?.token,
     no_id: data?.data?.no_id,
+    name: data?.data?.name,
     exp_date: data?.data?.exp_date,
   };
   const { t } = useTranslation();
@@ -151,6 +152,7 @@ const ScheduleGrid = ({ data, users }: any) => {
   useEffect(() => {
     reset({
       userId: data?.data?.userId,
+      name: data?.data?.name,
       token: data?.data?.token,
       no_id: data?.data?.no_id,
       exp_date: data?.data?.exp_date,
@@ -162,12 +164,13 @@ const ScheduleGrid = ({ data, users }: any) => {
     router.back();
   };
   async function onSubmit(values: FormValues) {
-    const { userId, no_id } = values;
+    const { userId, no_id, name } = values;
     // const { notifications } = profile;
     const input = {
       _id: data?.data?._id,
       userId: userId,
       token: data?.data?.token,
+      name: name,
       no_id: no_id,
       exp_date: startDate ? startDate : null,
     };
@@ -205,6 +208,14 @@ const ScheduleGrid = ({ data, users }: any) => {
                 </select>
               </div>
             </div>
+            <Input
+              label={t('Name')}
+              {...register('name')}
+              type="name"
+              variant="outline"
+              className="mb-4"
+              error={t(errors.name?.message!)}
+            />
             <Input
               label={t('App Token')}
               {...register('token')}

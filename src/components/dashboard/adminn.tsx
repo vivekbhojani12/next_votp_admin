@@ -209,7 +209,7 @@ export default function DashboardAdmin() {
                                                 {users.map((user, index) => (
                                                     <tr key={user.id}>
                                                         <th scope="row">{index + 1}</th>
-                                                        <td>{user?.userId?.name || user?.userDetails && user?.userDetails[0].name}</td>
+                                                        <td>{user?.name}</td>
                                                         <td>{user?.userId?.email || user?.userDetails && user?.userDetails[0].email}</td>
                                                         <td>{user?.token}</td>
                                                         {/* <td>Captcha Token</td> */}
