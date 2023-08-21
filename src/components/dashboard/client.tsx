@@ -81,7 +81,7 @@ export default function Client(data: any) {
                                                     {users.map((user, index) => (
                                                         <tr key={user.id}>
                                                             <th scope="row">{paginatorInfo && paginatorInfo.startIndex + index}</th>
-                                                            <td>{user?.userId?.name}</td>
+                                                            <td>{user?.name}</td>
                                                             <td>{user?.userId?.email}</td>
                                                             <td>{user?.token}</td>
                                                             {/* <td>Captcha Token</td> */}
