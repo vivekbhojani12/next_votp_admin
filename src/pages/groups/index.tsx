@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
-const moment = require('moment-timezone');
 import PasswordInput from '@/components/ui/password-input';
 import { useForm } from 'react-hook-form';
 import Card from '@/components/common/card';
