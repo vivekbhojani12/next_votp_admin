@@ -5555,7 +5555,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 1130px) and (min-width: 1024px) {
+@media only screen and (max-width: 1130px) and (min-width: 1061px) {
 
   .dashboard-all-p {
     padding-right: 0px !important;
@@ -5565,6 +5565,19 @@ body {
 
   .dashboard-all-p p {
     font-size: 12px !important;
+  }
+}
+
+@media only screen and (max-width: 1060px) and (min-width: 1024px) {
+
+  .dashboard-all-p {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+
+  }
+
+  .dashboard-all-p p {
+    font-size: 11px !important;
   }
 }
 
@@ -7395,9 +7408,7 @@ td.td1 {
     transition: all .5s;
   }
 
-  .main-panel .content {
-    padding: 30px 0px;
-  }
+
 
   .main-header .logo-header {
     display: flex;
@@ -7477,6 +7488,7 @@ td.td1 {
     display: none;
   }
 }
+
 
 .color-button1 {
   background: linear-gradient(198deg, #CB2205, #8F1327, #E0677B);

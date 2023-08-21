@@ -76,7 +76,7 @@ export default function DashboardAdmin() {
 
 
             title: 'Delete',
-            message: 'Are you sure, you want to delete?',
+            message: 'Are You Sure To Delete?',
 
 
             buttons: [
