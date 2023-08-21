@@ -7484,9 +7484,7 @@ td.td1 {
     max-width: 280px;
   }
 
-  .profile-pic span {
-    display: none;
-  }
+  .profile-pic span {}
 }
 
 
@@ -7548,6 +7546,11 @@ td.td1 {
 
 .email-text {
   font-size: 79%;
+}
+
+.hover\:bg-accent:hover {
+  --tw-bg-opacity: 1;
+  background-color: brown;
 }
 
 a:hover {
