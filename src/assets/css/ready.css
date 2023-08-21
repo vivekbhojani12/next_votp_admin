@@ -7515,6 +7515,7 @@ td.td1 {
 .rc-table th,
 .rc-table td {
   border: 1px solid #eee !important;
+  position: inherit !important;
 }
 
 .rc-table-content {
