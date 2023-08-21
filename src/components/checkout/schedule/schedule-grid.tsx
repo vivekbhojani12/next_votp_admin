@@ -136,7 +136,12 @@ const ScheduleGrid = ({ data, users }: any) => {
 
   const [startDate, setStartDate] = useState<any>(new Date(data?.data?.exp_date))
 
-  const currentDate = new Date()
+  // const currentDate = new Date()
+  const currentDate = new Date();
+  const nextDay = new Date(currentDate);
+  nextDay.setDate(currentDate.getDate() + 1);
+
+  console.log(nextDay);
 
   const {
     reset,
@@ -237,7 +242,7 @@ const ScheduleGrid = ({ data, users }: any) => {
               <div><label><b>Expiry Date</b> </label></div>
               <DatePicker
                 selected={startDate}
-                minDate={currentDate}
+                minDate={nextDay}
                 onChange={(date) => setStartDate(date)} // Use the correct way to update the startDate state
                 // dateFormat="yyyy-MM-dd" // Set the desired date format for the DatePicker
                 className="form-control users-date-from" />

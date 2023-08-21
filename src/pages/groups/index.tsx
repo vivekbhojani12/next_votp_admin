@@ -89,7 +89,11 @@ export default function TypesPage() {
     setEmailList(emails);
 
   }, [users]);
-  const today = new Date().toISOString().split('T')[0];
+  const currentDate = new Date();
+  const nextDay = new Date(currentDate);
+  nextDay.setDate(currentDate.getDate() + 1);
+  const today = nextDay.toISOString().split('T')[0];
+
   const date = new Date(response?.data?.exp_date)
   date.setHours(date.getHours() + 5); // Add 5 hours to adjust for UTC+5
   date.setMinutes(date.getMinutes() + 30); // Add 30 minutes to adjust for the 30-minute offset
@@ -97,7 +101,7 @@ export default function TypesPage() {
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
-  const hours = date.getHours()+13;
+  const hours = date.getHours() + 13;
   console.log(hours, 'the value of hours')
   const minutes = date.getMinutes();
   const amPm = hours >= 12 ? 'AM' : 'AM';
