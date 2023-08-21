@@ -90,6 +90,22 @@ export default function TypesPage() {
 
   }, [users]);
   const today = new Date().toISOString().split('T')[0];
+  const date = new Date(response?.data?.exp_date)
+  date.setHours(date.getHours() + 5); // Add 5 hours to adjust for UTC+5
+  date.setMinutes(date.getMinutes() + 30); // Add 30 minutes to adjust for the 30-minute offset
+
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const hours = date.getHours()+13;
+  console.log(hours, 'the value of hours')
+  const minutes = date.getMinutes();
+  const amPm = hours >= 12 ? 'AM' : 'AM';
+  const formattedHours = 12;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  const formattedDateTime = `${month} ${day}, ${year} ${formattedHours}:${formattedMinutes} ${amPm} `;
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="main-panel">
@@ -204,23 +220,23 @@ export default function TypesPage() {
                     <tbody>
                       <tr>
                         <td className="td1">Name</td>
-                        <td>{response?.name}</td>
+                        <td>{response?.data?.name}</td>
                       </tr>
                       <tr>
                         <td className="td1">App Token</td>
                         <td>{response?.data?.token}</td>
                       </tr>
-                      <tr>
+                      {/* <tr>
                         <td className="td1">Login Captcha Token</td>
                         <td>57584FF8</td>
-                      </tr>
+                      </tr> */}
                       <tr>
                         <td className="td1">Email Address</td>
                         <td>{response?.email}</td>
                       </tr>
                       <tr>
                         <td className="td1"> Account Expiry Date</td>
-                        <td>{response?.data?.exp_date}</td>
+                        <td>{`${formattedDateTime}`}</td>
                       </tr>
                       <tr>
                         <td className="td1">ID's</td>
@@ -257,3 +273,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     ...(await serverSideTranslations(locale!, ['table', 'common', 'form'])),
   },
 });
+
+
+

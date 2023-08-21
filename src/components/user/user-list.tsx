@@ -45,7 +45,7 @@ const CustomerList = ({
     sort: SortOrder.Desc,
     column: null,
   });
-    const onHeaderClick = (column: any | null) => ({
+  const onHeaderClick = (column: any | null) => ({
     onClick: () => {
       onSort((currentSortDirection: SortOrder) =>
         currentSortDirection === SortOrder.Desc ? SortOrder.Asc : SortOrder.Desc
@@ -67,7 +67,7 @@ const CustomerList = ({
       key: 'serialNumber',
       align: alignLeft,
       width: 79,
-      render: (customer: any, customers: any, index = 0) => index + 1, // Render serial number as row index + 1
+      render: (customer: any, customers: any, index = 0) => paginatorInfo && paginatorInfo.startIndex + index, // Render serial number as row index + 1
     },
     {
       title: t('table:table-item-title'),
