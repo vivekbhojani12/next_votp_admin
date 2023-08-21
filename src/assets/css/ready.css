@@ -7530,7 +7530,7 @@ td.td1 {
   top: 36px;
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .email-text {
@@ -8012,5 +8012,8 @@ th.rc-table-cell {
 
 }
 
+.rc-table tbody tr td {
+  background: transparent !important;
+}
 
 /*# sourceMappingURL=ready.css.map */
