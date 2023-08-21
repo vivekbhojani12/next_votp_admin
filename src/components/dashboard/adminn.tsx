@@ -105,12 +105,12 @@ export default function DashboardAdmin() {
                             <div className="card card-stats card-warning">
                                 <div className="card-body ">
                                     <div className="row">
-                                        <div className="col-3">
+                                        <div className="col-3 col-sm-4 col-xl-4 col-lg-4 col-md-4 ">
                                             <div className="icon-big icon-users text-center">
                                                 <i className="icon-font la la-users"></i>
                                             </div>
                                         </div>
-                                        <div className="col-9 dashboard-all-p d-flex align-items-center">
+                                        <div className="col-9 col-sm-8 col-xl-8 col-lg-8 col-md-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers text-all">
                                                 <p className="card-category">Total Token</p>
                                                 <h4 className="card-title">{user?.total_users}</h4>
@@ -124,12 +124,12 @@ export default function DashboardAdmin() {
                             <div className="card card-stats card-success">
                                 <div className="card-body ">
                                     <div className="row">
-                                        <div className="col-3">
+                                        <div className="col-3 col-sm-4 col-xl-4 col-lg-4 col-md-4 ">
                                             <div className="icon-big icon-users text-center">
                                                 <i className="icon-font la la-user"></i>
                                             </div>
                                         </div>
-                                        <div className="col-9 dashboard-all-p d-flex align-items-center">
+                                        <div className="col-9 col-sm-8 col-xl-8 col-lg-8 col-md-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers text-all">
                                                 <p className="card-category">Active Token</p>
                                                 <h4 className="card-title">{user?.filteredactiveUsers}</h4>
@@ -143,12 +143,12 @@ export default function DashboardAdmin() {
                             <div className="card card-stats card-danger">
                                 <div className="card-body">
                                     <div className="row">
-                                        <div className="col-3">
+                                        <div className="col-3 col-sm-4 col-xl-4 col-lg-4 col-md-4 ">
                                             <div className="icon-big icon-users text-center">
                                                 <i className="icon-font la la-user-times"></i>
                                             </div>
                                         </div>
-                                        <div className="col-9 dashboard-all-p d-flex align-items-center">
+                                        <div className="col-9 col-sm-8 col-xl-8 col-lg-8 col-md-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers text-all">
                                                 <p className="card-category">Inactive Token</p>
                                                 <h4 className="card-title">{user?.filteredInactiveUsers}</h4>
@@ -162,12 +162,12 @@ export default function DashboardAdmin() {
                             <div className="card card-stats card-primary">
                                 <div className="card-body ">
                                     <div className="row align-items-center">
-                                        <div className="col-3">
+                                        <div className="col-3 col-sm-4 col-xl-4 col-lg-4 col-md-4 ">
                                             <div className="icon-big icon-users text-center">
                                                 <i className="icon-font la la la-user-plus"></i>
                                             </div>
                                         </div>
-                                        <div className="col-9 dashboard-all-p d-flex align-items-center">
+                                        <div className="col-9 col-sm-8 col-xl-8 col-lg-8 col-md-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers text-all">
                                                 <p className="card-category">Upcoming Renews</p>
                                                 <h4 className="card-title">{user?.filterUpcomingInactiveUsers}</h4>
