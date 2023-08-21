@@ -45,8 +45,7 @@ const CustomerList = ({
     sort: SortOrder.Desc,
     column: null,
   });
-  console.log(sortingObj, 'sorting object<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>')
-  const onHeaderClick = (column: any | null) => ({
+    const onHeaderClick = (column: any | null) => ({
     onClick: () => {
       onSort((currentSortDirection: SortOrder) =>
         currentSortDirection === SortOrder.Desc ? SortOrder.Asc : SortOrder.Desc
