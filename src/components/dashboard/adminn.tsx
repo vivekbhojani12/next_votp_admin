@@ -208,8 +208,8 @@ export default function DashboardAdmin() {
                                             <tbody>
                                                 {users.map((user, index) => (
                                                     <tr key={user.id}>
-                                                        <th scope="row">{paginatorInfo && paginatorInfo.startIndex + index}</th>
-                                                        <td>{user?.name}</td>
+                                                        <th scope="row">{index + 1}</th>
+                                                        <td>{user?.userId?.name || user?.userDetails && user?.userDetails[0].name}</td>
                                                         <td>{user?.userId?.email || user?.userDetails && user?.userDetails[0].email}</td>
                                                         <td>{user?.token}</td>
                                                         {/* <td>Captcha Token</td> */}
