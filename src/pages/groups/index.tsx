@@ -89,26 +89,42 @@ export default function TypesPage() {
     setEmailList(emails);
 
   }, [users]);
+
   const currentDate = new Date();
   const nextDay = new Date(currentDate);
   nextDay.setDate(currentDate.getDate() + 1);
   const today = nextDay.toISOString().split('T')[0];
 
-  const date = new Date(response?.data?.exp_date)
-  date.setHours(date.getHours() + 5); // Add 5 hours to adjust for UTC+5
-  date.setMinutes(date.getMinutes() + 30); // Add 30 minutes to adjust for the 30-minute offset
 
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-  const hours = date.getHours() + 13;
-  console.log(hours, 'the value of hours')
-  const minutes = date.getMinutes();
-  const amPm = hours >= 12 ? 'AM' : 'AM';
-  const formattedHours = 12;
-  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-  const formattedDateTime = `${month} ${day}, ${year} ${formattedHours}:${formattedMinutes} ${amPm} `;
+  const rawDate = response?.data?.exp_date;
+  const date = new Date(rawDate);
+
+  const options: any = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  };
+
+  const formattedDate = date.toLocaleString('en-US', options);
+  const formattedTime = "11:59 PM";
+
+  const formattedString = `${formattedDate} at ${formattedTime} at night`;
+  // const date = new Date(response?.data?.exp_date)
+  // date.setHours(date.getHours() + 5); 
+  // date.setMinutes(date.getMinutes() + 30); 
+
+  // const day = date.getDate();
+  // const month = date.getMonth() + 1;
+  // const year = date.getFullYear();
+  // const hours = date.getHours() + 24;
+  // console.log(hours, 'the value of hours')
+  // const minutes = date.getMinutes();
+  // const amPm = hours >= 12 ? 'AM' : 'AM';
+  // const formattedHours = 11;
+  // const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  // const formattedDateTime = `${month} ${day}, ${year} ${formattedHours}:${formattedMinutes} ${amPm} `;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -240,7 +256,7 @@ export default function TypesPage() {
                       </tr>
                       <tr>
                         <td className="td1"> Account Expiry Date</td>
-                        <td>{`${formattedDateTime}`}</td>
+                        <td>{`${formattedString}`}</td>
                       </tr>
                       <tr>
                         <td className="td1">ID's</td>
