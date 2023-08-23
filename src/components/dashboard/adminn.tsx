@@ -52,6 +52,8 @@ export default function DashboardAdmin() {
         },
         onSettled: () => {
             queryClient.invalidateQueries(API_ENDPOINTS.FACTHED_TOKEN_USER);
+            queryClient.invalidateQueries(API_ENDPOINTS.TOKEN_DETAILS_COUNT);
+
 
         }
     });
