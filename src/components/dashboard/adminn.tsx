@@ -78,7 +78,6 @@ export default function DashboardAdmin() {
             title: 'Delete',
             message: 'Are You Sure To Delete?',
 
-
             buttons: [
                 {
                     label: 'Cancel',
@@ -87,8 +86,8 @@ export default function DashboardAdmin() {
                 },
                 {
                     label: 'Delete',
-                    onClick: () => handleDelete(id)
-                    ,
+                    onClick: () => handleDelete(id),
+
                 },
             ],
         });
@@ -98,19 +97,18 @@ export default function DashboardAdmin() {
         <>
             <div className="main-panel">
                 <div className="content">
-
                     <h4 className="page-title">Dashboard</h4>
                     <div className="row">
                         <div className="col-md-3 col-sm-6 col-lg-3">
                             <div className="card card-stats card-warning">
                                 <div className="card-body ">
                                     <div className="row">
-                                        <div className="col-3 col-sm-4 col-xl-4 col-lg-4 col-md-4 ">
+                                        <div className="col-3 col-sm-4 col-xl-4 col-lg-5 col-md-4 ">
                                             <div className="icon-big icon-users text-center">
                                                 <i className="icon-font la la-users"></i>
                                             </div>
                                         </div>
-                                        <div className="col-9 col-sm-8 col-xl-8 col-lg-8 col-md-8 dashboard-all-p d-flex align-items-center">
+                                        <div className="col-9 col-sm-8 col-xl-8 col-lg-7 col-md-8 dashboard-all-p d-flex align-items-center">
                                             <div className="numbers text-all">
                                                 <p className="card-category">Total Token</p>
                                                 <h4 className="card-title">{user?.total_users}</h4>
