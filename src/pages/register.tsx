@@ -14,18 +14,19 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 });
 
 export default function RegisterPage() {
-    const router = useRouter();
-    const { token } = getAuthCredentials();
-    if (isAuthenticated({ token })) {
-        router.replace(Routes.dashboard);
-    }
-    const { t } = useTranslation('common');
+    // const router = useRouter();
+    // const { token } = getAuthCredentials();
+    // if (isAuthenticated({ token })) {
+    //     router.replace(Routes.dashboard);
+    // }
+    // const { t } = useTranslation('common');
     return (
-        <AuthPageLayout>
-            <h3 className="mb-6 mt-4 text-center text-base  text-gray-500">
-                {t('admin-register-title')}
-            </h3>
-            <RegistrationForm />
-        </AuthPageLayout>
+        // <AuthPageLayout>
+        //         {t('admin-register-title')}
+        <h3 className="mb-6 mt-4 text-center text-base  text-gray-500">
+            404 This Page Is Not Found
+        </h3>
+        //     <RegistrationForm />
+        // </AuthPageLayout>
     );
 }

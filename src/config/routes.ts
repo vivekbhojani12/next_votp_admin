@@ -3,7 +3,7 @@ export const Routes = {
   dashboard: '/',
   login: '/login',
   logout: '/logout',
-  register: '/register',
+  // register: '/register',
   forgotPassword: '/forgot-password',
   resetPassword: '/reset-password',
   adminMyShops: '/my-shops',
