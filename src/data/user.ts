@@ -68,7 +68,7 @@ export const useRegisterMutation = () => {
       if (data?.flag === false) {
         toast.error(t(`${data?.message}`));
       } else {
-        toast.success(t('common:successfully-register'));
+        toast.success(t('common:successfully-created'));
         router.replace(Routes.user.list);
       }
     },
