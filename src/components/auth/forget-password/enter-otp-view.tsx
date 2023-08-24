@@ -11,7 +11,7 @@ interface Props {
 }
 
 const schema = yup.object().shape({
-  otp: yup.string().required('form:error-otp-required'),
+  otp: yup.string().required('Otp is required'),
 });
 
 const EnterOtpView = ({ onSubmit, loading }: Props) => {
