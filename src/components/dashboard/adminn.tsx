@@ -52,8 +52,6 @@ export default function DashboardAdmin() {
         },
         onSettled: () => {
             queryClient.invalidateQueries(API_ENDPOINTS.FACTHED_TOKEN_USER);
-            queryClient.invalidateQueries(API_ENDPOINTS.TOKEN_DETAILS_COUNT);
-
 
         }
     });
@@ -245,17 +243,17 @@ export default function DashboardAdmin() {
                                                 ))}
                                             </tbody>
                                         </table>
-                                        {!!paginatorInfo?.total && (
-                                            <div className="flex items-center justify-end">
-                                                <Pagination
-                                                    total={paginatorInfo.total}
-                                                    current={paginatorInfo.pageIndex}
-                                                    pageSize={10}
-                                                    onChange={handlePagination}
-                                                />
-                                            </div>
-                                        )}
                                     </div>
+                                    {!!paginatorInfo?.total && (
+                                        <div className="flex items-center justify-end">
+                                            <Pagination
+                                                total={paginatorInfo.total}
+                                                current={paginatorInfo.pageIndex}
+                                                pageSize={10}
+                                                onChange={handlePagination}
+                                            />
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>

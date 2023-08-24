@@ -7558,7 +7558,7 @@ a:hover {
   text-decoration: underline;
 }
 
-.color-user {
+.color-user-add {
   background: #991e32 !important;
 }
 
@@ -7651,7 +7651,10 @@ a:hover {
 }
 
 @media only screen and (max-width: 550px) and (min-width: 320px) {
-  .users-search-btn {}
+  .color-user-add {
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+  }
 }
 
 .back-dashboaed-btn:hover {
@@ -7891,6 +7894,8 @@ th.rc-table-cell {
   }
 }
 
+@media only screen and (max-width: 600px) and (min-width: 320px) {}
+
 
 @media only screen and (max-width: 1109px) and (min-width: 1025px) {
   .color-user {
@@ -8030,6 +8035,10 @@ th.rc-table-cell {
 
 .rc-table tbody tr td {
   background: transparent !important;
+}
+
+.rc-pagination-item a:hover {
+  color: inherit !important;
 }
 
 /*# sourceMappingURL=ready.css.map */

@@ -59,7 +59,7 @@ export default function Customers() {
             <Search onSearch={handleSearch} className='w-3/5' />
             <LinkButton
               href={`${Routes.user.create}`}
-              className="ms-4 md:ms-6 h-12 color-user"
+              className="ms-4 md:ms-6 h-12 color-user-add"
             >
               <span>+ {t('form:button-label-add-customer')}</span>
             </LinkButton>

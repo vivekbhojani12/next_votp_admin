@@ -74,17 +74,17 @@ export default function Settings() {
                       ))}
                     </tbody>
                   </table>
-                  {!!paginatorInfo?.total && (
-                    <div className="flex items-center justify-end">
-                      <Pagination
-                        total={paginatorInfo.total}
-                        current={paginatorInfo.pageIndex}
-                        pageSize={10}
-                        onChange={handlePagination}
-                      />
-                    </div>
-                  )}
                 </div>
+                {!!paginatorInfo?.total && (
+                  <div className="flex items-center justify-end">
+                    <Pagination
+                      total={paginatorInfo.total}
+                      current={paginatorInfo.pageIndex}
+                      pageSize={10}
+                      onChange={handlePagination}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>

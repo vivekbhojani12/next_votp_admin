@@ -251,14 +251,14 @@ const ScheduleGrid = ({ data, users }: any) => {
           </Card>
         </div>
         <div className="row  ">
-          <div className='col-md-6'>
+          <div className='col-md-6 col-6'>
             <Button className=" color-button-back" type="reset" variant="outline">
               {t('form:button-label-back')}
             </Button>
           </div>
-          <div className='text-end  col-md-6'>
+          <div className='text-end col-6  col-md-6'>
             <Button
-              className="color-button-users "
+              className="color-button-users  "
               loading={loading}
               disabled={loading}
             >
