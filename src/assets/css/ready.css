@@ -7558,6 +7558,12 @@ a:hover {
   text-decoration: underline;
 }
 
+a:focus {
+  color: brown !important;
+  text-decoration: underline;
+}
+
+
 .color-user-add {
   background: #991e32 !important;
 }
