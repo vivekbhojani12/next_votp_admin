@@ -7851,8 +7851,8 @@ th.rc-table-cell {
 @media only screen and (max-width: 966px) and (min-width: 850px) {
   .token-button {
     position: relative;
-    padding-left: 0.25rem !important;
-    padding-right: 0.25rem !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
     font-size: 11px;
   }
 }
