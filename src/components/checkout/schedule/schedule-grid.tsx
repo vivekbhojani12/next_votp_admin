@@ -118,7 +118,7 @@ type FormValues = {
   userId: string;
   token: string;
   exp_date: Date;
-  no_id: Number;
+  no_id: number;
 
 };
 
