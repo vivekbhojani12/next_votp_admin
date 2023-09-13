@@ -60,6 +60,10 @@ export default function Settings() {
                         <th>Message</th>
                         <th>Otp</th>
                         <th>Vehicle No</th>
+                        <th>Input Field Mobile no</th>
+                        <th>Input Field OTP</th>
+                        <th>Input Field message</th>
+                        <th>Input Field vehicle number</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -70,6 +74,10 @@ export default function Settings() {
                           <td>{user?.message}</td>
                           <td>{user?.otp}</td>
                           <td>{user?.vehicle_num}</td>
+                          <td>{user?.response?.mobile_num}</td>
+                          <td>{user?.response?.otp}</td>
+                          <td>{user?.response?.message}</td>
+                          <td>{user?.response?.vehicle_num}</td>
                         </tr>
                       ))}
                     </tbody>
