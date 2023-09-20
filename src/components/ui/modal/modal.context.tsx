@@ -1,6 +1,7 @@
 import React from 'react';
 
 export type MODAL_VIEWS =
+  | 'VIEW_CONNECTED_DEVICE'
   | 'DELETE_PRODUCT'
   | 'DELETE_ADDRESS'
   | 'DELETE_TYPE'

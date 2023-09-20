@@ -3,6 +3,7 @@ import Modal from '@/components/ui/modal/modal';
 import dynamic from 'next/dynamic';
 import { MODAL_VIEWS, useModalAction, useModalState } from './modal.context';
 const TagDeleteView = dynamic(() => import('@/components/tag/tag-delete-view'));
+const ViewConnectedDevice = dynamic(() => import('@/components/product/viewconnecteddevice'))
 const TaxDeleteView = dynamic(() => import('@/components/tax/tax-delete-view'));
 const BanCustomerView = dynamic(
   () => import('@/components/user/user-ban-view')
@@ -104,7 +105,10 @@ const ComposerMessage = dynamic(
 );
 
 function renderModal(view: MODAL_VIEWS | undefined, data: any) {
+  console.log(data, 'from connected devices')
   switch (view) {
+    case 'VIEW_CONNECTED_DEVICE':
+      return <ViewConnectedDevice />
     case 'DELETE_PRODUCT':
       return <ProductDeleteView />;
     case 'DELETE_TYPE':
@@ -175,14 +179,14 @@ function renderModal(view: MODAL_VIEWS | undefined, data: any) {
 }
 
 const ManagedModal = () => {
-	const { isOpen, view, data } = useModalState();
-	const { closeModal } = useModalAction();
+  const { isOpen, view, data } = useModalState();
+  const { closeModal } = useModalAction();
 
-	return (
-		<Modal open={isOpen} onClose={closeModal}>
-			{renderModal(view, data)}
-		</Modal>
-	);
+  return (
+    <Modal open={isOpen} onClose={closeModal}>
+      {renderModal(view, data)}
+    </Modal>
+  );
 };
 
 export default ManagedModal;

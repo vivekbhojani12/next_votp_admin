@@ -1168,6 +1168,9 @@ export interface createToken {
   exp_date:Date;
   // password: string;
   name: string;
+  token?:any
+  data?:any
+  // token?:any
   // shop_id?: number;
   // permission: Permission;
 }

@@ -13,7 +13,7 @@ import { AdminIcon } from '@/components/icons/admin-icon';
 type Props = {
   id: string;
   editModalView?: string | any;
-
+  connectedDeviceView?: string | any;
   deleteModalView?: string | any;
   editUrl?: string;
   detailsUrl?: string;
@@ -32,6 +32,7 @@ const ActionButtons = ({
   id,
   editModalView,
   deleteModalView,
+  connectedDeviceView,
   editUrl,
   detailsUrl,
   userStatus = false,
@@ -49,6 +50,9 @@ const ActionButtons = ({
 
   function handleDelete() {
     openModal('DELETE_PRODUCT', deleteModalView);
+  }
+  function handleViewConnected() {
+    openModal('VIEW_CONNECTED_DEVICE', connectedDeviceView)
   }
 
   function handleEditModal() {
@@ -97,6 +101,15 @@ const ActionButtons = ({
         {showMakeAdminButton && (
           <button
             onClick={handleMakeAdmin}
+            className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
+            title={t('common:text-make-admin')}
+          >
+            <AdminIcon width={18} />
+          </button>
+        )}
+        {connectedDeviceView && (
+          <button
+            onClick={handleViewConnected}
             className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
             title={t('common:text-make-admin')}
           >

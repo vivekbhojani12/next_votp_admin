@@ -7,7 +7,7 @@ import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 import { API_ENDPOINTS } from './client/api-endpoints';
 import { tokenClient } from './client/Token';
-import { User, QueryOptionsType, UserPaginator } from '@/types';
+import { User, QueryOptionsType, UserPaginator, createToken } from '@/types';
 import { mapPaginatorData } from '@/utils/data-mappers';
 import axios from "axios";
 import { setEmailVerified } from "@/utils/auth-utils";
@@ -77,5 +77,52 @@ export const useCreateTokenMutation = () => {
   });
 };
 
+// export const useConnectedDevicesMutation = () => {
+//   const queryClient = useQueryClient();
+//   const { t } = useTranslation();
+//   return useMutation(tokenClient.fetchTokenConnectedDevice, {
+//     onSuccess: () => {
+//       toast.success(t('common:successfully-get'));
+//     },
+//     // Always refetch after error or success:
+//     // onSettled: () => {
+//     //   queryClient.invalidateQueries(API_ENDPOINTS.USERS);
+//     // },
+//     onError: (error: any) => {
+//       toast.error(t(`common:${error?.response?.data.message}`));
+//     },
+//   });
+// };
+
+export const useConnectedDevicesMutation = (id:any) => {
+  console.log(id ,'the value of id in function of fatch ')
+  return useQuery<createToken, Error>(
+    [`${API_ENDPOINTS.CONNECTED_TOKEN_VIA_DEVICE}?token=${id}`, id],
+    () => tokenClient.fetchTokenConnectedDevice(id)
+    ,
+    {
+      enabled: Boolean(id),
+    }
+  );
+};
 
 
+// export const useConnectedDevicesMutation = ({ id }: { id: string }) => {
+//   const fetchTokenConnectedDevice = async () => {
+//     try {
+//       console.log(id)
+//       const response = await tokenClient.fetchTokenConnectedDevice({ id });
+//       return response.data; // Adjust this based on the response structure
+//     } catch (error) {
+//       throw new Error('Failed to fetch token for connected device.');
+//     }
+//   };
+
+//   return useQuery<createToken, Error>(
+//     [`${API_ENDPOINTS.CONNECTED_TOKEN_VIA_DEVICE}?token=${id}`, id],
+//     fetchTokenConnectedDevice, // Use the fetchTokenConnectedDevice function
+//     {
+//       enabled: Boolean(id),
+//     }
+//   );
+// };

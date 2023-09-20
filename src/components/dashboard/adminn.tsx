@@ -203,6 +203,7 @@ export default function DashboardAdmin() {
                                                     <th>Expiry Date</th>
                                                     <th>Edit</th>
                                                     <th>Delete</th>
+                                                    <th>view</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -241,6 +242,7 @@ export default function DashboardAdmin() {
                                                                 ></i>
                                                             </a>
                                                         </td>
+                                                        <td><ActionButtons id={user.id} connectedDeviceView={user.token} /></td>
                                                     </tr>
                                                 ))}
                                             </tbody>

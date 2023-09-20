@@ -4,6 +4,7 @@ export const API_ENDPOINTS = {
   DELETE_TOKEN:'v1/users/:id',
   UPDATE_TOKEN:'v1/user/update/token',
   GET_TOKEN:'v1/user/getusertoken/:id',
+  CONNECTED_TOKEN_VIA_DEVICE:'v1/user/todayconnecteddevice',
   // ATTACHMENTS: 'system/users',
   ANALYTICS: 'analytics',
   ATTRIBUTES: 'attributes',
