@@ -7,6 +7,7 @@ import ConfirmationCard from '../common/confirmation-card';
 import Loader from '@/components/ui/loader/loader';
 import { useTranslation } from 'next-i18next';
 import { useIsRTL } from '@/utils/locals';
+import { CloseIcon } from '@/components/icons/close-icon';
 
 
 const ProductDeleteView = () => {
@@ -43,20 +44,22 @@ const ProductDeleteView = () => {
         <div className='view-table-main'>
             <div className='view-table-bodar'>
                 <div className='view-Close-btn'>
-                    <button type="button" onClick={closeModal}>Close</button>
+                    <CloseIcon width={18} className='view-button-colo' onClick={closeModal} />
                 </div>
                 {data1 && newData.length > 0 ? (
                     <table className="table-bordered table">
                         <thead>
                             <tr>
+                                <th>S.r. No</th>
                                 <th>Connected Mobile</th>
                                 {/* <th>SIM 2</th> */}
                                 {/* Add more headers based on your data structure */}
                             </tr>
                         </thead>
                         <tbody>
-                            {newData.map((item: any) => (
+                            {newData.map((item: any, index: any) => (
                                 <tr key={item.id}>
+                                    <td>{index + 1}</td>
                                     <td>{item.sim_1 ? item.sim_1 : item.sim_2}</td>
                                     {/* <td>{item.sim_2}</td> */}
                                     {/* Add more cells based on your data structure */}
