@@ -113,7 +113,8 @@ const ActionButtons = ({
             className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
             title={t('common:text-make-admin')}
           >
-            <AdminIcon width={18} className='view-button-colo' />
+            <i className="la la-eye"></i>
+
           </button>
         )}
         {showAddWalletPoints && (

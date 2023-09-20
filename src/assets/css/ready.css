@@ -7945,6 +7945,8 @@ th.rc-table-cell {
   float: right;
 }
 
+
+
 .Create-token-p {
   padding-left: 10px !important;
   padding-right: 10px !important;
@@ -8070,5 +8072,7 @@ th.rc-table-cell {
 .rc-pagination-item a:hover {
   color: inherit !important;
 }
+
+
 
 /*# sourceMappingURL=ready.css.map */
