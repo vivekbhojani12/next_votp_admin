@@ -45,16 +45,16 @@ const ProductDeleteView = () => {
                 <table>
                     <thead>
                         <tr>
-                            <th>SIM 1</th>
-                            <th>SIM 2</th>
+                            <th>Connected Mobile</th>
+                            {/* <th>SIM 2</th> */}
                             {/* Add more headers based on your data structure */}
                         </tr>
                     </thead>
                     <tbody>
                         {newData.map((item: any) => (
                             <tr key={item.id}>
-                                <td>{item.sim_1}</td>
-                                <td>{item.sim_2}</td>
+                                <td>{item.sim_1 ? item.sim_1 : item.sim_2}</td>
+                                {/* <td>{item.sim_2}</td> */}
                                 {/* Add more cells based on your data structure */}
                             </tr>
                         ))}
