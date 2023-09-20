@@ -7934,6 +7934,17 @@ th.rc-table-cell {
   color: #666;
 }
 
+.view-table-bodar {
+  padding: 15px;
+}
+
+.view-Close-btn {
+  background: #d1d1d1;
+  margin: 0px 0px 5px 0px;
+  padding: 5px;
+  float: right;
+}
+
 .Create-token-p {
   padding-left: 10px !important;
   padding-right: 10px !important;

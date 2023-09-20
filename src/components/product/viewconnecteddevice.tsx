@@ -41,28 +41,33 @@ const ProductDeleteView = () => {
     console.log(data1, 'the value of data 2');
     return (
         <div className='view-table-main'>
-            {data1 && newData.length > 0 ? (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Connected Mobile</th>
-                            {/* <th>SIM 2</th> */}
-                            {/* Add more headers based on your data structure */}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {newData.map((item: any) => (
-                            <tr key={item.id}>
-                                <td>{item.sim_1 ? item.sim_1 : item.sim_2}</td>
-                                {/* <td>{item.sim_2}</td> */}
-                                {/* Add more cells based on your data structure */}
+            <div className='view-table-bodar'>
+                <div className='view-Close-btn'>
+                    <button type="button" onClick={closeModal}>Close</button>
+                </div>
+                {data1 && newData.length > 0 ? (
+                    <table className="table-bordered table">
+                        <thead>
+                            <tr>
+                                <th>Connected Mobile</th>
+                                {/* <th>SIM 2</th> */}
+                                {/* Add more headers based on your data structure */}
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            ) : (
-                <p>No data available</p>
-            )}
+                        </thead>
+                        <tbody>
+                            {newData.map((item: any) => (
+                                <tr key={item.id}>
+                                    <td>{item.sim_1 ? item.sim_1 : item.sim_2}</td>
+                                    {/* <td>{item.sim_2}</td> */}
+                                    {/* Add more cells based on your data structure */}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                ) : (
+                    <p>No data available</p>
+                )}
+            </div>
         </div>
     );
 };
