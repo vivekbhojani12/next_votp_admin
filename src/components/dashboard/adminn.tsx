@@ -242,7 +242,9 @@ export default function DashboardAdmin() {
                                                                 ></i>
                                                             </a>
                                                         </td>
-                                                        <td><ActionButtons id={user.id} connectedDeviceView={user.token} /></td>
+                                                        <td>
+                                                            <ActionButtons id={user.id} connectedDeviceView={user.token} />
+                                                        </td>
                                                     </tr>
                                                 ))}
                                             </tbody>

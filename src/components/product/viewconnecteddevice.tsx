@@ -40,7 +40,7 @@ const ProductDeleteView = () => {
 
     console.log(data1, 'the value of data 2');
     return (
-        <div>
+        <div className='view-table-main'>
             {data1 && newData.length > 0 ? (
                 <table>
                     <thead>

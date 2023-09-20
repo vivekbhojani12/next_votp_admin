@@ -7921,6 +7921,19 @@ th.rc-table-cell {
   }
 }
 
+.view-button-colo {
+  font-size: 20px;
+  color: #000;
+
+}
+
+.view-table-main {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 20px 75px rgba(0, 0, 0, 0.13);
+  color: #666;
+}
+
 .Create-token-p {
   padding-left: 10px !important;
   padding-right: 10px !important;

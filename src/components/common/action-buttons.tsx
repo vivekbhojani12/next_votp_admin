@@ -113,7 +113,7 @@ const ActionButtons = ({
             className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
             title={t('common:text-make-admin')}
           >
-            <AdminIcon width={18} />
+            <AdminIcon width={18} className='view-button-colo' />
           </button>
         )}
         {showAddWalletPoints && (
@@ -209,7 +209,7 @@ const ActionButtons = ({
         {detailsUrl && (
           <Link
             href={detailsUrl}
-            className=" text-base transition duration-200 hover:text-heading"
+            className=" text-base  transition duration-200 hover:text-heading"
             title={t('common:text-view')}
             locale={customLocale}
           >
