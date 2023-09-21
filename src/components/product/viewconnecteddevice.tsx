@@ -41,6 +41,7 @@ const ProductDeleteView = () => {
 
     console.log(data1, 'the value of data 2');
     return (
+
         <div className='view-table-main'>
             <div className='view-table-bodar'>
                 <div className='view-Close-btn'>
@@ -72,6 +73,7 @@ const ProductDeleteView = () => {
                 )}
             </div>
         </div>
+
     );
 };
 

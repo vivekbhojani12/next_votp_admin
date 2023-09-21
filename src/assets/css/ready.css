@@ -8073,6 +8073,8 @@ th.rc-table-cell {
   color: inherit !important;
 }
 
-
+.view-table-with {
+  width: 30%;
+}
 
 /*# sourceMappingURL=ready.css.map */

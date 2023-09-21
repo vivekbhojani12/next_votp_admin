@@ -50,7 +50,7 @@ export default function Modal({ open, onClose, children }: any) {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="relative inline-block max-w-full align-middle transition-all min-w-content ltr:text-left rtl:text-right">
+            <Dialog.Panel className="view-table-with relative inline-block max-w-full align-middle transition-all min-w-content ltr:text-left rtl:text-right">
               <button
                 onClick={onClose}
                 aria-label="Close panel"
