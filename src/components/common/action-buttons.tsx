@@ -111,7 +111,7 @@ const ActionButtons = ({
           <button
             onClick={handleViewConnected}
             className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
-            title={t('common:text-make-admin')}
+            // title={t('common:text-make-admin')}
           >
             <i className="la la-eye"></i>
 
