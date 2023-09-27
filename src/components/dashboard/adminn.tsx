@@ -203,7 +203,7 @@ export default function DashboardAdmin() {
                                                     <th>Expiry Date</th>
                                                     <th>Edit</th>
                                                     <th>Delete</th>
-                                                    <th>view</th>
+                                                    <th>device</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
