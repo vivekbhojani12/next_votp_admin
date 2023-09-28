@@ -7730,7 +7730,6 @@ th.rc-table-cell {
   .search-token-main {
     max-width: 36% !important;
   }
-  
 }
 
 @media only screen and (max-width: 767px) and (min-width: 499px) {
@@ -7751,6 +7750,11 @@ th.rc-table-cell {
   .sidebar-with {
     width: 21%;
   }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
+  }
 }
 
 
@@ -7758,11 +7762,21 @@ th.rc-table-cell {
   .sidebar-with {
     width: 24%;
   }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
+  }
 }
 
 @media only screen and (max-width: 1150px) and (min-width: 1101px) {
   .sidebar-with {
     width: 23%;
+  }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
   }
 }
 
@@ -7770,11 +7784,21 @@ th.rc-table-cell {
   .sidebar-with {
     width: 20%;
   }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
+  }
 }
 
 @media only screen and (max-width: 1199px) and (min-width: 1150px) {
   .sidebar-with {
     width: 22%;
+  }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
   }
 }
 
@@ -7782,11 +7806,21 @@ th.rc-table-cell {
   .sidebar-with {
     width: 19%;
   }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
+  }
 }
 
 @media only screen and (max-width: 1500px) and (min-width: 1401px) {
   .sidebar-with {
     width: 18%;
+  }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
   }
 }
 
@@ -7794,11 +7828,21 @@ th.rc-table-cell {
   .sidebar-with {
     width: 17%;
   }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
+  }
 }
 
 @media only screen and (max-width: 1700px) and (min-width: 1601px) {
   .sidebar-with {
     width: 16%;
+  }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
   }
 }
 
@@ -7806,11 +7850,21 @@ th.rc-table-cell {
   .sidebar-with {
     width: 15%;
   }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
+  }
 }
 
 @media only screen and (max-width: 1900px) and (min-width: 1801px) {
   .sidebar-with {
     width: 14%;
+  }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
   }
 }
 
@@ -7818,11 +7872,21 @@ th.rc-table-cell {
   .sidebar-with {
     width: 13%;
   }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
+  }
 }
 
 @media only screen and (max-width: 2100px) and (min-width: 2001px) {
   .sidebar-with {
     width: 12%;
+  }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
   }
 }
 
@@ -7830,11 +7894,21 @@ th.rc-table-cell {
   .sidebar-with {
     width: 11%;
   }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
+  }
 }
 
 @media only screen and (max-width: 2400px) and (min-width: 2201px) {
   .sidebar-with {
     width: 10%;
+  }
+
+  .token-checkbox {
+    text-align: center;
+    padding-top: 50px !important;
   }
 }
 
@@ -8073,16 +8147,18 @@ th.rc-table-cell {
 .view-table-with {
   width: 30%;
 }
-.checkbox-devic {
-  color: #991e32 !important;
-}
-
-.devics-check {
-  padding-left: 5px;
-}
 .token-checkbox {
   text-align: center;
   padding-top: 50px !important;
+}
+
+
+.checkbox-devic {
+color: #991e32 !important;
+}
+
+.devics-check {
+padding-left: 5px;
 }
 
 /*# sourceMappingURL=ready.css.map */

@@ -114,7 +114,6 @@ const ActionButtons = ({
             className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
           // title={t('common:text-make-admin')}
           >
-            {/* <MobileIcon /> */}
             <i className="la la-laptop"></i>
 
           </button>

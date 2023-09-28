@@ -228,9 +228,8 @@ export default function TypesPage() {
               </div>
               <div className='col-lg-1 Create-token-p col-md-1'>
                 <div className='token-checkbox'>
-                  <input type="checkbox" className='checkbox-devic' checked={isChecked}
-                    onChange={handleCheckboxChange} />
-                  <label className='devics-check' ></label>
+                  <input type="checkbox" className='checkbox-devic' />
+                  <label className='devics-check'>Device</label>
                 </div>
               </div>
               <div className="col-md-2 Generate-Token-button text-center pl-0 pr-0 col-lg-2   ">
