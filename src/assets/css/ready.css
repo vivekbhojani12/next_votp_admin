@@ -8077,4 +8077,25 @@ th.rc-table-cell {
   width: 30%;
 }
 
+
+
+.checkbox-devic {
+  color: #991e32 !important;
+}
+
+.devics-check {
+  padding-left: 5px;
+}
+
+.device-button {
+  font-size: 20px;
+  color: #000;
+}
+
+.device-button:hover {
+  text-decoration: underline;
+}
+
+
+
 /*# sourceMappingURL=ready.css.map */

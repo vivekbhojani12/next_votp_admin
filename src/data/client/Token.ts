@@ -30,5 +30,9 @@ import {
       console.log(id ,'the value of  token id <<<<<<<<<<<token Id>>>>>>>>>>>>>>>>>>>>>')
       return HttpClient.get<createToken>(`${API_ENDPOINTS.CONNECTED_TOKEN_VIA_DEVICE}?token=${id}`);
     },
+    checkToken: (id :any) => {
+      console.log(id,'the value of token in checktoken function')
+      return HttpClient.get<createToken>(`${API_ENDPOINTS.CHECK_TOKEN}?token=${id}`);
+    }
   };
   

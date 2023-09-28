@@ -60,6 +60,8 @@ export default function Settings() {
                         <th>Message</th>
                         <th>Otp</th>
                         <th>Vehicle No</th>
+                        <th>Token</th>
+                        <th>Date OF Creation</th>
                         <th>Input Field Mobile no</th>
                         <th>Input Field OTP</th>
                         <th>Input Field message</th>
@@ -74,6 +76,8 @@ export default function Settings() {
                           <td>{user?.message}</td>
                           <td>{user?.otp}</td>
                           <td>{user?.vehicle_num}</td>
+                          <td>{user?.token}</td>
+                          <td>{new Date(user?.createdAt).toLocaleDateString()}</td>
                           <td>{user?.response?.mobile_num}</td>
                           <td>{user?.response?.otp}</td>
                           <td>{user?.response?.message}</td>

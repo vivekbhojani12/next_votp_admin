@@ -18,6 +18,7 @@ import { GetStaticProps } from 'next';
 import Layout from '@/components/layouts/admin';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { color } from 'framer-motion';
 
 type FormValues = {
   name: string;
@@ -44,11 +45,14 @@ export default function TypesPage() {
   const [response, setResponse] = useState<any>('');
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [emailList, setEmailList] = useState<string[]>([]);
+  const [isChecked, setIsChecked] = useState(false);
   const handleDateChange = (date: Date | null) => {
     // Update the selected date state
     setSelectedDate(date);
   };
-
+  const newExpirationDate = new Date();
+  newExpirationDate.setDate(newExpirationDate.getDate() + 28);
+  newExpirationDate.setHours(0, 0, 0, 0);
   const { users } = useUsersQuery({
     // limit: 20,
     // page,
@@ -70,12 +74,17 @@ export default function TypesPage() {
 
   async function onSubmit({ name, email, no_id, exp_date }: FormValues) {
     registerUser({
-      exp_date,
+      exp_date: isChecked ? newExpirationDate : exp_date,
       name,
       email,
       no_id,
     });
   }
+
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   useEffect(() => {
     if (data) {

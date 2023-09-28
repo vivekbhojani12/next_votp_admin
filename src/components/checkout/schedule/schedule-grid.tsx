@@ -105,12 +105,14 @@ import Description from '@/components/ui/description';
 import { useUpdateTOkenMutation } from '@/data/user';
 import { useTranslation } from 'next-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { tokenClient } from '@/data/client/Token';
 // import { customerValidationSchema } from './user-validation-schema';
 import { Permission } from '@/types';
 import { useState, useEffect } from 'react';
 import { DatePicker } from '@/components/ui/date-picker';
 import { useRouter } from 'next/router';
 import { TokenValidationSchema } from '@/components/user/edit-token.schema';
+import { checkToken } from '@/data/token';
 
 type FormValues = {
   name: string;
@@ -135,6 +137,11 @@ const ScheduleGrid = ({ data, users }: any) => {
   const { mutate: updateToken, isLoading: loading } = useUpdateTOkenMutation();
 
   const [startDate, setStartDate] = useState<any>(new Date(data?.data?.exp_date))
+  const [token, setToken] = useState('');
+  const [tokenError, setTokenError] = useState('');
+
+
+
 
   // const currentDate = new Date()
   const currentDate = new Date();
@@ -154,6 +161,8 @@ const ScheduleGrid = ({ data, users }: any) => {
     resolver: yupResolver(TokenValidationSchema),
   });
 
+
+
   useEffect(() => {
     reset({
       userId: data?.data?.userId,
@@ -168,19 +177,71 @@ const ScheduleGrid = ({ data, users }: any) => {
   const handleBackButtonClick = () => {
     router.back();
   };
+
+  // const handleTokenChange = (event: any) => {
+  //   const newToken = event.target.value;
+  //   console.log(newToken)
+
+  //   try {
+  //     // Make an API call to validate the token
+  //     const response = checkToken(newToken);
+  //     console.log('the value before')
+  //     console.log(response, 'the value of response<<<<<<<<<<>>>>>>>')
+  //     if (response) {
+  //       setTokenError('Token already exists.');
+  //     } else {
+  //       setTokenError('');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error validating token:', error);
+  //     setTokenError('Error validating token.');
+  //   }
+
+  //   // setToken(newToken);
+  // };
+
+
+  const handleTokenChange = (event: any) => {
+    setToken(event.target.value);
+  };
+
+  useEffect(() => {
+    const validateToken = async () => {
+      try {
+        // Make an API call to validate the token
+        const response = await tokenClient.checkToken(token);
+        console.log('the value of response:', response);
+
+        if (response.data) {
+          setTokenError('Token already exists.');
+        } else {
+          setTokenError('');
+        }
+      } catch (error) {
+        console.error('Error validating token:', error);
+        setTokenError('Error validating token.');
+      }
+    };
+
+    if (token) {
+      validateToken();
+    }
+  }, [token]);
+
   async function onSubmit(values: FormValues) {
-    const { userId, no_id, name } = values;
+    const { userId, no_id, name, token } = values;
     // const { notifications } = profile;
     const input = {
       _id: data?.data?._id,
       userId: userId,
-      token: data?.data?.token,
+      token: token,
       name: name,
       no_id: no_id,
       exp_date: startDate ? startDate : null,
     };
     updateToken(input);
   }
+
 
 
   return (
@@ -225,10 +286,13 @@ const ScheduleGrid = ({ data, users }: any) => {
               label={t('App Token')}
               {...register('token')}
               type="apptoken"
-              value={data?.data?.token}
+              // value={data?.data?.token}
               variant="outline"
               className="mb-4"
-              error={t(errors.token?.message!)}
+              value={token}
+              error={t(errors.token?.message!) || tokenError}
+              onChange={handleTokenChange}
+            // error={t(errors.token?.message!)}
             />
             <Input
               label={t('No Id')}

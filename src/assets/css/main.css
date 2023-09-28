@@ -245,3 +245,14 @@
     @apply no-underline;
   }
 }
+
+
+/* create token checkbox */
+.token-checkbox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input[type="checkbox"]{
+    position: relative;
+  }
+}
