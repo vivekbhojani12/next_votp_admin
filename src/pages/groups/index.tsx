@@ -230,12 +230,12 @@ export default function TypesPage() {
                 <div className='token-checkbox'>
                   <input type="checkbox" className='checkbox-devic' checked={isChecked}
                     onChange={handleCheckboxChange} />
-                  <label className='devics-check'></label>
+                  <label className='devics-check'>1 month</label>
                 </div>
               </div>
-              <div className="col-md-2 Generate-Token-button text-center pl-0 pr-0 col-lg-2   ">
+              <div className="col-md-2 Generate-Token-button text-center col-lg-2   ">
                 <Button
-                  className="token-button"
+                  className="token-button w-100"
                   loading={loading}
                   disabled={loading}
                 >
