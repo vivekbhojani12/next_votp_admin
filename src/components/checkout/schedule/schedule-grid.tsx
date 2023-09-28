@@ -137,7 +137,7 @@ const ScheduleGrid = ({ data, users }: any) => {
   const { mutate: updateToken, isLoading: loading } = useUpdateTOkenMutation();
 
   const [startDate, setStartDate] = useState<any>(new Date(data?.data?.exp_date))
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState(data?.data?.token);
   const [tokenError, setTokenError] = useState('');
 
 
@@ -212,7 +212,7 @@ const ScheduleGrid = ({ data, users }: any) => {
         const response = await tokenClient.checkToken(token);
         console.log('the value of response:', response);
 
-        if (response.data) {
+        if (response.data.token !== data?.data?.token) {
           setTokenError('Token already exists.');
         } else {
           setTokenError('');
