@@ -5817,11 +5817,6 @@ body {
   border-color: #ccc !important;
 }
 
-[type="checkbox"]:not(:checked),
-[type="checkbox"]:checked {
-  position: absolute;
-  left: -9999px;
-}
 
 [type="checkbox"]:not(:checked)+.form-check-sign,
 [type="checkbox"]:checked+.form-check-sign {
