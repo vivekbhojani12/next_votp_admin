@@ -229,8 +229,8 @@ export default function TypesPage() {
               <div className='col-lg-1 Create-token-p col-md-1'>
                 <div className='token-checkbox'>
                   <input type="checkbox" className='checkbox-devic' checked={isChecked}
-                    onChange={handleCheckboxChange}  />
-                  <label className='devics-check'></label>
+                    onChange={handleCheckboxChange} />
+                  <label className='devics-check'>1 month</label>
                 </div>
               </div>
               <div className="col-md-2 Generate-Token-button text-center col-lg-2   ">
