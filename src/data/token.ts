@@ -106,6 +106,18 @@ export const useConnectedDevicesMutation = (id:any) => {
   );
 };
 
+export const checkToken=(id:any)=>{
+  console.log(id,'the value of token')
+  return useQuery<createToken, Error>(
+    [`${API_ENDPOINTS.CHECK_TOKEN}?token=${id}`, id],
+    () => tokenClient.checkToken(id)
+    ,
+    {
+      enabled: Boolean(id),
+    }
+  );
+}
+
 
 // export const useConnectedDevicesMutation = ({ id }: { id: string }) => {
 //   const fetchTokenConnectedDevice = async () => {

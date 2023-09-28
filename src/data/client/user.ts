@@ -41,6 +41,10 @@ export const userClient = {
     console.log(input,'At time of update<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
     return HttpClient.put<User>(`${API_ENDPOINTS.UPDATE_TOKEN}`, input);
   },
+  checkToken: (id:any) => {
+    console.log(id,'At time of update<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>> of new token')
+    return HttpClient.get<User>(`${API_ENDPOINTS.CHECK_TOKEN}?token=${id}`, id);
+  },
   changePassword: (variables: ChangePasswordInput) => {
     return HttpClient.post<any>(API_ENDPOINTS.CHANGE_PASSWORD, variables);
   },

@@ -113,6 +113,16 @@ export const useUpdateTOkenMutation = () => {
   });
 };
 
+export const checkToken = (id:any) => {
+  console.log(id,'the value of token')
+  return useQuery<User, Error>(
+    [`${API_ENDPOINTS.CHECK_TOKEN}?token=${id}`, id],
+      () => userClient.checkToken(id),
+      {
+        enabled: Boolean(id),
+      }
+    );
+  };
 
 
 export const useUpdateUserEmailMutation = () => {

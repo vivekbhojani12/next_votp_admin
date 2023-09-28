@@ -5,6 +5,7 @@ export const API_ENDPOINTS = {
   UPDATE_TOKEN:'v1/user/update/token',
   GET_TOKEN:'v1/user/getusertoken/:id',
   CONNECTED_TOKEN_VIA_DEVICE:'v1/user/todayconnecteddevice',
+  CHECK_TOKEN:'v1/token/check-token',
   // ATTACHMENTS: 'system/users',
   ANALYTICS: 'analytics',
   ATTRIBUTES: 'attributes',

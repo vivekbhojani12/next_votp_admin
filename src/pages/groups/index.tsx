@@ -18,6 +18,7 @@ import { GetStaticProps } from 'next';
 import Layout from '@/components/layouts/admin';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { color } from 'framer-motion';
 
 type FormValues = {
   name: string;
@@ -44,11 +45,14 @@ export default function TypesPage() {
   const [response, setResponse] = useState<any>('');
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [emailList, setEmailList] = useState<string[]>([]);
+  const [isChecked, setIsChecked] = useState(false);
   const handleDateChange = (date: Date | null) => {
     // Update the selected date state
     setSelectedDate(date);
   };
-
+  const newExpirationDate = new Date();
+  newExpirationDate.setDate(newExpirationDate.getDate() + 28);
+  newExpirationDate.setHours(0, 0, 0, 0);
   const { users } = useUsersQuery({
     // limit: 20,
     // page,
@@ -70,12 +74,17 @@ export default function TypesPage() {
 
   async function onSubmit({ name, email, no_id, exp_date }: FormValues) {
     registerUser({
-      exp_date,
+      exp_date: isChecked ? newExpirationDate : exp_date,
       name,
       email,
       no_id,
     });
   }
+
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
 
   useEffect(() => {
     if (data) {
@@ -163,7 +172,7 @@ export default function TypesPage() {
                     </small>
                   </div>
                 </div> */}
-              <div className="col-md-4 Create-token-p  col-lg-4 ">
+              <div className="col-md-3 Create-token-p  col-lg-3 ">
                 <div className="form-group">
                   {/* Email Dropdown */}
                   <label className='tokan-label-email' htmlFor="email">Email</label>
@@ -215,6 +224,13 @@ export default function TypesPage() {
                       {errors.exp_date.message}
                     </span>
                   )}
+                </div>
+              </div>
+              <div className='col-lg-1 Create-token-p col-md-1'>
+                <div className='token-checkbox'>
+                  <input type="checkbox" className='checkbox-devic' checked={isChecked}
+                    onChange={handleCheckboxChange} />
+                  <label className='devics-check' ></label>
                 </div>
               </div>
               <div className="col-md-2 Generate-Token-button text-center pl-0 pr-0 col-lg-2   ">

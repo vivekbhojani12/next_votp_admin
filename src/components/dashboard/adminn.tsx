@@ -26,6 +26,7 @@ type IProps = {
 };
 
 export default function DashboardAdmin() {
+    const TOday = new Date().toLocaleDateString
     const [searchTerm, setSearchTerm] = useState('');
     const [page, setPage] = useState(1);
     const [paramId, setParamId] = useState('');
@@ -198,9 +199,10 @@ export default function DashboardAdmin() {
                                                     <th>Name</th>
                                                     <th>Email ID</th>
                                                     <th>App Token</th>
-                                                    {/* <th>Captcha Token</th> */}
+                                                    <th>Captcha Token</th>
                                                     <th>ID's</th>
                                                     <th>Expiry Date</th>
+                                                    <th>Remaining Days</th>
                                                     <th>Edit</th>
                                                     <th>Delete</th>
                                                     <th>device</th>
@@ -213,12 +215,26 @@ export default function DashboardAdmin() {
                                                         <td>{user?.name}</td>
                                                         <td>{user?.userId?.email || user?.userDetails && user?.userDetails[0].email}</td>
                                                         <td>{user?.token}</td>
-                                                        {/* <td>Captcha Token</td> */}
+                                                        <td>{user?.captcha}</td>
                                                         <td>{user?.no_id}</td>
                                                         <td>
                                                             {user?.exp_date
                                                                 ? new Date(user.exp_date).toLocaleDateString()
                                                                 : ''}
+                                                        </td>
+                                                        <td>
+                                                            {user?.exp_date ? (
+                                                                (() => {
+                                                                    const expDate = new Date(user.exp_date) as any;
+                                                                    const todayDate = new Date() as any
+                                                                    if (isNaN(expDate as any)) {
+                                                                        return 'Invalid Date';
+                                                                    } else {
+                                                                        const differenceInDays = Math.ceil((expDate - todayDate) / (1000 * 3600 * 24));
+                                                                        return `${differenceInDays} days left`;
+                                                                    }
+                                                                })()
+                                                            ) : ''}
                                                         </td>
                                                         <td>
 

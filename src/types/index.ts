@@ -392,7 +392,8 @@ export interface User {
   userId?: { name: string; email: string; };
   exp_date?:Date;
   no_id?:number;
-  token:string
+  token:string;
+  captcha?:any;
   shops: Shop[];
   managed_shop: Shop;
   is_active: boolean;
