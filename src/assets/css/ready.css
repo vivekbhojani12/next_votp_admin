@@ -8077,13 +8077,4 @@ th.rc-table-cell {
   width: 30%;
 }
 
-.device-button {
-  font-size: 20px;
-  color: #000;
-}
-
-.device-button:hover {
-  text-decoration: underline;
-}
-
 /*# sourceMappingURL=ready.css.map */

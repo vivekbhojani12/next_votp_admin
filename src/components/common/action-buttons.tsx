@@ -9,7 +9,6 @@ import { CheckMarkCircle } from '@/components/icons/checkmark-circle';
 import { useModalAction } from '@/components/ui/modal/modal.context';
 import { CloseFillIcon } from '@/components/icons/close-fill';
 import { AdminIcon } from '@/components/icons/admin-icon';
-import { MobileIcon } from '@/components/icons/mobile-icon';
 
 type Props = {
   id: string;
@@ -114,7 +113,7 @@ const ActionButtons = ({
             className="text-accent transition duration-200 hover:text-accent-hover focus:outline-none"
           // title={t('common:text-make-admin')}
           >
-            <i className="device-button  la la-mobile"></i>
+            <i className="la la-laptop"></i>
 
           </button>
         )}
