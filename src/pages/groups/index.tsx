@@ -179,7 +179,7 @@ export default function TypesPage() {
                     </small>
                   </div>
                 </div> */}
-              <div className="col-md-3 Create-token-p  col-lg-3 ">
+              <div className="col-md-4 Create-token-p  col-lg-4 ">
                 <div className="form-group">
                   {/* Email Dropdown */}
                   <label className="tokan-label-email" htmlFor="email">
@@ -224,7 +224,16 @@ export default function TypesPage() {
               </div>
               <div className="col-md-3 Create-token-p  col-lg-3 ">
                 <div className="form-group">
-                  <label className="tokan-label-date">Date</label>
+                  <div className='tokan-date-check'>
+                    <label className="tokan-label-date">Date</label>
+                    <p className="devics-check-token">1 Month</p>
+                    <input
+                      type="checkbox"
+                      className="checkbox-devic-token"
+                      checked={isChecked}
+                      onChange={handleCheckboxChange}
+                    />
+                  </div>
                   <input
                     type="date"
                     min={today}
@@ -240,7 +249,7 @@ export default function TypesPage() {
                   )}
                 </div>
               </div>
-              <div className="col-lg-1 Create-token-p col-md-1">
+              {/* <div className="col-lg-1 Create-token-p col-md-1">
                 <div className="token-checkbox">
                   <input
                     type="checkbox"
@@ -250,10 +259,10 @@ export default function TypesPage() {
                   />
                   <label className="devics-check">1 month</label>
                 </div>
-              </div>
+              </div> */}
               <div className="col-md-2 Generate-Token-button col-lg-2 text-center   ">
                 <Button
-                  className="token-button w-100"
+                  className="token-button"
                   loading={loading}
                   disabled={loading}
                 >

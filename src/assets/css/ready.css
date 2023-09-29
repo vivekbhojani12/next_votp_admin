@@ -8079,6 +8079,12 @@ th.rc-table-cell {
   color: #991e32 !important;
 }
 
+.checkbox-devic-token {
+  color: #991e32 !important;
+  float: right !important;
+  margin-top: 2px;
+}
+
 .devics-check {
   padding-left: 5px;
 }
@@ -8106,6 +8112,13 @@ th.rc-table-cell {
   padding-left: 5px;
 }
 
+.devics-check-token {
+  padding-left: 5px;
+  margin-bottom: 0px !important;
+  float: right;
+
+}
+
 .device-button {
   font-size: 20px;
   color: #000;
@@ -8114,6 +8127,7 @@ th.rc-table-cell {
 .device-button:hover {
   text-decoration: underline;
 }
+
 
 
 

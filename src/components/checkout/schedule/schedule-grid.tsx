@@ -322,16 +322,14 @@ const ScheduleGrid = ({ data, users }: any) => {
               className="mb-4"
               error={t(errors.no_id?.message!)}
             />
-            <div className="col-lg-1 Create-token-p col-md-1">
-              {/* <div className="token-checkbox"> */}
+            <div className="mb-3">
               <input
                 type="checkbox"
                 className="checkbox-devic"
                 checked={isChecked}
                 onChange={handleCheckboxChange}
               />
-              <label className="devics-check">1 month</label>
-              {/* </div> */}
+              <label className="devics-check"><b>1 month</b></label>
             </div>
             {data && startDate !== null && data?.data?.exp_date !== null && <div >
               <div><label><b>Expiry Date</b> </label></div>
