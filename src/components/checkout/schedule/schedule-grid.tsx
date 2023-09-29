@@ -230,12 +230,13 @@ const ScheduleGrid = ({ data, users }: any) => {
         const response = await tokenClient.checkToken(token);
         console.log('the value of response:', response);
 
-        if (response.data.token !== data?.data?.token) {
+        if (response.data && response.data.token !== data?.data?.token) {
           setTokenError('Token already exists.');
         } else {
           setTokenError('');
         }
       } catch (error) {
+        console.log(error)
         console.error('Error validating token:', error);
         setTokenError('Error validating token.');
       }
