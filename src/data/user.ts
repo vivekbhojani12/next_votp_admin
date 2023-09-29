@@ -353,6 +353,7 @@ export const useUsersTokenQuery = (params: Partial<QueryOptionsType>) => {
   );
 
   return {
+    total_users: data?.data ?? [],
     users: data?.data ?? [],
     paginatorInfo: mapPaginatorData(data as any),
     loading: isLoading,

@@ -139,6 +139,24 @@ const ScheduleGrid = ({ data, users }: any) => {
   const [startDate, setStartDate] = useState<any>(new Date(data?.data?.exp_date))
   const [token, setToken] = useState(data?.data?.token);
   const [tokenError, setTokenError] = useState('');
+  const [isChecked, setIsChecked] = useState(false);
+
+  const newExpirationDate = new Date();  // Current date
+  const newDate = new Date(newExpirationDate);  // Create a new Date object to avoid modifying the original date
+  newDate.setDate(newExpirationDate.getDate() + 28)
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked)
+    if (!isChecked) {
+
+      // Update the startDate after 28 days
+      setStartDate(newDate);
+    }
+    else {
+      setStartDate(new Date(data?.data?.exp_date) as any)
+    }
+
+  };
 
 
 
@@ -239,6 +257,7 @@ const ScheduleGrid = ({ data, users }: any) => {
       no_id: no_id,
       exp_date: startDate ? startDate : null,
     };
+    console.log(input, 'the value of update at time of updating')
     updateToken(input);
   }
 
@@ -302,6 +321,17 @@ const ScheduleGrid = ({ data, users }: any) => {
               className="mb-4"
               error={t(errors.no_id?.message!)}
             />
+            <div className="col-lg-1 Create-token-p col-md-1">
+              {/* <div className="token-checkbox"> */}
+              <input
+                type="checkbox"
+                className="checkbox-devic"
+                checked={isChecked}
+                onChange={handleCheckboxChange}
+              />
+              <label className="devics-check">1 month</label>
+              {/* </div> */}
+            </div>
             {data && startDate !== null && data?.data?.exp_date !== null && <div >
               <div><label><b>Expiry Date</b> </label></div>
               <DatePicker

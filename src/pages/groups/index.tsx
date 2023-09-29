@@ -6,7 +6,8 @@ import { useForm } from 'react-hook-form';
 import Card from '@/components/common/card';
 import Description from '@/components/ui/description';
 import { useCreateTokenMutation } from '@/data/token';
-import { useUsersQuery } from '@/data/user'
+import { useUsersTokenQuery } from '@/data/user';
+import { useUsersQuery } from '@/data/user';
 import { useTranslation } from 'next-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { typeValidationSchema } from '@/components/group/group-validation-schema';
@@ -42,6 +43,7 @@ export default function TypesPage() {
     mutate: registerUser,
     isLoading: loading,
   } = useCreateTokenMutation();
+  const { total_users } = useUsersTokenQuery({});
   const [response, setResponse] = useState<any>('');
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [emailList, setEmailList] = useState<string[]>([]);
@@ -60,7 +62,7 @@ export default function TypesPage() {
     // orderBy,
     // sortedBy,
   });
-  console.log(users, 'Users<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+  console.log(total_users, 'the value of total users')
   const {
     register,
     handleSubmit,
@@ -81,7 +83,6 @@ export default function TypesPage() {
     });
   }
 
-
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
@@ -92,19 +93,25 @@ export default function TypesPage() {
     }
   }, [data]);
 
-  useEffect(() => {
-    // Fetch the list of email values from the "users" list
-    const emails: string[] = users.map((user) => user.email);
-    setEmailList(emails);
+  // useEffect(() => {
+  //   // Fetch the list of email values from the "users" list
+  //   const emails: string[] = users.map((user) => user.email);
+  //   setEmailList(emails);
+  // }, [users]);
 
-  }, [users]);
+  useEffect(() => {
+    const filteredEmails = users
+      .filter(user => !total_users.some(tokenUser => tokenUser.userId && tokenUser.userId.id === user._id))
+      .map(user => user.email);
+
+    setEmailList(filteredEmails);
+  }, [users, total_users]);
+
 
   const currentDate = new Date();
   const nextDay = new Date(currentDate);
   nextDay.setDate(currentDate.getDate() + 1);
   const today = nextDay.toISOString().split('T')[0];
-
-
 
   const rawDate = response?.data?.exp_date;
   const date = new Date(rawDate);
@@ -112,16 +119,16 @@ export default function TypesPage() {
   const options: any = {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   };
 
   const formattedDate = date.toLocaleString('en-US', options);
-  const formattedTime = "11:59 PM";
+  const formattedTime = '11:59 PM';
 
   const formattedString = `${formattedDate} at ${formattedTime} at night`;
   // const date = new Date(response?.data?.exp_date)
-  // date.setHours(date.getHours() + 5); 
-  // date.setMinutes(date.getMinutes() + 30); 
+  // date.setHours(date.getHours() + 5);
+  // date.setMinutes(date.getMinutes() + 30);
 
   // const day = date.getDate();
   // const month = date.getMonth() + 1;
@@ -175,7 +182,9 @@ export default function TypesPage() {
               <div className="col-md-3 Create-token-p  col-lg-3 ">
                 <div className="form-group">
                   {/* Email Dropdown */}
-                  <label className='tokan-label-email' htmlFor="email">Email</label>
+                  <label className="tokan-label-email" htmlFor="email">
+                    Email
+                  </label>
                   <select
                     {...register('email', { required: 'Email is required' })}
                     className="form-control createtoken-email"
@@ -190,8 +199,13 @@ export default function TypesPage() {
                     ))}
                   </select>
                   {/* Error message for the email field */}
-                  {errors.email && <span className="text-danger">{errors.email.message}</span>}
-                  <small id="emailHelp" className="form-text email-text text-muted">
+                  {errors.email && (
+                    <span className="text-danger">{errors.email.message}</span>
+                  )}
+                  <small
+                    id="emailHelp"
+                    className="form-text email-text text-muted"
+                  >
                     This Email will be used for user search
                   </small>
                 </div>
@@ -210,7 +224,7 @@ export default function TypesPage() {
               </div>
               <div className="col-md-3 Create-token-p  col-lg-3 ">
                 <div className="form-group">
-                  <label className='tokan-label-date' >Date</label>
+                  <label className="tokan-label-date">Date</label>
                   <input
                     type="date"
                     min={today}
@@ -226,14 +240,18 @@ export default function TypesPage() {
                   )}
                 </div>
               </div>
-              <div className='col-lg-1 Create-token-p col-md-1'>
-                <div className='token-checkbox'>
-                  <input type="checkbox" className='checkbox-devic' checked={isChecked}
-                    onChange={handleCheckboxChange} />
-                  <label className='devics-check'>1 month</label>
+              <div className="col-lg-1 Create-token-p col-md-1">
+                <div className="token-checkbox">
+                  <input
+                    type="checkbox"
+                    className="checkbox-devic"
+                    checked={isChecked}
+                    onChange={handleCheckboxChange}
+                  />
+                  <label className="devics-check">1 month</label>
                 </div>
               </div>
-              <div className="col-md-2 Generate-Token-button text-center col-lg-2   ">
+              <div className="col-md-2 Generate-Token-button col-lg-2 text-center   ">
                 <Button
                   className="token-button w-100"
                   loading={loading}
@@ -309,6 +327,3 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
     ...(await serverSideTranslations(locale!, ['table', 'common', 'form'])),
   },
 });
-
-
-

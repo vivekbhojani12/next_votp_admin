@@ -389,7 +389,7 @@ export interface User {
   _id?:string;
   name: string;
   data?: { name: string; email: string; role_id:string; };
-  userId?: { name: string; email: string; };
+  userId?: { name: string; email: string;id:string };
   exp_date?:Date;
   no_id?:number;
   token:string;

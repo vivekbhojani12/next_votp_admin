@@ -10,8 +10,10 @@ export const TokenValidationSchema = yup.object().shape({
   name: yup
     .string()
     .required('Name is required'),
-    token: yup
-    .string()
-    .matches(/^(?=.*[a-zA-Z])(?=.*\d).{6,}$/, 'Token must be at least 6 characters and contain both letters and numbers')
-    .required('Token is required'),
+  token:
+    yup
+      .string()
+      .matches(/^(?:[0-9]{6,}|[A-Z]{6,}|[A-Z0-9]{6,})$/, 'Token must be at least 6 characters and consist of either only numbers, only capital letters, or a combination of capital letters and numbers')
+      .required('Token is required')
 });
+
