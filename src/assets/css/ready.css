@@ -5818,7 +5818,6 @@ body {
 }
 
 
-
 [type="checkbox"]:not(:checked)+.form-check-sign,
 [type="checkbox"]:checked+.form-check-sign {
   position: relative;
@@ -8075,6 +8074,7 @@ th.rc-table-cell {
 
 
 
+
 .checkbox-devic {
   color: #991e32 !important;
 }
@@ -8091,6 +8091,7 @@ th.rc-table-cell {
 .device-button:hover {
   text-decoration: underline;
 }
+
 .token-checkbox {
   text-align: center;
   padding-top: 50px !important;
@@ -8098,12 +8099,13 @@ th.rc-table-cell {
 
 
 .checkbox-devic {
-color: #991e32 !important;
+  color: #991e32 !important;
 }
 
 .devics-check {
-padding-left: 5px;
+  padding-left: 5px;
 }
+
 .device-button {
   font-size: 20px;
   color: #000;
