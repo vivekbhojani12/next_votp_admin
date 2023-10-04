@@ -112,6 +112,7 @@ import { useState, useEffect } from 'react';
 import { DatePicker } from '@/components/ui/date-picker';
 import { useRouter } from 'next/router';
 import { TokenValidationSchema } from '@/components/user/edit-token.schema';
+import { useUsersTokenQuery } from '@/data/user';
 import { checkToken } from '@/data/token';
 
 type FormValues = {
@@ -135,6 +136,8 @@ const ScheduleGrid = ({ data, users }: any) => {
   };
   const { t } = useTranslation();
   const { mutate: updateToken, isLoading: loading } = useUpdateTOkenMutation();
+  const { total_users } = useUsersTokenQuery({});
+
 
   const [startDate, setStartDate] = useState<any>(new Date(data?.data?.exp_date))
   const [token, setToken] = useState(data?.data?.token);
@@ -157,7 +160,7 @@ const ScheduleGrid = ({ data, users }: any) => {
     }
 
   };
-
+  console.log(total_users)
 
 
 
@@ -258,9 +261,27 @@ const ScheduleGrid = ({ data, users }: any) => {
       no_id: no_id,
       exp_date: startDate ? startDate : null,
     };
-    console.log(input, 'the value of update at time of updating')
     updateToken(input);
   }
+  // const [error, setErrorr] = useState('');
+
+  const handleUserIdChange = (event: any) => {
+    const selectedUserId = event.target.value;
+    console.log(selectedUserId)
+    console.log(total_users)
+    // Check if the selected user ID already exists in total_users
+    const userExists = total_users.some(user => user.userId?._id === selectedUserId);
+
+    if (userExists) {
+      setError('userId', {
+        type: 'manual',
+        message: 'Warning!!!!! Email already exists. Please choose a different email.',
+      });
+    } else {
+      setError('userId', null as any);
+      // Your form submission logic here
+    }
+  };
 
 
 
@@ -275,25 +296,24 @@ const ScheduleGrid = ({ data, users }: any) => {
         <div className="UsersDetails-from flex flex-wrap">
           <Card className="w-full users-from-bg ">
             <div>
-              <div><label><b>Select Email</b> </label></div>
-              <div>
-                <select
-                  {...register('userId', { required: 'Please select a Email.' })}
-                  className="mb-4 users-edit-from w-full"
-                  defaultValue={''}
-                >
-                  <option value="" disabled>
-                    Select an email
+              <select
+                {...register('userId', { required: 'Please select an Email.' })}
+                className="mb-4 users-edit-from w-full"
+                defaultValue={''}
+                onChange={handleUserIdChange}
+              >
+                <option value="" disabled>
+                  Select an email
+                </option>
+                {users.map((user: any, index: any) => (
+                  <option key={index} value={user._id}>
+                    {user.email}
                   </option>
-                  {/* Assuming you have an array of user objects with email and user_id */}
-                  {users.map((user: any, index: any) => (
-                    <option key={index} value={user._id}>
-                      {user.email}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                ))}
+              </select>
+              {errors.userId && <p style={{ color: 'red' }}>{errors.userId.message}</p>}
             </div>
+
             <Input
               label={t('Name')}
               {...register('name')}
@@ -369,3 +389,23 @@ export default ScheduleGrid;
 
 
 
+// <div>
+//               <div><label><b>Select Email</b> </label></div>
+//               <div>
+//                 <select
+//                   {...register('userId', { required: 'Please select a Email.' })}
+//                   className="mb-4 users-edit-from w-full"
+//                   defaultValue={''}
+//                 >
+//                   <option value="" disabled>
+//                     Select an email
+//                   </option>
+//                   {/* Assuming you have an array of user objects with email and user_id */}
+//                   {users.map((user: any, index: any) => (
+//                     <option key={index} value={user._id}>
+//                       {user.email}
+//                     </option>
+//                   ))}
+//                 </select>
+//               </div>
+//             </div>
