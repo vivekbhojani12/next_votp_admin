@@ -120,6 +120,7 @@ type FormValues = {
   _id: string;
   userId: string;
   token: string;
+  balance: Number;
   exp_date: Date;
   no_id: number;
 
@@ -133,6 +134,7 @@ const ScheduleGrid = ({ data, users }: any) => {
     no_id: data?.data?.no_id,
     name: data?.data?.name,
     exp_date: data?.data?.exp_date,
+    balance: data?.data?.balance,
   };
   const { t } = useTranslation();
   const { mutate: updateToken, isLoading: loading } = useUpdateTOkenMutation();
@@ -191,6 +193,7 @@ const ScheduleGrid = ({ data, users }: any) => {
       name: data?.data?.name,
       token: data?.data?.token,
       no_id: data?.data?.no_id,
+      balance: data?.data?.balance,
       exp_date: data?.data?.exp_date,
     });
     setStartDate(new Date(data?.data?.exp_date));
@@ -252,7 +255,7 @@ const ScheduleGrid = ({ data, users }: any) => {
   }, [token]);
 
   async function onSubmit(values: FormValues) {
-    const { userId, no_id, name, token } = values;
+    const { userId, no_id, name, token, balance } = values;
     if (errors.userId) {
       console.error('Form has validation errors for userId:', errors.userId.message);
       // Optionally, you can handle the error, display a message, or perform other actions
@@ -265,10 +268,12 @@ const ScheduleGrid = ({ data, users }: any) => {
       token: token,
       name: name,
       no_id: no_id,
+      balance: balance,
       exp_date: startDate ? startDate : null,
     };
     if (error === '') {
       updateToken(input);
+
     }
   }
   // const [error, setErrorr] = useState('');
@@ -351,6 +356,14 @@ const ScheduleGrid = ({ data, users }: any) => {
               variant="outline"
               className="mb-4"
               error={t(errors.no_id?.message!)}
+            />
+            <Input
+              label={t('Balance')}
+              {...register('balance')}
+              type="no id"
+              variant="outline"
+              className="mb-4"
+              error={t(errors.balance?.message!)}
             />
             <div className="mb-3">
               <input

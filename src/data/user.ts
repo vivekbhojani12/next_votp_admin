@@ -101,8 +101,13 @@ export const useUpdateTOkenMutation = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
   return useMutation(userClient.updateToken, {
-    onSuccess: () => {
-      toast.success(t('common:successfully-updated'));
+    onSuccess: (data) => {
+      console.log(data,'at the time of updating')
+      if(data?.data){
+      toast.success(t('common:successfully-updated'));}
+      else{
+        toast.error(`${data?.message}`)
+      }
       router.replace(Routes.dashboard);
     },
     // Always refetch after error or success:

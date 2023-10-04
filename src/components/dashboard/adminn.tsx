@@ -201,6 +201,7 @@ export default function DashboardAdmin() {
                                                     <th>App Token</th>
                                                     <th>Captcha Token</th>
                                                     <th>ID's</th>
+                                                    <th>Balance</th>
                                                     <th>Expiry Date</th>
                                                     <th>Remaining Days</th>
                                                     <th>Edit</th>
@@ -217,6 +218,7 @@ export default function DashboardAdmin() {
                                                         <td>{user?.token}</td>
                                                         <td>{user?.captcha}</td>
                                                         <td>{user?.no_id}</td>
+                                                        <th>{user?.balance}</th>
                                                         <td>
                                                             {user?.exp_date
                                                                 ? new Date(user.exp_date).toLocaleDateString()

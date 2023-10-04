@@ -10,6 +10,7 @@ export const TokenValidationSchema = yup.object().shape({
   name: yup
     .string()
     .required('Name is required'),
+  balance:yup.number().required('Balance is Required'),
   token:
     yup
       .string()
