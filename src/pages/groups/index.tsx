@@ -55,6 +55,7 @@ export default function TypesPage() {
   const newExpirationDate = new Date();
   newExpirationDate.setDate(newExpirationDate.getDate() + 28);
   newExpirationDate.setHours(0, 0, 0, 0);
+  console.log(newExpirationDate, 'new exp date')
   const { users } = useUsersQuery({
     // limit: 20,
     // page,
@@ -62,7 +63,6 @@ export default function TypesPage() {
     // orderBy,
     // sortedBy,
   });
-  console.log(total_users, 'the value of total users')
   const {
     register,
     handleSubmit,
@@ -107,6 +107,22 @@ export default function TypesPage() {
     setEmailList(filteredEmails);
   }, [users, total_users]);
 
+  // useEffect(() => {
+  //   const today = new Date();
+
+  //   const filteredEmails = users
+  //     .filter(user => {
+  //       return !total_users.some(tokenUser => {
+  //         const tokenExpDate = tokenUser.exp_date !== undefined && tokenUser.exp_date;
+  //         return tokenUser.userId &&
+  //           tokenUser.userId.id === user._id &&
+  //           tokenExpDate > today;
+  //       });
+  //     })
+  //     .map(user => user.email);
+
+  //   setEmailList(filteredEmails);
+  // }, [users, total_users]);
 
   const currentDate = new Date();
   const nextDay = new Date(currentDate);
