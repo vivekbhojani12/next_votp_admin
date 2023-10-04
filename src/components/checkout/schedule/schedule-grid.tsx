@@ -143,6 +143,7 @@ const ScheduleGrid = ({ data, users }: any) => {
   const [token, setToken] = useState(data?.data?.token);
   const [tokenError, setTokenError] = useState('');
   const [isChecked, setIsChecked] = useState(false);
+  const [error, setErrors] = useState('')
 
   const newExpirationDate = new Date();  // Current date
   const newDate = new Date(newExpirationDate);  // Create a new Date object to avoid modifying the original date
@@ -252,6 +253,11 @@ const ScheduleGrid = ({ data, users }: any) => {
 
   async function onSubmit(values: FormValues) {
     const { userId, no_id, name, token } = values;
+    if (errors.userId) {
+      console.error('Form has validation errors for userId:', errors.userId.message);
+      // Optionally, you can handle the error, display a message, or perform other actions
+      return;  // Return early if there are errors
+    }
     // const { notifications } = profile;
     const input = {
       _id: data?.data?._id,
@@ -261,7 +267,9 @@ const ScheduleGrid = ({ data, users }: any) => {
       no_id: no_id,
       exp_date: startDate ? startDate : null,
     };
-    updateToken(input);
+    if (error === '') {
+      updateToken(input);
+    }
   }
   // const [error, setErrorr] = useState('');
 
@@ -272,13 +280,15 @@ const ScheduleGrid = ({ data, users }: any) => {
     // Check if the selected user ID already exists in total_users
     const userExists = total_users.some(user => user.userId?._id === selectedUserId);
 
-    if (userExists) {
-      setError('userId', {
-        type: 'manual',
-        message: 'Warning!!!!! Email already exists. Please choose a different email.',
-      });
-    } else {
-      setError('userId', null as any);
+    if (userExists && selectedUserId !== data?.data?.userId) {
+      // setError('userId', {
+      //   type: 'manual',
+      //   message: 'Warning!!!!! Email already exists. Please choose a different email.',
+      // });
+      setErrors('Warning!!!!! Email already exists. Please choose a different email.')
+    }
+    else {
+      setErrors('');
       // Your form submission logic here
     }
   };
@@ -311,7 +321,7 @@ const ScheduleGrid = ({ data, users }: any) => {
                   </option>
                 ))}
               </select>
-              {errors.userId && <p style={{ color: 'red' }}>{errors.userId.message}</p>}
+              {error && <p style={{ color: 'red' }}>{error}</p>}
             </div>
 
             <Input
