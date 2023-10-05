@@ -123,6 +123,7 @@ type FormValues = {
   balance: Number;
   exp_date: Date;
   no_id: number;
+  captcha: string
 
 };
 
@@ -134,6 +135,7 @@ const ScheduleGrid = ({ data, users }: any) => {
     no_id: data?.data?.no_id,
     name: data?.data?.name,
     exp_date: data?.data?.exp_date,
+    captcha: data?.data?.captcha,
     balance: data?.data?.balance,
   };
   const { t } = useTranslation();
@@ -195,6 +197,7 @@ const ScheduleGrid = ({ data, users }: any) => {
       no_id: data?.data?.no_id,
       balance: data?.data?.balance,
       exp_date: data?.data?.exp_date,
+      captcha: data?.data?.captcha
     });
     setStartDate(new Date(data?.data?.exp_date));
   }, [data]);
@@ -347,6 +350,16 @@ const ScheduleGrid = ({ data, users }: any) => {
               value={token}
               error={t(errors.token?.message!) || tokenError}
               onChange={handleTokenChange}
+            // error={t(errors.token?.message!)}
+            />
+            <Input
+              label={t('Captcha')}
+              {...register('captcha')}
+              type="captcha"
+              // value={data?.data?.token}
+              variant="outline"
+              className="mb-4"
+              value={data?.data?.captcha}
             // error={t(errors.token?.message!)}
             />
             <Input

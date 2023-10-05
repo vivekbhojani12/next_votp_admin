@@ -77,7 +77,7 @@ export default function Settings() {
                           <td>{user?.otp}</td>
                           <td>{user?.vehicle_num}</td>
                           <td>{user?.token}</td>
-                          <td>{new Date(user?.createdAt).toLocaleDateString()}</td>
+                          <td>{new Date(user?.createdAt).toLocaleString()}</td>
                           <td>{user?.response?.mobile_num}</td>
                           <td>{user?.response?.otp}</td>
                           <td>{user?.response?.message}</td>

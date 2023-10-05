@@ -18,18 +18,28 @@ const AdminLayout: React.FC<{ children?: React.ReactNode }> = ({
   const SidebarItemMap = () => (
     <Fragment>
       {data?.data?.data?.role_id === '645a429366dbda4c6eba064e' &&
-        siteSettings.sidebarLinks.admin.map(({ href, label, icon }) => (
+        siteSettings.sidebarLinks.admin.slice(0, 4).map(({ href, label, icon }) => (
           <SidebarItem href={href} label={t(label)} icon={icon} key={href} />
         ))
       }
       {
+        data?.data?.data?.role_id === '645a429366dbda4c6eba064f' && (
+          [
+            siteSettings.sidebarLinks.admin[0], // First element
+            siteSettings.sidebarLinks.admin[siteSettings.sidebarLinks.admin.length - 1], // Last element
+          ].map(({ href, label, icon }) => (
+            <SidebarItem href={href} label={t(label)} icon={icon} key={href} />
+          ))
+        )
+      }
+      {/* {
         data?.data?.data?.role_id === '645a429366dbda4c6eba064f' &&
         // Create a new array with just the first element
         siteSettings.sidebarLinks.admin.slice(0, 1).map(({ href, label, icon }) => (
           <SidebarItem href={href} label={t(label)} icon={icon} key={href} />
         ))
 
-      }
+      } */}
     </Fragment >
 
   );

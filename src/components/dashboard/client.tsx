@@ -72,9 +72,13 @@ export default function Client(data: any) {
                                                         <th>Name</th>
                                                         <th>Email ID</th>
                                                         <th>App Token</th>
-                                                        {/* <th>Captcha Token</th> */}
+                                                        <th>Captcha Token</th>
+                                                        <th>Form Captcha Balance</th>
+                                                        <th>Interstate Capctha Balance</th>
                                                         <th>ID's</th>
+                                                        <th>Balance</th>
                                                         <th>Expiry Date</th>
+                                                        <th>Remaining Days</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -84,12 +88,29 @@ export default function Client(data: any) {
                                                             <td>{user?.name}</td>
                                                             <td>{user?.userId?.email}</td>
                                                             <td>{user?.token}</td>
-                                                            {/* <td>Captcha Token</td> */}
+                                                            <td>{user?.captcha}</td>
+                                                            <td>{null}</td>
+                                                            <td>{null}</td>
                                                             <td>{user?.no_id}</td>
+                                                            <td>{user?.balance}</td>
                                                             <td>
                                                                 {user?.exp_date
                                                                     ? new Date(user.exp_date).toLocaleDateString()
                                                                     : ''}
+                                                            </td>
+                                                            <td>
+                                                                {user?.exp_date ? (
+                                                                    (() => {
+                                                                        const expDate = new Date(user.exp_date) as any;
+                                                                        const todayDate = new Date() as any
+                                                                        if (isNaN(expDate as any)) {
+                                                                            return 'Invalid Date';
+                                                                        } else {
+                                                                            const differenceInDays = Math.ceil((expDate - todayDate) / (1000 * 3600 * 24));
+                                                                            return `${differenceInDays} days left`;
+                                                                        }
+                                                                    })()
+                                                                ) : ''}
                                                             </td>
                                                             {/* <td>{user.data1}</td>
                               <td>{user.data2}</td>

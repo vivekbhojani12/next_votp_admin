@@ -3,6 +3,7 @@ export const Routes = {
   dashboard: '/',
   login: '/login',
   logout: '/logout',
+  scripts:'/scripts',
   // register: '/register',
   forgotPassword: '/forgot-password',
   resetPassword: '/reset-password',

@@ -54,6 +54,11 @@ export const siteSettings = {
         label: 'sidebar-nav-item-settings',
         icon: 'QuestionIcon',
       },
+      {
+        href:Routes.scripts,
+        label: 'Scripts',
+        icon: 'QuestionIcon',
+      }
 
 
     ],

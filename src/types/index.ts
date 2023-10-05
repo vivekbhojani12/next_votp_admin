@@ -394,8 +394,8 @@ export interface User {
   no_id?:number;
   balance?:number;
   token:string;
+  createdAt?:any
   captcha?:any;
-  shops: Shop[];
   managed_shop: Shop;
   is_active: boolean;
   email: string;
