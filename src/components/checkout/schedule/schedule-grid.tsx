@@ -124,6 +124,8 @@ type FormValues = {
   exp_date: Date;
   no_id: number;
   captcha: string
+  form_captcha: string
+  interstate_captcha_token: string
 
 };
 
@@ -360,6 +362,27 @@ const ScheduleGrid = ({ data, users }: any) => {
               variant="outline"
               className="mb-4"
               value={data?.data?.captcha}
+            // error={t(errors.token?.message!)}
+            />
+            {/* Interstate Captcha token */}
+            <Input
+              label={t('Form Captcha')}
+              {...register('form_captcha')}
+              type="captcha"
+              // value={data?.data?.token}
+              variant="outline"
+              className="mb-4"
+            // value={data?.data?.captcha}
+            // error={t(errors.token?.message!)}
+            />
+            <Input
+              label={t('Interstate Captcha token')}
+              {...register('interstate_captcha_token')}
+              type="captcha"
+              // value={data?.data?.token}
+              variant="outline"
+              className="mb-4"
+            // value={data?.data?.captcha}
             // error={t(errors.token?.message!)}
             />
             <Input
