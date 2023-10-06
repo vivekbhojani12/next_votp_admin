@@ -200,10 +200,10 @@ export default function DashboardAdmin() {
                                                     <th>Email ID</th>
                                                     <th>App Token</th>
                                                     <th>Captcha Token</th>
-                                                    <th>Form Captcha Token</th>
+                                                    {/* <th>Form Captcha Token</th>
                                                     <th>Form Captcha Balance</th>
                                                     <th>Interstate Capctha Token</th>
-                                                    <th>Interstate Capctha Balance</th>
+                                                    <th>Interstate Capctha Balance</th> */}
                                                     <th>ID's</th>
                                                     <th>Balance</th>
                                                     <th>Expiry Date</th>
@@ -221,10 +221,10 @@ export default function DashboardAdmin() {
                                                         <td>{user?.userId?.email || user?.userDetails && user?.userDetails[0].email}</td>
                                                         <td>{user?.token}</td>
                                                         <td>{user?.captcha}</td>
+                                                        {/* <td>{null}</td>
                                                         <td>{null}</td>
                                                         <td>{null}</td>
-                                                        <td>{null}</td>
-                                                        <td>{null}</td>
+                                                        <td>{null}</td> */}
                                                         <td>{user?.no_id}</td>
                                                         <th>{user?.balance}</th>
                                                         <td>

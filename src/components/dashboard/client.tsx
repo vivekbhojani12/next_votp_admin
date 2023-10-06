@@ -73,8 +73,8 @@ export default function Client(data: any) {
                                                         <th>Email ID</th>
                                                         <th>App Token</th>
                                                         <th>Captcha Token</th>
-                                                        <th>Form Captcha Balance</th>
-                                                        <th>Interstate Capctha Balance</th>
+                                                        {/* <th>Form Captcha Balance</th>
+                                                        <th>Interstate Capctha Balance</th> */}
                                                         <th>ID's</th>
                                                         <th>Balance</th>
                                                         <th>Expiry Date</th>
@@ -89,8 +89,8 @@ export default function Client(data: any) {
                                                             <td>{user?.userId?.email}</td>
                                                             <td>{user?.token}</td>
                                                             <td>{user?.captcha}</td>
-                                                            <td>{null}</td>
-                                                            <td>{null}</td>
+                                                            {/* <td>{null}</td>
+                                                            <td>{null}</td> */}
                                                             <td>{user?.no_id}</td>
                                                             <td>{user?.balance}</td>
                                                             <td>
